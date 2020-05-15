@@ -1,7 +1,7 @@
 using System;
 using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
-using Bookflix.Models.Validaciones;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
 namespace Bookflix.Models
@@ -18,7 +18,7 @@ namespace Bookflix.Models
         public int Dni { get; set; }
         
         [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
-        [PersonalData, Required, CurrentDate, DataType(DataType.DateTime)]
+        [PersonalData, Required, DataType(DataType.DateTime)]
         public DateTime FechaDeNacimiento { get; set; }
 
 

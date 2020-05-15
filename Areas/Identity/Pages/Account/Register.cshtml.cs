@@ -78,6 +78,8 @@ namespace Bookflix.Areas.Identity.Pages.Account
             [Display(Name = "DNI")]
             public int Dni { get; set; }
             
+            [Required]
+            [Display(Name = "Fecha de nacimiento"), DataType(DataType.Date)]
             public DateTime FechaDeNacimiento { get; set; }
                     // ARREGLAR QUE NO PUEDA METER FECHAS FUTURAS
 
@@ -110,7 +112,7 @@ namespace Bookflix.Areas.Identity.Pages.Account
             returnUrl = returnUrl ?? Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
 
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && Input.FechaDeNacimiento < DateTime.Today && Input.FechaDeNacimiento.Year > 1900)
             {
                 var user = new BookflixUser { 
                     UserName = Input.Email,
@@ -151,7 +153,6 @@ namespace Bookflix.Areas.Identity.Pages.Account
                     ModelState.AddModelError(string.Empty, error.Description);
                 }
             }
-
             // If we got this far, something failed, redisplay form
             return Page();
         }
