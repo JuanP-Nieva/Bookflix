@@ -17,12 +17,22 @@ namespace Bookflix.Data
         public DbSet<Novedad> Novedades { get; set; }
         public DbSet<Pago> Pagos { get; set; }
         public DbSet<Tarjeta> Tarjetas { get; set; }        
-
+        // public DbSet<Categoria> Categorias { get; set; }        
+        
         public BookflixDbContext(DbContextOptions<BookflixDbContext> options)
             : base(options)
         {
         }
-    
+
+        public BookflixDbContext()
+            : base()
+        {
+        } 
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer("Server=localhost;Database=Bookflix-DB;User Id=SA; Password=manzana-2020;");
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -31,6 +41,10 @@ namespace Bookflix.Data
             modelBuilder.Entity<Perfil_Favea_Libro> ().HasKey (pl => new { pl.PerfilId, pl.LibroId });
             modelBuilder.Entity<Perfil_Lee_Libro> ().HasKey (pl => new { pl.PerfilId, pl.LibroId });
             modelBuilder.Entity<Perfil_Puntua_Libro> ().HasKey (pl => new { pl.PerfilId, pl.LibroId });
+
+            // modelBuilder.Entity<Administrador>();
+            // modelBuilder.Entity<Normal>();
+            // modelBuilder.Entity<Premium>();
         }
     }
 }

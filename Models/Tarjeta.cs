@@ -8,7 +8,7 @@ namespace Bookflix.Models
     public class Tarjeta
     {
         [Key]
-        public int Numero { get; set; }
+        public decimal Numero { get; set; }
         [Required, DisplayName("Código de seguridad")]
         public int Clave { get; set; }
         [Required]

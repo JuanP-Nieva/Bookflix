@@ -19,7 +19,5 @@
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <PkgMicrosoft_CodeAnalysis_Analyzers Condition=" '$(PkgMicrosoft_CodeAnalysis_Analyzers)' == '' ">/home/felipe/.nuget/packages/microsoft.codeanalysis.analyzers/2.9.4</PkgMicrosoft_CodeAnalysis_Analyzers>
     <PkgMicrosoft_EntityFrameworkCore_Tools Condition=" '$(PkgMicrosoft_EntityFrameworkCore_Tools)' == '' ">/home/felipe/.nuget/packages/microsoft.entityframeworkcore.tools/3.1.3</PkgMicrosoft_EntityFrameworkCore_Tools>
-    <PkgjQuery Condition=" '$(PkgjQuery)' == '' ">/home/felipe/.nuget/packages/jquery/1.9.1</PkgjQuery>
-    <PkgBootstrap_v3_Datetimepicker Condition=" '$(PkgBootstrap_v3_Datetimepicker)' == '' ">/home/felipe/.nuget/packages/bootstrap.v3.datetimepicker/4.17.45</PkgBootstrap_v3_Datetimepicker>
   </PropertyGroup>
 </Project>

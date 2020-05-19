@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bookflix.Migrations
 {
     [DbContext(typeof(BookflixDbContext))]
-    [Migration("20200512172256_Initial")]
+    [Migration("20200518213413_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -235,8 +235,8 @@ namespace Bookflix.Migrations
                     b.Property<decimal>("Monto")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int?>("TarjetaNumero")
-                        .HasColumnType("int");
+                    b.Property<decimal?>("TarjetaNumero")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("UsuarioId")
                         .HasColumnType("nvarchar(450)");
@@ -343,10 +343,8 @@ namespace Bookflix.Migrations
 
             modelBuilder.Entity("Bookflix.Models.Tarjeta", b =>
                 {
-                    b.Property<int>("Numero")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<decimal>("Numero")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("Clave")
                         .HasColumnType("int");

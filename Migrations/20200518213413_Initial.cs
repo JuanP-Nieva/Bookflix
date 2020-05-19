@@ -110,8 +110,7 @@ namespace Bookflix.Migrations
                 name: "Tarjetas",
                 columns: table => new
                 {
-                    Numero = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Numero = table.Column<decimal>(nullable: false),
                     Clave = table.Column<int>(nullable: false),
                     Titular = table.Column<string>(nullable: false),
                     Tipo = table.Column<string>(nullable: false),
@@ -294,7 +293,7 @@ namespace Bookflix.Migrations
                     Fecha = table.Column<DateTime>(nullable: false),
                     Monto = table.Column<decimal>(nullable: false),
                     UsuarioId = table.Column<string>(nullable: true),
-                    TarjetaNumero = table.Column<int>(nullable: true)
+                    TarjetaNumero = table.Column<decimal>(nullable: true)
                 },
                 constraints: table =>
                 {

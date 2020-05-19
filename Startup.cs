@@ -31,7 +31,7 @@ namespace Bookflix
             services.AddDbContext<BookflixDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<BookflixUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddDefaultIdentity<BookflixUser>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<BookflixDbContext>();
             services.AddControllersWithViews();
@@ -41,6 +41,10 @@ namespace Bookflix
             services.Configure<IdentityOptions>(options =>
             {
                 // Password settings.
+                options.Password.RequireDigit = false;
+                options.Password.RequiredUniqueChars = 1;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireUppercase = true;
                 options.Password.RequiredLength = 8;
 

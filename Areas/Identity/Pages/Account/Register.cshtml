@@ -11,6 +11,8 @@
             <h4>Crea una nueva cuenta.</h4>
             <hr />
             <h6>Datos de la cuenta</h6>
+            <div class="btn-group-toggle" data-toggle="buttons">
+            </div>
             <div class="form-group">
                 <label asp-for="Input.Email"></label>
                 <input asp-for="Input.Email" class="form-control" />
@@ -28,14 +30,12 @@
             </div>
             <div class="col-md-4 col-md-offset-2"></div>
             <hr />
-            <h6>Datos personales</h6>
-            <div asp-validation-summary="All" class="text-danger"></div>
+            <h6>Datos personales</h6> 
             <div class="form-group">
                 <label asp-for="Input.Nombre"></label>
                 <input asp-for="Input.Nombre" class="form-control" />
                 <span asp-validation-for="Input.Nombre" class="text-danger"></span>
             </div>
-            </section>
             <div class="form-group">
                 <label asp-for="Input.Apellido"></label>
                 <input asp-for="Input.Apellido" class="form-control" />
@@ -50,6 +50,44 @@
                 <label asp-for="Input.FechaDeNacimiento"></label>
                 <input asp-for="Input.FechaDeNacimiento" class="form-control" />
                 <span asp-validation-for="Input.FechaDeNacimiento" class="text-danger"></span>
+            </div>
+            <div class="col-md-4 col-md-offset-2"></div>
+            <hr />
+            <h6>Datos de la tarjeta</h6>
+            <div class="form-group">
+                <input type="radio" asp-for="Input.Tipo" value="Credito" checked> Crédito
+                <span asp-validation-for="Input.Tipo" class="text-danger"></span>
+                <input type="radio" asp-for="Input.Tipo" value="Debito"> Débito
+                <span asp-validation-for="Input.Tipo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Numero"></label>
+                <input asp-for="Input.Numero" class="form-control" />
+                <span asp-validation-for="Input.Numero" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Clave"></label>
+                <input asp-for="Input.Clave" class="form-control" />
+                <span asp-validation-for="Input.Clave" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Titular"></label>
+                <input asp-for="Input.Titular" class="form-control" />
+                <span asp-validation-for="Input.Titular" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.FechaDeVencimiento"></label>
+                <input type="month" asp-for="Input.FechaDeVencimiento" class="form-control" />
+                <span asp-validation-for="Input.FechaDeVencimiento" class="text-danger"></span>
+            </div>
+            <div class="col-md-4 col-md-offset-2"></div>
+            <hr />
+            <h6>Seleccione una categoría</h6> 
+            <div class="form-group">
+                <input type="radio" asp-for="Input.Categoria" value="Normal" checked> Normal
+                <span asp-validation-for="Input.Categoria" class="text-danger"></span>
+                <input type="radio" asp-for="Input.Categoria" value="Premium"> Premium
+                <span asp-validation-for="Input.Categoria" class="text-danger"></span>
             </div>
             <button type="submit" class="btn btn-primary">Registrarse</button>
         </form>
