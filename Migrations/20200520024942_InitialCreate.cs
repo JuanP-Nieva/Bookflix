@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Bookflix.Migrations
 {
-    public partial class Initial : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -313,7 +313,7 @@ namespace Bookflix.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Perfil_Comenta_Libro",
+                name: "Perfil_Comenta_Libros",
                 columns: table => new
                 {
                     LibroId = table.Column<int>(nullable: false),
@@ -322,15 +322,15 @@ namespace Bookflix.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Perfil_Comenta_Libro", x => new { x.PerfilId, x.LibroId });
+                    table.PrimaryKey("PK_Perfil_Comenta_Libros", x => new { x.PerfilId, x.LibroId });
                     table.ForeignKey(
-                        name: "FK_Perfil_Comenta_Libro_Libros_LibroId",
+                        name: "FK_Perfil_Comenta_Libros_Libros_LibroId",
                         column: x => x.LibroId,
                         principalTable: "Libros",
                         principalColumn: "ISBN",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Perfil_Comenta_Libro_Perfiles_PerfilId",
+                        name: "FK_Perfil_Comenta_Libros_Perfiles_PerfilId",
                         column: x => x.PerfilId,
                         principalTable: "Perfiles",
                         principalColumn: "Id",
@@ -338,7 +338,7 @@ namespace Bookflix.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Perfil_Favea_Libro",
+                name: "Perfil_Favea_Libros",
                 columns: table => new
                 {
                     LibroId = table.Column<int>(nullable: false),
@@ -346,15 +346,15 @@ namespace Bookflix.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Perfil_Favea_Libro", x => new { x.PerfilId, x.LibroId });
+                    table.PrimaryKey("PK_Perfil_Favea_Libros", x => new { x.PerfilId, x.LibroId });
                     table.ForeignKey(
-                        name: "FK_Perfil_Favea_Libro_Libros_LibroId",
+                        name: "FK_Perfil_Favea_Libros_Libros_LibroId",
                         column: x => x.LibroId,
                         principalTable: "Libros",
                         principalColumn: "ISBN",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Perfil_Favea_Libro_Perfiles_PerfilId",
+                        name: "FK_Perfil_Favea_Libros_Perfiles_PerfilId",
                         column: x => x.PerfilId,
                         principalTable: "Perfiles",
                         principalColumn: "Id",
@@ -362,7 +362,7 @@ namespace Bookflix.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Perfil_Lee_Libro",
+                name: "Perfil_Lee_Libros",
                 columns: table => new
                 {
                     LibroId = table.Column<int>(nullable: false),
@@ -371,15 +371,15 @@ namespace Bookflix.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Perfil_Lee_Libro", x => new { x.PerfilId, x.LibroId });
+                    table.PrimaryKey("PK_Perfil_Lee_Libros", x => new { x.PerfilId, x.LibroId });
                     table.ForeignKey(
-                        name: "FK_Perfil_Lee_Libro_Libros_LibroId",
+                        name: "FK_Perfil_Lee_Libros_Libros_LibroId",
                         column: x => x.LibroId,
                         principalTable: "Libros",
                         principalColumn: "ISBN",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Perfil_Lee_Libro_Perfiles_PerfilId",
+                        name: "FK_Perfil_Lee_Libros_Perfiles_PerfilId",
                         column: x => x.PerfilId,
                         principalTable: "Perfiles",
                         principalColumn: "Id",
@@ -387,7 +387,7 @@ namespace Bookflix.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Perfil_Puntua_Libro",
+                name: "Perfil_Puntua_Libros",
                 columns: table => new
                 {
                     LibroId = table.Column<int>(nullable: false),
@@ -396,15 +396,15 @@ namespace Bookflix.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Perfil_Puntua_Libro", x => new { x.PerfilId, x.LibroId });
+                    table.PrimaryKey("PK_Perfil_Puntua_Libros", x => new { x.PerfilId, x.LibroId });
                     table.ForeignKey(
-                        name: "FK_Perfil_Puntua_Libro_Libros_LibroId",
+                        name: "FK_Perfil_Puntua_Libros_Libros_LibroId",
                         column: x => x.LibroId,
                         principalTable: "Libros",
                         principalColumn: "ISBN",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Perfil_Puntua_Libro_Perfiles_PerfilId",
+                        name: "FK_Perfil_Puntua_Libros_Perfiles_PerfilId",
                         column: x => x.PerfilId,
                         principalTable: "Perfiles",
                         principalColumn: "Id",
@@ -476,23 +476,23 @@ namespace Bookflix.Migrations
                 column: "UsuarioId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Perfil_Comenta_Libro_LibroId",
-                table: "Perfil_Comenta_Libro",
+                name: "IX_Perfil_Comenta_Libros_LibroId",
+                table: "Perfil_Comenta_Libros",
                 column: "LibroId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Perfil_Favea_Libro_LibroId",
-                table: "Perfil_Favea_Libro",
+                name: "IX_Perfil_Favea_Libros_LibroId",
+                table: "Perfil_Favea_Libros",
                 column: "LibroId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Perfil_Lee_Libro_LibroId",
-                table: "Perfil_Lee_Libro",
+                name: "IX_Perfil_Lee_Libros_LibroId",
+                table: "Perfil_Lee_Libros",
                 column: "LibroId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Perfil_Puntua_Libro_LibroId",
-                table: "Perfil_Puntua_Libro",
+                name: "IX_Perfil_Puntua_Libros_LibroId",
+                table: "Perfil_Puntua_Libros",
                 column: "LibroId");
 
             migrationBuilder.CreateIndex(
@@ -525,16 +525,16 @@ namespace Bookflix.Migrations
                 name: "Pagos");
 
             migrationBuilder.DropTable(
-                name: "Perfil_Comenta_Libro");
+                name: "Perfil_Comenta_Libros");
 
             migrationBuilder.DropTable(
-                name: "Perfil_Favea_Libro");
+                name: "Perfil_Favea_Libros");
 
             migrationBuilder.DropTable(
-                name: "Perfil_Lee_Libro");
+                name: "Perfil_Lee_Libros");
 
             migrationBuilder.DropTable(
-                name: "Perfil_Puntua_Libro");
+                name: "Perfil_Puntua_Libros");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

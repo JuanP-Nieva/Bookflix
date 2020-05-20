@@ -285,7 +285,7 @@ namespace Bookflix.Migrations
 
                     b.HasIndex("LibroId");
 
-                    b.ToTable("Perfil_Comenta_Libro");
+                    b.ToTable("Perfil_Comenta_Libros");
                 });
 
             modelBuilder.Entity("Bookflix.Models.Perfil_Favea_Libro", b =>
@@ -300,7 +300,7 @@ namespace Bookflix.Migrations
 
                     b.HasIndex("LibroId");
 
-                    b.ToTable("Perfil_Favea_Libro");
+                    b.ToTable("Perfil_Favea_Libros");
                 });
 
             modelBuilder.Entity("Bookflix.Models.Perfil_Lee_Libro", b =>
@@ -318,7 +318,7 @@ namespace Bookflix.Migrations
 
                     b.HasIndex("LibroId");
 
-                    b.ToTable("Perfil_Lee_Libro");
+                    b.ToTable("Perfil_Lee_Libros");
                 });
 
             modelBuilder.Entity("Bookflix.Models.Perfil_Puntua_Libro", b =>
@@ -336,7 +336,7 @@ namespace Bookflix.Migrations
 
                     b.HasIndex("LibroId");
 
-                    b.ToTable("Perfil_Puntua_Libro");
+                    b.ToTable("Perfil_Puntua_Libros");
                 });
 
             modelBuilder.Entity("Bookflix.Models.Tarjeta", b =>

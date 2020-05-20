@@ -1,0 +1,41 @@
+@model IEnumerable<Bookflix.Models.Perfil>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <h1 style="color: #E50914;">Perfiles</h1>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <a asp-action="IngresarPerfil" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Nombre)</a>
+            </td>
+            <td>
+                @*<a asp-action="Edit" asp-route-id="@item.Id">Editar Perfil</a> |
+                <a asp-action="IngresarPerfil" asp-route-id="@item.Id">Ingresar</a>
+                <a asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Borrar Perfil</a> *@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<a class="btn btn-outline-danger" asp-action="AdministrarPerfil" role="button">Administrar Perfiles</a>
+
+@* <p>
+    @if(ViewBag.Validate){
+        <a class="btn btn-primary" asp-action="Create" role="button">Crear Perfil</a>
+    }else{
+        <a class="btn btn-primary disabled" asp-action="Create" role="button" aria-disabled="true">Crear Perfil</a>
+    }
+</p> *@

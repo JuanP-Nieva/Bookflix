@@ -138,12 +138,13 @@ namespace Bookflix.Areas.Identity.Pages.Account
         {
             await _signInManager.SignOutAsync();
             ReturnUrl = returnUrl;
-            ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+            //ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
         }
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
-            returnUrl = returnUrl ?? Url.Content("~/");
+            
+            returnUrl = returnUrl ?? Url.Content("~/Perfil/Index");
 
             if (ModelState.IsValid)
             {
@@ -155,6 +156,7 @@ namespace Bookflix.Areas.Identity.Pages.Account
                     await _userManager.AddToRoleAsync(user, Input.Categoria);
                     _logger.LogInformation("User created a new account with password.");
                     await _signInManager.SignInAsync(user, isPersistent: false);
+
                     return LocalRedirect(returnUrl);
                 }
                 mostrarErrores(result);
