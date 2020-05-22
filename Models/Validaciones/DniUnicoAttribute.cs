@@ -25,5 +25,6 @@ namespace Bookflix.Models.Validaciones
                     return (db.Users.Any(user => user.Dni == dni));  //Si hay usuarios con DNI repetido.
                 }
         }
+        
     }
 }

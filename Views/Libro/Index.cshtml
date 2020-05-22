@@ -1,0 +1,81 @@
+@model IEnumerable<Bookflix.Models.Libro>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 style="color: #E50914 ;">LIBROS</h1>
+@if(User.IsInRole("Administrador")){
+    <p>
+        <a class="btn btn-danger" asp-action="Create" role="button">Crear Libro</a>
+    </p>
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a style="color: white;">@Html.DisplayNameFor(model => model.ISBN) </a>
+            </th>
+            <th>
+                <a style="color: white;">@Html.DisplayNameFor(model => model.Portada) </a>
+            </th>
+            <th>
+                <a style="color: white;">@Html.DisplayNameFor(model => model.Titulo) </a>
+            </th>
+            <th>
+                <a style="color: white;">@Html.DisplayNameFor(model => model.Contenido) </a>
+            </th>
+            <th>
+                <a style="color: white;">@Html.DisplayNameFor(model => model.Descripcion)</a>
+            </th>
+            <th>
+                <a style="color: white;">@Html.DisplayNameFor(model => model.Autor)</a>
+            </th>
+            <th>
+                <a style="color: white;">@Html.DisplayNameFor(model => model.Genero)</a>
+            </th>
+            <th>
+                <a style="color: white;">@Html.DisplayNameFor(model => model.Editorial)</a>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <a style="color: white;">@Html.DisplayFor(modelItem => item.ISBN) </a>
+            </td>
+            <td>
+                @* @Html.DisplayFor(modelItem => item.Portada) *@
+                <img src="~/Images/@item.Portada" class="rounded-circle" width="40" height="40" asp-append-version="true">
+            </td>
+            <td>
+                <a style="color: white;">@Html.DisplayFor(modelItem => item.Titulo)</a>
+            </td>
+            <td>
+                <a style="color: white;">@Html.DisplayFor(modelItem => item.Contenido)</a>
+            </td>
+            <td>
+                <a style="color: white;">@Html.DisplayFor(modelItem => item.Descripcion)</a>
+            </td>
+            <td>
+                <a style="color: white;">@Html.DisplayFor(modelItem => item.Autor.Nombre)</a>
+            </td>
+            <td>
+                <a style="color: white;">@Html.DisplayFor(modelItem => item.Genero.Nombre)</a>
+            </td>
+            <td>
+                <a style="color: white;">@Html.DisplayFor(modelItem => item.Editorial.Nombre)</a>
+            </td>
+            @if(User.IsInRole("Administrador")){
+                <td>
+                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id">Modificar</a> 
+                    @* <a asp-action="Details" asp-route-id="@item.ISBN">Detalles</a> 
+                    <a asp-action="Delete" asp-route-id="@item.ISBN">Borrar</a> *@
+                </td>
+            }
+        </tr>
+}
+    </tbody>
+</table>

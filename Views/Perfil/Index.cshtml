@@ -5,19 +5,14 @@
 }
 
 <table class="table">
-    <thead>
-        <tr>
-            <th>
-                <h1 style="color: #E50914;">Perfiles</h1>
-            </th>
-            <th></th>
-        </tr>
+    <thead>    
+        <h1 style="color: #E50914;">Perfiles</h1>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
             <td>
-                <a asp-action="IngresarPerfil" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Nombre)</a>
+                <a asp-action="Index" asp-controller="Libro" asp-route-id="@item.Id" style="color: white;">@Html.DisplayFor(modelItem => item.Nombre)</a>
             </td>
             <td>
                 @*<a asp-action="Edit" asp-route-id="@item.Id">Editar Perfil</a> |

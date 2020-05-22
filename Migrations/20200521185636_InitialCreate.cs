@@ -98,7 +98,7 @@ namespace Bookflix.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Descripcion = table.Column<string>(nullable: false),
-                    Imagen = table.Column<byte[]>(nullable: false),
+                    Imagen = table.Column<string>(nullable: false),
                     Titulo = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
@@ -251,9 +251,10 @@ namespace Bookflix.Migrations
                 name: "Libros",
                 columns: table => new
                 {
-                    ISBN = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Portada = table.Column<byte[]>(nullable: true),
+                    ISBN = table.Column<int>(nullable: false),
+                    Portada = table.Column<string>(nullable: true),
                     Titulo = table.Column<string>(nullable: false),
                     Contenido = table.Column<string>(nullable: false),
                     Descripcion = table.Column<string>(nullable: false),
@@ -263,7 +264,7 @@ namespace Bookflix.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Libros", x => x.ISBN);
+                    table.PrimaryKey("PK_Libros", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Libros_Autores_AutorId",
                         column: x => x.AutorId,
@@ -327,7 +328,7 @@ namespace Bookflix.Migrations
                         name: "FK_Perfil_Comenta_Libros_Libros_LibroId",
                         column: x => x.LibroId,
                         principalTable: "Libros",
-                        principalColumn: "ISBN",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Perfil_Comenta_Libros_Perfiles_PerfilId",
@@ -351,7 +352,7 @@ namespace Bookflix.Migrations
                         name: "FK_Perfil_Favea_Libros_Libros_LibroId",
                         column: x => x.LibroId,
                         principalTable: "Libros",
-                        principalColumn: "ISBN",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Perfil_Favea_Libros_Perfiles_PerfilId",
@@ -376,7 +377,7 @@ namespace Bookflix.Migrations
                         name: "FK_Perfil_Lee_Libros_Libros_LibroId",
                         column: x => x.LibroId,
                         principalTable: "Libros",
-                        principalColumn: "ISBN",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Perfil_Lee_Libros_Perfiles_PerfilId",
@@ -401,7 +402,7 @@ namespace Bookflix.Migrations
                         name: "FK_Perfil_Puntua_Libros_Libros_LibroId",
                         column: x => x.LibroId,
                         principalTable: "Libros",
-                        principalColumn: "ISBN",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Perfil_Puntua_Libros_Perfiles_PerfilId",

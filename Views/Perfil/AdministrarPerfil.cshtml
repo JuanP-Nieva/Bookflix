@@ -6,12 +6,12 @@
 
 <table class="table">
     <thead>
-        <tr>
-            <th>
+         <tr>
+            @*<th> *@
                 <h1 style="color: #E50914;">Administrar Perfiles</h1>
-            </th>
-            <th></th>
-        </tr>
+            @* </th> *@
+            @* <th></th>*@
+        </tr> 
     </thead>
     <tbody>
 @foreach (var item in Model) {
@@ -20,7 +20,7 @@
                 <a style="color: #E50914;">@Html.DisplayFor(modelItem => item.Nombre)</a>
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Editar Perfil</a> |
+                <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id">Editar Perfil</a> 
                 @*<a asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Borrar Perfil</a> *@
             </td>

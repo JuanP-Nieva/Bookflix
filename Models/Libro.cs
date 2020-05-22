@@ -6,27 +6,30 @@ using System.Collections.Generic;
 namespace Bookflix.Models {
     public class Libro {
         [Key]
+        public int Id { get; set; }
+
+        [Required(ErrorMessage="El ISBN es un campo obligatorio")]
         public int ISBN { get; set; }
         
-        public byte[] Portada { get; set; }
+        public string Portada { get; set; }
        
-        [Required]
+        [Required(ErrorMessage="El Titulo es un campo obligatorio")]
         public string Titulo { get; set; }
 
-        [Required]
+        [Required(ErrorMessage="El Contenido es un campo obligatorio")]
         public string Contenido { get; set; }
 
-        [Required]
+        [Required(ErrorMessage="La Descripcion es un campo obligatorio")]
         public string Descripcion { get; set; }
 
-        public int AutorId { get; set; }
         [Required(ErrorMessage = "El libro debe tener un autor")]
+        public int AutorId { get; set; }
         public Autor Autor { get; set; }
-        public int GeneroId { get; set; }
         [Required(ErrorMessage = "El libro debe tener un género")]
+        public int GeneroId { get; set; }
         public Genero Genero { get; set; }
-        public int EditorialId { get; set; }
         [Required(ErrorMessage = "El libro debe tener una editorial")]
+        public int EditorialId { get; set; }
         public Editorial Editorial { get; set; }
 
         //Propiedades para las relaciones de la DB

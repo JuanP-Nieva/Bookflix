@@ -28,7 +28,7 @@ namespace Bookflix.Controllers
         {
             if(User.IsInRole("Administrador"))
             {
-                return RedirectToAction("Index","Administrador");
+                return RedirectToAction("Index","Libro");
             }
             var perfiles = _context.Perfiles.Where(p => p.Usuario.Id == _userManager.GetUserId(User));
             return View(perfiles);
@@ -104,6 +104,10 @@ namespace Bookflix.Controllers
             return View(perfil);
         }
 
+        public IActionResult EnConstruccion()
+        {
+            return View();
+        }
 
         // GET: Perfil/Edit/5
         public async Task<IActionResult> Edit(int? id)

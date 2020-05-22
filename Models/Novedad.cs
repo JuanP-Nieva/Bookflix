@@ -10,7 +10,7 @@ namespace Bookflix.Models
         [Required]
         public string Descripcion { get; set; }
         [Required]
-        public byte[] Imagen { get; set; }
+        public string Imagen { get; set; }
         [Required]
         public string Titulo { get; set; }
     }

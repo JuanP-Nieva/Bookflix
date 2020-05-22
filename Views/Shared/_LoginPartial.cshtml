@@ -15,28 +15,48 @@
             <button  type="submit" class="nav-link btn btn-link text-dark">Cerrar Sesion</button>
         </form>
     </li> *@
-    <div class="btn-group">
-        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            @User.Identity.Name
-        </button>
-        <div class="dropdown-menu">
-            <a class="dropdown-item" href="/Perfil/Index">Perfiles</a>
-            <a class="dropdown-item" href="/Perfil/AdministrarPerfil">Administrar Perfiles</a>
-            <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Manage/Index">Configuracion de cuenta</a>
-        <div class="dropdown-divider"></div>
-            <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                <button  type="submit" class="nav-link btn btn-link text-dark">Cerrar Sesion</button>
-            </form>
+    if(User.IsInRole("Administrador"))
+    {
+        <div class="btn-group" style="background-color: #141414;">
+            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                @User.Identity.Name
+            </button>
+            <div class="dropdown-menu">
+                @* <a class="dropdown-item" href="#">Novedades</a>
+                <a class="dropdown-item" href="#">Generar Altas</a> *@
+                <a class="dropdown-item" href="/Perfil/EnConstruccion">Configuracion de cuenta</a>
+                @* <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Manage/Index">Configuracion de cuenta</a> Esto va para mas adelante*@
+            <div class="dropdown-divider"></div>
+               <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                    <button  type="submit" class="nav-link btn btn-link text-dark text-center" >Cerrar Sesion</button>                 
+                </form>
+            </div>
         </div>
-    </div>
+    }else{
+        <div class="btn-group">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                @User.Identity.Name
+            </button>
+            <div class="dropdown-menu">
+                @* <a class="dropdown-item" href="/Perfil/Index">Perfiles</a> *@
+                <a class="dropdown-item" href="/Perfil/AdministrarPerfil">Administrar Perfiles</a>
+                <a class="dropdown-item" href="/Perfil/EnConstruccion">Configuracion de cuenta</a>
+                @* <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Manage/Index">Configuracion de cuenta</a> Esto va para mas adelante *@
+                <div class="dropdown-divider"></div>
+                <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                        <button  type="submit" class="nav-link btn btn-link text-dark "> Cerrar Sesion</button>             
+                </form> 
+            </div>
+        </div>
+    }
 }
 else
 {
     <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Registrarse</a>
+        <a class="nav-link" asp-area="Identity" asp-page="/Account/Register" style="color: #F5F5F1;">Registrarse</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Iniciar Sesion</a>
+        <a class="nav-link" asp-area="Identity" asp-page="/Account/Login" style="color: #F5F5F1;">Iniciar Sesion</a>
     </li>
 }
 </ul>

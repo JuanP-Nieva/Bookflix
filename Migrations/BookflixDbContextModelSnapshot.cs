@@ -156,7 +156,7 @@ namespace Bookflix.Migrations
 
             modelBuilder.Entity("Bookflix.Models.Libro", b =>
                 {
-                    b.Property<int>("ISBN")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -178,14 +178,17 @@ namespace Bookflix.Migrations
                     b.Property<int>("GeneroId")
                         .HasColumnType("int");
 
-                    b.Property<byte[]>("Portada")
-                        .HasColumnType("varbinary(max)");
+                    b.Property<int>("ISBN")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Portada")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Titulo")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ISBN");
+                    b.HasKey("Id");
 
                     b.HasIndex("AutorId");
 
@@ -207,9 +210,9 @@ namespace Bookflix.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<byte[]>("Imagen")
+                    b.Property<string>("Imagen")
                         .IsRequired()
-                        .HasColumnType("varbinary(max)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Titulo")
                         .IsRequired()

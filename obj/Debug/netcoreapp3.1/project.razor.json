@@ -20526,8 +20526,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Libro/Edit.cshtml",
+      "TargetPath": "Views\\Libro\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Areas/Identity/Pages/_ViewStart.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Editorial/Details.cshtml",
+      "TargetPath": "Views\\Editorial\\Details.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -20551,6 +20561,21 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Novedad/Create.cshtml",
+      "TargetPath": "Views\\Novedad\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Genero/Details.cshtml",
+      "TargetPath": "Views\\Genero\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Novedad/Edit.cshtml",
+      "TargetPath": "Views\\Novedad\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Perfil/IngresarPerfil.cshtml",
       "TargetPath": "Views\\Perfil\\IngresarPerfil.cshtml",
       "FileKind": "mvc"
@@ -20561,13 +20586,43 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Autor/Details.cshtml",
+      "TargetPath": "Views\\Autor\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Areas/Identity/Pages/Account/_ViewImports.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\Account\\_ViewImports.cshtml",
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Editorial/Index.cshtml",
+      "TargetPath": "Views\\Editorial\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Areas/Identity/Pages/Account/ConfirmEmail.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\Account\\ConfirmEmail.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Autor/Create.cshtml",
+      "TargetPath": "Views\\Autor\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Libro/Delete.cshtml",
+      "TargetPath": "Views\\Libro\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Editorial/Edit.cshtml",
+      "TargetPath": "Views\\Editorial\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Libro/Index.cshtml",
+      "TargetPath": "Views\\Libro\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -20581,8 +20636,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Genero/Create.cshtml",
+      "TargetPath": "Views\\Genero\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Libro/Create.cshtml",
+      "TargetPath": "Views\\Libro\\Create.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -20591,8 +20656,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Autor/Delete.cshtml",
+      "TargetPath": "Views\\Autor\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Shared/_LoginPartial.cshtml",
       "TargetPath": "Views\\Shared\\_LoginPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Genero/Delete.cshtml",
+      "TargetPath": "Views\\Genero\\Delete.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -20626,8 +20701,28 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Libro/Details.cshtml",
+      "TargetPath": "Views\\Libro\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Administrador/Index.cshtml",
       "TargetPath": "Views\\Administrador\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Autor/Edit.cshtml",
+      "TargetPath": "Views\\Autor\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Editorial/Create.cshtml",
+      "TargetPath": "Views\\Editorial\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Perfil/EnConstruccion.cshtml",
+      "TargetPath": "Views\\Perfil\\EnConstruccion.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -20641,6 +20736,16 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Novedad/Details.cshtml",
+      "TargetPath": "Views\\Novedad\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Novedad/Index.cshtml",
+      "TargetPath": "Views\\Novedad\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Shared/Error.cshtml",
       "TargetPath": "Views\\Shared\\Error.cshtml",
       "FileKind": "mvc"
@@ -20648,6 +20753,11 @@
     {
       "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Administrador/Create.cshtml",
       "TargetPath": "Views\\Administrador\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Genero/Index.cshtml",
+      "TargetPath": "Views\\Genero\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -20661,8 +20771,28 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Novedad/Delete.cshtml",
+      "TargetPath": "Views\\Novedad\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Areas/Identity/Pages/Account/Manage/_ViewImports.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\Account\\Manage\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Editorial/Delete.cshtml",
+      "TargetPath": "Views\\Editorial\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Genero/Edit.cshtml",
+      "TargetPath": "Views\\Genero\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Autor/Index.cshtml",
+      "TargetPath": "Views\\Autor\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
