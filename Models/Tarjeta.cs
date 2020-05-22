@@ -8,6 +8,7 @@ namespace Bookflix.Models
     public class Tarjeta
     {
         [Key]
+        [DisplayFormat(DataFormatString = "{0:F0}", ApplyFormatInEditMode = true)]
         public decimal Numero { get; set; }
         [Required, DisplayName("Código de seguridad")]
         public int Clave { get; set; }

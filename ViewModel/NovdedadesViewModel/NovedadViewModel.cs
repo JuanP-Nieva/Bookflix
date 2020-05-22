@@ -10,11 +10,11 @@ namespace Bookflix.ViewModel
     public class NovedadViewModel
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        [Required(ErrorMessage = "Este campo es obligatorio")]
+        [Required(ErrorMessage = "Debe ingresar una descripción")]
         public string Descripcion { get; set; }
+        [Required(ErrorMessage = "Debe ingresar una imagen")]
         public IFormFile Imagen { get; set; }
-        [Required(ErrorMessage = "Este campo es obligatorio")]
+        [Required(ErrorMessage = "Debe ingresar un título")]
         public string Titulo { get; set; }
     }
 }

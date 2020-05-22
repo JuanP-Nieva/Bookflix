@@ -52,12 +52,12 @@ namespace Bookflix.Areas.Identity.Pages.Account
         {
             //Datos de usuario
 
-            [Required(ErrorMessage = "Este campo es obligatorio")]
+            [Required(ErrorMessage = "Debe ingresar un email.")]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
 
-            [Required(ErrorMessage = "Este campo es obligatorio")]
+            [Required(ErrorMessage = "Debe ingesar una contraseña.")]
             [StringLength(100, ErrorMessage = "La {0} debe tener al menos {2} caracteres y {1} como máximo.", MinimumLength = 8)]
             [DataType(DataType.Password)]
             [Display(Name = "Contraseña")]
@@ -68,45 +68,44 @@ namespace Bookflix.Areas.Identity.Pages.Account
             [Compare("Password", ErrorMessage = "Las contraseñas no son iguales.")]
             public string ConfirmPassword { get; set; }
 
-            [Required(ErrorMessage = "Este campo es obligatorio"), RegularExpression(@"^[A-Za-z]*\s?()[A-Za-z]*$", ErrorMessage = "El {0} no puede empezar con espacios ni contener números")]
+            [Required(ErrorMessage = "Debe ingresar su nombre."), RegularExpression(@"^[A-Za-z]*\s?()[A-Za-z]*$", ErrorMessage = "El {0} no puede empezar con espacios ni contener números.")]
             [StringLength(100, ErrorMessage = "El {0} debe tener al menos {2} caracteres y {1} como máximo.", MinimumLength = 1)]
             [Display(Name = "Nombre")]
             public string Nombre { get; set; }
 
-            [Required(ErrorMessage = "Este campo es obligatorio"), RegularExpression(@"^[A-Za-z]*\s?()[A-Za-z]*$", ErrorMessage = "El {0} no puede empezar con espacios ni contener números")]
+            [Required(ErrorMessage = "Debe ingresar su apellido."), RegularExpression(@"^[A-Za-z]*\s?()[A-Za-z]*$", ErrorMessage = "El {0} no puede empezar con espacios ni contener números.")]
             [StringLength(100, ErrorMessage = "El {0} debe tener al menos {2} caracteres y {1} como máximo.", MinimumLength = 1)]
             [Display(Name = "Apellido")]
             public string Apellido { get; set; }
 
-            [Required(ErrorMessage = "Este campo es obligatorio"), RegularExpression(@"^[0-9]{7,8}$", ErrorMessage = "El {0} debe contener entre 7 y 8 dígitos")]
-
+            [Required(ErrorMessage = "Debe ingresar su DNI."), RegularExpression(@"^[0-9]{7,8}$", ErrorMessage = "El {0} debe contener entre 7 y 8 dígitos.")]
             [Display(Name = "DNI")]
-            [DniUnico(ErrorMessage = "El DNI ya existe en la base de datos")]
+            [DniUnico(ErrorMessage = "El DNI ya existe en la base de datos.")]
             public int Dni { get; set; }
 
-            [Required(ErrorMessage = "Este campo es obligatorio"), HastaFechaActual(ErrorMessage = "La fecha de nacimiento debe ser anterior al día de hoy.")]
+            [Required(ErrorMessage = "Debe ingresar su fecha de nacimiento."), HastaFechaActual(ErrorMessage = "La fecha de nacimiento debe ser anterior al día de hoy.")]
             [Display(Name = "Fecha de nacimiento"), DataType(DataType.Date)]
             public DateTime FechaDeNacimiento { get; set; }
 
             //Datos de su tarjeta
-            [Required(ErrorMessage = "Este campo es obligatorio"), RegularExpression(@"^[0-9]{16}$", ErrorMessage = "El {0} debe contener 16 dígitos")]
+            [Required(ErrorMessage = "Debe ingresar el número de su tarjeta."), RegularExpression(@"^[0-9]{16}$", ErrorMessage = "El {0} debe contener 16 dígitos.")]
             public decimal Numero { get; set; }
 
-            [Required(ErrorMessage = "Este campo es obligatorio"), Display(Name = "Código de seguridad"), RegularExpression(@"^[0-9]{3}$", ErrorMessage = "El {0} debe contener 3 dígitos")]
+            [Required(ErrorMessage = "Debe ingresar el código de seguridad de su tarjeta."), Display(Name = "Código de seguridad"), RegularExpression(@"^[0-9]{3}$", ErrorMessage = "El {0} debe contener 3 dígitos.")]
             public int Clave { get; set; }
 
-            [Required(ErrorMessage = "Este campo es obligatorio")]
+            [Required(ErrorMessage = "Debe ingresar el nombre del titular de su tarjeta.")]
             [StringLength(100, ErrorMessage = "El nombre del {0} debe tener al menos {2} caracteres y {1} como máximo.", MinimumLength = 1)]
             public string Titular { get; set; }
 
-            [Required(ErrorMessage = "Este campo es obligatorio")]
+            [Required(ErrorMessage = "Debe seleccionar un tipo de tarjeta.")]
             public string Tipo { get; set; }
 
             [DataType(DataType.Date), Display(Name = "Fecha de expiración"), DesdeFechaActual(ErrorMessage = "La fecha de expiración debe ser posterior al día de hoy.")]
-            [Required(ErrorMessage = "Este campo es obligatorio")]
+            [Required(ErrorMessage = "Debe ingresar la fecha de expiración de la tarjeta.")]
             public DateTime FechaDeVencimiento { get; set; }
 
-            [Required(ErrorMessage = "Este campo es obligatorio"), BindProperty]
+            [Required(ErrorMessage = "Debe seleccionar una categoría."), BindProperty]
             public string Categoria { get; set; }
 
             public Tarjeta crearTarjeta() => new Tarjeta
@@ -136,6 +135,7 @@ namespace Bookflix.Areas.Identity.Pages.Account
 
         public async Task OnGetAsync(string returnUrl = null)
         {
+            //await crearLosRoles();
             await _signInManager.SignOutAsync();
             ReturnUrl = returnUrl;
             //ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
@@ -179,7 +179,7 @@ namespace Bookflix.Areas.Identity.Pages.Account
             await _roleManager.CreateAsync(new IdentityRole("Administrador"));
             await _roleManager.CreateAsync(new IdentityRole("Normal"));
             await _roleManager.CreateAsync(new IdentityRole("Premium"));
-           // throw new Exception("todo piola");
+            throw new Exception("todo piola");
         }
     }
 }

@@ -178,8 +178,8 @@ namespace Bookflix.Migrations
                     b.Property<int>("GeneroId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ISBN")
-                        .HasColumnType("int");
+                    b.Property<decimal>("ISBN")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Portada")
                         .HasColumnType("nvarchar(max)");

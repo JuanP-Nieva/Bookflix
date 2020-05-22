@@ -116,7 +116,7 @@ namespace Bookflix.Controllers
             return fileName;
         }
 
-        private bool isbnUnico(int isbn)
+        private bool isbnUnico(decimal isbn)
         {
             return _context.Libros.Any(libro => libro.ISBN == isbn);
         }
@@ -135,7 +135,7 @@ namespace Bookflix.Controllers
                 return NotFound();
             }
 
-            var lvm = new LibroViewModel
+            var lvm = new EdicionLibroViewModel
             {
                 ISBN = libro.ISBN,
                 Id = libro.Id,
@@ -159,7 +159,7 @@ namespace Bookflix.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Administrador")]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ISBN,Portada,Titulo,Contenido,Descripcion,AutorId,GeneroId,EditorialId")] LibroViewModel l)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ISBN,Portada,Titulo,Contenido,Descripcion,AutorId,GeneroId,EditorialId")] EdicionLibroViewModel l)
         {
             if (id != l.Id)
             {
@@ -207,7 +207,7 @@ namespace Bookflix.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!LibroExists(l.ISBN))
+                    if (!LibroExists(l.Id))
                     {
                         return NotFound();
                     }
@@ -234,7 +234,7 @@ namespace Bookflix.Controllers
             }
         }
 
-        private bool isbnEditable(int isbn, int id)
+        private bool isbnEditable(decimal isbn, int id)
         {
 
             return _context.Libros.Any(libro => libro.ISBN == isbn && libro.Id == id);

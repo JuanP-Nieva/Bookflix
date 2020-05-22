@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Bookflix.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -253,7 +253,7 @@ namespace Bookflix.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ISBN = table.Column<int>(nullable: false),
+                    ISBN = table.Column<decimal>(nullable: false),
                     Portada = table.Column<string>(nullable: true),
                     Titulo = table.Column<string>(nullable: false),
                     Contenido = table.Column<string>(nullable: false),

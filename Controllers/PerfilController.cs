@@ -136,8 +136,12 @@ namespace Bookflix.Controllers
             {
                 return NotFound();
             }
+            if (perfilUnico(perfil))
+            {
+                ModelState.AddModelError("Nombre", "Este nombre ya está utilizado por otro perfil");
+            }
 
-            if (ModelState.IsValid && !perfilUnico(perfil))
+            if (ModelState.IsValid) 
             {
                 try
                 {

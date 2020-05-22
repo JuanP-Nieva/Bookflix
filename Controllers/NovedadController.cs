@@ -117,7 +117,7 @@ namespace Bookflix.Controllers
             {
                 return NotFound();
             }
-            var vm = new NovedadViewModel
+            var vm = new EdicionNovedadViewModel
             {
                 Id = novedad.Id,
                 Titulo = novedad.Titulo,
@@ -134,7 +134,7 @@ namespace Bookflix.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Administrador")]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Descripcion,Imagen,Titulo")] NovedadViewModel vm)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Descripcion,Imagen,Titulo")] EdicionNovedadViewModel vm)
         {
             if (id != vm.Id)
             {

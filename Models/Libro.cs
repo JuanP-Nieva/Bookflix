@@ -9,7 +9,8 @@ namespace Bookflix.Models {
         public int Id { get; set; }
 
         [Required(ErrorMessage="El ISBN es un campo obligatorio")]
-        public int ISBN { get; set; }
+        [DisplayFormat(DataFormatString = "{0:F0}", ApplyFormatInEditMode = true)]
+        public decimal ISBN { get; set; }
         
         public string Portada { get; set; }
        

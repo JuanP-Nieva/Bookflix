@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bookflix.Migrations
 {
     [DbContext(typeof(BookflixDbContext))]
-    [Migration("20200521185636_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20200522064635_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -180,8 +180,8 @@ namespace Bookflix.Migrations
                     b.Property<int>("GeneroId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ISBN")
-                        .HasColumnType("int");
+                    b.Property<decimal>("ISBN")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Portada")
                         .HasColumnType("nvarchar(max)");

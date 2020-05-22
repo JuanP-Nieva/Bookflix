@@ -62,7 +62,7 @@ namespace Bookflix.Controllers
             {
                 _context.Add(genero);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Create","Libro");
+                return RedirectToAction("Index","Libro");
                 //return RedirectToAction(nameof(Index));
             }
             return View(genero);

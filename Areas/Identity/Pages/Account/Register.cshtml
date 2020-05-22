@@ -11,6 +11,7 @@
             <h4 style="color: #F5F5F1;">Crea una nueva cuenta.</h4>
             <hr style="border-color: darkgrey;"/>
             <div class="col">
+                <div asp-validation-summary="All" class="text-danger"></div>
                 <h6 style="color: #E50914;">Datos de la cuenta</h6>
                 <div class="btn-group-toggle" data-toggle="buttons">
                 </div>
@@ -59,9 +60,10 @@
             <hr style="border-color: darkgrey;"/>
             <h6 style="color: #E50914;">Datos de la tarjeta</h6>
             <div class="form-group">
-                <input type="radio" asp-for="Input.Tipo" value="Credito" checked style="color: #F5F5F1;"> Crédito
+                <input type="radio" asp-for="Input.Tipo" value="Credito" checked><label style="color:#F5F5F1">Crédito</label>
                 <span asp-validation-for="Input.Tipo" class="text-danger"></span>
-                <input type="radio" asp-for="Input.Tipo" value="Debito" style="color: #F5F5F1;"> Débito
+                <br>
+                <input type="radio" asp-for="Input.Tipo" value="Debito"><label style="color:#F5F5F1">Débito</label>
                 <span asp-validation-for="Input.Tipo" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -88,14 +90,15 @@
             <hr style="border-color: darkgrey;"/>
             <h6 style="color: #E50914;">Seleccione una categoría</h6> 
             <div class="form-group">
-                <input type="radio" asp-for="Input.Categoria" value="Normal" checked> Normal
+                <input style="color:#F5F5F1" type="radio" asp-for="Input.Categoria" value="Normal" checked><label style="color:#F5F5F1">Normal</label>
                 <span asp-validation-for="Input.Categoria" class="text-danger"></span>
-                <input type="radio" asp-for="Input.Categoria" value="Premium"> Premium
+                <br>
+                <input type="radio" asp-for="Input.Categoria" value="Premium"><label style="color:#F5F5F1">Premium</label>
                 <span asp-validation-for="Input.Categoria" class="text-danger"></span>
-                @*<input type="radio" asp-for="Input.Categoria" value="Administrador"> Administrador
+                @* <input style="color:#F5F5F1" type="radio" asp-for="Input.Categoria" value="Administrador"> Administrador
                 <span asp-validation-for="Input.Categoria" class="text-danger"></span> ESTO IRIA PARA CREAR EL ADMIN *@
             </div>
-            <button type="submit" class="btn btn-danger text-dark">Registrarse</button>
+            <button type="submit" class="btn btn-danger" style="color: #F5F5F1;">Registrarse</button>
         </form>
     </div>
 </div>
