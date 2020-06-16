@@ -1,0 +1,36 @@
+@model Bookflix.Models.Trailer
+
+@{
+    ViewData["Title"] = "Creando Trailer";
+}
+
+<h1 style="color: #F5F5F1;">Nuevo Trailer</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Img" class="control-label" style="color: #F5F5F1;"></label>
+                <input asp-for="Img" accept="image/*" />
+                <span asp-validation-for="Img" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descripcion" class="control-label" style="color: #F5F5F1;"></label>
+                <input asp-for="Descripcion" class="form-control" />
+                <span asp-validation-for="Descripcion" class="text-danger"></span>
+            </div>
+            <div>
+                <input type="hidden" asp-for="LibroId" value="@ViewData["LibroId"]"/>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+                <a class="btn btn-primary" role="button" asp-controller="Libro" asp-action="Index" >Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

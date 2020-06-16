@@ -100,20 +100,29 @@
                     <td >
                         <a class="btn btn-warning btn-sm" asp-action="EditConCapitulos" asp-route-id="@item.Id">Modificar</a> 
                     </td>    
+                    
+                    @*ESTO ESTA PARA AGREGAR CAPITULOS*@
+                    @if(!item.EstadoCompleto){
+                        <td>
+                            <a class="btn btn-danger btn-sm" asp-action="Create" asp-controller="Capitulo" asp-route-id="@item.Id">Agregar Capitulo</a>
+                        </td>
+                    }
                 }else{
                     <td >
                         <a class="btn btn-warning btn-sm" asp-action="Edit" asp-route-id="@item.Id">Modificar</a> 
                     </td>
                 }
+
                 <td>
-                    @*ESTO ESTA PARA AGREGAR CAPITULOS*@
-                    @if(item.Contenido == null && item.EstadoCompleto == false){
-                        <a class="btn btn-danger btn-sm" asp-action="Create" asp-controller="Capitulo" asp-route-id="@item.Id">Agregar Capitulo</a>
-                    }
+                @if(item.TieneTrailer()) // si tiene trailer lo tiene q poder fletear
+                {
+                    <a class="btn btn-secondary btn-sm" asp-action="Delete" asp-controller="Trailer" asp-route-id="@item.Id">Eliminar Trailer</a> 
+                }
+                else 
+                {
+                    <a class="btn btn-secondary btn-sm" asp-action="Create" asp-controller="Trailer" asp-route-id="@item.Id">Agregar Trailer</a>
+                }
                 </td>
-                    @* <a asp-action="Details" asp-route-id="@item.ISBN">Detalles</a> 
-                    <a asp-action="Delete" asp-route-id="@item.ISBN">Borrar</a> *@
-                
             }
         </tr>
 }

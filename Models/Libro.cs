@@ -4,6 +4,8 @@ using System.Drawing;
 using System.Collections.Generic;
 using Bookflix.Models;
 using Bookflix.Models.Validaciones;
+using Bookflix.Data;
+using System.Linq;
 
 namespace Bookflix.Models {
     public class Libro {
@@ -50,5 +52,15 @@ namespace Bookflix.Models {
 
 
         public List<Capitulo> Capitulos { get; set; }
+
+
+        //Metodos
+        public bool TieneTrailer()
+        {
+            using (BookflixDbContext db = new BookflixDbContext())
+            {
+                return db.Trailers.Any(trailer => trailer.LibroId == this.Id);
+            }
+        }
     }
 }
