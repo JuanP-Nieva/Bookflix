@@ -416,3 +416,20 @@
 /home/felipe/Bookflix/obj/Debug/netcoreapp3.1/Razor/Areas/Identity/Pages/Account/ForgotPasswordConfirmation.cshtml.g.cs
 /home/felipe/Bookflix/obj/Debug/netcoreapp3.1/Razor/Areas/Identity/Pages/Account/ResetPassword.cshtml.g.cs
 /home/felipe/Bookflix/obj/Debug/netcoreapp3.1/Razor/Areas/Identity/Pages/Account/ResetPasswordConfirmation.cshtml.g.cs
+/home/juampi/Project - Bookflix/Bookflix/bin/Debug/netcoreapp3.1/SendGrid.dll
+/home/juampi/Project - Bookflix/Bookflix/obj/Debug/netcoreapp3.1/Razor/Areas/Identity/Pages/Account/ForgotPassword.cshtml.g.cs
+/home/juampi/Project - Bookflix/Bookflix/obj/Debug/netcoreapp3.1/Razor/Areas/Identity/Pages/Account/ForgotPasswordConfirmation.cshtml.g.cs
+/home/juampi/Project - Bookflix/Bookflix/obj/Debug/netcoreapp3.1/Razor/Areas/Identity/Pages/Account/ResetPassword.cshtml.g.cs
+/home/juampi/Project - Bookflix/Bookflix/obj/Debug/netcoreapp3.1/Razor/Areas/Identity/Pages/Account/ResetPasswordConfirmation.cshtml.g.cs
+/home/juampi/Project - Bookflix/Bookflix/bin/Debug/netcoreapp3.1/itextsharp.dll
+/home/juampi/Project - Bookflix/Bookflix/obj/Debug/netcoreapp3.1/Razor/Views/Libro/IndexSuscriptor.cshtml.g.cs
+/home/juampi/Project - Bookflix/Bookflix/obj/Debug/netcoreapp3.1/Razor/Views/Libro/AgregarCapitulos.cshtml.g.cs
+/home/juampi/Project - Bookflix/Bookflix/obj/Debug/netcoreapp3.1/Razor/Views/Libro/CreateConCapitulos.cshtml.g.cs
+/home/juampi/Project - Bookflix/Bookflix/obj/Debug/netcoreapp3.1/Razor/Views/Capitulo/Create.cshtml.g.cs
+/home/juampi/Project - Bookflix/Bookflix/obj/Debug/netcoreapp3.1/Razor/Views/Capitulo/Delete.cshtml.g.cs
+/home/juampi/Project - Bookflix/Bookflix/obj/Debug/netcoreapp3.1/Razor/Views/Capitulo/Details.cshtml.g.cs
+/home/juampi/Project - Bookflix/Bookflix/obj/Debug/netcoreapp3.1/Razor/Views/Capitulo/Edit.cshtml.g.cs
+/home/juampi/Project - Bookflix/Bookflix/obj/Debug/netcoreapp3.1/Razor/Views/Capitulo/Index.cshtml.g.cs
+/home/juampi/Project - Bookflix/Bookflix/obj/Debug/netcoreapp3.1/Razor/Views/Capitulo/Leer.cshtml.g.cs
+/home/juampi/Project - Bookflix/Bookflix/obj/Debug/netcoreapp3.1/Razor/Views/Libro/EditConCapitulos.cshtml.g.cs
+/home/juampi/Project - Bookflix/Bookflix/obj/Debug/netcoreapp3.1/Razor/Views/Libro/Leer.cshtml.g.cs

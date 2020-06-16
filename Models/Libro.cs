@@ -2,6 +2,8 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.Drawing;
 using System.Collections.Generic;
+using Bookflix.Models;
+using Bookflix.Models.Validaciones;
 
 namespace Bookflix.Models {
     public class Libro {
@@ -17,8 +19,9 @@ namespace Bookflix.Models {
         [Required(ErrorMessage="El Titulo es un campo obligatorio")]
         public string Titulo { get; set; }
 
-        [Required(ErrorMessage="El Contenido es un campo obligatorio")]
+        // [Required(ErrorMessage="El Contenido es un campo obligatorio")] esto no va comentado, es para probar
         public string Contenido { get; set; }
+
 
         [Required(ErrorMessage="La Descripcion es un campo obligatorio")]
         public string Descripcion { get; set; }
@@ -33,10 +36,19 @@ namespace Bookflix.Models {
         public int EditorialId { get; set; }
         public Editorial Editorial { get; set; }
 
+        #nullable enable
+        public Trailer? Trailer { get; set; }
+
+        #nullable disable
+        public bool EstadoCompleto { get; set; }
+
         //Propiedades para las relaciones de la DB
         public List<Perfil_Comenta_Libro> Perfil_Comenta_Libros { get; set; }
         public List<Perfil_Favea_Libro> Perfil_Favea_Libros { get; set; }
         public List<Perfil_Lee_Libro> Perfil_Lee_Libros { get; set; }
         public List<Perfil_Puntua_Libro> Perfil_Puntua_Libros { get; set; }
+
+
+        public List<Capitulo> Capitulos { get; set; }
     }
 }

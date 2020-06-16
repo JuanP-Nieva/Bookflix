@@ -23,6 +23,10 @@ namespace Bookflix.Data
         public DbSet<Perfil_Lee_Libro> Perfil_Lee_Libros { get; set; }
         public DbSet<Perfil_Puntua_Libro> Perfil_Puntua_Libros { get; set; }
 
+        public DbSet<Capitulo> Capitulos { get; set; }
+
+        public DbSet<Trailer> Trailers { get; set; }
+
         public BookflixDbContext(DbContextOptions<BookflixDbContext> options)
             : base(options)
         {
@@ -35,7 +39,7 @@ namespace Bookflix.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=localhost;Database=Bookflix-DB;User Id=SA; Password=manzana-2020;");
+            optionsBuilder.UseSqlServer("Server=localhost;Database=Bookflix-DB;User Id=SA; Password=sodastereo-1995;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

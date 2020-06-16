@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bookflix.Migrations
 {
     [DbContext(typeof(BookflixDbContext))]
-    [Migration("20200522064635_Initial")]
-    partial class Initial
+    [Migration("20200615221544_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -120,6 +120,36 @@ namespace Bookflix.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("Bookflix.Models.Capitulo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Contenido")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("FechaDeVencimiento")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("LibroId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("NumeroCapitulo")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Titulo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LibroId");
+
+                    b.ToTable("Capitulos");
+                });
+
             modelBuilder.Entity("Bookflix.Models.Editorial", b =>
                 {
                     b.Property<int>("Id")
@@ -167,7 +197,6 @@ namespace Bookflix.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Contenido")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Descripcion")
@@ -176,6 +205,9 @@ namespace Bookflix.Migrations
 
                     b.Property<int>("EditorialId")
                         .HasColumnType("int");
+
+                    b.Property<bool>("EstadoCompleto")
+                        .HasColumnType("bit");
 
                     b.Property<int>("GeneroId")
                         .HasColumnType("int");
@@ -316,9 +348,6 @@ namespace Bookflix.Migrations
                     b.Property<int>("LibroId")
                         .HasColumnType("int");
 
-                    b.Property<int>("PaginaMarcada")
-                        .HasColumnType("int");
-
                     b.HasKey("PerfilId", "LibroId");
 
                     b.HasIndex("LibroId");
@@ -366,6 +395,30 @@ namespace Bookflix.Migrations
                     b.HasKey("Numero");
 
                     b.ToTable("Tarjetas");
+                });
+
+            modelBuilder.Entity("Bookflix.Models.Trailer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Descripcion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Imagen")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("LibroId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LibroId")
+                        .IsUnique();
+
+                    b.ToTable("Trailers");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -503,6 +556,15 @@ namespace Bookflix.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("Bookflix.Models.Capitulo", b =>
+                {
+                    b.HasOne("Bookflix.Models.Libro", null)
+                        .WithMany("Capitulos")
+                        .HasForeignKey("LibroId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Bookflix.Models.Libro", b =>
                 {
                     b.HasOne("Bookflix.Models.Autor", "Autor")
@@ -598,6 +660,15 @@ namespace Bookflix.Migrations
                     b.HasOne("Bookflix.Models.Perfil", "Perfil")
                         .WithMany("Perfil_Puntua_Libros")
                         .HasForeignKey("PerfilId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Bookflix.Models.Trailer", b =>
+                {
+                    b.HasOne("Bookflix.Models.Libro", "Libro")
+                        .WithOne("Trailer")
+                        .HasForeignKey("Bookflix.Models.Trailer", "LibroId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

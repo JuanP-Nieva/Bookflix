@@ -12,10 +12,12 @@
     <title>@ViewData["Title"] - Bookflix</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <script src="~/js/site.js"></script>
 </head>
 <body style="background-color: #141414;">
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom-dark box-shadow mb-3">
             <div class="container">
                 @if(!SignInManager.IsSignedIn(User))
                 {
@@ -65,7 +67,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top-dark footer text-muted">
         <div class="container">
             &copy; 2020 - Bookflix - <a asp-area="" asp-controller="Home" asp-action="Privacy">Aspectos legales</a>
         </div>

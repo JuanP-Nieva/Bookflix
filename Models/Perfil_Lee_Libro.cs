@@ -6,8 +6,6 @@ namespace Bookflix.Models
 {
     public class Perfil_Lee_Libro
     {
-        [Required]
-        public int PaginaMarcada { get; set; }
 
         //Propiedades para las relaciones de la DB
         public int LibroId { get; set; }

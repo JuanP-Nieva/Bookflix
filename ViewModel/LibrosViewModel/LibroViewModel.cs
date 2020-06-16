@@ -19,7 +19,7 @@ namespace Bookflix.ViewModel {
         [Required(ErrorMessage="El Titulo es un campo obligatorio")]
         public string Titulo { get; set; }
 
-        [Required]
+        
         public IFormFile Contenido { get; set; }
 
         [Required(ErrorMessage="La Descripcion es un campo obligatorio")]
@@ -34,6 +34,7 @@ namespace Bookflix.ViewModel {
         [Required(ErrorMessage = "El libro debe tener una editorial")]
         public int EditorialId { get; set; }
         public Editorial Editorial { get; set; }
+
 
     }
 }

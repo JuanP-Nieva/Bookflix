@@ -1,60 +1,130 @@
 @model Bookflix.Models.Libro
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Leyendo";
+    ViewBag.ISBN = Model.ISBN;
+}
+@{
+    ViewData["Title"] = "Detalles";
 }
 
-<h1>Details</h1>
+<h1 style="color: red;">Detalles</h1>
 
 <div>
-    <h4>Libro</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Portada)
+            <p style="color: red;">@Html.DisplayNameFor(model => model.Portada)</p>
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Portada)
+            <img src="~/Images/@Model.Portada" width="100" height="128" asp-append-version="true">
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Titulo)
+            <p style="color: red;">@Html.DisplayNameFor(model => model.Titulo)</p>
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Titulo)
+            <p style="color: white;">@Html.DisplayFor(model => model.Titulo)</p>
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Contenido)
+            <p style="color: red;">@Html.DisplayNameFor(model => model.Descripcion)</p>
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Contenido)
+            <p style="color: white;">@Html.DisplayFor(model => model.Descripcion)</p>
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Descripcion)
+            <p style="color: red;">@Html.DisplayNameFor(model => model.Autor)</p>
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Descripcion)
+            <p style="color: white;">@Html.DisplayFor(model => model.Autor.Apellido)</p>
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Autor)
+            <p style="color: red;">@Html.DisplayNameFor(model => model.Genero)</p>
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Autor.Apellido)
+            <p style="color: white;">@Html.DisplayFor(model => model.Genero.Nombre)</p>
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Genero)
+            <p style="color: red;">@Html.DisplayNameFor(model => model.Editorial)</p>
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Genero.Nombre)
+            <p style="color: white;">@Html.DisplayFor(model => model.Editorial.Nombre)</p>
+        </dd>
+    @if (Model.Contenido == null)
+    {
+        @foreach (var item in Model.Capitulos)
+        {
+            <dt class="col-sm-10">
+               <a class="btn btn-danger btn-sm" role="button" asp-controller="Capitulo" asp-action="Leer" asp-route-id="@item.Id">Capitulo @item.NumeroCapitulo</a>
+            </dt>
+        }
+    } else {
+        <dd class = "col-sm-10">
+            <a class="btn btn-primary" role="button" asp-controller="Libro" asp-action="Leer" asp-route-id="@Model.Id">Leer</a>
+        </dd>
+    }
+    </dl>
+</div>
+<div>
+    @if (User.IsInRole("Administrador"))
+    {
+        <a class="btn btn-warning" asp-action="Edit" asp-route-id="@Model.Id">Editar</a> 
+         @if((!Model.EstadoCompleto) && (Model.Contenido == null)){
+             <a class="btn btn-primary" role="button" asp-controller="Capitulo" asp-action="Create">Agregar Capitulo</a>
+        }
+    }
+    <a class="btn btn-primary" role="button" asp-controller="Libro" asp-action="Index">Cerrar Libro</a>
+</div>
+
+@*@model Bookflix.Models.Libro
+
+@{
+    ViewData["Title"] = "Detalles";
+}
+
+<h1 style="color: red;">Detalles</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            <p style="color: red;">@Html.DisplayNameFor(model => model.Portada)</p>
+        </dt>
+        <dd class = "col-sm-10">
+            <img src="~/Images/@Model.Portada" width="100" height="128" asp-append-version="true">
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Editorial)
+            <p style="color: red;">@Html.DisplayNameFor(model => model.Titulo)</p>
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Editorial.Nombre)
+            <p style="color: white;">@Html.DisplayFor(model => model.Titulo)</p>
+        </dd>
+        <dt class = "col-sm-2">
+            <p style="color: red;">@Html.DisplayNameFor(model => model.Descripcion)</p>
+        </dt>
+        <dd class = "col-sm-10">
+            <p style="color: white;">@Html.DisplayFor(model => model.Descripcion)</p>
+        </dd>
+        <dt class = "col-sm-2">
+            <p style="color: red;">@Html.DisplayNameFor(model => model.Autor)</p>
+        </dt>
+        <dd class = "col-sm-10">
+            <p style="color: white;">@Html.DisplayFor(model => model.Autor.Apellido)</p>
+        </dd>
+        <dt class = "col-sm-2">
+            <p style="color: red;">@Html.DisplayNameFor(model => model.Genero)</p>
+        </dt>
+        <dd class = "col-sm-10">
+            <p style="color: white;">@Html.DisplayFor(model => model.Genero.Nombre)</p>
+        </dd>
+        <dt class = "col-sm-2">
+            <p style="color: red;">@Html.DisplayNameFor(model => model.Editorial)</p>
+        </dt>
+        <dd class = "col-sm-10">
+            <p style="color: white;">@Html.DisplayFor(model => model.Editorial.Nombre)</p>
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.ISBN">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+    <a class="btn btn-danger" asp-action="Leer" asp-route-id="@Model.Id">Leer Libro</a> |
+    <a asp-action="Index">Volver</a>
+</div> *@

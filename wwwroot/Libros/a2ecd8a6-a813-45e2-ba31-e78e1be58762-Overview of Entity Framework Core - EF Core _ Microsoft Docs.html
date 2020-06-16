@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)https://docs.microsoft.com/en-us/ef/core/ -->
+<html class="hasSidebar hasPageActions hasBreadcrumb conceptual has-default-focus js-focus-visible theme-light" lang="en-us" dir="ltr" data-css-variable-support="true" data-authenticated="false" data-auth-status-determined="true" data-target="docs" x-ms-format-detection="none" data-js-focus-visible=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta property="og:title" content="Overview of Entity Framework Core - EF Core">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://docs.microsoft.com/en-us/ef/core/">
+
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:site" content="@docsmsft">
+
+
+	<meta name="audience" content="developer">
+<meta name="author" content="rowanmiller">
+<meta name="breadcrumb_path" content="/ef/breadcrumb/toc.json">
+<meta name="depot_name" content="MSDN.ef">
+<meta name="document_id" content="1b15cd4c-9cba-c0e2-7618-7d621a3c5936">
+<meta name="document_version_independent_id" content="f4681bc6-57be-6e69-cad9-776ce64d93bd">
+<meta name="gitcommit" content="https://github.com/dotnet/EntityFramework.Docs/blob/f8a703bb3227d28376bdec964f0f7c9a19aafc27/entity-framework/core/index.md">
+<meta name="locale" content="en-us">
+<meta name="ms.assetid" content="bc2a2676-bc46-493f-bf49-e3cc97994d57">
+<meta name="ms.author" content="avickers">
+<meta name="ms.date" content="10/27/2016">
+<meta name="ms.devlang" content="dotnet">
+<meta name="ms.prod" content="entity-framework">
+<meta name="ms.technology" content="entity-framework-core">
+<meta name="ms.tgt_pltfrm" content="dotnet">
+<meta name="ms.topic" content="conceptual">
+<meta name="original_content_git_url" content="https://github.com/dotnet/EntityFramework.Docs/blob/live/entity-framework/core/index.md">
+<meta name="search.ms_docsetname" content="ef">
+<meta name="search.ms_product" content="MSDN">
+<meta name="search.ms_sitename" content="Docs">
+<meta name="site_name" content="Docs">
+<meta name="uhfHeaderId" content="MSDocsHeader-DotNet">
+<meta name="uid" content="core/index">
+<meta name="updated_at" content="2020-02-19 08:52 PM">
+<meta name="page_type" content="conceptual">
+<meta name="toc_rel" content="../toc.json">
+<meta name="pdf_url_template" content="https://docs.microsoft.com/pdfstore/en-us/MSDN.ef/{branchName}{pdfName}">
+<meta name="word_count" content="359">
+
+
+	<meta name="scope" content="Entity Framework">
+<link href="https://docs.microsoft.com/en-us/ef/core/" rel="canonical">
+	<title>Overview of Entity Framework Core - EF Core | Microsoft Docs</title>
+
+		<link rel="stylesheet" href="./Overview of Entity Framework Core - EF Core _ Microsoft Docs_files/3a60cd3c.site-ltr.css">
+
+	<link rel="stylesheet" href="./Overview of Entity Framework Core - EF Core _ Microsoft Docs_files/f7aab81a.conceptual.css">
+
+
+	<script async="" defer="" crossorigin="anonymous" src="./Overview of Entity Framework Core - EF Core _ Microsoft Docs_files/lux.js"></script><script async="" src="./Overview of Entity Framework Core - EF Core _ Microsoft Docs_files/analytics.js"></script><script>
+	var msDocs = {
+		data: {
+			timeOrigin: Date.now(),
+			azureHeaderLocale: 'en-us',
+			contentLocale: 'en-us',
+			contentDir: 'ltr',
+			userLocale: 'en-us',
+			userDir: 'ltr',
+			pageTemplate: 'Conceptual',
+			brand: '',
+			context: {
+
+			},
+			hasBinaryRating: true,
+			hasGithubIssues: true,
+			showFeedbackReport: false,
+			enableTutorialFeedback: false,
+			feedbackSystem: 'GitHub',
+			feedbackGitHubRepo: 'dotnet/EntityFramework.Docs',
+			feedbackProductUrl: 'https://github.com/dotnet/efcore/issues/new/choose',
+			contentGitUrl: 'https://github.com/dotnet/EntityFramework.Docs/blob/master/entity-framework/core/index.md',
+			extendBreadcrumb: true,
+			isEditDisplayable: true,
+			hideViewSource: false,
+			hasPageActions: true,
+			hasBookmark: true,
+			hasShare: true
+		},
+		functions:{}
+	};
+	</script>
+	<script nomodule="" src="./Overview of Entity Framework Core - EF Core _ Microsoft Docs_files/bluebird.min.js" integrity="sha384-aD4BDeDGeLXLpPK4yKeqtZQa9dv4a/7mQ+4L5vwshIYH1Mc2BrXvHd32iHzYCQy5" crossorigin="anonymous"></script>
+	<script nomodule="" src="./Overview of Entity Framework Core - EF Core _ Microsoft Docs_files/fetch.umd.min.js" integrity="sha384-EQIXrC5K2+7X8nGgLkB995I0/6jfAvvyG1ieZ+WYGxgJHFMD/alsG9fSDWvzb5Y1" crossorigin="anonymous"></script>
+	<script nomodule="" src="./Overview of Entity Framework Core - EF Core _ Microsoft Docs_files/template.min.js" integrity="sha384-1zKzI6ldTVHMU7n0W2HpE/lhHI+UG4D9IIaxbj3kT2UhCWicdTuJkTtnKuu0CQzN" crossorigin="anonymous"></script>
+	<script nomodule="" src="./Overview of Entity Framework Core - EF Core _ Microsoft Docs_files/url.min.js" integrity="sha384-vn7xBMtpSTfzaTRWxj0kVq0UcsbBrTOgZ/M1ISHqe1V358elYva+lfiEC+T8jLPc" crossorigin="anonymous"></script>
+	<script nomodule="" src="./Overview of Entity Framework Core - EF Core _ Microsoft Docs_files/3d316e17.index-polyfills.js"></script>
+	<script src="./Overview of Entity Framework Core - EF Core _ Microsoft Docs_files/jquery.min.js" integrity="sha384-Q4GEli30r5Awgb/ITt925nE8buHKjVWM/x3DX8t5JwRLT9P/C2r7u7XzNwvpTTGw" crossorigin="anonymous"></script>
+		<script src="./Overview of Entity Framework Core - EF Core _ Microsoft Docs_files/4b4c3e9.index-docs.js"></script><style></style><script src="./Overview of Entity Framework Core - EF Core _ Microsoft Docs_files/jsll-4.js" async="" defer=""></script>
+<script async="" src="./Overview of Entity Framework Core - EF Core _ Microsoft Docs_files/t.js"></script><style type="text/css" media="print">.usabilla_live_button_container { display: none; }</style><script async="" src="./Overview of Entity Framework Core - EF Core _ Microsoft Docs_files/t(1).js"></script><script async="" src="./Overview of Entity Framework Core - EF Core _ Microsoft Docs_files/t(2).js"></script><script async="" src="./Overview of Entity Framework Core - EF Core _ Microsoft Docs_files/t(3).js"></script><script async="" src="./Overview of Entity Framework Core - EF Core _ Microsoft Docs_files/t(4).js"></script><script async="" src="https://web.vortex.data.microsoft.com/collect/v1/t.js?ver=%272.1%27&amp;name=%27Ms.Webi.ContentUpdate%27&amp;time=%272020-05-09T20%3A55%3A53.433Z%27&amp;os=%27Unix%27&amp;appId=%27JS%3ADocs%27&amp;-ver=%271.0%27&amp;-impressionGuid=%27bde1b654-2f20-4c74-99be-7836faed21ba%27&amp;-pageName=%271b15cd4c-9cba-c0e2-7618-7d621a3c5936%27&amp;-uri=%27https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fef%2Fcore%2F%27&amp;-market=%27en-us%27&amp;-pageTags=%27%7B%22aud%22%3A%22developer%22%2C%22author%22%3A%22rowanmiller%22%2C%22depotname%22%3A%22MSDN.ef%22%2C%22document_version_independent_id%22%3A%22f4681bc6-57be-6e69-cad9-776ce64d93bd%22%2C%22gitcommit%22%3A%22https%3A%2F%2Fgithub.com%2Fdotnet%2FEntityFramework.Docs%2Fblob%2Ff8a703bb3227d28376bdec964f0f7c9a19aafc27%2Fentity-framework%2Fcore%2Findex.md%22%2C%22asst%22%3A%22bc2a2676-bc46-493f-bf49-e3cc97994d57%22%2C%22pgauth%22%3A%22avickers%22%2C%22date%22%3A%2210%2F27%2F2016%22%2C%22pgdevlng%22%3A%22dotnet%22%2C%22product%22%3A%22entity-framework%22%2C%22technology%22%3A%22entity-framework-core%22%2C%22pgtrgtplf%22%3A%22dotnet%22%2C%22pgtop%22%3A%22conceptual%22%2C%22giturl%22%3A%22https%3A%2F%2Fgithub.com%2Fdotnet%2FEntityFramework.Docs%2Fblob%2Flive%2Fentity-framework%2Fcore%2Findex.md%22%2C%22publishtime%22%3A%222020-02-19%2008%3A52%20PM%22%2C%22contentlocale%22%3A%22en-us%22%2C%22highContrast%22%3A%22false%22%2C%22metaTags%22%3A%7B%7D%7D%27&amp;-pageHeight=2717&amp;-vpHeight=575&amp;-vpWidth=1366&amp;-actionType=%27R%27&amp;-behavior=0&amp;-vScrollOffset=0&amp;-hScrollOffset=0&amp;-contentVer=%272.0%27&amp;-content=%27%5B%5D%27&amp;*baseType=%27Ms.Content.ContentUpdate%27&amp;*title=%27Overview%20of%20Entity%20Framework%20Core%20-%20EF%20Core%20%7C%20Microsoft%20Docs%27&amp;*cookieEnabled=true&amp;*isJs=true&amp;*isDomComplete=false&amp;*isLoggedIn=false&amp;ext-javascript-ver=%271.1%27&amp;ext-javascript-libVer=%274.2.14%27&amp;ext-javascript-domain=%27docs.microsoft.com%27&amp;ext-javascript-msfpc=%27GUID%3D5856fb20ad4042a7bee73bda73ec835b%26HASH%3D5856%26LV%3D202003%26V%3D4%26LU%3D1585233440647%27&amp;ext-javascript-userConsent=true&amp;ext-javascript-anid=%27A%3D61710812C6646BEB3E01EBAEFFFFFFFF%27&amp;ext-user-localId=%27t%3A12D220665A8664A50BF42EF15B5365AB%27&amp;$mscomCookies=false"></script><script async="" src="https://web.vortex.data.microsoft.com/collect/v1/t.js?ver=%272.1%27&amp;name=%27Ms.Webi.ContentUpdate%27&amp;time=%272020-05-09T20%3A55%3A55.938Z%27&amp;os=%27Unix%27&amp;appId=%27JS%3ADocs%27&amp;-ver=%271.0%27&amp;-impressionGuid=%27bde1b654-2f20-4c74-99be-7836faed21ba%27&amp;-pageName=%271b15cd4c-9cba-c0e2-7618-7d621a3c5936%27&amp;-uri=%27https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fef%2Fcore%2F%27&amp;-market=%27en-us%27&amp;-pageTags=%27%7B%22aud%22%3A%22developer%22%2C%22author%22%3A%22rowanmiller%22%2C%22depotname%22%3A%22MSDN.ef%22%2C%22document_version_independent_id%22%3A%22f4681bc6-57be-6e69-cad9-776ce64d93bd%22%2C%22gitcommit%22%3A%22https%3A%2F%2Fgithub.com%2Fdotnet%2FEntityFramework.Docs%2Fblob%2Ff8a703bb3227d28376bdec964f0f7c9a19aafc27%2Fentity-framework%2Fcore%2Findex.md%22%2C%22asst%22%3A%22bc2a2676-bc46-493f-bf49-e3cc97994d57%22%2C%22pgauth%22%3A%22avickers%22%2C%22date%22%3A%2210%2F27%2F2016%22%2C%22pgdevlng%22%3A%22dotnet%22%2C%22product%22%3A%22entity-framework%22%2C%22technology%22%3A%22entity-framework-core%22%2C%22pgtrgtplf%22%3A%22dotnet%22%2C%22pgtop%22%3A%22conceptual%22%2C%22giturl%22%3A%22https%3A%2F%2Fgithub.com%2Fdotnet%2FEntityFramework.Docs%2Fblob%2Flive%2Fentity-framework%2Fcore%2Findex.md%22%2C%22publishtime%22%3A%222020-02-19%2008%3A52%20PM%22%2C%22contentlocale%22%3A%22en-us%22%2C%22highContrast%22%3A%22false%22%2C%22metaTags%22%3A%7B%7D%7D%27&amp;-pageHeight=2717&amp;-vpHeight=575&amp;-vpWidth=1366&amp;-actionType=%27S%27&amp;-behavior=0&amp;-vScrollOffset=53&amp;-hScrollOffset=0&amp;-contentVer=%272.0%27&amp;-content=%27%5B%5D%27&amp;*baseType=%27Ms.Content.ContentUpdate%27&amp;*title=%27Overview%20of%20Entity%20Framework%20Core%20-%20EF%20Core%20%7C%20Microsoft%20Docs%27&amp;*cookieEnabled=true&amp;*isJs=true&amp;*isDomComplete=false&amp;*isLoggedIn=false&amp;ext-javascript-ver=%271.1%27&amp;ext-javascript-libVer=%274.2.14%27&amp;ext-javascript-domain=%27docs.microsoft.com%27&amp;ext-javascript-msfpc=%27GUID%3D5856fb20ad4042a7bee73bda73ec835b%26HASH%3D5856%26LV%3D202003%26V%3D4%26LU%3D1585233440647%27&amp;ext-javascript-userConsent=true&amp;ext-javascript-anid=%27A%3D61710812C6646BEB3E01EBAEFFFFFFFF%27&amp;ext-user-localId=%27t%3A12D220665A8664A50BF42EF15B5365AB%27&amp;$mscomCookies=false"></script></head>
+
+<body lang="en-us" dir="ltr"><div style="display: none;" id="lightningjs-usabilla_live"><div><iframe frameborder="0" id="lightningjs-frame-usabilla_live" src="./Overview of Entity Framework Core - EF Core _ Microsoft Docs_files/saved_resource.html"></iframe></div></div>
+<div class="header-holder has-default-focus">
+	<a href="https://docs.microsoft.com/en-us/ef/core/#main" class="skip-to-main-link visually-hidden-until-focused is-fixed has-inner-focus focus-visible has-top-zero has-left-zero has-right-zero has-padding-medium has-text-centered has-body-background-medium" tabindex="1">Skip to main content</a>
+	<div id="build-banner-holder" class="has-default-focus has-overflow-hidden">
+	</div>
+		<div id="headerAreaHolder" data-bi-name="header">
+<header role="banner" itemscope="itemscope" itemtype="http://schema.org/Organization"><!----><!----><div class="nav-bar"><!---->  <a class="nav-bar-button has-padding-left-medium has-padding-left-small-tablet" itemprop="url" href="https://www.microsoft.com/" aria-label="Microsoft">
+		<div class="nav-bar-logo has-background-image theme-display is-light" role="presentation" aria-hidden="true" itemprop="logo" itemscope="itemscope"></div>
+		<div class="nav-bar-logo has-background-image theme-display is-dark is-high-contrast" role="presentation" aria-hidden="true" itemprop="logo" itemscope="itemscope"></div>
+	</a> 
+			
+		<div class="nav-bar-item is-hidden-tablet">
+			<button class="nav-bar-button is-size-5 is-text has-body-background has-padding-none" title="Global navigation" aria-expanded="false">
+				<span class="has-text-weight-semibold has-padding-left-small has-padding-bottom-extra-small"><!---->Documentation<!----></span>
+				<div class="nav-bar-burger has-padding-none has-height-zero">
+					<span></span>
+					<span></span>
+					<span></span>
+					<span class="is-visually-hidden"><!---->Global navigation<!----></span>
+				</div>
+			</button>
+		</div>
+	
+			
+		<nav class="nav-bar-nav" role="navigation" aria-label="Global">
+			<ul class="nav-bar-nav-list">
+				
+		<li class="nav-bar-item is-category has-spacing">
+			<a class="nav-bar-button title has-hover-underline is-4" itemprop="url" href="https://docs.microsoft.com/en-us/">
+				<span><!---->Docs<!----></span>
+			</a>
+		</li>
+	
+				<!----> <li class="nav-bar-item">
+				<a class="nav-bar-button has-hover-underline is-active" href="https://docs.microsoft.com/en-us/">
+					<span><!---->Documentation<!----></span>
+				</a>
+		  </li><!----> <li class="nav-bar-item">
+				<a class="nav-bar-button has-hover-underline " href="https://docs.microsoft.com/en-us/learn/">
+					<span><!---->Learn<!----></span>
+				</a>
+		  </li><!----> <li class="nav-bar-item">
+				<a class="nav-bar-button has-hover-underline " href="https://docs.microsoft.com/en-us/samples/browse/">
+					<span><!---->Code Samples<!----></span>
+				</a>
+		  </li><!----> <li class="dropdown nav-bar-item" hidden="">
+		<button aria-expanded="false" class="dropdown-trigger nav-bar-button has-hover-underline" aria-controls="ax-37">
+			<span><!---->More<!----></span>
+			<span class="nav-bar-button-chevron" aria-hidden="true">
+				<span class="docon docon-chevron-down-light expanded-indicator"></span>
+			</span>
+		</button>
+		<ul class="dropdown-menu" id="ax-37" aria-label="More">
+			<!---->
+				<li class="nav-bar-item" hidden="">
+					<a class="nav-bar-button" href="https://docs.microsoft.com/en-us/"><!---->Documentation<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item" hidden="">
+					<a class="nav-bar-button" href="https://docs.microsoft.com/en-us/learn/"><!---->Learn<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item" hidden="">
+					<a class="nav-bar-button" href="https://docs.microsoft.com/en-us/samples/browse/"><!---->Code Samples<!----></a>
+				</li>
+		  <!---->
+		</ul>
+	</li><!---->
+			</ul>
+		</nav>
+	
+			<span class="nav-bar-spacer is-hidden-mobile"></span>
+			
+		<div class="nav-bar-item nav-bar-search-form-item has-padding-left-extra-small has-padding-none-tablet" id="ax-38" hidden="">
+			
+		<form class="is-flex" method="GET" name="searchForm" role="search" id="searchForm" aria-label="Search" aria-expanded="false" action="https://docs.microsoft.com/en-us/search/">
+			<div class="autocomplete" data-bi-name="autocomplete"><!----> <div class="control ">
+			<input role="combobox" maxlength="100" aria-autocomplete="list" autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false" id="site-search-input" class="autocomplete-input input   is-small" type="search" name="search" aria-expanded="false" aria-owns="ax-39-listbox" aria-activedescendant="" aria-label="Search" placeholder="Search">
+
+			<span aria-hidden="true" class="icon is-small is-left" hidden="">
+				<span class="has-text-primary docon docon-undefined"></span>
+			</span>
+
+			<span class="autocomplete-loader loader has-text-primary" aria-hidden="true" hidden=""></span>
+		</div>
+
+		<ul class="autocomplete-suggestions is-vertically-scrollable" role="listbox" id="ax-39-listbox" hidden="">
+			
+		</ul><!----></div>
+			<!-- mobile safari will not dispatch submit event unless there's a submit button that is not display:none -->
+			<button type="submit" class="visually-hidden" tabindex="-1" aria-hidden="true"></button>
+			<input name="category" hidden="" value="All">
+			<input name="scope" hidden="" value="Entity Framework">
+			
+		</form>
+	
+		</div>
+		
+					<div class="nav-bar-item nav-bar-search-form-item has-flex-grow-none
+						has-flex-shrink-none has-margin-right-extra-small has-padding-left-extra-small has-padding-none-tablet">
+						<!-- hidden when the width drops to tablet -->
+						
+		<form class="is-flex" method="GET" name="searchForm" role="search" id="searchFormDesktop" aria-label="Search" aria-expanded="false" action="https://docs.microsoft.com/en-us/search/">
+			<div class="autocomplete" data-bi-name="autocomplete"><!----> <div class="control has-icons-left">
+			<input role="combobox" maxlength="100" aria-autocomplete="list" autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false" id="ax-40" class="autocomplete-input input control has-icons-left  is-small" type="search" name="search" aria-expanded="false" aria-owns="ax-41-listbox" aria-activedescendant="" aria-label="Search" placeholder="Search">
+
+			<span aria-hidden="true" class="icon is-small is-left">
+				<span class="has-text-primary docon docon-search"></span>
+			</span>
+
+			<span class="autocomplete-loader loader has-text-primary" aria-hidden="true" hidden=""></span>
+		</div>
+
+		<ul class="autocomplete-suggestions is-vertically-scrollable" role="listbox" id="ax-41-listbox" hidden="">
+			
+		</ul><!----></div>
+			<!-- mobile safari will not dispatch submit event unless there's a submit button that is not display:none -->
+			<button type="submit" class="visually-hidden" tabindex="-1" aria-hidden="true"></button>
+			<input name="category" hidden="" value="All">
+			<input name="scope" hidden="" value="Entity Framework">
+			
+		</form>
+	
+					</div>
+			  
+		<div class="nav-bar-item has-flex-grow-mobile has-flex-shrink-mobile" hidden="">
+			<button id="form-expander" class="nav-bar-button has-hover-underline is-full-width has-padding-medium has-flex-justify-content-end-mobile" title="Search" aria-expanded="false" aria-controls="ax-38">
+				
+		<span class="is-visually-hidden-mobile"><!---->Search<!----></span>
+		<span class="icon" aria-hidden="true">
+			<span class="docon docon-search"></span>
+		</span>
+	
+			</button>
+		</div>
+	
+			
+		<div class="nav-bar-item is-size-7 is-hidden-mobile has-padding-left-extra-small">
+			
+		<a class="docs-sign-in auth-status-determined not-authenticated button is-text has-inner-focus has-text-primary is-small" href="https://docs.microsoft.com/en-us/ef/core/#">
+			Sign in
+		</a>
+	 
+		<div class="dropdown has-caret auth-status-determined authenticated">
+			<button class="dropdown-trigger button is-text has-padding-none has-background-transparent" aria-controls="user-menu" aria-expanded="false" aria-label="Your Account">
+				<figure class="image is-36x36">
+					<img class="has-body-background-medium is-rounded" data-profile-property="avatarUrl">
+				</figure>
+			</button>
+			<div class="dropdown-menu box" id="user-menu" role="menu">
+				<div class="media is-user-dir">
+					<div class="media-left">
+						<figure class="image is-48x48" aria-hidden="true">
+							<img class="has-body-background-medium is-rounded" aria-labelledby="displayName" data-profile-property="avatarUrl">
+						</figure>
+					</div>
+					<div class="media-content">
+						<p class="title is-size-4">
+							<span id="displayName" class="is-inline-truncated has-max-width-200" data-profile-property="displayName"></span>
+						</p>
+						<p class="subtitle is-size-7 has-margin-bottom-none">
+							<span class="is-inline-truncated has-max-width-200" data-profile-property="upn"></span>
+						</p>
+					</div>
+				</div>
+				<ul>
+					<li><a href="https://docs.microsoft.com/profile" data-profile-property="profileUrl"><!---->Profile<!----></a></li>
+					<li><a href="https://docs.microsoft.com/profile" data-profile-property="bookmarksUrl"><!---->Bookmarks<!----></a></li>
+					<li><a href="https://docs.microsoft.com/profile" data-profile-property="collectionsUrl"><!---->Collections<!----></a></li>
+				</ul>
+				<div class="has-border-top">
+					<a class="docs-sign-out" href="https://docs.microsoft.com/en-us/ef/core/#"><!---->Sign out<!----></a>
+				</div>
+			</div>
+		</div>
+	
+		</div>
+	
+		 <!----></div><div class="nav-bar is-content is-hidden-mobile has-border-top"><!----> 
+		<a itemprop="url" class="nav-bar-button title has-hover-underline is-4 has-margin-none has-padding-bottom-extra-small" href="https://dotnet.microsoft.com/">
+			<span><!---->.NET<!----></span>
+		</a>
+	 
+		
+		<nav class="nav-bar-nav" role="navigation" aria-label="Site">
+			<ul class="nav-bar-nav-list">
+				
+				<!----> <li class="nav-bar-item">
+				<a class="nav-bar-button has-hover-underline " href="https://dotnet.microsoft.com/learn/dotnet/what-is-dotnet">
+					<span><!---->About<!----></span>
+				</a>
+		  </li><!----> <li class="nav-bar-item">
+				<a class="nav-bar-button has-hover-underline " href="https://dotnet.microsoft.com/learn">
+					<span><!---->Learn<!----></span>
+				</a>
+		  </li><!----> <li class="nav-bar-item">
+				<a class="nav-bar-button has-hover-underline " href="https://dotnet.microsoft.com/learn/dotnet/architecture-guides">
+					<span><!---->Architecture<!----></span>
+				</a>
+		  </li><!----> <li class="nav-bar-item">
+				<a class="nav-bar-button has-hover-underline " href="https://docs.microsoft.com/dotnet">
+					<span><!---->Docs<!----></span>
+				</a>
+		  </li><!----> <li class="nav-bar-item">
+				<a class="nav-bar-button has-hover-underline " href="https://dotnet.microsoft.com/download">
+					<span><!---->Downloads<!----></span>
+				</a>
+		  </li><!----> <li class="nav-bar-item">
+				<a class="nav-bar-button has-hover-underline " href="https://dotnet.microsoft.com/platform/community">
+					<span><!---->Community<!----></span>
+				</a>
+		  </li><!----> <li class="dropdown nav-bar-item" hidden="">
+		<button aria-expanded="false" class="dropdown-trigger nav-bar-button has-hover-underline" aria-controls="ax-36">
+			<span><!---->More<!----></span>
+			<span class="nav-bar-button-chevron" aria-hidden="true">
+				<span class="docon docon-chevron-down-light expanded-indicator"></span>
+			</span>
+		</button>
+		<ul class="dropdown-menu" id="ax-36" aria-label="More">
+			<!---->
+				<li class="nav-bar-item" hidden="">
+					<a class="nav-bar-button" href="https://dotnet.microsoft.com/learn/dotnet/what-is-dotnet"><!---->About<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item" hidden="">
+					<a class="nav-bar-button" href="https://dotnet.microsoft.com/learn"><!---->Learn<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item" hidden="">
+					<a class="nav-bar-button" href="https://dotnet.microsoft.com/learn/dotnet/architecture-guides"><!---->Architecture<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item" hidden="">
+					<a class="nav-bar-button" href="https://docs.microsoft.com/dotnet"><!---->Docs<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item" hidden="">
+					<a class="nav-bar-button" href="https://dotnet.microsoft.com/download"><!---->Downloads<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item" hidden="">
+					<a class="nav-bar-button" href="https://dotnet.microsoft.com/platform/community"><!---->Community<!----></a>
+				</li>
+		  <!---->
+		</ul>
+	</li><!---->
+			</ul>
+		</nav>
+	
+		<span class="nav-bar-spacer is-hidden-mobile"></span>
+		
+		<ol class="is-flex">
+			 
+		<li class="nav-bar-item ">
+			<a class="button is-small is-primary " href="https://dotnet.microsoft.com/learn/dotnet/hello-world-tutorial/intro">
+				Get Started
+			</a>
+		</li>
+	
+		</ol>
+	
+	 <!----></div></header>		</div>
+		<div class="content-header uhf-container has-padding has-default-focus has-border-bottom-none" data-bi-name="content-header">
+			<nav class="has-padding-none has-padding-left-medium-tablet has-padding-right-medium-tablet has-padding-left-none-uhf-tablet has-padding-left-none-uhf-tablet has-padding-none-desktop has-flex-grow" data-bi-name="breadcrumb" itemscope="" itemtype="http://schema.org/BreadcrumbList" role="navigation" aria-label="Breadcrumb">
+				<ul id="page-breadcrumbs" class="breadcrumbs"><!---->
+			<!----> <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+					 <a itemprop="item" href="https://docs.microsoft.com/en-us/">
+								<span itemprop="name">
+									Docs
+								</span>
+						  </a>
+					<meta itemprop="position" content="1">
+				</li><!----> <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+					 <a itemprop="item" href="https://docs.microsoft.com/en-us/ef/">
+								<span itemprop="name">
+									Entity Framework
+								</span>
+						  </a>
+					<meta itemprop="position" content="2">
+				</li><!----> <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+					 <span itemprop="name">
+								Entity Framework Core
+						  </span>
+					<meta itemprop="position" content="3">
+				</li><!----> <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+					 <span itemprop="name">
+								Overview
+						  </span>
+					<meta itemprop="position" content="4">
+				</li><!---->
+		<!----></ul>
+			</nav>
+		<div class="content-header-controls">
+			<button type="button" class="contents-button button" data-bi-name="contents-expand" aria-haspopup="true">
+				<span class="icon"><span class="docon docon-menu" aria-hidden="true"></span></span>
+				<span>Contents</span>
+			</button>
+		</div>
+		<div class="content-header-controls exit-focus">
+			<button type="button" class="ap-collapse-behavior ap-expanded button" data-bi-name="ap-collapse" aria-controls="action-panel">
+				<span class="icon"><span class="docon docon-exit-mode" aria-hidden="true"></span></span>
+				<span>Exit focus mode</span>
+			</button>
+		</div>
+		<div class="has-padding-none-tablet has-padding-medium is-size-7 is-flex-touch has-flex-justify-content-space-between-touch has-flex-grow">
+			<ul class="is-hidden-mobile action-list has-flex-justify-content-start has-flex-justify-content-end-tablet is-flex is-flex-row has-flex-wrap has-flex-grow is-unstyled">
+				<li>
+					<button type="button" class="bookmark button is-text has-inner-focus is-small is-icon-only-touch" data-list-type="bookmarks" data-bi-name="bookmark" title="Add bookmark for Overview of Entity Framework Core - EF Core | Microsoft Docs" aria-pressed="false">
+						<span class="icon" aria-hidden="true">
+							<span class="docon docon-single-bookmark"></span>
+						</span>
+						<span class="bookmark-status is-visually-hidden-touch is-hidden-portrait">Bookmark</span>
+					</button>
+				</li>
+					<li id="feedback-section-link">
+						<a href="https://docs.microsoft.com/en-us/ef/core/#feedback" class="button is-text has-inner-focus is-small is-icon-only-touch" data-bi-name="comments" title="Send feedback about this page">
+							<span class="icon">
+								<span class="docon docon-comment-lines" aria-hidden="true"></span>
+							</span>
+							<span class="is-visually-hidden-touch is-hidden-portrait">Feedback</span>
+						</a>
+					</li>
+						<li id="contenteditbtn">
+							<a href="https://github.com/dotnet/EntityFramework.Docs/blob/master/entity-framework/core/index.md" class="button is-text has-inner-focus is-icon-only-touch is-small" title="Edit This Document" data-bi-name="edit" data-original_content_git_url="https://github.com/dotnet/EntityFramework.Docs/blob/live/entity-framework/core/index.md" data-original_content_git_url_template="{repo}/blob/{branch}/entity-framework/core/index.md" data-pr_repo="" data-pr_branch="">
+							<span class="icon">
+								<span class="docon docon-edit-outline" aria-hidden="true"></span>
+							</span>
+							<span class="is-visually-hidden-touch is-hidden-portrait">Edit</span>
+						</a>
+					</li>
+				<li>
+<div class="sharing dropdown has-caret">
+	<button class="dropdown-trigger button is-text is-fullwidth has-flex-justify-content-start has-inner-focus is-small is-icon-only-touch" aria-controls="sharing-menu" aria-expanded="false" title="Share This Document" data-bi-name="share">
+		<span class="icon" aria-hidden="true">
+			<span class="docon docon-sharing"></span>
+		</span>
+		<span class="is-visually-hidden-touch is-hidden-portrait">Share</span>
+	</button>
+	<div class="dropdown-menu has-padding-small" id="sharing-menu">
+		<ul data-bi-name="share-links">
+			<li>
+				<a class="button is-text is-fullwidth has-flex-justify-content-start has-inner-focus is-small share-twitter" data-bi-name="twitter" href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fef%2Fcore%2F%3FWT.mc_id%3Dtwitter&amp;text=Overview%20of%20Entity%20Framework%20Core%20-%20EF%20Core%20%7C%20Microsoft%20Docs&amp;tw_p=tweetbutton&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fef%2Fcore%2F%3FWT.mc_id%3Dtwitter">
+					<span class="icon">
+						<span class="docon docon-brand-twitter has-text-primary" aria-hidden="true"></span>
+					</span>
+					<span>Twitter</span>
+				</a>
+			</li>
+			<li>
+				<a class="button is-text is-fullwidth has-flex-justify-content-start has-inner-focus is-small share-linkedin" data-bi-name="linkedin" href="https://www.linkedin.com/cws/share?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fef%2Fcore%2F%3FWT.mc_id%3Dlinkedin">
+					<span class="icon">
+						<span class="docon docon-brand-linkedin has-text-primary" aria-hidden="true"></span>
+					</span>
+					<span>LinkedIn</span>
+				</a>
+			</li>
+			<li>
+				<a class="button is-text is-fullwidth has-flex-justify-content-start has-inner-focus is-small share-facebook" data-bi-name="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fef%2Fcore%2F%3FWT.mc_id%3Dfacebook">
+					<span class="icon">
+						<span class="docon docon-brand-facebook has-text-primary" aria-hidden="true"></span>
+					</span>
+					<span>Facebook</span>
+				</a>
+			</li>
+			<li>
+				<a class="button is-text is-fullwidth has-flex-justify-content-start has-inner-focus is-small share-email" data-bi-name="email" href="mailto:?subject=%5BShared%20Article%5D%20Overview%20of%20Entity%20Framework%20Core%20-%20EF%20Core%20%7C%20Microsoft%20Docs&amp;body=Overview%20of%20Entity%20Framework%20Core%20-%20EF%20Core%20%7C%20Microsoft%20Docs%0A%0Ahttps%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fef%2Fcore%2F%3FWT.mc_id%3Demail">
+					<span class="icon">
+						<span class="docon docon-mail-message-fill has-text-primary" aria-hidden="true"></span>
+					</span>
+					<span>Email</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>				</li>
+			</ul>
+			<button type="button" class="has-border contents-button button is-small is-text is-hidden-tablet has-inner-focus" aria-label="Contents" data-bi-name="contents-expand">
+				<span class="icon">
+					<span class="docon docon-editor-list-bullet" aria-hidden="true"></span>
+				</span>
+				<span>Table of contents</span>
+			</button>
+			<div class="is-invisible"></div>
+			<div class="is-hidden-tablet level-item is-flexible level-right">
+				<button type="button" class="page-actions-button button is-small is-text is-hidden-tablet has-inner-focus has-border is-full-height  has-margin-left-small" aria-label="Page Actions" data-bi-name="pageactions">
+					<span class="icon">
+						<span class="docon docon-more-vertical" aria-hidden="true"></span>
+					</span>
+				</button>
+			</div>
+		</div>
+	</div>
+
+	<div id="banner-holder" class="has-default-focus has-overflow-hidden">
+	</div>
+
+	<div id="disclaimer-holder" class="has-overflow-hidden has-default-focus"></div>
+	</div>
+
+	<div class="mainContainer  uhf-container has-top-padding  has-default-focus" data-bi-name="body">
+
+		<div class="columns has-large-gaps is-gapless-mobile ">
+
+			<div id="left-container" class="left-container is-hidden-mobile column is-one-third-tablet is-one-quarter-desktop">
+				<nav id="affixed-left-container" class="is-fixed is-flex is-flex-column" role="navigation" aria-label="Primary" data-bi-name="left toc" style="width: 267.594px; top: 111.5px; bottom: 24px;"><form action="javascript:" role="search" aria-label="Search" class="has-margin-bottom-small"><label class="visually-hidden" for="ax-34">Search</label><div class="autocomplete is-block" data-bi-name="autocomplete"><!----> <div class="control has-icons-left">
+			<input role="combobox" maxlength="100" aria-autocomplete="list" autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false" id="ax-34" class="autocomplete-input input control has-icons-left is-full-width is-small" type="text" aria-expanded="false" aria-owns="ax-35-listbox" aria-activedescendant="" placeholder="Filter by title">
+
+			<span aria-hidden="true" class="icon is-small is-left">
+				<span class="has-text-primary docon docon-filter-settings"></span>
+			</span>
+
+			<span class="autocomplete-loader loader has-text-primary" aria-hidden="true" hidden=""></span>
+		</div>
+
+		<ul class="autocomplete-suggestions is-vertically-scrollable" role="listbox" id="ax-35-listbox" hidden="">
+			
+		</ul><!----></div></form><ul class="tree is-vertically-scrollable has-flex-grow has-flex-shrink" role="tree" aria-label="Table of contents" data-bi-name="tree"><li role="none"><a aria-setsize="4" aria-level="1" aria-posinset="1" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/ef/">Entity Framework</a></li><li class="tree-item" aria-setsize="4" aria-level="1" aria-posinset="2" role="treeitem" tabindex="-1" aria-expanded="false"><span class="tree-expander" data-bi-name="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>EF Core &amp; EF6</span></li><li class="tree-item is-expanded" aria-setsize="4" aria-level="1" aria-posinset="3" role="treeitem" tabindex="-1" aria-expanded="true"><span class="tree-expander" data-bi-name="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Entity Framework Core</span><ul class="tree-group" role="group"><li role="none"><a aria-setsize="13" aria-level="2" aria-posinset="1" role="treeitem" tabindex="0" class="tree-item is-leaf is-selected" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/ef/core/" aria-current="page">Overview</a></li><li class="tree-item" aria-setsize="13" aria-level="2" aria-posinset="2" role="treeitem" tabindex="-1" aria-expanded="false"><span class="tree-expander" data-bi-name="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Releases and planning (roadmap)</span></li><li class="tree-item" aria-setsize="13" aria-level="2" aria-posinset="3" role="treeitem" tabindex="-1" aria-expanded="false"><span class="tree-expander" data-bi-name="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Get started</span></li><li class="tree-item" aria-setsize="13" aria-level="2" aria-posinset="4" role="treeitem" tabindex="-1" aria-expanded="false"><span class="tree-expander" data-bi-name="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Fundamentals</span></li><li class="tree-item" aria-setsize="13" aria-level="2" aria-posinset="5" role="treeitem" tabindex="-1" aria-expanded="false"><span class="tree-expander" data-bi-name="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Create a model</span></li><li class="tree-item" aria-setsize="13" aria-level="2" aria-posinset="6" role="treeitem" tabindex="-1" aria-expanded="false"><span class="tree-expander" data-bi-name="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Manage database schemas</span></li><li class="tree-item" aria-setsize="13" aria-level="2" aria-posinset="7" role="treeitem" tabindex="-1" aria-expanded="false"><span class="tree-expander" data-bi-name="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Query data</span></li><li class="tree-item" aria-setsize="13" aria-level="2" aria-posinset="8" role="treeitem" tabindex="-1" aria-expanded="false"><span class="tree-expander" data-bi-name="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Save data</span></li><li role="none"><a aria-setsize="13" aria-level="2" aria-posinset="9" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/ef/core/platforms/">Supported .NET implementations</a></li><li class="tree-item" aria-setsize="13" aria-level="2" aria-posinset="10" role="treeitem" tabindex="-1" aria-expanded="false"><span class="tree-expander" data-bi-name="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Database providers</span></li><li role="none"><a aria-setsize="13" aria-level="2" aria-posinset="11" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/ef/core/extensions/">Tools &amp; extensions</a></li><li class="tree-item" aria-setsize="13" aria-level="2" aria-posinset="12" role="treeitem" tabindex="-1" aria-expanded="false"><span class="tree-expander" data-bi-name="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Command-line reference</span></li><li role="none"><a aria-setsize="13" aria-level="2" aria-posinset="13" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/api/?view=efcore-3.1">EF Core API reference &gt;&gt;</a></li></ul></li><li class="tree-item" aria-setsize="4" aria-level="1" aria-posinset="4" role="treeitem" tabindex="-1" aria-expanded="false"><span class="tree-expander" data-bi-name="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Entity Framework 6</span></li></ul><a class="button is-small is-text has-flex-justify-content-start has-inner-focus has-margin-top-small has-border-top has-border-bottom has-flex-shrink-none" href="https://docs.microsoft.com/en-us/ef/opbuildpdf/toc.pdf?branch=live" data-bi-name="downloadPdf"><!----> <span class="icon is-size-8 has-text-subtle">
+				<span aria-hidden="true" class="docon docon-dictionary-download"></span>
+			</span>
+			<span><!---->Download PDF<!----></span><!----></a></nav>
+			</div>
+
+			<section class="primary-holder column is-two-thirds-tablet is-three-quarters-desktop">
+				<div class="columns is-gapless-mobile has-large-gaps ">
+
+
+				<div id="main-column" class="column  is-full is-four-fifths-desktop ">
+
+					<main id="main" role="main" class="content " data-bi-name="content" lang="en-us" dir="ltr">
+
+
+
+						<h1 id="entity-framework-core">Entity Framework Core</h1>
+
+						<ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
+							<li>
+								<time class="" data-article-date="" aria-label="Article review date" datetime="2016-10-27T00:00:00.000Z" data-article-date-source="ms.date">10/27/2016</time>
+							</li>
+								<li class="readingTime">2 minutes to read</li>
+								<li class="contributors-holder">
+									<a href="https://github.com/dotnet/EntityFramework.Docs/blob/master/entity-framework/core/index.md" title="8 Contributors" aria-label="8 Contributors">
+										<ul class="contributors" data-bi-name="contributors" aria-hidden="true">
+													<li><img src="./Overview of Entity Framework Core - EF Core _ Microsoft Docs_files/rowanmiller.png" data-src="https://github.com/rowanmiller.png?size=32" role="presentation"></li>
+													<li><img src="./Overview of Entity Framework Core - EF Core _ Microsoft Docs_files/riccikl.png" data-src="https://github.com/riccikl.png?size=32" role="presentation"></li>
+													<li><img src="./Overview of Entity Framework Core - EF Core _ Microsoft Docs_files/smitpatel.png" data-src="https://github.com/smitpatel.png?size=32" role="presentation"></li>
+													<li><img src="./Overview of Entity Framework Core - EF Core _ Microsoft Docs_files/gurmeetsinghdke.png" data-src="https://github.com/gurmeetsinghdke.png?size=32" role="presentation"></li>
+													<li><img src="./Overview of Entity Framework Core - EF Core _ Microsoft Docs_files/tdykstra.png" data-src="https://github.com/tdykstra.png?size=32" role="presentation"></li>
+											<li><span class="is-size-8 has-text-subtle">+3</span></li>
+										</ul>
+									</a>
+								</li>
+						</ul>
+
+						<nav id="center-doc-outline" class="doc-outline is-hidden-desktop" data-bi-name="intopic toc" role="navigation" aria-label="Article Outline">
+							<h3>In this article</h3>
+						<ol><li><a href="https://docs.microsoft.com/en-us/ef/core/#the-model">The Model</a></li><li><a href="https://docs.microsoft.com/en-us/ef/core/#querying">Querying</a></li><li><a href="https://docs.microsoft.com/en-us/ef/core/#saving-data">Saving Data</a></li><li><a href="https://docs.microsoft.com/en-us/ef/core/#next-steps">Next steps</a></li></ol></nav>
+
+						<!-- <content> -->
+							
+<p>Entity Framework (EF) Core is a lightweight, extensible, <a href="https://github.com/aspnet/EntityFrameworkCore" data-linktype="external">open source</a> and cross-platform version of the popular Entity Framework data access technology.</p>
+<p>EF Core can serve as an object-relational mapper (O/RM), enabling .NET developers to work with a database using .NET objects, and eliminating the need for most of the data-access code they usually need to write.</p>
+<p>EF Core supports many database engines, see <a href="https://docs.microsoft.com/en-us/ef/core/providers/" data-linktype="relative-path">Database Providers</a> for details.</p>
+<h2 id="the-model">The Model<a class="docon docon-link heading-anchor" href="https://docs.microsoft.com/en-us/ef/core/#the-model" aria-labelledby="the-model"></a></h2>
+<p>With EF Core, data access is performed using a model. A model is made up of entity classes and a context object that represents a session with the database, allowing you to query and save data. See <a href="https://docs.microsoft.com/en-us/ef/core/modeling/" data-linktype="relative-path">Creating a Model</a> to learn more.</p>
+<p>You can generate a model from an existing database, hand code a model to match your database, or use <a href="https://docs.microsoft.com/en-us/ef/core/managing-schemas/migrations/" data-linktype="relative-path">EF Migrations</a> to create a database from your model, and then evolve it as your model changes over time.</p>
+<div class="codeHeader" id="code-try-0" data-bi-name="code-header"><span class="language">C#</span><button type="button" class="action is-relative" data-bi-name="copy" aria-label="Copy code">
+				<span class="icon">
+					<span class="docon docon-edit-copy" role="presentation"></span>
+				</span>
+				<span>Copy</span>
+				<div class="successful-copy-alert is-absolute has-right-zero has-top-zero has-left-zero has-bottom-zero is-flex has-flex-align-items-center has-flex-justify-content-center has-text-success-invert has-background-success is-transparent" aria-hidden="true">
+					<span class="icon is-size-4">
+						<span class="docon docon-check-mark" role="presentation"></span>
+					</span>
+				</div>
+			</button></div><pre tabindex="0" class="has-inner-focus"><code class="lang-csharp" name="Main" data-author-content="using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+
+namespace Intro
+{
+    public class BloggingContext : DbContext
+    {
+        public DbSet&lt;Blog&gt; Blogs { get; set; }
+        public DbSet&lt;Post&gt; Posts { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer(
+                @&quot;Server=(localdb)\mssqllocaldb;Database=Blogging;Integrated Security=True&quot;);
+        }
+    }
+
+    public class Blog
+    {
+        public int BlogId { get; set; }
+        public string Url { get; set; }
+        public int Rating { get; set; }
+        public List&lt;Post&gt; Posts { get; set; }
+    }
+
+    public class Post
+    {
+        public int PostId { get; set; }
+        public string Title { get; set; }
+        public string Content { get; set; }
+
+        public int BlogId { get; set; }
+        public Blog Blog { get; set; }
+    }
+}
+"><span><span class="hljs-keyword">using</span> Microsoft.EntityFrameworkCore;
+<span class="hljs-keyword">using</span> System.Collections.Generic;
+
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">Intro</span>
+{
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">BloggingContext</span> : <span class="hljs-title">DbContext</span>
+    {
+        <span class="hljs-keyword">public</span> DbSet&lt;Blog&gt; Blogs { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }
+        <span class="hljs-keyword">public</span> DbSet&lt;Post&gt; Posts { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }
+
+        <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">void</span> <span class="hljs-title">OnConfiguring</span>(<span class="hljs-params">DbContextOptionsBuilder optionsBuilder</span>)</span>
+        {
+            optionsBuilder.UseSqlServer(
+                <span class="hljs-string">@"Server=(localdb)\mssqllocaldb;Database=Blogging;Integrated Security=True"</span>);
+        }
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Blog</span>
+    {
+        <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> BlogId { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }
+        <span class="hljs-keyword">public</span> <span class="hljs-keyword">string</span> Url { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }
+        <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> Rating { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }
+        <span class="hljs-keyword">public</span> List&lt;Post&gt; Posts { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Post</span>
+    {
+        <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> PostId { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }
+        <span class="hljs-keyword">public</span> <span class="hljs-keyword">string</span> Title { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }
+        <span class="hljs-keyword">public</span> <span class="hljs-keyword">string</span> Content { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }
+
+        <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> BlogId { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }
+        <span class="hljs-keyword">public</span> Blog Blog { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }
+    }
+}
+</span></code></pre><h2 id="querying">Querying<a class="docon docon-link heading-anchor" href="https://docs.microsoft.com/en-us/ef/core/#querying" aria-labelledby="querying"></a></h2>
+<p>Instances of your entity classes are retrieved from the database using Language Integrated Query (LINQ). See <a href="https://docs.microsoft.com/en-us/ef/core/querying/" data-linktype="relative-path">Querying Data</a> to learn more.</p>
+<div class="codeHeader" id="code-try-1" data-bi-name="code-header"><span class="language">C#</span><button type="button" class="action is-relative" data-bi-name="copy" aria-label="Copy code">
+				<span class="icon">
+					<span class="docon docon-edit-copy" role="presentation"></span>
+				</span>
+				<span>Copy</span>
+				<div class="successful-copy-alert is-absolute has-right-zero has-top-zero has-left-zero has-bottom-zero is-flex has-flex-align-items-center has-flex-justify-content-center has-text-success-invert has-background-success is-transparent" aria-hidden="true">
+					<span class="icon is-size-4">
+						<span class="docon docon-check-mark" role="presentation"></span>
+					</span>
+				</div>
+			</button></div><pre tabindex="0" class="has-inner-focus"><code class="lang-csharp" name="Main" data-author-content="using (var db = new BloggingContext())
+{
+    var blogs = db.Blogs
+        .Where(b =&gt; b.Rating &gt; 3)
+        .OrderBy(b =&gt; b.Url)
+        .ToList();
+}
+"><span><span class="hljs-keyword">using</span> (<span class="hljs-keyword">var</span> db = <span class="hljs-keyword">new</span> BloggingContext())
+{
+    <span class="hljs-keyword">var</span> blogs = db.Blogs
+        .Where(b =&gt; b.Rating &gt; <span class="hljs-number">3</span>)
+        .OrderBy(b =&gt; b.Url)
+        .ToList();
+}
+</span></code></pre><h2 id="saving-data">Saving Data<a class="docon docon-link heading-anchor" href="https://docs.microsoft.com/en-us/ef/core/#saving-data" aria-labelledby="saving-data"></a></h2>
+<p>Data is created, deleted, and modified in the database using instances of your entity classes. See <a href="https://docs.microsoft.com/en-us/ef/core/saving/" data-linktype="relative-path">Saving Data</a> to learn more.</p>
+<div class="codeHeader" id="code-try-2" data-bi-name="code-header"><span class="language">C#</span><button type="button" class="action is-relative" data-bi-name="copy" aria-label="Copy code">
+				<span class="icon">
+					<span class="docon docon-edit-copy" role="presentation"></span>
+				</span>
+				<span>Copy</span>
+				<div class="successful-copy-alert is-absolute has-right-zero has-top-zero has-left-zero has-bottom-zero is-flex has-flex-align-items-center has-flex-justify-content-center has-text-success-invert has-background-success is-transparent" aria-hidden="true">
+					<span class="icon is-size-4">
+						<span class="docon docon-check-mark" role="presentation"></span>
+					</span>
+				</div>
+			</button></div><pre tabindex="0" class="has-inner-focus"><code class="lang-csharp" name="Main" data-author-content="using (var db = new BloggingContext())
+{
+    var blog = new Blog { Url = &quot;http://sample.com&quot; };
+    db.Blogs.Add(blog);
+    db.SaveChanges();
+}
+"><span><span class="hljs-keyword">using</span> (<span class="hljs-keyword">var</span> db = <span class="hljs-keyword">new</span> BloggingContext())
+{
+    <span class="hljs-keyword">var</span> blog = <span class="hljs-keyword">new</span> Blog { Url = <span class="hljs-string">"http://sample.com"</span> };
+    db.Blogs.Add(blog);
+    db.SaveChanges();
+}
+</span></code></pre><h2 id="next-steps">Next steps<a class="docon docon-link heading-anchor" href="https://docs.microsoft.com/en-us/ef/core/#next-steps" aria-labelledby="next-steps"></a></h2>
+<p>For introductory tutorials, see <a href="https://docs.microsoft.com/en-us/ef/core/get-started/" data-linktype="relative-path">Getting Started with Entity Framework Core</a>.</p>
+
+						<!-- </content> -->
+
+						</main>
+
+						<!-- recommended content page section -->
+
+							<nav data-bi-name="recommendation-bottom" hidden="" id="recommended-content-center" class="is-hidden-desktop" aria-labelledby="recommended-content-center-title">
+								<h3 id="recommended-content-center-title" class="is-size-2 has-margin-top-large has-margin-bottom-small">Related Articles</h3>
+							</nav>
+
+						<!-- end recommended content page section -->
+
+						<!-- page rating section -->
+								<div class="is-hidden-desktop has-border-top has-margin-top-large has-padding-top-small">
+									
+									
+<div class="feedback-verbatim has-border-bottom has-padding-bottom-small has-margin-bottom-small" data-bi-name="rating">
+    <div class="binary-rating">
+        <div class="binary-rating-buttons">
+            <h3 class="has-text-weight-semibold has-margin-top-none has-margin-bottom-small">Is this page helpful?</h3>
+            <div>
+                <button class="thumb-rating like has-inner-focus has-padding-left-extra-small has-padding-right-extra-small" title="Yes" data-bi-name="rating-yes" aria-expanded="false" data-bi-sat="1" aria-controls="rating-container-mobile">
+                    <span aria-hidden="true" class="icon docon docon-like"></span>
+                    <span>Yes</span>
+                </button>
+                <button class="thumb-rating dislike has-inner-focus has-padding-none has-padding-right-extra-small" title="No" data-bi-name="rating-no" data-bi-sat="0" aria-expanded="false" aria-controls="rating-container-mobile">
+                    <span aria-hidden="true" class="icon docon docon-dislike"></span>
+                    <span>No</span>
+                </button>
+            </div>
+        </div>
+        <form class="feedback-verbatim-form is-hidden" id="rating-container-mobile">
+            <div class="verbatim-textarea box is-relative has-box-shadow-none has-border has-margin-top-small has-padding-extra-small is-size-8">
+                <label for="rating-textarea-mobile" class="visually-hidden">Any additional feedback?</label>
+                <textarea id="rating-textarea-mobile" rows="4" maxlength="999" placeholder="Any additional feedback?" required="" class="textarea has-border-none has-box-shadow-none has-inner-focus"></textarea>
+            </div>
+            <div class="buttons is-right has-margin-top-medium has-margin-right-extra-small">
+                <button class="skip-rating button is-text is-link is-small" type="button">Skip</button>
+                <button class="submit-rating button is-primary is-small" data-bi-name="rating-verbatim" disabled="" type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+    <div class="thankyou-rating is-hidden" tabindex="-1">
+        <p>Thank you.</p>
+    </div>
+</div>								</div>
+						<!-- end page rating section -->
+
+
+						<!-- feedback section -->
+<section class="feedback-section" data-bi-name="feedback-section">
+
+    <h2 id="feedback">Feedback</h2>
+
+    <div class="alert choose-feedback-type">
+        <p aria-hidden="true" id="send-feedback-about">Send feedback about</p>
+
+        <div class="choose-feedback-buttons">
+                <a class="button feedback-type-product has-margin-bottom-small" aria-label="Send feedback about this product" href="https://github.com/dotnet/efcore/issues/new/choose" data-bi-name="product-feedback">
+                    <span>This product</span>
+                    <span aria-hidden="true" class="icon docon docon-navigate-external"></span>
+                </a>
+
+            <div class="field is-inline-flex has-margin-bottom-small">
+                <div class="control has-margin-top-none has-margin-bottom-none">
+                    <button class="button feedback-sign-in-button has-text-wrap" aria-label="Send feedback about this page" data-bi-name="feedback-sign-in">
+                        <span aria-hidden="true" class="icon docon docon-brand-github"></span>
+                        <span>This page</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="field is-inline-flex has-margin-bottom-small" hidden="">
+                <div class="control has-margin-top-none has-margin-bottom-none">
+                    <button aria-controls="feedback-form" aria-describedby="send-feedback-about" aria-expanded="false" class="button feedback-form-toggle" data-bi-name="documentation-feedback">
+                        <span aria-hidden="true" class="icon docon docon-brand-github"></span>
+This page                        <span aria-hidden="true" class="icon">
+                            <span class="expanded-indicator docon docon-chevron-down-light"></span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <p>You may also leave feedback directly on <a data-bi-name="create-issue-on-github" class="github-link" href="https://github.com/dotnet/EntityFramework.Docs/issues/new?title=&amp;body=%0A%0A%5BEnter%20feedback%20here%5D%0A%0A%0A---%0A%23%23%23%23%20Document%20Details%0A%0A%E2%9A%A0%20*Do%20not%20edit%20this%20section.%20It%20is%20required%20for%20docs.microsoft.com%20%E2%9E%9F%20GitHub%20issue%20linking.*%0A%0A*%20ID%3A%201b15cd4c-9cba-c0e2-7618-7d621a3c5936%0A*%20Version%20Independent%20ID%3A%20f4681bc6-57be-6e69-cad9-776ce64d93bd%0A*%20Content%3A%20%5BOverview%20of%20Entity%20Framework%20Core%20-%20EF%20Core%5D(https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fef%2Fcore%2F)%0A*%20Content%20Source%3A%20%5Bentity-framework%2Fcore%2Findex.md%5D(https%3A%2F%2Fgithub.com%2Fdotnet%2FEntityFramework.Docs%2Fblob%2Fmaster%2Fentity-framework%2Fcore%2Findex.md)%0A*%20Product%3A%20**entity-framework**%0A*%20Technology%3A%20**entity-framework-core**%0A*%20GitHub%20Login%3A%20%40rowanmiller%0A*%20Microsoft%20Alias%3A%20**avickers**">GitHub <span class="docon docon-navigate-external" aria-hidden="true"></span></a>.</p>
+        </div>
+    </div>
+
+    <form accept-charset="UTF-8" action="javascript:" autocomplete="off" class="feedback-form" hidden="" id="feedback-form">
+        <h3 class="feedback-form-heading current-user">
+            <img class="avatar" alt="Avatar" width="36" height="36" aria-hidden="true" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDEyMCAxMjAiIGZpbGw9InRyYW5zcGFyZW50IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjwvc3ZnPg==">
+            <span aria-hidden="true" class="username"></span>
+            <span class="visually-hidden">Send feedback about this page</span>
+        </h3>
+
+        <label>
+            <span class="visually-hidden">Title</span>
+            <input class="input is-radiusless has-margin-bottom-small" name="title" type="text" placeholder="Title" required="" pattern=".*[^\s]+.*">
+        </label>
+        <label>
+            <span class="visually-hidden">Leave a comment</span>
+            <textarea name="body" placeholder="Leave a comment" class="textarea is-radiusless" required=""></textarea>
+        </label>
+
+        <div class="action-container">
+            <button class="button is-primary" name="submit" type="submit">Submit feedback</button>
+        </div>
+    </form>
+
+    <div class="feedback-status alert is-loading">
+        <p>Loading feedback...</p>
+    </div>
+
+    <div class="feedback-tab-group tabGroup" data-tab-group-independent="" hidden="" data-bi-name="tab-group">
+        <ul role="tablist">
+            <li role="presentation">
+                <a aria-controls="tabpanel-issues-open" data-tab="issues-open" href="https://docs.microsoft.com/en-us/ef/core/#tabpanel-issues-open" role="tab" data-bi-name="tab" aria-selected="true" tabindex="0"></a>
+            </li>
+            <li role="presentation">
+                <a aria-controls="tabpanel-issues-closed" data-tab="issues-closed" href="https://docs.microsoft.com/en-us/ef/core/#tabpanel-issues-closed" role="tab" data-bi-name="tab" aria-selected="false" tabindex="-1"></a>
+            </li>
+        </ul>
+        <section data-tab="issues-open" id="tabpanel-issues-open" role="tabpanel">
+            <div class="no-issues-placeholder">There are no open issues</div>
+            <ul class="github-issues-list" aria-label="Open Issues"></ul>
+        </section>
+        <section data-tab="issues-closed" id="tabpanel-issues-closed" role="tabpanel" hidden="hidden" aria-hidden="true">
+            <div class="no-issues-placeholder">There are no closed issues</div>
+            <ul class="github-issues-list" aria-label="Closed Issues"></ul>
+        </section>
+    </div>
+    <div class="action-container">
+        <a class="view-on-github" data-bi-name="view-on-github" hidden="" href="https://github.com/dotnet/EntityFramework.Docs/issues?utf8=%E2%9C%93&amp;q=%22f4681bc6-57be-6e69-cad9-776ce64d93bd%22&amp;in=body">
+            <span aria-hidden="true" class="docon docon-brand-github"></span>
+            <span>View on GitHub</span>
+            <span aria-hidden="true" class="docon docon-navigate-external"></span>
+        </a>
+    </div>
+</section>
+
+						<!-- end feedback section -->
+
+						<!-- feedback report section -->
+						<!-- end feedback report section -->
+
+						<div class="footerContainer is-visible-interactive has-default-focus ">
+<footer id="footer-interactive" data-bi-name="footer" class="footer-layout">
+
+    <div class="is-flex is-full-height has-padding-right-extra-large-desktop">
+			<a data-mscc-ic="false" class="locale-selector-link has-flex-shrink-none" href="https://docs.microsoft.com/en-us/locale?target=https://docs.microsoft.com/en-us/ef/core/" data-bi-name="select-locale"><span class="icon docon docon-world is-size-4 has-margin-right-small" aria-hidden="true"></span><span class="local-selector-link-text">English (United States)</span></a>
+		<div class="has-margin-left-medium has-margin-right-medium has-flex-shrink-none">
+<div class="dropdown has-caret-up">
+	<button class="dropdown-trigger button is-transparent is-small is-icon-only-touch has-inner-focus theme-dropdown-trigger" aria-controls="theme-menu" aria-expanded="false" title="Theme" data-bi-name="theme">
+		<span class="icon">
+			<span class="docon docon-sun" aria-hidden="true"></span>
+		</span>
+		<span>Theme</span>
+	</button>
+	<div class="dropdown-menu" id="theme-menu" role="menu">
+		<ul class="theme-selector has-padding-small">
+			<li class="theme is-block">
+				<button class="button is-text is-small theme-control is-fullwidth has-flex-justify-content-start is-selected" data-theme-to="light" aria-pressed="true">
+					<span class="theme-light has-margin-right-small">
+						<span class="theme-selector-icon css-variable-support has-border is-inline-block has-body-background" aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background"></rect>
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary"></rect>
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary"></rect>
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary"></rect>
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary"></rect>
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary"></rect>
+							</svg>
+						</span>
+					</span>
+					<span role="menuitem">
+Light					</span>
+				</button>
+			</li>
+			<li class="theme is-block">
+				<button class="button is-text is-small theme-control is-fullwidth has-flex-justify-content-start" data-theme-to="dark" aria-pressed="false">
+					<span class="theme-dark has-margin-right-small">
+						<span class="has-border theme-selector-icon css-variable-support is-inline-block has-body-background" aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background"></rect>
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary"></rect>
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary"></rect>
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary"></rect>
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary"></rect>
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary"></rect>
+							</svg>
+						</span>
+					</span>
+					<span role="menuitem">
+Dark					</span>
+				</button>
+			</li>
+			<li class="theme is-block">
+				<button class="button is-text is-small theme-control is-fullwidth has-flex-justify-content-start" data-theme-to="high-contrast" aria-pressed="false">
+					<span class="theme-high-contrast has-margin-right-small">
+						<span class="has-border theme-selector-icon css-variable-support is-inline-block has-body-background" aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background"></rect>
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary"></rect>
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary"></rect>
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary"></rect>
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary"></rect>
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary"></rect>
+							</svg>
+						</span>
+					</span>
+					<span role="menuitem">
+High contrast					</span>
+				</button>
+			</li>
+		</ul>
+	</div>
+</div>		</div>
+	</div>
+
+    <ul class="links" data-bi-name="footerlinks">
+		<li><a data-mscc-ic="false" href="https://docs.microsoft.com/en-us/previous-versions/" data-bi-name="archivelink">Previous Version Docs</a></li>
+		<li><a data-mscc-ic="false" href="https://docs.microsoft.com/en-us/teamblog" data-bi-name="bloglink">Blog</a></li>
+		<li><a data-mscc-ic="false" href="https://docs.microsoft.com/en-us/contribute" data-bi-name="contributorGuide">Contribute</a></li>
+				<li><a data-mscc-ic="false" href="https://go.microsoft.com/fwlink/?LinkId=521839" data-bi-name="privacy">Privacy &amp; Cookies</a></li>
+		<li><a data-mscc-ic="false" href="https://docs.microsoft.com/en-us/legal/termsofuse" data-bi-name="termsofuse">Terms of Use</a></li>
+		<li><a data-mscc-ic="false" href="https://aka.ms/sitefeedback" data-bi-name="feedback">Site Feedback</a></li>
+			<li><a data-mscc-ic="false" href="https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/EN-US.aspx" data-bi-name="trademarks">Trademarks</a></li>
+		<li>© Microsoft 2020</li>
+    </ul>
+</footer>
+						</div>
+					</div>
+
+					<div class="is-size-7 right-container column is-one-quarter is-one-fifth-desktop is-hidden-mobile is-hidden-tablet-only" data-bi-name="pageactions" role="complementary" aria-label="Page Actions">
+						<div id="affixed-right-container" class="doc-outline is-fixed is-vertically-scrollable" style="width: 141.344px; top: 111.5px; bottom: 24px;">
+								
+								
+<div class="feedback-verbatim has-border-bottom has-padding-bottom-small has-margin-bottom-small" data-bi-name="rating">
+    <div class="binary-rating">
+        <div class="binary-rating-buttons">
+            <h3 class="has-text-weight-semibold has-margin-top-none has-margin-bottom-small">Is this page helpful?</h3>
+            <div>
+                <button class="thumb-rating like has-inner-focus has-padding-left-extra-small has-padding-right-extra-small" title="Yes" data-bi-name="rating-yes" aria-expanded="false" data-bi-sat="1" aria-controls="rating-container-desktop">
+                    <span aria-hidden="true" class="icon docon docon-like"></span>
+                    <span>Yes</span>
+                </button>
+                <button class="thumb-rating dislike has-inner-focus has-padding-none has-padding-right-extra-small" title="No" data-bi-name="rating-no" data-bi-sat="0" aria-expanded="false" aria-controls="rating-container-desktop">
+                    <span aria-hidden="true" class="icon docon docon-dislike"></span>
+                    <span>No</span>
+                </button>
+            </div>
+        </div>
+        <form class="feedback-verbatim-form is-hidden" id="rating-container-desktop">
+            <div class="verbatim-textarea box is-relative has-box-shadow-none has-border has-margin-top-small has-padding-extra-small is-size-8">
+                <label for="rating-textarea-desktop" class="visually-hidden">Any additional feedback?</label>
+                <textarea id="rating-textarea-desktop" rows="4" maxlength="999" placeholder="Any additional feedback?" required="" class="textarea has-border-none has-box-shadow-none has-inner-focus"></textarea>
+            </div>
+            <div class="buttons is-right has-margin-top-medium has-margin-right-extra-small">
+                <button class="skip-rating button is-text is-link is-small" type="button">Skip</button>
+                <button class="submit-rating button is-primary is-small" data-bi-name="rating-verbatim" disabled="" type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+    <div class="thankyou-rating is-hidden" tabindex="-1">
+        <p>Thank you.</p>
+    </div>
+</div>								<nav data-bi-name="recommendation-sidebar" hidden="" id="recommended-content-nav" role="navigation" aria-labelledby="recommended-content-nav-title">
+									<h3 id="recommended-content-nav-title">Related Articles</h3>
+								</nav>
+							<nav id="side-doc-outline" data-bi-name="intopic toc" role="navigation" aria-label="Article Outline">
+								<h3>In this article</h3>
+							<ol><li class="selected"><a href="https://docs.microsoft.com/en-us/ef/core/#the-model">The Model</a></li><li><a href="https://docs.microsoft.com/en-us/ef/core/#querying">Querying</a></li><li><a href="https://docs.microsoft.com/en-us/ef/core/#saving-data">Saving Data</a></li><li><a href="https://docs.microsoft.com/en-us/ef/core/#next-steps">Next steps</a></li></ol></nav>
+						</div>
+					</div>
+
+					<!--end of div.columns -->
+				</div>
+
+			<!--end of .primary-holder -->
+			</section>
+
+			<aside id="interactive-container" class="interactive-container is-visible-interactive column has-body-background-dark ">
+			</aside>
+		</div>
+
+		<!--end of .mainContainer -->
+	</div>
+
+	<div id="openFeedbackContainer" class="openfeedback-container"></div>
+
+	<div class="footerContainer has-default-focus is-hidden-interactive ">
+<footer id="footer" data-bi-name="footer" class="footer-layout uhf-container has-padding" role="contentinfo">
+
+    <div class="is-flex is-full-height has-padding-right-extra-large-desktop">
+			<a data-mscc-ic="false" class="locale-selector-link has-flex-shrink-none" href="https://docs.microsoft.com/en-us/locale?target=https://docs.microsoft.com/en-us/ef/core/" data-bi-name="select-locale"><span class="icon docon docon-world is-size-4 has-margin-right-small" aria-hidden="true"></span><span class="local-selector-link-text">English (United States)</span></a>
+		<div class="has-margin-left-medium has-margin-right-medium has-flex-shrink-none">
+<div class="dropdown has-caret-up">
+	<button class="dropdown-trigger button is-transparent is-small is-icon-only-touch has-inner-focus theme-dropdown-trigger" aria-controls="theme-menu" aria-expanded="false" title="Theme" data-bi-name="theme">
+		<span class="icon">
+			<span class="docon docon-sun" aria-hidden="true"></span>
+		</span>
+		<span>Theme</span>
+	</button>
+	<div class="dropdown-menu" id="theme-menu" role="menu">
+		<ul class="theme-selector has-padding-small">
+			<li class="theme is-block">
+				<button class="button is-text is-small theme-control is-fullwidth has-flex-justify-content-start is-selected" data-theme-to="light" aria-pressed="true">
+					<span class="theme-light has-margin-right-small">
+						<span class="theme-selector-icon css-variable-support has-border is-inline-block has-body-background" aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background"></rect>
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary"></rect>
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary"></rect>
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary"></rect>
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary"></rect>
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary"></rect>
+							</svg>
+						</span>
+					</span>
+					<span role="menuitem">
+Light					</span>
+				</button>
+			</li>
+			<li class="theme is-block">
+				<button class="button is-text is-small theme-control is-fullwidth has-flex-justify-content-start" data-theme-to="dark" aria-pressed="false">
+					<span class="theme-dark has-margin-right-small">
+						<span class="has-border theme-selector-icon css-variable-support is-inline-block has-body-background" aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background"></rect>
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary"></rect>
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary"></rect>
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary"></rect>
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary"></rect>
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary"></rect>
+							</svg>
+						</span>
+					</span>
+					<span role="menuitem">
+Dark					</span>
+				</button>
+			</li>
+			<li class="theme is-block">
+				<button class="button is-text is-small theme-control is-fullwidth has-flex-justify-content-start" data-theme-to="high-contrast" aria-pressed="false">
+					<span class="theme-high-contrast has-margin-right-small">
+						<span class="has-border theme-selector-icon css-variable-support is-inline-block has-body-background" aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background"></rect>
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary"></rect>
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary"></rect>
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary"></rect>
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary"></rect>
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary"></rect>
+							</svg>
+						</span>
+					</span>
+					<span role="menuitem">
+High contrast					</span>
+				</button>
+			</li>
+		</ul>
+	</div>
+</div>		</div>
+	</div>
+    <ul class="links" data-bi-name="footerlinks">
+		<li><a data-mscc-ic="false" href="https://docs.microsoft.com/en-us/previous-versions/" data-bi-name="archivelink">Previous Version Docs</a></li>
+		<li><a data-mscc-ic="false" href="https://docs.microsoft.com/en-us/teamblog" data-bi-name="bloglink">Blog</a></li>
+		<li><a data-mscc-ic="false" href="https://docs.microsoft.com/en-us/contribute" data-bi-name="contributorGuide">Contribute</a></li>
+				<li><a data-mscc-ic="false" href="https://go.microsoft.com/fwlink/?LinkId=521839" data-bi-name="privacy">Privacy &amp; Cookies</a></li>
+		<li><a data-mscc-ic="false" href="https://docs.microsoft.com/en-us/legal/termsofuse" data-bi-name="termsofuse">Terms of Use</a></li>
+		<li><a data-mscc-ic="false" href="https://aka.ms/sitefeedback" data-bi-name="feedback">Site Feedback</a></li>
+			<li><a data-mscc-ic="false" href="https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/EN-US.aspx" data-bi-name="trademarks">Trademarks</a></li>
+		<li>© Microsoft 2020</li>
+    </ul>
+</footer>
+	</div>
+
+	<div id="action-panel" role="region" aria-label="Action Panel" class="action-panel has-default-focus" tabindex="-1"></div>
+
+
+<div class="usabilla_live_button_container" role="button" tabindex="0" style="z-index: 99999990; right: 0px; top: 50%; margin-top: 0px; position: fixed; width: 0px; height: 0px; display: none;" aria-label="Usabilla Feedback Button"><iframe src="./Overview of Entity Framework Core - EF Core _ Microsoft Docs_files/saved_resource(1).html" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" data-tags="right" title="Usabilla Feedback Button" style="width: 0px; height: 0px; margin: 0px; padding: 0px; border: 0px; overflow: hidden; z-index: 9998; position: absolute; left: 0px; top: 0px; box-shadow: 0px 0px 0px; background-color: transparent;"></iframe></div></body></html>

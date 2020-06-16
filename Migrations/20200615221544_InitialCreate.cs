@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Bookflix.Migrations
 {
-    public partial class Initial : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -256,11 +256,12 @@ namespace Bookflix.Migrations
                     ISBN = table.Column<decimal>(nullable: false),
                     Portada = table.Column<string>(nullable: true),
                     Titulo = table.Column<string>(nullable: false),
-                    Contenido = table.Column<string>(nullable: false),
+                    Contenido = table.Column<string>(nullable: true),
                     Descripcion = table.Column<string>(nullable: false),
                     AutorId = table.Column<int>(nullable: false),
                     GeneroId = table.Column<int>(nullable: false),
-                    EditorialId = table.Column<int>(nullable: false)
+                    EditorialId = table.Column<int>(nullable: false),
+                    EstadoCompleto = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -311,6 +312,29 @@ namespace Bookflix.Migrations
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Capitulos",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    LibroId = table.Column<int>(nullable: false),
+                    NumeroCapitulo = table.Column<int>(nullable: false),
+                    Contenido = table.Column<string>(nullable: true),
+                    Titulo = table.Column<string>(nullable: false),
+                    FechaDeVencimiento = table.Column<DateTime>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Capitulos", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Capitulos_Libros_LibroId",
+                        column: x => x.LibroId,
+                        principalTable: "Libros",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -367,8 +391,7 @@ namespace Bookflix.Migrations
                 columns: table => new
                 {
                     LibroId = table.Column<int>(nullable: false),
-                    PerfilId = table.Column<int>(nullable: false),
-                    PaginaMarcada = table.Column<int>(nullable: false)
+                    PerfilId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -412,6 +435,27 @@ namespace Bookflix.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Trailers",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Imagen = table.Column<string>(nullable: true),
+                    Descripcion = table.Column<string>(nullable: true),
+                    LibroId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Trailers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Trailers_Libros_LibroId",
+                        column: x => x.LibroId,
+                        principalTable: "Libros",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -450,6 +494,11 @@ namespace Bookflix.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Capitulos_LibroId",
+                table: "Capitulos",
+                column: "LibroId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Libros_AutorId",
@@ -500,6 +549,12 @@ namespace Bookflix.Migrations
                 name: "IX_Perfiles_UsuarioId",
                 table: "Perfiles",
                 column: "UsuarioId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Trailers_LibroId",
+                table: "Trailers",
+                column: "LibroId",
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -520,6 +575,9 @@ namespace Bookflix.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Capitulos");
+
+            migrationBuilder.DropTable(
                 name: "Novedades");
 
             migrationBuilder.DropTable(
@@ -538,16 +596,22 @@ namespace Bookflix.Migrations
                 name: "Perfil_Puntua_Libros");
 
             migrationBuilder.DropTable(
+                name: "Trailers");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "Tarjetas");
 
             migrationBuilder.DropTable(
+                name: "Perfiles");
+
+            migrationBuilder.DropTable(
                 name: "Libros");
 
             migrationBuilder.DropTable(
-                name: "Perfiles");
+                name: "AspNetUsers");
 
             migrationBuilder.DropTable(
                 name: "Autores");
@@ -557,9 +621,6 @@ namespace Bookflix.Migrations
 
             migrationBuilder.DropTable(
                 name: "Generos");
-
-            migrationBuilder.DropTable(
-                name: "AspNetUsers");
         }
     }
 }
