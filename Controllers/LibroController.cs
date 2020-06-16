@@ -13,7 +13,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
 using Bookflix.ViewModel;
-using iTextSharp.text.pdf;
 
 namespace Bookflix.Controllers
 {

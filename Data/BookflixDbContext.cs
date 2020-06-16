@@ -39,7 +39,7 @@ namespace Bookflix.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=localhost;Database=Bookflix-DB;User Id=SA; Password=sodastereo-1995;");
+            optionsBuilder.UseSqlServer("Server=localhost;Database=Bookflix-DB;User Id=SA; Password=manzana-2020;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -49,10 +49,6 @@ namespace Bookflix.Data
             modelBuilder.Entity<Perfil_Favea_Libro> ().HasKey (pl => new { pl.PerfilId, pl.LibroId });
             modelBuilder.Entity<Perfil_Lee_Libro> ().HasKey (pl => new { pl.PerfilId, pl.LibroId });
             modelBuilder.Entity<Perfil_Puntua_Libro> ().HasKey (pl => new { pl.PerfilId, pl.LibroId });
-
-            // modelBuilder.Entity<Administrador>();
-            // modelBuilder.Entity<Normal>();
-            // modelBuilder.Entity<Premium>();
         }
     }
 }

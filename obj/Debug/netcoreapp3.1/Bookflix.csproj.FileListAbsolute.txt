@@ -433,3 +433,19 @@
 /home/juampi/Project - Bookflix/Bookflix/obj/Debug/netcoreapp3.1/Razor/Views/Capitulo/Leer.cshtml.g.cs
 /home/juampi/Project - Bookflix/Bookflix/obj/Debug/netcoreapp3.1/Razor/Views/Libro/EditConCapitulos.cshtml.g.cs
 /home/juampi/Project - Bookflix/Bookflix/obj/Debug/netcoreapp3.1/Razor/Views/Libro/Leer.cshtml.g.cs
+/home/felipe/Bookflix/obj/Debug/netcoreapp3.1/Razor/Views/Capitulo/Create.cshtml.g.cs
+/home/felipe/Bookflix/obj/Debug/netcoreapp3.1/Razor/Views/Capitulo/Delete.cshtml.g.cs
+/home/felipe/Bookflix/obj/Debug/netcoreapp3.1/Razor/Views/Capitulo/Details.cshtml.g.cs
+/home/felipe/Bookflix/obj/Debug/netcoreapp3.1/Razor/Views/Capitulo/Edit.cshtml.g.cs
+/home/felipe/Bookflix/obj/Debug/netcoreapp3.1/Razor/Views/Capitulo/Index.cshtml.g.cs
+/home/felipe/Bookflix/obj/Debug/netcoreapp3.1/Razor/Views/Capitulo/Leer.cshtml.g.cs
+/home/felipe/Bookflix/obj/Debug/netcoreapp3.1/Razor/Views/Libro/AgregarCapitulos.cshtml.g.cs
+/home/felipe/Bookflix/obj/Debug/netcoreapp3.1/Razor/Views/Libro/CreateConCapitulos.cshtml.g.cs
+/home/felipe/Bookflix/obj/Debug/netcoreapp3.1/Razor/Views/Libro/EditConCapitulos.cshtml.g.cs
+/home/felipe/Bookflix/obj/Debug/netcoreapp3.1/Razor/Views/Libro/IndexSuscriptor.cshtml.g.cs
+/home/felipe/Bookflix/obj/Debug/netcoreapp3.1/Razor/Views/Libro/Leer.cshtml.g.cs
+/home/felipe/Bookflix/obj/Debug/netcoreapp3.1/Razor/Views/Trailer/Create.cshtml.g.cs
+/home/felipe/Bookflix/obj/Debug/netcoreapp3.1/Razor/Views/Trailer/Delete.cshtml.g.cs
+/home/felipe/Bookflix/obj/Debug/netcoreapp3.1/Razor/Views/Trailer/Details.cshtml.g.cs
+/home/felipe/Bookflix/obj/Debug/netcoreapp3.1/Razor/Views/Trailer/Edit.cshtml.g.cs
+/home/felipe/Bookflix/obj/Debug/netcoreapp3.1/Razor/Views/Trailer/Index.cshtml.g.cs
