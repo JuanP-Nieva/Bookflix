@@ -14,6 +14,7 @@ namespace Bookflix.Controllers
     [Authorize(Roles="Administrador")]
     public class GeneroController : Controller
     {
+        private static string cargaActual;
         private readonly BookflixDbContext _context;
 
         public GeneroController(BookflixDbContext context)
@@ -46,8 +47,20 @@ namespace Bookflix.Controllers
         }
 
         // GET: Genero/Create
-        public IActionResult Create()
+        public IActionResult Create(string retornar)
         {
+            if(retornar != null)
+            {
+                cargaActual = retornar;
+            }
+
+            if(cargaActual == "ConCapitulos")
+            {
+                ViewBag.Retornar = "ConCapitulos";
+            }
+            else{
+                ViewBag.Retornar = "SinCapitulos";
+            }
             return View();
         }
 
@@ -62,7 +75,7 @@ namespace Bookflix.Controllers
             {
                 _context.Add(genero);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Index","Libro");
+                return RedirectToAction("Create","Genero");
                 //return RedirectToAction(nameof(Index));
             }
             return View(genero);

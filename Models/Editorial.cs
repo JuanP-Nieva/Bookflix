@@ -5,9 +5,9 @@ namespace Bookflix.Models {
     public class Editorial {
         [Key]
         public int Id { get; set; }
-        [Required]
+        [Required(ErrorMessage="Debe ingresar el nombre")]
         public string Nombre { get; set; }
-        [Required]
+        [Required(ErrorMessage="Debe ingresar el pais")]
         public string Pais { get; set; }
 
         //Propiedades para las relaciones de la DB

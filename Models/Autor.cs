@@ -7,9 +7,9 @@ namespace Bookflix.Models
     {
         [Key]
         public int Id { get; set; }
-        [Required]
+        [Required(ErrorMessage="Debe ingresar el nombre")]
         public string Nombre { get; set; }
-        [Required]
+        [Required(ErrorMessage="Debe ingresar el apellido")]
         public string Apellido { get; set; }
 
         //Propiedades para las relaciones de la DB

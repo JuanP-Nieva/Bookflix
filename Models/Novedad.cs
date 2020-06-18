@@ -7,11 +7,11 @@ namespace Bookflix.Models
     {
         [Key]
         public int Id { get; set; }
-        [Required]
+        [Required(ErrorMessage="Debe ingresar la descripcion")]
         public string Descripcion { get; set; }
-        [Required]
+        [Required(ErrorMessage="Debe ingresar una imagen")]
         public string Imagen { get; set; }
-        [Required]
+        [Required(ErrorMessage="Debe ingresar el titulo")]
         public string Titulo { get; set; }
     }
 }

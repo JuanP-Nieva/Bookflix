@@ -13,7 +13,7 @@ namespace Bookflix.ViewModel {
         [DisplayFormat(DataFormatString = "{0:F0}", ApplyFormatInEditMode = true)]
         public decimal ISBN { get; set; }
         
-        [Required]
+        [Required(ErrorMessage="La Portada es un campo obligatorio")]
         public IFormFile Portada { get; set; }
        
         [Required(ErrorMessage="El Titulo es un campo obligatorio")]

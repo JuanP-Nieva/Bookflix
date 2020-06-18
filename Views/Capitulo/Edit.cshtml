@@ -1,42 +1,48 @@
-@model Bookflix.Models.Capitulo
+@model Bookflix.ViewModel.EdicionCapituloViewModel
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Editar Capitulo";
 }
 
-<h1>Edit</h1>
+<h1 style="color: red;">Editar</h1>
 
-<h4>Capitulo</h4>
+<h4 style="color: white;">@Model.Titulo</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Edit" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="LibroId" class="control-label"></label>
-                <input asp-for="LibroId" class="form-control" />
-                <span asp-validation-for="LibroId" class="text-danger"></span>
+                <label asp-for="Titulo" class="control-label" style="color: white;"></label>
+                <input asp-for="Titulo" class="form-control" />
+                <span asp-validation-for="Titulo" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="NumeroCapitulo" class="control-label"></label>
+                <label asp-for="NumeroCapitulo" class="control-label" style="color: white;"></label>
                 <input asp-for="NumeroCapitulo" class="form-control" />
                 <span asp-validation-for="NumeroCapitulo" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Contenido" class="control-label"></label>
+                <label asp-for="Contenido" class="control-label" style="color: white;"></label>
                 <input asp-for="Contenido" class="form-control" />
                 <span asp-validation-for="Contenido" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <label asp-for="FechaDeVencimiento" class="control-label" style="color: #F5F5F1;"></label>
+                <input type="date"  asp-for="FechaDeVencimiento" class="form-control" />
+                <span asp-validation-for="FechaDeVencimiento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+                <a class="btn btn-danger" asp-action="EditConCapitulos" asp-controller="Libro" asp-route-id="@Model.LibroId" >Cancelar</a>
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    
 </div>
 
 @section Scripts {

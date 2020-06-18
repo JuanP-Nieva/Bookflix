@@ -64,6 +64,7 @@
             </th>
             <th></th>
             <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -96,18 +97,21 @@
                 <a style="color: white;">@Html.DisplayFor(modelItem => item.Editorial.Nombre)</a>
             </td>
             @if(User.IsInRole("Administrador")){
-                @if(item.Contenido == null){
-                    <td >
-                        <a class="btn btn-warning btn-sm" asp-action="EditConCapitulos" asp-route-id="@item.Id">Modificar</a> 
-                    </td>    
+                @if(item.Contenido == null){ 
                     
                     @*ESTO ESTA PARA AGREGAR CAPITULOS*@
                     @if(!item.EstadoCompleto){
                         <td>
                             <a class="btn btn-danger btn-sm" asp-action="Create" asp-controller="Capitulo" asp-route-id="@item.Id">Agregar Capitulo</a>
                         </td>
+                    }else{
+                        <td></td>
                     }
+                    <td >
+                        <a class="btn btn-warning btn-sm" asp-action="EditConCapitulos" asp-route-id="@item.Id">Modificar</a> 
+                    </td>   
                 }else{
+                    <td></td>
                     <td >
                         <a class="btn btn-warning btn-sm" asp-action="Edit" asp-route-id="@item.Id">Modificar</a> 
                     </td>
@@ -132,6 +136,6 @@
     <div class="alert alert-danger" role="alert">
         ¡No se encontraron libros! 
     </div>
-}else {
+}else if(Model.Count() > 3){
     <button class="ir-arriba btn btn-dark btn-sm btn-block" type="button">Volver arriba</button>
 }

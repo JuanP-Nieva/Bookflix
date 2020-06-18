@@ -12,7 +12,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                <a asp-action="Index" asp-controller="Libro" asp-route-id="@item.Id" style="color: white;">@Html.DisplayFor(modelItem => item.Nombre)</a>
+                <a asp-action="IndexInicial" asp-controller="Libro" asp-route-id="@item.Id" style="color: white;">@Html.DisplayFor(modelItem => item.Nombre)</a>
             </td>
             <td>
                 @*<a asp-action="Edit" asp-route-id="@item.Id">Editar Perfil</a> |

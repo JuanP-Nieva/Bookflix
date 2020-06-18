@@ -1,10 +1,9 @@
 {
   "version": 2,
-  "dgSpecHash": "Ph+DO5WGHo5r3mngy25ZDYC652GyPwXsMzQNbDdogzZ+V2lISU++ybJyhV4pWhnb6MFUlbDU4jVde2Mqr1wmsQ==",
+  "dgSpecHash": "dRmw7G94/z31p7u5bX/HXyjFQ04B+QndvKxr/zdvVzU9tdWnXXbW7jQYQYNRcSUbZHoFz8f6oqcU49zP91CeMg==",
   "success": true,
   "projectFilePath": "/home/juampi/Project - Bookflix/Bookflix/Bookflix.csproj",
   "expectedPackageFiles": [
-    "/home/juampi/.nuget/packages/itextsharp/5.5.13.1/itextsharp.5.5.13.1.nupkg.sha512",
     "/home/juampi/.nuget/packages/microsoft.aspnetcore.cryptography.internal/3.1.3/microsoft.aspnetcore.cryptography.internal.3.1.3.nupkg.sha512",
     "/home/juampi/.nuget/packages/microsoft.aspnetcore.cryptography.keyderivation/3.1.3/microsoft.aspnetcore.cryptography.keyderivation.3.1.3.nupkg.sha512",
     "/home/juampi/.nuget/packages/microsoft.aspnetcore.diagnostics.entityframeworkcore/3.1.3/microsoft.aspnetcore.diagnostics.entityframeworkcore.3.1.3.nupkg.sha512",
@@ -169,16 +168,5 @@
     "/home/juampi/.nuget/packages/system.xml.xmldocument/4.3.0/system.xml.xmldocument.4.3.0.nupkg.sha512",
     "/home/juampi/.nuget/packages/system.xml.xmlserializer/4.3.0/system.xml.xmlserializer.4.3.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "El paquete \"iTextSharp 5.5.13.1\" se restauró con \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8\" en lugar de la plataforma de destino del proyecto \".NETCoreApp,Version=v3.1\". Puede que el paquete no sea totalmente compatible con el proyecto.",
-      "libraryId": "iTextSharp",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v3.1"
-      ]
-    }
-  ]
+  "logs": []
 }

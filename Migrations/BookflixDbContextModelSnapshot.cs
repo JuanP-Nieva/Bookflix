@@ -129,6 +129,7 @@ namespace Bookflix.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("FechaDeVencimiento")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<int>("LibroId")

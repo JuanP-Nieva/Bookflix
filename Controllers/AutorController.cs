@@ -12,6 +12,7 @@ namespace Bookflix.Controllers
 {
     public class AutorController : Controller
     {
+        private static string cargaActual;
         private readonly BookflixDbContext _context;
 
         public AutorController(BookflixDbContext context)
@@ -45,8 +46,20 @@ namespace Bookflix.Controllers
 
 
         // GET: Autor/Create
-        public IActionResult Create()
+        public IActionResult Create(string retornar)
         {
+            if(retornar != null)
+            {
+                cargaActual = retornar;
+            }
+
+            if(cargaActual == "ConCapitulos")
+            {
+                ViewBag.Retornar = "ConCapitulos";
+            }
+            else{
+                ViewBag.Retornar = "SinCapitulos";
+            }
             return View();
         }
 
@@ -63,7 +76,7 @@ namespace Bookflix.Controllers
             {
                 _context.Add(autor);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Index","Libro");
+                return RedirectToAction("Create","Autor");
                 // return RedirectToAction(nameof(Index));
             }
             return View(autor);

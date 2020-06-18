@@ -6,7 +6,7 @@ namespace Bookflix.Models.Validaciones
     public class DesdeFechaActualAttribute : DateAttribute
     {
         public override string GetErrorMessage() =>
-            $"La tarjeta tiene que expirar luego del {DateTime.Today}.";
+            $"La fecha de expiracion debe ser luego del {DateTime.Today.Date}.";
         protected override bool errorDeFecha(DateTime fecha) => (fecha < DateTime.Today);
     }
 }

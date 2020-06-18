@@ -35,6 +35,8 @@ namespace Bookflix.ViewModel {
         public int EditorialId { get; set; }
         public Editorial Editorial { get; set; }
 
+        public List<Capitulo> Capitulos { get; set;}
+
         //Propiedades para las relaciones de la DB
         public List<Perfil_Comenta_Libro> Perfil_Comenta_Libros { get; set; }
         public List<Perfil_Favea_Libro> Perfil_Favea_Libros { get; set; }

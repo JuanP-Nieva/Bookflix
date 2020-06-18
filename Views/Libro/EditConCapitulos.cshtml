@@ -15,7 +15,7 @@
 <br>
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit" enctype="multipart/form-data">
+        <form asp-action="EditConCapitulos" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
@@ -53,6 +53,16 @@
                 <select asp-for="EditorialId" class="form-control" asp-items="ViewBag.EditorialId"></select>
                 <span asp-validation-for="EditorialId" class="text-danger"></span>
             </div>
+            @if(Model.Capitulos.Count() > 0)
+            {   <div class="btn-group-vertical">
+                    <label class="control-label" style="color: #F5F5F1;">Capitulos</label>
+                @foreach (var item in Model.Capitulos)
+                {
+                    <a class="btn btn-danger btn-sm" role="button" asp-controller="Capitulo" asp-action="Edit" asp-route-id="@item.Id" asp-route-idLibro="@Model.Id">Capitulo @item.NumeroCapitulo</a>
+                }
+                </div>
+                <hr>
+            }
             <div class="form-group">
                 <input type="submit" value="Guardar" class="btn btn-primary" />
                 <a class="btn btn-primary" role="button" asp-controller="Libro" asp-action="Index" >Cancelar</a>

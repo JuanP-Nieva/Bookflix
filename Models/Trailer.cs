@@ -15,7 +15,7 @@ namespace Bookflix.Models
 
         [NotMapped]
         [DisplayName("Subir Trailer")]
-        [Required]
+        [Required(ErrorMessage="Debe ingresar una imagen")]
         public IFormFile Img { get; set; }
 
         [Required]

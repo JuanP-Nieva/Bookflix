@@ -29,9 +29,17 @@
 </div>
 <hr>
 
+<div>
+    <a class="btn btn-danger" asp-action="VerHistorial" asp-controller="Libro">Ver Historial</a>
+</div>
+
+<hr>
+
 @foreach (var item in Model) {
-    <div class="card text-center bg-dark m-3" style="width: 11rem; height: 16rem; float: left;">
-        <img src="~/Images/@item.Portada" class="card-img-top" width="32" height="128">
+    @* <div class="card text-center bg-dark m-3" style="width: 11rem; height: 16rem; float: left;">
+        <img src="~/Images/@item.Portada" class="card-img-top" width="32" height="128"> *@
+    <div class="card text-center bg-dark m-3" style="width: 179px; height: 400px; float: left;">
+        <img src="~/Images/@item.Portada" class="card-img-top" width="179px" height="282">
         <div class="card-body" style="color: grey;" >
             <h5 class="card-title" style="color: white; font-size: medium;">@Html.DisplayFor(modelItem => item.Titulo)</h5>
             @* <p class="card-text">@Html.DisplayFor(modelItem => item.Descripcion)</p> *@
