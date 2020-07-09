@@ -26,27 +26,23 @@ namespace Bookflix.Areas.Identity.Pages.Account
         private readonly UserManager<BookflixUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly ILogger<RegisterModel> _logger;
-        private readonly IEmailSender _emailSender;
 
         public RegisterModel(
             UserManager<BookflixUser> userManager,
             SignInManager<BookflixUser> signInManager,
             RoleManager<IdentityRole> roleManager,
-            ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            ILogger<RegisterModel> logger)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;
             _logger = logger;
-            _emailSender = emailSender;
         }
 
         [BindProperty]
         public InputModel Input { get; set; }
 
         public string ReturnUrl { get; set; }
-        public IList<AuthenticationScheme> ExternalLogins { get; set; }
 
         public class InputModel
         {
@@ -109,13 +105,13 @@ namespace Bookflix.Areas.Identity.Pages.Account
             public string Categoria { get; set; }
 
             public Tarjeta crearTarjeta() => new Tarjeta
-            {
-                Numero = this.Numero,
-                Clave = this.Clave,
-                Titular = this.Titular,
-                Tipo = this.Tipo,
-                FechaDeVencimiento = this.FechaDeVencimiento
-            };
+                                                    {
+                                                        Numero = this.Numero,
+                                                        Clave = this.Clave,
+                                                        Titular = this.Titular,
+                                                        Tipo = this.Tipo,
+                                                        FechaDeVencimiento = this.FechaDeVencimiento
+                                                    };
             public BookflixUser CrearUsuario(UserManager<BookflixUser> userManager, RoleManager<IdentityRole> roleManager)
             {
                 BookflixUser user = new BookflixUser
@@ -128,7 +124,7 @@ namespace Bookflix.Areas.Identity.Pages.Account
                     FechaDeNacimiento = this.FechaDeNacimiento
                 };
                 // await user.AgregarRol("Normal", userManager, roleManager);
-                //user.CrearPago(categoroia, crearTarjeta()); 
+                //user.CrearPago(Categoria, this.crearTarjeta());
                 return user;
             }
         }
@@ -143,7 +139,7 @@ namespace Bookflix.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
-            
+
             returnUrl = returnUrl ?? Url.Content("~/Perfil/Index");
 
             if (ModelState.IsValid)

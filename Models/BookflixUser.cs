@@ -23,10 +23,6 @@ namespace Bookflix.Models
         [PersonalData, Required, DataType(DataType.DateTime)]
         public DateTime FechaDeNacimiento { get; set; }
 
-        //    public string CategoriaId { get; set; }
-        // [Required]
-        //   public Categoria Categoria { get; private set; }
-
         //Propiedades para las relaciones de la DB
         public List<Perfil> Perfiles { get; set; }
         public List<Pago> Pagos { get; set; }

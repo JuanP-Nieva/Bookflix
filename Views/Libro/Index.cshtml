@@ -127,6 +127,9 @@
                     <a class="btn btn-secondary btn-sm" asp-action="Create" asp-controller="Trailer" asp-route-id="@item.Id">Agregar Trailer</a>
                 }
                 </td>
+
+                //fletar el libro
+                <td><a class="btn btn-outline-danger btn-sm" asp-action="Delete" asp-controller="Libro" asp-route-id="@item.Id">Eliminar Libro</a></td>
             }
         </tr>
 }

@@ -503,26 +503,27 @@ namespace Bookflix.Controllers
                 .Include(l => l.Autor)
                 .Include(l => l.Editorial)
                 .Include(l => l.Genero)
-                .FirstOrDefaultAsync(m => m.ISBN == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (libro == null)
             {
                 return NotFound();
             }
-
-            return View(libro);
+            _context.Libros.Remove(libro);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index", "Libro");
         }
 
         // POST: Libro/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Administrador")]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var libro = await _context.Libros.FindAsync(id);
-            _context.Libros.Remove(libro);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
+        // [HttpPost, ActionName("Delete")]
+        // [ValidateAntiForgeryToken]
+        // [Authorize(Roles = "Administrador")]
+        // public async Task<IActionResult> DeleteConfirmed(int id)
+        // {
+        //     var libro = await _context.Libros.FindAsync(id);
+        //     _context.Libros.Remove(libro);
+        //     await _context.SaveChangesAsync();
+        //     return RedirectToAction(nameof(Index));
+        // }
 
         private bool LibroExists(int id)
         {
