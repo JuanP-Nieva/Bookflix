@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/home/juampi/Project - Bookflix/Bookflix/Bookflix.csproj": {}
+    "/home/felipe/Bookflix/Bookflix.csproj": {}
   },
   "projects": {
-    "/home/juampi/Project - Bookflix/Bookflix/Bookflix.csproj": {
+    "/home/felipe/Bookflix/Bookflix.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/juampi/Project - Bookflix/Bookflix/Bookflix.csproj",
+        "projectUniqueName": "/home/felipe/Bookflix/Bookflix.csproj",
         "projectName": "Bookflix",
-        "projectPath": "/home/juampi/Project - Bookflix/Bookflix/Bookflix.csproj",
-        "packagesPath": "/home/juampi/.nuget/packages/",
-        "outputPath": "/home/juampi/Project - Bookflix/Bookflix/obj/",
+        "projectPath": "/home/felipe/Bookflix/Bookflix.csproj",
+        "packagesPath": "/home/felipe/.nuget/packages/",
+        "outputPath": "/home/felipe/Bookflix/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/juampi/.nuget/NuGet/NuGet.Config"
+          "/home/felipe/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -87,7 +87,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.201/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.103/RuntimeIdentifierGraph.json"
         }
       }
     }

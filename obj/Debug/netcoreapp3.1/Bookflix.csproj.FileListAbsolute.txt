@@ -161,9 +161,6 @@
 /home/felipe/Bookflix/obj/Debug/netcoreapp3.1/Razor/Areas/Identity/Pages/Account/_ViewImports.cshtml.g.cs
 /home/felipe/Bookflix/obj/Debug/netcoreapp3.1/Razor/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml.g.cs
 /home/felipe/Bookflix/obj/Debug/netcoreapp3.1/Razor/Areas/Identity/Pages/_ViewImports.cshtml.g.cs
-/home/felipe/Bookflix/obj/Debug/netcoreapp3.1/Razor/Areas/Identity/Pages/Account/Manage/Index.cshtml.g.cs
-/home/felipe/Bookflix/obj/Debug/netcoreapp3.1/Razor/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml.g.cs
-/home/felipe/Bookflix/obj/Debug/netcoreapp3.1/Razor/Areas/Identity/Pages/Account/Manage/_ViewImports.cshtml.g.cs
 /home/felipe/Bookflix/obj/Debug/netcoreapp3.1/Razor/Areas/Identity/Pages/Account/ConfirmEmail.cshtml.g.cs
 /home/juampi/Project - Bookflix/Bookflix/bin/Debug/netcoreapp3.1/appsettings.Development.json
 /home/juampi/Project - Bookflix/Bookflix/bin/Debug/netcoreapp3.1/Properties/launchSettings.json
@@ -437,7 +434,6 @@
 /home/felipe/Bookflix/obj/Debug/netcoreapp3.1/Razor/Views/Capitulo/Edit.cshtml.g.cs
 /home/felipe/Bookflix/obj/Debug/netcoreapp3.1/Razor/Views/Capitulo/Index.cshtml.g.cs
 /home/felipe/Bookflix/obj/Debug/netcoreapp3.1/Razor/Views/Capitulo/Leer.cshtml.g.cs
-/home/felipe/Bookflix/obj/Debug/netcoreapp3.1/Razor/Views/Libro/AgregarCapitulos.cshtml.g.cs
 /home/felipe/Bookflix/obj/Debug/netcoreapp3.1/Razor/Views/Libro/CreateConCapitulos.cshtml.g.cs
 /home/felipe/Bookflix/obj/Debug/netcoreapp3.1/Razor/Views/Libro/EditConCapitulos.cshtml.g.cs
 /home/felipe/Bookflix/obj/Debug/netcoreapp3.1/Razor/Views/Libro/IndexSuscriptor.cshtml.g.cs
@@ -453,3 +449,11 @@
 /home/juampi/Project - Bookflix/Bookflix/obj/Debug/netcoreapp3.1/Razor/Views/Trailer/Edit.cshtml.g.cs
 /home/juampi/Project - Bookflix/Bookflix/obj/Debug/netcoreapp3.1/Razor/Views/Trailer/Index.cshtml.g.cs
 /home/juampi/Project - Bookflix/Bookflix/obj/Debug/netcoreapp3.1/Razor/Views/Libro/VerHistorial.cshtml.g.cs
+/home/felipe/Bookflix/obj/Debug/netcoreapp3.1/Razor/Views/Libro/VerHistorial.cshtml.g.cs
+/home/felipe/Bookflix/obj/Debug/netcoreapp3.1/Razor/Areas/Identity/Pages/Account/Manage/ChangePassword.cshtml.g.cs
+/home/felipe/Bookflix/obj/Debug/netcoreapp3.1/Razor/Areas/Identity/Pages/Account/Manage/Email.cshtml.g.cs
+/home/felipe/Bookflix/obj/Debug/netcoreapp3.1/Razor/Areas/Identity/Pages/Account/Manage/Index.cshtml.g.cs
+/home/felipe/Bookflix/obj/Debug/netcoreapp3.1/Razor/Areas/Identity/Pages/Account/Manage/_Layout.cshtml.g.cs
+/home/felipe/Bookflix/obj/Debug/netcoreapp3.1/Razor/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml.g.cs
+/home/felipe/Bookflix/obj/Debug/netcoreapp3.1/Razor/Areas/Identity/Pages/Account/Manage/_ViewImports.cshtml.g.cs
+/home/felipe/Bookflix/obj/Debug/netcoreapp3.1/Razor/Areas/Identity/Pages/Account/Manage/CreditCard.cshtml.g.cs

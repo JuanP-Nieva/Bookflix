@@ -1,5 +1,5 @@
 {
-  "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Bookflix.csproj",
+  "FilePath": "/home/felipe/Bookflix/Bookflix.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "3.0",
@@ -20521,388 +20521,408 @@
   "RootNamespace": "Bookflix",
   "Documents": [
     {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Capitulo/Leer.cshtml",
-      "TargetPath": "Views\\Capitulo\\Leer.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Trailer/Details.cshtml",
-      "TargetPath": "Views\\Trailer\\Details.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Areas/Identity/Pages/_ViewImports.cshtml",
-      "TargetPath": "Areas\\Identity\\Pages\\_ViewImports.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Libro/CreateConCapitulos.cshtml",
-      "TargetPath": "Views\\Libro\\CreateConCapitulos.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Trailer/Delete.cshtml",
-      "TargetPath": "Views\\Trailer\\Delete.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Areas/Identity/Pages/Account/ResetPasswordConfirmation.cshtml",
-      "TargetPath": "Areas\\Identity\\Pages\\Account\\ResetPasswordConfirmation.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Areas/Identity/Pages/Account/ForgotPasswordConfirmation.cshtml",
-      "TargetPath": "Areas\\Identity\\Pages\\Account\\ForgotPasswordConfirmation.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Libro/Edit.cshtml",
-      "TargetPath": "Views\\Libro\\Edit.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Areas/Identity/Pages/_ViewStart.cshtml",
-      "TargetPath": "Areas\\Identity\\Pages\\_ViewStart.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Editorial/Details.cshtml",
-      "TargetPath": "Views\\Editorial\\Details.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/_ViewStart.cshtml",
-      "TargetPath": "Views\\_ViewStart.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Capitulo/Create.cshtml",
-      "TargetPath": "Views\\Capitulo\\Create.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml",
-      "TargetPath": "Areas\\Identity\\Pages\\_ValidationScriptsPartial.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Libro/Leer.cshtml",
-      "TargetPath": "Views\\Libro\\Leer.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Perfil/Index.cshtml",
-      "TargetPath": "Views\\Perfil\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Capitulo/Index.cshtml",
-      "TargetPath": "Views\\Capitulo\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Areas/Identity/Pages/Account/ResetPassword.cshtml",
-      "TargetPath": "Areas\\Identity\\Pages\\Account\\ResetPassword.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Administrador/Delete.cshtml",
-      "TargetPath": "Views\\Administrador\\Delete.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Novedad/Create.cshtml",
-      "TargetPath": "Views\\Novedad\\Create.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Genero/Details.cshtml",
-      "TargetPath": "Views\\Genero\\Details.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Novedad/Edit.cshtml",
-      "TargetPath": "Views\\Novedad\\Edit.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Perfil/IngresarPerfil.cshtml",
-      "TargetPath": "Views\\Perfil\\IngresarPerfil.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Capitulo/Details.cshtml",
-      "TargetPath": "Views\\Capitulo\\Details.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Shared/_ValidationScriptsPartial.cshtml",
+      "FilePath": "/home/felipe/Bookflix/Views/Shared/_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Autor/Details.cshtml",
-      "TargetPath": "Views\\Autor\\Details.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Areas/Identity/Pages/Account/ForgotPassword.cshtml",
-      "TargetPath": "Areas\\Identity\\Pages\\Account\\ForgotPassword.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Areas/Identity/Pages/Account/_ViewImports.cshtml",
-      "TargetPath": "Areas\\Identity\\Pages\\Account\\_ViewImports.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Editorial/Index.cshtml",
-      "TargetPath": "Views\\Editorial\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Areas/Identity/Pages/Account/ConfirmEmail.cshtml",
-      "TargetPath": "Areas\\Identity\\Pages\\Account\\ConfirmEmail.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Autor/Create.cshtml",
-      "TargetPath": "Views\\Autor\\Create.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Libro/Delete.cshtml",
-      "TargetPath": "Views\\Libro\\Delete.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Capitulo/Edit.cshtml",
-      "TargetPath": "Views\\Capitulo\\Edit.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Editorial/Edit.cshtml",
-      "TargetPath": "Views\\Editorial\\Edit.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Libro/Index.cshtml",
-      "TargetPath": "Views\\Libro\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Perfil/Create.cshtml",
-      "TargetPath": "Views\\Perfil\\Create.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Shared/_Layout.cshtml",
-      "TargetPath": "Views\\Shared\\_Layout.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Genero/Create.cshtml",
-      "TargetPath": "Views\\Genero\\Create.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/_ViewImports.cshtml",
-      "TargetPath": "Views\\_ViewImports.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Libro/Create.cshtml",
-      "TargetPath": "Views\\Libro\\Create.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Administrador/Details.cshtml",
-      "TargetPath": "Views\\Administrador\\Details.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Autor/Delete.cshtml",
-      "TargetPath": "Views\\Autor\\Delete.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Shared/_LoginPartial.cshtml",
-      "TargetPath": "Views\\Shared\\_LoginPartial.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Libro/EditConCapitulos.cshtml",
-      "TargetPath": "Views\\Libro\\EditConCapitulos.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Libro/IndexSuscriptor.cshtml",
-      "TargetPath": "Views\\Libro\\IndexSuscriptor.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Trailer/Create.cshtml",
-      "TargetPath": "Views\\Trailer\\Create.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Genero/Delete.cshtml",
-      "TargetPath": "Views\\Genero\\Delete.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Administrador/Edit.cshtml",
-      "TargetPath": "Views\\Administrador\\Edit.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Areas/Identity/Pages/Account/Manage/Index.cshtml",
-      "TargetPath": "Areas\\Identity\\Pages\\Account\\Manage\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Areas/Identity/Pages/Account/Register.cshtml",
-      "TargetPath": "Areas\\Identity\\Pages\\Account\\Register.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Home/Index.cshtml",
-      "TargetPath": "Views\\Home\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Trailer/Index.cshtml",
-      "TargetPath": "Views\\Trailer\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml",
-      "TargetPath": "Areas\\Identity\\Pages\\Account\\Manage\\_ManageNav.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Perfil/Delete.cshtml",
-      "TargetPath": "Views\\Perfil\\Delete.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Libro/Details.cshtml",
-      "TargetPath": "Views\\Libro\\Details.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Administrador/Index.cshtml",
-      "TargetPath": "Views\\Administrador\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Autor/Edit.cshtml",
-      "TargetPath": "Views\\Autor\\Edit.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Editorial/Create.cshtml",
-      "TargetPath": "Views\\Editorial\\Create.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Perfil/EnConstruccion.cshtml",
-      "TargetPath": "Views\\Perfil\\EnConstruccion.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Libro/VerHistorial.cshtml",
-      "TargetPath": "Views\\Libro\\VerHistorial.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Areas/Identity/Pages/Account/Login.cshtml",
-      "TargetPath": "Areas\\Identity\\Pages\\Account\\Login.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Areas/Identity/Pages/Account/Logout.cshtml",
-      "TargetPath": "Areas\\Identity\\Pages\\Account\\Logout.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Novedad/Details.cshtml",
+      "FilePath": "/home/felipe/Bookflix/Views/Novedad/Details.cshtml",
       "TargetPath": "Views\\Novedad\\Details.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Novedad/Index.cshtml",
-      "TargetPath": "Views\\Novedad\\Index.cshtml",
+      "FilePath": "/home/felipe/Bookflix/Areas/Identity/Pages/Account/ConfirmEmail.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\Account\\ConfirmEmail.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Shared/Error.cshtml",
-      "TargetPath": "Views\\Shared\\Error.cshtml",
+      "FilePath": "/home/felipe/Bookflix/Views/Perfil/EnConstruccion.cshtml",
+      "TargetPath": "Views\\Perfil\\EnConstruccion.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Administrador/Create.cshtml",
-      "TargetPath": "Views\\Administrador\\Create.cshtml",
+      "FilePath": "/home/felipe/Bookflix/Areas/Identity/Pages/Account/ForgotPassword.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\Account\\ForgotPassword.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Genero/Index.cshtml",
-      "TargetPath": "Views\\Genero\\Index.cshtml",
+      "FilePath": "/home/felipe/Bookflix/Views/Perfil/Delete.cshtml",
+      "TargetPath": "Views\\Perfil\\Delete.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Perfil/Details.cshtml",
-      "TargetPath": "Views\\Perfil\\Details.cshtml",
+      "FilePath": "/home/felipe/Bookflix/Views/Capitulo/Details.cshtml",
+      "TargetPath": "Views\\Capitulo\\Details.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Home/Privacy.cshtml",
-      "TargetPath": "Views\\Home\\Privacy.cshtml",
+      "FilePath": "/home/felipe/Bookflix/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\_ValidationScriptsPartial.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Novedad/Delete.cshtml",
-      "TargetPath": "Views\\Novedad\\Delete.cshtml",
+      "FilePath": "/home/felipe/Bookflix/Views/Capitulo/Leer.cshtml",
+      "TargetPath": "Views\\Capitulo\\Leer.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Areas/Identity/Pages/Account/Manage/_ViewImports.cshtml",
-      "TargetPath": "Areas\\Identity\\Pages\\Account\\Manage\\_ViewImports.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Editorial/Delete.cshtml",
-      "TargetPath": "Views\\Editorial\\Delete.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Genero/Edit.cshtml",
-      "TargetPath": "Views\\Genero\\Edit.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Autor/Index.cshtml",
-      "TargetPath": "Views\\Autor\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Perfil/Edit.cshtml",
-      "TargetPath": "Views\\Perfil\\Edit.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Trailer/Edit.cshtml",
+      "FilePath": "/home/felipe/Bookflix/Views/Trailer/Edit.cshtml",
       "TargetPath": "Views\\Trailer\\Edit.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Perfil/AdministrarPerfil.cshtml",
+      "FilePath": "/home/felipe/Bookflix/Views/Libro/Leer.cshtml",
+      "TargetPath": "Views\\Libro\\Leer.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/Libro/EditConCapitulos.cshtml",
+      "TargetPath": "Views\\Libro\\EditConCapitulos.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/Novedad/Index.cshtml",
+      "TargetPath": "Views\\Novedad\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/Genero/Index.cshtml",
+      "TargetPath": "Views\\Genero\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/Libro/Delete.cshtml",
+      "TargetPath": "Views\\Libro\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/Shared/_LoginPartial.cshtml",
+      "TargetPath": "Views\\Shared\\_LoginPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Areas/Identity/Pages/Account/Register.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\Account\\Register.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Areas/Identity/Pages/Account/Manage/_Layout.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\Account\\Manage\\_Layout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/Libro/IndexSuscriptor.cshtml",
+      "TargetPath": "Views\\Libro\\IndexSuscriptor.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/Autor/Index.cshtml",
+      "TargetPath": "Views\\Autor\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/Novedad/Delete.cshtml",
+      "TargetPath": "Views\\Novedad\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/Administrador/Details.cshtml",
+      "TargetPath": "Views\\Administrador\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Areas/Identity/Pages/Account/Login.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\Account\\Login.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Areas/Identity/Pages/_ViewImports.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/Administrador/Edit.cshtml",
+      "TargetPath": "Views\\Administrador\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Areas/Identity/Pages/Account/Manage/_ViewImports.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\Account\\Manage\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/Shared/_Layout.cshtml",
+      "TargetPath": "Views\\Shared\\_Layout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/Perfil/AdministrarPerfil.cshtml",
       "TargetPath": "Views\\Perfil\\AdministrarPerfil.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/juampi/Project - Bookflix/Bookflix/Views/Capitulo/Delete.cshtml",
+      "FilePath": "/home/felipe/Bookflix/Views/Libro/VerHistorial.cshtml",
+      "TargetPath": "Views\\Libro\\VerHistorial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/Libro/Create.cshtml",
+      "TargetPath": "Views\\Libro\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/Perfil/IngresarPerfil.cshtml",
+      "TargetPath": "Views\\Perfil\\IngresarPerfil.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/Capitulo/Create.cshtml",
+      "TargetPath": "Views\\Capitulo\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/Home/Privacy.cshtml",
+      "TargetPath": "Views\\Home\\Privacy.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/Administrador/Index.cshtml",
+      "TargetPath": "Views\\Administrador\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/Perfil/Edit.cshtml",
+      "TargetPath": "Views\\Perfil\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/Capitulo/Edit.cshtml",
+      "TargetPath": "Views\\Capitulo\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/Shared/Error.cshtml",
+      "TargetPath": "Views\\Shared\\Error.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/_ViewStart.cshtml",
+      "TargetPath": "Views\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/Perfil/Details.cshtml",
+      "TargetPath": "Views\\Perfil\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/Editorial/Edit.cshtml",
+      "TargetPath": "Views\\Editorial\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/Editorial/Delete.cshtml",
+      "TargetPath": "Views\\Editorial\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/Autor/Details.cshtml",
+      "TargetPath": "Views\\Autor\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/Capitulo/Delete.cshtml",
       "TargetPath": "Views\\Capitulo\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Areas/Identity/Pages/_ViewStart.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\Account\\Manage\\_ManageNav.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/Novedad/Create.cshtml",
+      "TargetPath": "Views\\Novedad\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Areas/Identity/Pages/Account/Logout.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\Account\\Logout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Areas/Identity/Pages/Account/Manage/CreditCard.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\Account\\Manage\\CreditCard.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/Genero/Delete.cshtml",
+      "TargetPath": "Views\\Genero\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/Libro/CreateConCapitulos.cshtml",
+      "TargetPath": "Views\\Libro\\CreateConCapitulos.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/Autor/Edit.cshtml",
+      "TargetPath": "Views\\Autor\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Areas/Identity/Pages/Account/Manage/ChangePassword.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\Account\\Manage\\ChangePassword.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/Libro/Details.cshtml",
+      "TargetPath": "Views\\Libro\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Areas/Identity/Pages/Account/_ViewImports.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\Account\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/Editorial/Create.cshtml",
+      "TargetPath": "Views\\Editorial\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Areas/Identity/Pages/Account/Manage/Index.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\Account\\Manage\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/Libro/Index.cshtml",
+      "TargetPath": "Views\\Libro\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Areas/Identity/Pages/Account/ForgotPasswordConfirmation.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\Account\\ForgotPasswordConfirmation.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Areas/Identity/Pages/Account/Manage/Email.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\Account\\Manage\\Email.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/Perfil/Index.cshtml",
+      "TargetPath": "Views\\Perfil\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/Trailer/Index.cshtml",
+      "TargetPath": "Views\\Trailer\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/Genero/Create.cshtml",
+      "TargetPath": "Views\\Genero\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/_ViewImports.cshtml",
+      "TargetPath": "Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/Trailer/Delete.cshtml",
+      "TargetPath": "Views\\Trailer\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/Administrador/Delete.cshtml",
+      "TargetPath": "Views\\Administrador\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/Home/Index.cshtml",
+      "TargetPath": "Views\\Home\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/Autor/Create.cshtml",
+      "TargetPath": "Views\\Autor\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/Genero/Edit.cshtml",
+      "TargetPath": "Views\\Genero\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/Genero/Details.cshtml",
+      "TargetPath": "Views\\Genero\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/Perfil/Create.cshtml",
+      "TargetPath": "Views\\Perfil\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Areas/Identity/Pages/Account/ResetPasswordConfirmation.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\Account\\ResetPasswordConfirmation.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/Trailer/Details.cshtml",
+      "TargetPath": "Views\\Trailer\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/Trailer/Create.cshtml",
+      "TargetPath": "Views\\Trailer\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/Libro/Edit.cshtml",
+      "TargetPath": "Views\\Libro\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/Autor/Delete.cshtml",
+      "TargetPath": "Views\\Autor\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/Administrador/Create.cshtml",
+      "TargetPath": "Views\\Administrador\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/Editorial/Index.cshtml",
+      "TargetPath": "Views\\Editorial\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Areas/Identity/Pages/Account/ResetPassword.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\Account\\ResetPassword.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/Novedad/Edit.cshtml",
+      "TargetPath": "Views\\Novedad\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/Editorial/Details.cshtml",
+      "TargetPath": "Views\\Editorial\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/Capitulo/Index.cshtml",
+      "TargetPath": "Views\\Capitulo\\Index.cshtml",
       "FileKind": "mvc"
     }
   ],

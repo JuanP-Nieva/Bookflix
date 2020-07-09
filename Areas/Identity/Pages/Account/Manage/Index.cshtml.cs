@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Bookflix.Models.Validaciones;
 using Bookflix.Models;
+using Bookflix.Data;
 
 namespace Bookflix.Areas.Identity.Pages.Account.Manage
 {
@@ -33,22 +35,22 @@ namespace Bookflix.Areas.Identity.Pages.Account.Manage
 
         public class InputModel
         {
-            [Required]
-            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 1)]
+            [Required(ErrorMessage = "Debe ingresar su nombre."), RegularExpression(@"^[A-Za-z]*\s?()[A-Za-z]*$", ErrorMessage = "El {0} no puede empezar con espacios ni contener números.")]
+            [StringLength(100, ErrorMessage = "El {0} debe tener al menos {2} caracteres y {1} como máximo.", MinimumLength = 1)]
             [Display(Name = "Nombre")]
             public string Nombre { get; set; }
 
-            [Required]
-            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 1)]
+            [Required(ErrorMessage = "Debe ingresar su apellido."), RegularExpression(@"^[A-Za-z]*\s?()[A-Za-z]*$", ErrorMessage = "El {0} no puede empezar con espacios ni contener números.")]
+            [StringLength(100, ErrorMessage = "El {0} debe tener al menos {2} caracteres y {1} como máximo.", MinimumLength = 1)]
             [Display(Name = "Apellido")]
             public string Apellido { get; set; }
 
-            [Required]
+            [Required(ErrorMessage = "Debe ingresar su DNI."), RegularExpression(@"^[0-9]{7,8}$", ErrorMessage = "El {0} debe contener entre 7 y 8 dígitos.")]
             [Display(Name = "DNI")]
             public int Dni { get; set; }
 
-            [Required]
-            [Display(Name = "Fecha de nacimiento")]
+            [Required(ErrorMessage = "Debe ingresar su fecha de nacimiento."), HastaFechaActual(ErrorMessage = "La fecha de nacimiento debe ser anterior al día de hoy.")]
+            [Display(Name = "Fecha de nacimiento"), DataType(DataType.Date)]
             public DateTime FechaDeNacimiento { get; set; }
         }
 
@@ -60,8 +62,8 @@ namespace Bookflix.Areas.Identity.Pages.Account.Manage
 
             Input = new InputModel
             {
-                Nombre = user.Nombre,
                 Apellido = user.Apellido,
+                Nombre = user.Nombre,
                 Dni = user.Dni,
                 FechaDeNacimiento = user.FechaDeNacimiento
             };
@@ -72,7 +74,7 @@ namespace Bookflix.Areas.Identity.Pages.Account.Manage
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"No se ha podido cargar al usuario con ID '{_userManager.GetUserId(User)}'.");
+                return NotFound($"No se pudo cargar al usuario con ID '{_userManager.GetUserId(User)}'.");
             }
 
             await LoadAsync(user);
@@ -84,7 +86,12 @@ namespace Bookflix.Areas.Identity.Pages.Account.Manage
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"No se ha podido encontrar al usuario con ID '{_userManager.GetUserId(User)}'.");
+                return NotFound($"No se pudo cargar al usuario con ID '{_userManager.GetUserId(User)}'.");
+            }
+
+            if (this.existeUsuario(Input.Dni, user.Email))
+            { 
+                ModelState.AddModelError("DNI", "Este DNI ya se encuentra en la base de datos");
             }
 
             if (!ModelState.IsValid)
@@ -93,15 +100,33 @@ namespace Bookflix.Areas.Identity.Pages.Account.Manage
                 return Page();
             }
 
-            user.Nombre = Input.Nombre;
-            user.Apellido = Input.Apellido;
-            user.Dni = Input.Dni;
-            user.FechaDeNacimiento = Input.FechaDeNacimiento;
-            await _userManager.UpdateAsync(user);
-
+            await this.actualizarUsuario(user);
             await _signInManager.RefreshSignInAsync(user);
-            StatusMessage = "Tu perfil ha sido actualizado";
             return RedirectToPage();
+        }
+
+        private async Task actualizarUsuario(BookflixUser user)
+        {
+            using (BookflixDbContext db = new BookflixDbContext())
+            {
+                if (user.Apellido != Input.Apellido || user.Nombre != Input.Nombre || user.Dni != Input.Dni || user.FechaDeNacimiento != Input.FechaDeNacimiento)
+                {
+                    user.Apellido = Input.Apellido;
+                    user.Nombre = Input.Nombre;
+                    user.Dni = Input.Dni;
+                    user.FechaDeNacimiento = Input.FechaDeNacimiento;
+                    db.Update(user);
+                    await db.SaveChangesAsync();
+                    StatusMessage = "Tu perfil ha sifo actualizado";
+                }
+            }
+        }
+        private bool existeUsuario(int dni, string email)
+        {
+            using (BookflixDbContext db = new BookflixDbContext())
+            {
+                return db.Users.Any(user => user.Email != email && user.Dni == dni);
+            }
         }
     }
 }
