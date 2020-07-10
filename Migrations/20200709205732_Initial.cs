@@ -43,7 +43,8 @@ namespace Bookflix.Migrations
                     Nombre = table.Column<string>(nullable: false),
                     Apellido = table.Column<string>(nullable: false),
                     Dni = table.Column<int>(nullable: false),
-                    FechaDeNacimiento = table.Column<DateTime>(nullable: false)
+                    FechaDeNacimiento = table.Column<DateTime>(nullable: false),
+                    Habilitado = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {

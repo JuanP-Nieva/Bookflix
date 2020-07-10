@@ -22,6 +22,9 @@ namespace Bookflix.Models
         [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         [PersonalData, Required, DataType(DataType.DateTime)]
         public DateTime FechaDeNacimiento { get; set; }
+        
+        [Required]
+        public bool Habilitado { get; set; }
 
         //Propiedades para las relaciones de la DB
         public List<Perfil> Perfiles { get; set; }

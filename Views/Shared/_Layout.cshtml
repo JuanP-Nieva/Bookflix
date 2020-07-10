@@ -35,7 +35,8 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <partial name="_LoginPartial" />
-                    @if(SignInManager.IsSignedIn(User)){
+                    @if(SignInManager.IsSignedIn(User))
+                    {
                         if(User.IsInRole("Administrador"))
                         {
                             <ul class="navbar-nav flex-grow-1">
@@ -45,8 +46,13 @@
                                 <li class="nav-item">
                                     <a class="nav-link text-light" asp-area="" asp-controller="Novedad" asp-action="Index" style="color: #F5F5F1;">Novedades</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-light" asp-area="" asp-controller="BookflixUser" asp-action="Index" style="color: #F5F5F1;">Usuarios</a>
+                                </li>
                             </ul>
-                        }else{
+                        }
+                        else
+                        {
                             <ul class="navbar-nav flex-grow-1">
                                 <li class="nav-item">
                                     <a class="nav-link text-light" asp-area="" asp-controller="Perfil" asp-action="Index" style="color: #F5F5F1;">Perfiles</a>

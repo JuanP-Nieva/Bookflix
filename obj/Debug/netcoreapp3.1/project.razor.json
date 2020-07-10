@@ -20556,6 +20556,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/felipe/Bookflix/Views/BookflixUser/Details.cshtml",
+      "TargetPath": "Views\\BookflixUser\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/felipe/Bookflix/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\_ValidationScriptsPartial.cshtml",
       "FileKind": "mvc"
@@ -20651,6 +20656,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/felipe/Bookflix/Views/BookflixUser/Index.cshtml",
+      "TargetPath": "Views\\BookflixUser\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/felipe/Bookflix/Views/Shared/_Layout.cshtml",
       "TargetPath": "Views\\Shared\\_Layout.cshtml",
       "FileKind": "mvc"
@@ -20668,6 +20678,11 @@
     {
       "FilePath": "/home/felipe/Bookflix/Views/Libro/Create.cshtml",
       "TargetPath": "Views\\Libro\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/BookflixUser/Edit.cshtml",
+      "TargetPath": "Views\\BookflixUser\\Edit.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -20841,8 +20856,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/felipe/Bookflix/Views/BookflixUser/Create.cshtml",
+      "TargetPath": "Views\\BookflixUser\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/felipe/Bookflix/Views/Administrador/Delete.cshtml",
       "TargetPath": "Views\\Administrador\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Views/BookflixUser/Delete.cshtml",
+      "TargetPath": "Views\\BookflixUser\\Delete.cshtml",
       "FileKind": "mvc"
     },
     {

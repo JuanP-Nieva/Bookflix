@@ -457,3 +457,8 @@
 /home/felipe/Bookflix/obj/Debug/netcoreapp3.1/Razor/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml.g.cs
 /home/felipe/Bookflix/obj/Debug/netcoreapp3.1/Razor/Areas/Identity/Pages/Account/Manage/_ViewImports.cshtml.g.cs
 /home/felipe/Bookflix/obj/Debug/netcoreapp3.1/Razor/Areas/Identity/Pages/Account/Manage/CreditCard.cshtml.g.cs
+/home/felipe/Bookflix/obj/Debug/netcoreapp3.1/Razor/Views/BookflixUser/Create.cshtml.g.cs
+/home/felipe/Bookflix/obj/Debug/netcoreapp3.1/Razor/Views/BookflixUser/Delete.cshtml.g.cs
+/home/felipe/Bookflix/obj/Debug/netcoreapp3.1/Razor/Views/BookflixUser/Details.cshtml.g.cs
+/home/felipe/Bookflix/obj/Debug/netcoreapp3.1/Razor/Views/BookflixUser/Edit.cshtml.g.cs
+/home/felipe/Bookflix/obj/Debug/netcoreapp3.1/Razor/Views/BookflixUser/Index.cshtml.g.cs

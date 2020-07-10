@@ -68,6 +68,9 @@ namespace Bookflix.Migrations
                     b.Property<DateTime>("FechaDeNacimiento")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("Habilitado")
+                        .HasColumnType("bit");
+
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 

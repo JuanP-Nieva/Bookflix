@@ -9,15 +9,16 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
+using Bookflix.Models;
 
 namespace Bookflix.Areas.Identity.Pages.Account
 {
     [AllowAnonymous]
     public class ResetPasswordModel : PageModel
     {
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<BookflixUser> _userManager;
 
-        public ResetPasswordModel(UserManager<IdentityUser> userManager)
+        public ResetPasswordModel(UserManager<BookflixUser> userManager)
         {
             _userManager = userManager;
         }
@@ -31,14 +32,15 @@ namespace Bookflix.Areas.Identity.Pages.Account
             [EmailAddress]
             public string Email { get; set; }
 
-            [Required]
-            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+            [Required(ErrorMessage = "Debe ingesar una contraseña.")]
+            [StringLength(100, ErrorMessage = "La {0} debe tener al menos {2} caracteres y {1} como máximo.", MinimumLength = 8)]
             [DataType(DataType.Password)]
+            [Display(Name = "Nueva contraseña")]            
             public string Password { get; set; }
 
             [DataType(DataType.Password)]
-            [Display(Name = "Confirm password")]
-            [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+            [Display(Name = "Confirme la nueva contraseña")]
+            [Compare("NewPassword", ErrorMessage = "Las contraseñas no son iguales.")]
             public string ConfirmPassword { get; set; }
 
             public string Code { get; set; }

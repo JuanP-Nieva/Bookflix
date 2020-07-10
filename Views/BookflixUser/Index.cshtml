@@ -1,0 +1,76 @@
+@model IEnumerable<Bookflix.Models.BookflixUser>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 style="color: #E50914;">USUARIOS</h1>
+
+<div>
+    <form asp-controller="BookflixUser" asp-action="Index" > 
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-secondary active">
+                <input type="radio" name="options" value="BuscarEmail" asp-action="BookflixUser" asp-action="Index" checked> Buscar Email
+            </label>
+            <label class="btn btn-secondary">
+                <input type="radio" name="options" value="BuscarNombre" asp-action="BookflixUser" asp-action="Index"> Buscar Nombre
+            </label>
+            <label class="btn btn-secondary">
+                <input type="radio" name="options" value="BuscarApellido" asp-action="BookflixUser" asp-action="Index"> Buscar Apellido
+            </label>
+            <label class="btn btn-secondary">
+                <input type="radio" name="options" value="BuscarDni" asp-action="BookflixUser" asp-action="Index"> Buscar Dni
+            </label>
+        </div>
+        <hr>
+        <input type="text" name="SearchString" placeholder="Buscar">
+        <input class="btn btn-primary btn-sm" type="submit" value="Buscar" />
+    </form>
+</div>
+<br>
+<table class="table">
+    <thead>
+        <tr>
+            <th style="color: white;">
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th style="color: white;">
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th style="color: white;">
+                @Html.DisplayNameFor(model => model.Apellido)
+            </th>
+            <th style="color: white;">
+                @Html.DisplayNameFor(model => model.Dni)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+    @if (item.Email != User.Identity.Name)
+    {
+        <tr>
+            <td style="color: white;">
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td style="color: white;">
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td style="color: white;">
+                @Html.DisplayFor(modelItem => item.Apellido)
+            </td>
+            <td style="color: white;">
+                @Html.DisplayFor(modelItem => item.Dni)
+            </td>
+            <td>
+                <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+            </td>
+            <td>
+                <a class="btn btn-secondary btn-sm" asp-route-id="@item.Id">Inhabilitar</a>
+            </td>
+        </tr>
+    }
+}
+    </tbody>
+</table>

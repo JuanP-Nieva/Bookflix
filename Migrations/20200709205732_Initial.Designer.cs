@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bookflix.Migrations
 {
     [DbContext(typeof(BookflixDbContext))]
-    [Migration("20200617232710_Initial")]
+    [Migration("20200709205732_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -69,6 +69,9 @@ namespace Bookflix.Migrations
 
                     b.Property<DateTime>("FechaDeNacimiento")
                         .HasColumnType("datetime2");
+
+                    b.Property<bool>("Habilitado")
+                        .HasColumnType("bit");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
