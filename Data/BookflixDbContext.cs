@@ -39,7 +39,7 @@ namespace Bookflix.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=localhost;Database=Bookflix-DB;User Id=SA; Password=manzana-2020;");
+            optionsBuilder.UseSqlServer("Server=DESKTOP-LV6QBJ1;Database=Bookflix;Trusted_Connection=True;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
