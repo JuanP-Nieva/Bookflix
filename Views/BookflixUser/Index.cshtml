@@ -66,9 +66,18 @@
             <td>
                 <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
             </td>
+
             <td>
-                <a class="btn btn-secondary btn-sm" asp-route-id="@item.Id">Inhabilitar</a>
+                @if (item.Habilitado)
+                {
+                    <a class="btn btn-secondary btn-sm" asp-action="ToggleHabilitar" asp-route-id="@item.Id">Habilitar</a>
+                }
+                else
+                {
+                    <a class="btn btn-secondary btn-sm" asp-action="ToggleHabilitar" asp-route-id="@item.Id">Inhabilitar</a>
+                }
             </td>
+
         </tr>
     }
 }

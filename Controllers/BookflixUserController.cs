@@ -165,6 +165,27 @@ namespace Bookflix.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        public async Task<IActionResult> ToggleHabilitar(string id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var bookflixUser = await _context.Users
+                .FirstOrDefaultAsync(user => user.Id == id);
+            if (bookflixUser == null)
+            {
+                return NotFound();
+            }
+
+            bookflixUser.Habilitado = !bookflixUser.Habilitado;
+            _context.Update(bookflixUser);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
+
         // private void borrarPerfiles(BookflixUser bookflixUser)
         // {
         //     foreach (Perfil perfil in bookflixUser.Perfiles)
