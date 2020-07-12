@@ -29,5 +29,13 @@ namespace Bookflix.Models
         //Propiedades para las relaciones de la DB
         public List<Perfil> Perfiles { get; set; }
         public List<Pago> Pagos { get; set; }
+
+        //Métodos
+
+        public async Task ChangeRole(UserManager<BookflixUser> userManager, string newRole, string previousRole)
+        {
+            await userManager.RemoveFromRoleAsync(this, previousRole);
+            await userManager.AddToRoleAsync(this, newRole);
+        }        
     }
 }

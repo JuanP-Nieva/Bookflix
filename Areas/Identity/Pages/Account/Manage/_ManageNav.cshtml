@@ -5,5 +5,8 @@
     <li style="color: #F5F5F1;" class="nav-item"><a class="nav-link @ManageNavPages.IndexNavClass(ViewContext)" id="profile" asp-page="./Index">Datos Personales</a></li>
     <li style="color: #F5F5F1;" class="nav-item"><a class="nav-link @ManageNavPages.EmailNavClass(ViewContext)" id="email" asp-page="./Email">Email</a></li>
     <li style="color: #F5F5F1;" class="nav-item"><a class="nav-link @ManageNavPages.ChangePasswordNavClass(ViewContext)" id="change-password" asp-page="./ChangePassword">Contraseña</a></li>
-    <li style="color: #F5F5F1;" class="nav-item"><a class="nav-link @ManageNavPages.CreditCardNavClass(ViewContext)" id="creditcard" asp-page="./CreditCard">Tarjeta</a></li>
+    @if(!User.IsInRole("Administrador"))
+    {
+        <li style="color: #F5F5F1;" class="nav-item"><a class="nav-link @ManageNavPages.CategoriaNavClass(ViewContext)" id="categoria" asp-page="./Categoria">Cambiar Plan</a></li>
+    }
 </ul>

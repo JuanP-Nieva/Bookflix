@@ -20691,6 +20691,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/felipe/Bookflix/Areas/Identity/Pages/Account/Manage/SubirCategoria.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\Account\\Manage\\SubirCategoria.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/felipe/Bookflix/Views/Capitulo/Create.cshtml",
       "TargetPath": "Views\\Capitulo\\Create.cshtml",
       "FileKind": "mvc"
@@ -20771,11 +20776,6 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/felipe/Bookflix/Areas/Identity/Pages/Account/Manage/CreditCard.cshtml",
-      "TargetPath": "Areas\\Identity\\Pages\\Account\\Manage\\CreditCard.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "/home/felipe/Bookflix/Views/Genero/Delete.cshtml",
       "TargetPath": "Views\\Genero\\Delete.cshtml",
       "FileKind": "mvc"
@@ -20821,6 +20821,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/felipe/Bookflix/Areas/Identity/Pages/Account/Manage/Categoria.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\Account\\Manage\\Categoria.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/felipe/Bookflix/Areas/Identity/Pages/Account/ForgotPasswordConfirmation.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\Account\\ForgotPasswordConfirmation.cshtml",
       "FileKind": "mvc"
@@ -20828,6 +20833,11 @@
     {
       "FilePath": "/home/felipe/Bookflix/Areas/Identity/Pages/Account/Manage/Email.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\Account\\Manage\\Email.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/felipe/Bookflix/Areas/Identity/Pages/Account/Manage/BajarCategoria.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\Account\\Manage\\BajarCategoria.cshtml",
       "FileKind": "mvc"
     },
     {

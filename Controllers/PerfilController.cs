@@ -104,11 +104,6 @@ namespace Bookflix.Controllers
             return View(perfil);
         }
 
-        public IActionResult EnConstruccion()
-        {
-            return View();
-        }
-
         // GET: Perfil/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -179,15 +174,6 @@ namespace Bookflix.Controllers
                 return NotFound();
             }
 
-            return View(perfil);
-        }
-
-        // POST: Perfil/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var perfil = await _context.Perfiles.FindAsync(id);
             _context.Perfiles.Remove(perfil);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));

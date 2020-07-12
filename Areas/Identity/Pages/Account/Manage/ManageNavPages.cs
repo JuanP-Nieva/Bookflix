@@ -13,14 +13,14 @@ namespace Bookflix.Areas.Identity.Pages.Account.Manage
         public static string Email => "Email";
 
         public static string ChangePassword => "ChangePassword";
-        public static string CreditCard => "CreditCard";
+        public static string Categoria => "Categoria";
 
         public static string IndexNavClass(ViewContext viewContext) => PageNavClass(viewContext, Index);
 
         public static string EmailNavClass(ViewContext viewContext) => PageNavClass(viewContext, Email);
 
         public static string ChangePasswordNavClass(ViewContext viewContext) => PageNavClass(viewContext, ChangePassword);
-        public static string CreditCardNavClass(ViewContext viewContext) => PageNavClass(viewContext, CreditCard);
+        public static string CategoriaNavClass(ViewContext viewContext) => PageNavClass(viewContext, Categoria);
 
         private static string PageNavClass(ViewContext viewContext, string page)
         {

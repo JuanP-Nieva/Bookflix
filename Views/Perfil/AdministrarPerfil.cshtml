@@ -20,9 +20,8 @@
                 <a style="color: #E50914;">@Html.DisplayFor(modelItem => item.Nombre)</a>
             </td>
             <td>
-                <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id">Editar Perfil</a> 
-                @*<a asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Borrar Perfil</a> *@
+                <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Borrar</a> 
             </td>
         </tr>
 }
@@ -35,4 +34,3 @@
     <a href="/Perfil/Create" class="btn btn-primary  disabled" tabindex="-1" role="button" aria-disabled="true">Crear Perfil</a>
 }
 <a href="/Perfil/Index" class="btn btn-primary" tabindex="-1" role="button">Volver</a>
-@* <a href="/Perfil/Edit" class="btn btn-primary" tabindex="-1" role="button">Editar Perfil</a> *@

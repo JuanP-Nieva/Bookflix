@@ -19,7 +19,7 @@ namespace Bookflix.ViewModel {
         [Required(ErrorMessage="El Titulo es un campo obligatorio")]
         public string Titulo { get; set; }
 
-        
+        [Required(ErrorMessage="El Contenido es un campo obligatorio")]
         public IFormFile Contenido { get; set; }
 
         [Required(ErrorMessage="La Descripcion es un campo obligatorio")]

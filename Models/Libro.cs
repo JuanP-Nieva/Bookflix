@@ -21,7 +21,6 @@ namespace Bookflix.Models {
         [Required(ErrorMessage="El Titulo es un campo obligatorio")]
         public string Titulo { get; set; }
 
-        // [Required(ErrorMessage="El Contenido es un campo obligatorio")] esto no va comentado, es para probar
         public string Contenido { get; set; }
 
 

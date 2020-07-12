@@ -35,34 +35,83 @@ namespace Bookflix.Controllers
              return RedirectToAction(nameof(Index));
          }
         // GET: Libro
-        public async Task<IActionResult> Index(string options, string searchString)
+        public IActionResult Index(string options, string searchString)
         {
             IQueryable<Libro> bookflixDbContext;
             
             if(!String.IsNullOrEmpty(searchString))
             {
-                if(options == "BuscarTitulo"){
-                    bookflixDbContext = _context.Libros.Where(l => l.Titulo.Contains(searchString)).Include(l => l.Autor).Include(l => l.Editorial).Include(l => l.Genero);
-                }else
-                    if(options == "BuscarAutor"){
+                switch (options)
+                {
+                    case "BuscarEditorial":
+                        bookflixDbContext = _context.Libros.Where(l => l.Editorial.Nombre.Contains(searchString)).Include(l => l.Autor).Include(l => l.Editorial).Include(l => l.Genero);
+                        break;
+                    case "BuscarAutor":
                         bookflixDbContext = _context.Libros.Where(l => l.Autor.Nombre.Contains(searchString) || l.Autor.Apellido.Contains(searchString)).Include(l => l.Autor).Include(l => l.Editorial).Include(l => l.Genero);
-                    }else
-                        if(options == "BuscarGenero"){
-                            bookflixDbContext = _context.Libros.Where(l => l.Genero.Nombre.Contains(searchString)).Include(l => l.Autor).Include(l => l.Editorial).Include(l => l.Genero);
-                        }else
-                            bookflixDbContext = _context.Libros.Where(l => l.Editorial.Nombre.Contains(searchString)).Include(l => l.Autor).Include(l => l.Editorial).Include(l => l.Genero);
-                
+                        break;
+                    case "BuscarGenero":
+                        bookflixDbContext = _context.Libros.Where(l => l.Genero.Nombre.Contains(searchString)).Include(l => l.Autor).Include(l => l.Editorial).Include(l => l.Genero);
+                        break;
+                    default:
+                        bookflixDbContext = _context.Libros.Where(l => l.Titulo.Contains(searchString)).Include(l => l.Autor).Include(l => l.Editorial).Include(l => l.Genero);
+                        break;
+                }
             }
-            else{
+            else
+            {
                 bookflixDbContext = _context.Libros.Include(l => l.Autor).Include(l => l.Editorial).Include(l => l.Genero);
             }
+
+            List<Libro> libros = bookflixDbContext.ToList();
+
+            switch (options)
+            {
+                case "BuscarEditorial":
+                    libros.Sort(delegate (Libro x, Libro y)
+                    {
+                        if (x.Editorial.Nombre == null && y.Editorial.Nombre == null) return 0;
+                        else if (x.Editorial.Nombre == null) return -1;
+                        else if (y.Editorial.Nombre == null) return 1;
+                        else return x.Editorial.Nombre.CompareTo(y.Editorial.Nombre);
+                    });
+                    break;
+                case "BuscarAutor":
+                    libros.Sort(delegate (Libro x, Libro y)
+                    {
+                        if (x.Autor.Nombre == null && y.Autor.Nombre == null) return 0;
+                        else if (x.Autor.Nombre == null) return -1;
+                        else if (y.Autor.Nombre == null) return 1;
+                        else return x.Autor.Nombre.CompareTo(y.Autor.Nombre);
+                    });
+                    break;
+                case "BuscarGenero":
+                    libros.Sort(delegate (Libro x, Libro y)
+                    {
+                        if (x.Genero.Nombre == null && y.Genero.Nombre == null) return 0;
+                        else if (x.Genero.Nombre == null) return -1;
+                        else if (y.Genero.Nombre == null) return 1;
+                        else return x.Genero.Nombre.CompareTo(y.Genero.Nombre);
+                    });
+                    break;
+                default:
+                    libros.Sort(delegate (Libro x, Libro y)
+                    {
+                        if (x.Titulo == null && y.Titulo == null) return 0;
+                        else if (x.Titulo == null) return -1;
+                        else if (y.Titulo == null) return 1;
+                        else return x.Titulo.CompareTo(y.Titulo);
+                    });
+                    break;
+            }
+
             if(User.IsInRole("Administrador"))
             {
-                return View("Index",await bookflixDbContext.ToListAsync());
-            }else{
-                return View("IndexSuscriptor",await bookflixDbContext.ToListAsync());
+                return View("Index", libros);
             }
-            
+            else
+            {
+                return View("IndexSuscriptor",libros);
+            }            
         }
 
 

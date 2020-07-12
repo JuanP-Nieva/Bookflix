@@ -190,21 +190,9 @@ namespace Bookflix.Controllers
         // {
         //     foreach (Perfil perfil in bookflixUser.Perfiles)
         //     {
-        //         //do something?
+        //         _context.Perfiles.Remove(perfil);
         //     }
-        // }
-
-
-
-        // POST: BookflixUser/Delete/5
-        // [HttpPost, ActionName("Delete")]
-        // [ValidateAntiForgeryToken]
-        // public async Task<IActionResult> DeleteConfirmed(string id)
-        // {
-        //     var bookflixUser = await _context.Users.FindAsync(id);
-        //     _context.Users.Remove(bookflixUser);
         //     await _context.SaveChangesAsync();
-        //     return RedirectToAction(nameof(Index));
         // }
 
         private bool BookflixUserExists(string id)
