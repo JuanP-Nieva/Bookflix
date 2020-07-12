@@ -45,7 +45,7 @@ namespace Bookflix.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Perfil_Comenta_Libro> ().HasKey (pl => new { pl.PerfilId, pl.LibroId });
+            modelBuilder.Entity<Perfil_Comenta_Libro> ().HasKey (pl => new { pl.LibroId , pl.NumeroComentario});
             modelBuilder.Entity<Perfil_Favea_Libro> ().HasKey (pl => new { pl.PerfilId, pl.LibroId });
             modelBuilder.Entity<Perfil_Lee_Libro> ().HasKey (pl => new { pl.PerfilId, pl.LibroId });
             modelBuilder.Entity<Perfil_Puntua_Libro> ().HasKey (pl => new { pl.PerfilId, pl.LibroId });

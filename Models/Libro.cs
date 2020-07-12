@@ -43,6 +43,7 @@ namespace Bookflix.Models {
 
         #nullable disable
         public bool EstadoCompleto { get; set; }
+        public int? CantidadComentarios { get; set; }
 
         //Propiedades para las relaciones de la DB
         public List<Perfil_Comenta_Libro> Perfil_Comenta_Libros { get; set; }

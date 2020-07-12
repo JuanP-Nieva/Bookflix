@@ -6,6 +6,8 @@ namespace Bookflix.Models
 {
     public class Perfil_Comenta_Libro {
         [Required]
+        public int NumeroComentario { get; set; }
+        [Required]
         public string Comentario { get; set; }
 
         //Propiedades para las relaciones de la DB

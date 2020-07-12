@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Bookflix.Migrations
 {
-    public partial class Initial : Migration
+    public partial class IMigra : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -341,13 +341,15 @@ namespace Bookflix.Migrations
                 name: "Perfil_Comenta_Libros",
                 columns: table => new
                 {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Comentario = table.Column<string>(nullable: false),
                     LibroId = table.Column<int>(nullable: false),
-                    PerfilId = table.Column<int>(nullable: false),
-                    Comentario = table.Column<string>(nullable: false)
+                    PerfilId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Perfil_Comenta_Libros", x => new { x.PerfilId, x.LibroId });
+                    table.PrimaryKey("PK_Perfil_Comenta_Libros", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Perfil_Comenta_Libros_Libros_LibroId",
                         column: x => x.LibroId,
@@ -391,7 +393,8 @@ namespace Bookflix.Migrations
                 columns: table => new
                 {
                     LibroId = table.Column<int>(nullable: false),
-                    PerfilId = table.Column<int>(nullable: false)
+                    PerfilId = table.Column<int>(nullable: false),
+                    Finalizado = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -453,7 +456,7 @@ namespace Bookflix.Migrations
                         column: x => x.LibroId,
                         principalTable: "Libros",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -529,6 +532,11 @@ namespace Bookflix.Migrations
                 name: "IX_Perfil_Comenta_Libros_LibroId",
                 table: "Perfil_Comenta_Libros",
                 column: "LibroId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Perfil_Comenta_Libros_PerfilId",
+                table: "Perfil_Comenta_Libros",
+                column: "PerfilId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Perfil_Favea_Libros_LibroId",

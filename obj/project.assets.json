@@ -8633,24 +8633,26 @@
     ]
   },
   "packageFolders": {
-    "/home/felipe/.nuget/packages/": {}
+    "C:\\Users\\Josef\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/felipe/Bookflix/Bookflix.csproj",
+      "projectUniqueName": "C:\\Users\\Josef\\Documents\\GitHub\\Bookflix\\Bookflix.csproj",
       "projectName": "Bookflix",
-      "projectPath": "/home/felipe/Bookflix/Bookflix.csproj",
-      "packagesPath": "/home/felipe/.nuget/packages/",
-      "outputPath": "/home/felipe/Bookflix/obj/",
+      "projectPath": "C:\\Users\\Josef\\Documents\\GitHub\\Bookflix\\Bookflix.csproj",
+      "packagesPath": "C:\\Users\\Josef\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Josef\\Documents\\GitHub\\Bookflix\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/felipe/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\Josef\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -8718,7 +8720,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.103/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

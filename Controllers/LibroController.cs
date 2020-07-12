@@ -21,52 +21,83 @@ namespace Bookflix.Controllers
     {
         private static int PerfilActual;
         private readonly BookflixDbContext _context;
-        
+
         private readonly IWebHostEnvironment WebHostEnvironment;
         public LibroController(BookflixDbContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
             WebHostEnvironment = webHostEnvironment;
         }
-        
-         public IActionResult IndexInicial(int id) //Guardo el ID del perfil para saber cual es el perfil actual
-         {
-             PerfilActual = id;
-             return RedirectToAction(nameof(Index));
-         }
+
+        public IActionResult IndexInicial(int id) //Guardo el ID del perfil para saber cual es el perfil actual
+        {
+            PerfilActual = id;
+            return RedirectToAction(nameof(Index));
+        }
         // GET: Libro
         public async Task<IActionResult> Index(string options, string searchString)
         {
             IQueryable<Libro> bookflixDbContext;
-            
-            if(!String.IsNullOrEmpty(searchString))
+
+            if (!String.IsNullOrEmpty(searchString))
             {
-                if(options == "BuscarTitulo"){
+                if (options == "BuscarTitulo")
+                {
                     bookflixDbContext = _context.Libros.Where(l => l.Titulo.Contains(searchString)).Include(l => l.Autor).Include(l => l.Editorial).Include(l => l.Genero);
-                }else
-                    if(options == "BuscarAutor"){
-                        bookflixDbContext = _context.Libros.Where(l => l.Autor.Nombre.Contains(searchString) || l.Autor.Apellido.Contains(searchString)).Include(l => l.Autor).Include(l => l.Editorial).Include(l => l.Genero);
-                    }else
-                        if(options == "BuscarGenero"){
-                            bookflixDbContext = _context.Libros.Where(l => l.Genero.Nombre.Contains(searchString)).Include(l => l.Autor).Include(l => l.Editorial).Include(l => l.Genero);
-                        }else
-                            bookflixDbContext = _context.Libros.Where(l => l.Editorial.Nombre.Contains(searchString)).Include(l => l.Autor).Include(l => l.Editorial).Include(l => l.Genero);
-                
+                }
+                else
+                    if (options == "BuscarAutor")
+                {
+                    bookflixDbContext = _context.Libros.Where(l => l.Autor.Nombre.Contains(searchString) || l.Autor.Apellido.Contains(searchString)).Include(l => l.Autor).Include(l => l.Editorial).Include(l => l.Genero);
+                }
+                else
+                        if (options == "BuscarGenero")
+                {
+                    bookflixDbContext = _context.Libros.Where(l => l.Genero.Nombre.Contains(searchString)).Include(l => l.Autor).Include(l => l.Editorial).Include(l => l.Genero);
+                }
+                else
+                    bookflixDbContext = _context.Libros.Where(l => l.Editorial.Nombre.Contains(searchString)).Include(l => l.Autor).Include(l => l.Editorial).Include(l => l.Genero);
+
             }
-            else{
+            else
+            {
                 bookflixDbContext = _context.Libros.Include(l => l.Autor).Include(l => l.Editorial).Include(l => l.Genero);
             }
-            if(User.IsInRole("Administrador"))
+            if (User.IsInRole("Administrador"))
             {
-                return View("Index",await bookflixDbContext.ToListAsync());
-            }else{
-                return View("IndexSuscriptor",await bookflixDbContext.ToListAsync());
+                return View("Index", await bookflixDbContext.ToListAsync());
             }
-            
+            else
+            {
+                return View("IndexSuscriptor", await bookflixDbContext.ToListAsync());
+            }
+
+        }
+        [HttpPost]
+        public async Task<IActionResult> Details(string comentario, int idLibro)
+        {
+            var libro = await _context.Libros
+                             .Where(l => l.Id == idLibro)
+                             .FirstOrDefaultAsync();
+
+            libro.CantidadComentarios++;
+            Perfil_Comenta_Libro coment = new Perfil_Comenta_Libro
+            {
+                NumeroComentario = (int)libro.CantidadComentarios,
+                LibroId = idLibro,
+                PerfilId = PerfilActual,
+                Comentario = comentario,
+            };
+
+            _context.Libros.Update(libro);
+            _context.Perfil_Comenta_Libros.Add(coment);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Details", idLibro); //Aca lo mandas a donde quieras
         }
 
-
         // GET: Libro/Details/5
+        [HttpGet]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -90,6 +121,19 @@ namespace Bookflix.Controllers
                         .OrderBy(c => c.NumeroCapitulo)
                         .ToList();
             }
+
+            libro.Perfil_Comenta_Libros = _context.Perfil_Comenta_Libros
+                                        .Where(c => c.LibroId == libro.Id)
+                                        .ToList();
+
+            libro.Perfil_Lee_Libros = _context.Perfil_Lee_Libros
+                                    .Where(l => l.LibroId == libro.Id && l.Finalizado)
+                                    .ToList();
+
+
+            ViewBag.PuedeVer = libro.Perfil_Lee_Libros.Exists(c =>
+                        c.PerfilId == PerfilActual);
+
             return View(libro);
         }
 
@@ -113,16 +157,16 @@ namespace Bookflix.Controllers
             if (libro.Contenido == null)
             {
                 libro.Capitulos = _context.Capitulos
-                        .Where(c => c.LibroId == libro.Id)
-                        .OrderBy(c => c.NumeroCapitulo)
-                        .ToList();
+                       .Where(c => c.LibroId == libro.Id)
+                       .OrderBy(c => c.NumeroCapitulo)
+                       .ToList();
             }
 
             this.AgregarLecturaDePerfil((int)id);
-            
-            if(libro.Contenido == null)
+
+            if (libro.Contenido == null)
             {
-                return RedirectToAction("Details","Capitulo",libro);
+                return RedirectToAction("Details", "Capitulo", libro);
             }
             return View(libro);
         }
@@ -135,15 +179,22 @@ namespace Bookflix.Controllers
                 PerfilId = PerfilActual,
                 LibroId = id,
             };
-            using(var db = new BookflixDbContext())
+            using (var db = new BookflixDbContext())
             {
-                if(!db.Perfil_Lee_Libros.Any(pll => pll.LibroId == id && pll.PerfilId == PerfilActual)){
+                if (!db.Perfil_Lee_Libros.Any(pll => pll.LibroId == id && pll.PerfilId == PerfilActual))
+                {
                     db.Perfil_Lee_Libros.Add(perfilLeeLibro);
                     db.SaveChanges();
                 }
             }
-            // _context.Perfil_Lee_Libros.Add(perfilLeeLibro);
-            // _context.SaveChanges();
+
+        }
+
+        public IActionResult Deletecomentario(int idLibro, int numeroComentario){
+            
+            
+            
+            return NotFound();
         }
 
         public IActionResult VerHistorial()
@@ -154,7 +205,7 @@ namespace Bookflix.Controllers
                 .Where(per => per.Id == PerfilActual)
                 .Single();
 
-            
+
             return View(perfil);
         }
 
@@ -168,7 +219,7 @@ namespace Bookflix.Controllers
             return View();
         }
 
-         [Authorize(Roles = "Administrador")]
+        [Authorize(Roles = "Administrador")]
         // GET: Libro/CreateConCapitulos
         public IActionResult CreateConCapitulos()
         {
@@ -197,11 +248,12 @@ namespace Bookflix.Controllers
                     AutorId = l.AutorId,
                     EditorialId = l.EditorialId,
                     GeneroId = l.GeneroId,
-                    EstadoCompleto = false
+                    EstadoCompleto = false,
+                    CantidadComentarios = 0
                 };
                 _context.Add(libro);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Create", "Capitulo", new { id =libro.Id });
+                return RedirectToAction("Create", "Capitulo", new { id = libro.Id });
                 // return RedirectToAction(nameof(Index));
             }
             ViewData["AutorId"] = new SelectList(_context.Autores, "Id", "Nombre", l.AutorId);
@@ -233,7 +285,8 @@ namespace Bookflix.Controllers
                     AutorId = l.AutorId,
                     EditorialId = l.EditorialId,
                     GeneroId = l.GeneroId,
-                    EstadoCompleto = true
+                    EstadoCompleto = true,
+                    CantidadComentarios = 0
                 };
                 _context.Add(libro);
                 await _context.SaveChangesAsync();
@@ -315,7 +368,7 @@ namespace Bookflix.Controllers
             if (isbnEditable(l.ISBN, l.Id) && (l.Portada == null || l.Contenido == null))
             {
                 var libro = _context.Libros.FirstOrDefault(v => v.Id == id);
-                
+
                 libro.ISBN = l.ISBN;
                 libro.Id = l.Id;
                 libro.Portada = checkearPorNull(l.Portada, libro.Portada, "Images");
@@ -332,7 +385,7 @@ namespace Bookflix.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            
+
 
 
             if (ModelState.IsValid && isbnEditable(l.ISBN, l.Id))
@@ -372,7 +425,7 @@ namespace Bookflix.Controllers
             return View(l);
         }
 
-        
+
         [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> EditConCapitulos(int? id)
         {
@@ -382,7 +435,7 @@ namespace Bookflix.Controllers
             }
 
             var libro = await _context.Libros.FindAsync(id);
-            
+
             if (libro == null)
             {
                 return NotFound();
@@ -403,7 +456,7 @@ namespace Bookflix.Controllers
                                 .Where(c => c.LibroId == libro.Id)
                                 .OrderBy(c => c.NumeroCapitulo)
                                 .ToList()
-                
+
             };
             ViewData["AutorId"] = new SelectList(_context.Autores, "Id", "Apellido", libro.AutorId);
             ViewData["EditorialId"] = new SelectList(_context.Editoriales, "Id", "Nombre", libro.EditorialId);
@@ -411,7 +464,7 @@ namespace Bookflix.Controllers
             return View(lvm);
         }
 
-         [HttpPost]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> EditConCapitulos(int id, [Bind("Id,ISBN,Portada,Contenido,Titulo,Descripcion,AutorId,GeneroId,EditorialId")] EdicionLibroViewModel l)
@@ -423,7 +476,7 @@ namespace Bookflix.Controllers
 
             var libro = _context.Libros.FirstOrDefault(v => v.Id == id);
 
-            if(this.existeLibro(l.ISBN, l.Id))
+            if (this.existeLibro(l.ISBN, l.Id))
             {
                 ModelState.AddModelError("ISBN", "Este ISBN ya se encuentra en uso para otro libro");
             }
@@ -472,14 +525,16 @@ namespace Bookflix.Controllers
         {
             return _context.Libros.Any(i => i.Id != id && i.ISBN == isbn);
         }
- 
+
 
         private string checkearPorNull(IFormFile imagen, string imagen2, string path)
         {
-            if(imagen == null)
+            if (imagen == null)
             {
                 return imagen2;
-            }else{
+            }
+            else
+            {
                 return this.UploadFile(imagen, path);
             }
         }
@@ -542,71 +597,71 @@ namespace Bookflix.Controllers
 
 //Este es el EDITAR CON CAPITULO anterior (no permite editar el ISBN)
 
-       // [HttpPost]
-        // [ValidateAntiForgeryToken]
-        // [Authorize(Roles = "Administrador")]
-        // public async Task<IActionResult> EditConCapitulos(int id, [Bind("Id,ISBN,Portada,Titulo,Descripcion,AutorId,GeneroId,EditorialId")] EdicionLibroViewModel l)
-        // {
-        //     if (id != l.Id)
-        //     {
-        //         return NotFound();
-        //     }
+// [HttpPost]
+// [ValidateAntiForgeryToken]
+// [Authorize(Roles = "Administrador")]
+// public async Task<IActionResult> EditConCapitulos(int id, [Bind("Id,ISBN,Portada,Titulo,Descripcion,AutorId,GeneroId,EditorialId")] EdicionLibroViewModel l)
+// {
+//     if (id != l.Id)
+//     {
+//         return NotFound();
+//     }
 
-        //     if (isbnEditable(l.ISBN, l.Id) && (l.Portada == null))
-        //     {
-        //         var libro = _context.Libros.FirstOrDefault(v => v.Id == id);
-                
-        //         libro.ISBN = l.ISBN;
-        //         libro.Id = l.Id;
-        //         libro.Portada = checkearPorNull(l.Portada, libro.Portada, "Images");
-        //         libro.Titulo = l.Titulo;
-        //         libro.Contenido = null;
-        //         libro.Descripcion = l.Descripcion;
-        //         libro.AutorId = l.AutorId;
-        //         libro.EditorialId = l.EditorialId;
-        //         libro.GeneroId = l.GeneroId;
-                
+//     if (isbnEditable(l.ISBN, l.Id) && (l.Portada == null))
+//     {
+//         var libro = _context.Libros.FirstOrDefault(v => v.Id == id);
 
-        //         await _context.SaveChangesAsync();
-
-        //         return RedirectToAction(nameof(Index));
-        //     }
-
-            
+//         libro.ISBN = l.ISBN;
+//         libro.Id = l.Id;
+//         libro.Portada = checkearPorNull(l.Portada, libro.Portada, "Images");
+//         libro.Titulo = l.Titulo;
+//         libro.Contenido = null;
+//         libro.Descripcion = l.Descripcion;
+//         libro.AutorId = l.AutorId;
+//         libro.EditorialId = l.EditorialId;
+//         libro.GeneroId = l.GeneroId;
 
 
-        //     if (ModelState.IsValid && isbnEditable(l.ISBN, l.Id))
-        //     {
-        //         try
-        //         {
-        //             string stringFileNamePortada = this.UploadFile(l.Portada, "Images");
-        //             var libro = new Libro
-        //             {
-        //                 Id = l.Id,
-        //                 ISBN = l.ISBN,
-        //                 Portada = stringFileNamePortada,
-        //                 Titulo = l.Titulo,
-        //                 Contenido = null,
-        //                 Descripcion = l.Descripcion
-        //             };
-        //             _context.Update(libro);
-        //             await _context.SaveChangesAsync();
-        //         }
-        //         catch (DbUpdateConcurrencyException)
-        //         {
-        //             if (!LibroExists(l.Id))
-        //             {
-        //                 return NotFound();
-        //             }
-        //             else
-        //             {
-        //                 throw;
-        //             }
-        //         }
-        //         return RedirectToAction(nameof(Index));
-        //     }
-        //     ViewData["AutorId"] = new SelectList(_context.Autores, "Id", "Apellido", l.AutorId);
-        //     ViewData["EditorialId"] = new SelectList(_context.Editoriales, "Id", "Nombre", l.EditorialId);
-        //     ViewData["GeneroId"] = new SelectList(_context.Generos, "Id", "Nombre", l.GeneroId);
-        //     return View(l);
-        // }
+//         await _context.SaveChangesAsync();
+
+//         return RedirectToAction(nameof(Index));
+//     }
+
+
+
+
+//     if (ModelState.IsValid && isbnEditable(l.ISBN, l.Id))
+//     {
+//         try
+//         {
+//             string stringFileNamePortada = this.UploadFile(l.Portada, "Images");
+//             var libro = new Libro
+//             {
+//                 Id = l.Id,
+//                 ISBN = l.ISBN,
+//                 Portada = stringFileNamePortada,
+//                 Titulo = l.Titulo,
+//                 Contenido = null,
+//                 Descripcion = l.Descripcion
+//             };
+//             _context.Update(libro);
+//             await _context.SaveChangesAsync();
+//         }
+//         catch (DbUpdateConcurrencyException)
+//         {
+//             if (!LibroExists(l.Id))
+//             {
+//                 return NotFound();
+//             }
+//             else
+//             {
+//                 throw;
+//             }
+//         }
+//         return RedirectToAction(nameof(Index));
+//     }
+//     ViewData["AutorId"] = new SelectList(_context.Autores, "Id", "Apellido", l.AutorId);
+//     ViewData["EditorialId"] = new SelectList(_context.Editoriales, "Id", "Nombre", l.EditorialId);
+//     ViewData["GeneroId"] = new SelectList(_context.Generos, "Id", "Nombre", l.GeneroId);
+//     return View(l);
+// }

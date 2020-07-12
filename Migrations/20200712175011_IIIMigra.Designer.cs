@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bookflix.Migrations
 {
     [DbContext(typeof(BookflixDbContext))]
-    [Migration("20200617232710_Initial")]
-    partial class Initial
+    [Migration("20200712175011_IIIMigra")]
+    partial class IIIMigra
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -197,6 +197,9 @@ namespace Bookflix.Migrations
                     b.Property<int>("AutorId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("CantidadComentarios")
+                        .HasColumnType("int");
+
                     b.Property<string>("Contenido")
                         .HasColumnType("nvarchar(max)");
 
@@ -309,19 +312,22 @@ namespace Bookflix.Migrations
 
             modelBuilder.Entity("Bookflix.Models.Perfil_Comenta_Libro", b =>
                 {
-                    b.Property<int>("PerfilId")
+                    b.Property<int>("LibroId")
                         .HasColumnType("int");
 
-                    b.Property<int>("LibroId")
+                    b.Property<int>("NumeroComentario")
                         .HasColumnType("int");
 
                     b.Property<string>("Comentario")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("PerfilId", "LibroId");
+                    b.Property<int>("PerfilId")
+                        .HasColumnType("int");
 
-                    b.HasIndex("LibroId");
+                    b.HasKey("LibroId", "NumeroComentario");
+
+                    b.HasIndex("PerfilId");
 
                     b.ToTable("Perfil_Comenta_Libros");
                 });
@@ -348,6 +354,9 @@ namespace Bookflix.Migrations
 
                     b.Property<int>("LibroId")
                         .HasColumnType("int");
+
+                    b.Property<bool>("Finalizado")
+                        .HasColumnType("bit");
 
                     b.HasKey("PerfilId", "LibroId");
 

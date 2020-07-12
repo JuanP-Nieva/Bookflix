@@ -38,18 +38,12 @@
 <table class="table">
     <thead>
         <tr>
-            @* <th>
-                <a style="color: white;">@Html.DisplayNameFor(model => model.ISBN) </a>
-            </th> *@
             <th>
                 <a style="color: white;">@Html.DisplayNameFor(model => model.Portada) </a>
             </th>
             <th>
                 <a style="color: white;">@Html.DisplayNameFor(model => model.Titulo) </a>
             </th>
-            @* <th>
-                <a style="color: white;">@Html.DisplayNameFor(model => model.Contenido) </a>
-            </th> *@
             <th>
                 <a style="color: white;">@Html.DisplayNameFor(model => model.Descripcion)</a>
             </th>
@@ -71,19 +65,12 @@
 
 @foreach (var item in Model) {
         <tr>
-            @* <td>
-                <a style="color: white;">@Html.DisplayFor(modelItem => item.ISBN) </a>
-            </td> *@
             <td>
-                @* @Html.DisplayFor(modelItem => item.Portada) *@
                 <img src="~/Images/@item.Portada" class="rounded-circle" width="40" height="40" asp-append-version="true">
             </td>
             <td>
                 <a style="color: white;">@Html.DisplayFor(modelItem => item.Titulo)</a>
             </td>
-            @* <td>
-                <a style="color: white;">@Html.DisplayFor(modelItem => item.Contenido)</a>
-            </td> *@
             <td>
                 <a style="color: white;">@Html.DisplayFor(modelItem => item.Descripcion)</a>
             </td>

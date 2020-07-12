@@ -2,10 +2,6 @@
 
 @{
     ViewData["Title"] = "Leyendo";
-    ViewBag.ISBN = Model.ISBN;
-}
-@{
-    ViewData["Title"] = "Detalles";
 }
 
 <h1 style="color: red;">Detalles</h1>
@@ -73,21 +69,64 @@
     <a class="btn btn-danger" role="button" asp-controller="Libro" asp-action="Index">Cerrar Libro</a>
 </div>
 
+@if(true)
+{
+ <table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a style="color: white;">Comentario</a>
+            </th>
+            <th>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+
+@foreach (var item in Model.Perfil_Comenta_Libros) {
+        <tr>
+            <td>
+                <a style="color: white;">@Html.DisplayFor(modelItem => item.Comentario)</a>
+            </td>
+            <td>
+                <form asp-controller="Libro" asp-action="Deletecomentario" method="post">
+                    <input type="hidden" name="idLibro" id="idLibro" value="@item.LibroId"/>
+                    <input type="hidden" name="numeroComentario" id="numeroComentario" value="@item.NumeroComentario"/>
+                    <button type="submit" class="btn btn-primary mb-2">Borrar</button>
+                </form>
+            </td>
+        </tr>
+        
+}
+    </tbody>
+</table>
+
 @* MOSTRAR COMENTARIOS *@
-<div class="container pb-cmnt-container">
+    <div class="container pb-cmnt-container">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-info">
                 <div class="panel-body">
-                    <textarea placeholder="¡ Escribe tu comentario acá !" class="pb-cmnt-textarea"></textarea>
-                    <form class="form-inline">
-                        <button class="btn btn-primary pull-right" type="button">Comentar</button>
-                    </form>
-                </div>
-            </div>
-        </div>
+                    <form asp-controller="Libro" asp-action="Details" method="post">
+                      <div class="form-group">
+                      <input type="hidden" name="idLibro" id="idLibro" value="@Model.Id"/>
+                      <textarea type="text" class="form-control" name="comentario" id="comentario" rows="3" placeholder="Escriba un comentario..."></textarea>
+                      </div>
+                      <button type="submit" class="btn btn-primary mb-2">Comentar</button>
+                       </form>
+                   </div>
+             </div>
+           </div>
+       </div>
     </div>
-</div>
+}
+
+
+
+
+
+
+
 
 <style>
     .pb-cmnt-container {
@@ -103,3 +142,5 @@
         border: 1px solid #F2F2F2;
     }
 </style>
+
+

@@ -14,6 +14,8 @@ namespace Bookflix.Models
         public int PerfilId { get; set; }
         public Perfil Perfil { get; set; }
 
+        public bool Finalizado { get; set; }
+
         
     }
 }
