@@ -1,0 +1,45 @@
+@model IEnumerable<Bookflix.Models.Perfil>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<table class="table">
+    <thead>    
+        <h1 style="color: #E50914;">Perfiles</h1>
+    </thead>
+    <tbody>
+        @if (User.IsInRole("Normal") && (Model.Count() > 2))
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <p style="color: white;">@Html.DisplayFor(modelItem => item.Nombre)</p>
+                    </td>
+                </tr>
+            }
+            @if (Model.Count() == 3)
+            {
+                <h6 style="color: #E50914;">Elimine un perfil para continuar</h6>
+            }
+            else
+            {
+                <h6 style="color: #E50914;">Elimine dos perfiles para continuar</h6>
+            }
+        }
+        else
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <a asp-action="IndexInicial" asp-controller="Libro" asp-route-id="@item.Id" style="color: white;">@Html.DisplayFor(modelItem => item.Nombre)</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<a class="btn btn-outline-danger" asp-action="AdministrarPerfil" role="button">Administrar Perfiles</a>

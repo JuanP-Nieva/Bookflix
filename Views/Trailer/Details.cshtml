@@ -1,0 +1,30 @@
+@model Bookflix.Models.Trailer
+
+@{
+    ViewData["Title"] = "Details";
+    string path = Model.Imagen;
+}
+
+<h1 style="color: aliceblue;">@Html.DisplayFor(model => model.Libro.Titulo)</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2" style="color: #E50914;">
+            @Html.DisplayNameFor(model => model.Imagen)
+        </dt>
+        <dd class = "col-sm-10">
+            <img src="~/Images/@path" width="360" height="480" asp-append-version="true"/>
+        </dd>
+        <dt class = "col-sm-2" style="color: #E50914">
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+        <dd class = "col-sm-10" style="color: #F5F5F1;">
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+    </dl>
+</div>
+<div>
+    @* <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> | *@
+    <a class="btn btn-secondary" asp-controller="Libro" asp-action="Details" asp-route-id="@Model.LibroId">Regresar al libro</a>
+</div>
