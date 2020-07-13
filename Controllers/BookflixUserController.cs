@@ -22,34 +22,72 @@ namespace Bookflix.Controllers
         }
 
         // GET: BookflixUser
-        public async Task<IActionResult> Index(string options, string searchString)
+        public IActionResult Index(string options, string searchString)
         {
             IQueryable<BookflixUser> bookflixDbContext;
             
-            if(String.IsNullOrEmpty(searchString))
+            if(!String.IsNullOrEmpty(searchString))
             {
-                bookflixDbContext = _context.Users.AsQueryable();
+                switch (options)
+                {
+                    case "BuscarDni":
+                        bookflixDbContext = _context.Users.Where(user => user.Dni.ToString().Contains(searchString));
+                        break;
+                    case "BuscarApellido":
+                        bookflixDbContext = _context.Users.Where(user => user.Apellido.Contains(searchString));
+                        break;
+                    case "BuscarNombre":
+                        bookflixDbContext = _context.Users.Where(user => user.Nombre.Contains(searchString));
+                        break;
+                    default:
+                        bookflixDbContext = _context.Users.Where(user => user.Email.Contains(searchString));
+                        break;
+                }
             }
             else
             {
-                if(options == "BuscarEmail")
-                {
-                    bookflixDbContext = _context.Users.Where(user => user.Email.Contains(searchString));
-                }
-                else
-                    if(options == "BuscarNombre")
-                    {
-                        bookflixDbContext = _context.Users.Where(user => user.Nombre.Contains(searchString));
-                    }
-                    else
-                        if(options == "BuscarApellido")
-                        {
-                            bookflixDbContext = _context.Users.Where(user => user.Apellido.Contains(searchString));
-                        }
-                        else
-                            bookflixDbContext = _context.Users.Where(user => user.Dni.ToString().Contains(searchString));
+                bookflixDbContext = _context.Users;
             }
-            return View("Index", await bookflixDbContext.ToListAsync());
+
+            List<BookflixUser> usuarios = bookflixDbContext.ToList();
+
+            switch (options)
+            {
+                case "BuscarDni":
+                    usuarios.Sort(delegate (BookflixUser x, BookflixUser y)
+                    {
+                        return x.Dni.CompareTo(y.Dni);
+                    });
+                    break;
+                case "BuscarApellido":
+                    usuarios.Sort(delegate (BookflixUser x, BookflixUser y)
+                    {
+                        if (x.Apellido == null && y.Apellido == null) return 0;
+                        else if (x.Apellido == null) return -1;
+                        else if (y.Apellido == null) return 1;
+                        else return x.Apellido.CompareTo(y.Apellido);
+                    });
+                    break;
+                case "BuscarNombre":
+                    usuarios.Sort(delegate (BookflixUser x, BookflixUser y)
+                    {
+                        if (x.Nombre == null && y.Nombre == null) return 0;
+                        else if (x.Nombre == null) return -1;
+                        else if (y.Nombre == null) return 1;
+                        else return x.Nombre.CompareTo(y.Nombre);
+                    });
+                    break;
+                default:
+                    usuarios.Sort(delegate (BookflixUser x, BookflixUser y)
+                    {
+                        if (x.Email == null && y.Email == null) return 0;
+                        else if (x.Email == null) return -1;
+                        else if (y.Email == null) return 1;
+                        else return x.Email.CompareTo(y.Email);
+                    });
+                    break;
+            }
+            return View("Index", usuarios);
         }
 
         // GET: BookflixUser/Details/5

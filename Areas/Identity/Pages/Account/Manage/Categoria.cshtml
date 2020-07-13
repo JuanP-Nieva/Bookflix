@@ -5,10 +5,11 @@
 }
 @if(User.IsInRole("Normal"))
 {
-    <h4 style="color: #F5F5F1;">Sos normal</h4>
+    <h4 style="color: #F5F5F1;">¡Pasate a Premium!</h4>
     <div class="row">
         <div class="col-md-6">
-            <p style="color: #F5F5F1;">Sos normal</p>   	
+            <p style="color: #F5F5F1;">Mediante el siguiente botón, pasarás a tener una cuenta premium. Esto te permitirá tener un máximo de 4 perfiles en vez de 2.
+            </p>   	
             <form class="form-inline" asp-area="Identity" asp-page="/Account/Manage/SubirCategoria">
                 <button type="submit" class="btn btn-success submit" >Pasar a Premium</button>                 
             </form>
@@ -17,10 +18,10 @@
 }
 else
 {
-    <h4 style="color: #F5F5F1;">sos premium</h4>
+    <h4 style="color: #F5F5F1;">Baja a normal</h4>
     <div class="row">
         <div class="col-md-6">
-            <p style="color: #F5F5F1;">Sos premium</p>   	
+            <p style="color: #F5F5F1;">Para bajar de categoría deberás presionar el siguiente botón. Se te permitirá tener un máximo de 2 perfiles. De tener más, deberás borrarlo.</p>   	
             <form class="form-inline" asp-area="Identity" asp-page="/Account/Manage/BajarCategoria">
                 <button type="submit" class="btn btn-success submit" >Pasar a Normal</button>                 
             </form>
