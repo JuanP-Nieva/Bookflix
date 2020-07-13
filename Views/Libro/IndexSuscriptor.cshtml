@@ -5,6 +5,11 @@
 }
 
 <h1 style="color: #E50914 ;">LIBROS</h1>
+@* <div>
+    <a type="button" asp-controller="Libro" asp-action="AgregarFavorito" asp-route-id="@item.Id" title="Agregar a Favoritos">
+        <img src="~/Images/agregar.png" width="32px" height="32px">
+    </a>
+</div> *@
 
 <div>
     <form asp-controller="Libro" asp-action="Index" >
@@ -35,18 +40,59 @@
 
 <hr>
 
-@foreach (var item in Model) {
-    @* <div class="card text-center bg-dark m-3" style="width: 11rem; height: 16rem; float: left;">
-        <img src="~/Images/@item.Portada" class="card-img-top" width="32" height="128"> *@
-    <div class="card text-center bg-dark m-3" style="width: 179px; height: 400px; float: left;">
-        <img src="~/Images/@item.Portada" class="card-img-top" width="179px" height="282">
-        <div class="card-body" style="color: grey;" >
-            <h5 class="card-title" style="color: white; font-size: medium;">@Html.DisplayFor(modelItem => item.Titulo)</h5>
-            @* <p class="card-text">@Html.DisplayFor(modelItem => item.Descripcion)</p> *@
-            <a class="btn btn-danger btn-sm" asp-action="Details" asp-route-id="@item.Id">Abrir Libro</a>            
-        </div>
+@* PASAR A CISCO DESDE ACA (Muestra la lista de favoritos en caso de que tenga)*@
+@if(ViewBag.Perfil.tieneFavoritos())
+{
+    <div>
+        <p style="color: white; font-weight: bold;">Lista de Favoritos</p>
+        <hr color="white" size="3"> 
     </div>
+    <section id="main">
+        <aside id="horizontal-scroll">
+    @foreach (var item in Model) {
+        @if(item.esFaveado(@ViewBag.Perfil.Id))
+        {
+            <article class="item">
+                <div class="card text-center bg-dark m-3" style="width: 179px; height: 400px; float: left;">
+                    <img src="~/Images/@item.Portada" class="card-img-top" width="179px" height="282">
+                    <div class="card-body" style="color: grey;" >
+                        <h5 class="card-title" style="color: white; font-size: medium;">@Html.DisplayFor(modelItem => item.Titulo)</h5>
+                        <a class="btn btn-danger btn-sm" asp-action="Details" asp-route-id="@item.Id">Abrir Libro</a>
+                        <a type="button" asp-controller="Libro" asp-action="QuitarFavorito" asp-route-id="@item.Id" title="Quitar de Favoritos">
+                            <img src="~/Images/agregado.png">
+                        </a>
+                    </div>
+                </div>
+            </article>
+        }
+    }
+        </aside>
+    </section>
+    <br>
+
+    <p style="color: white; font-weight: bold;">Libros</p>
+    <hr color="white" size="3"> 
 }
+
+@* En caso de que no este faveado lo muestro en la lista de los libros  *@
+@foreach (var item in Model) {
+    @if(!item.esFaveado(@ViewBag.Perfil.Id)){
+        <div class="card text-center bg-dark m-3" style="width: 179px; height: 400px; float: left;">
+            <img src="~/Images/@item.Portada" class="card-img-top" width="179px" height="282">
+            <div class="card-body" style="color: grey;" >
+                <h5 class="card-title" style="color: white; font-size: medium;">@Html.DisplayFor(modelItem => item.Titulo)</h5>
+                <a class="btn btn-danger btn-sm" asp-action="Details" asp-route-id="@item.Id">Abrir Libro</a>         
+
+                <a type="button" asp-controller="Libro" asp-action="AgregarFavorito" asp-route-id="@item.Id" title="Agregar a Favoritos">
+                    <img src="~/Images/agregar.png" width="32px" height="32px">
+                </a>
+            </div>
+        </div>
+    }
+}
+
+@* HASTA ACA *@
+
 @if(Model.Count() == 0){
     <div class="alert alert-danger" role="alert">
         ¡No se encontraron libros! 
@@ -54,5 +100,3 @@
 }else {
     <button class="ir-arriba btn btn-dark btn-sm btn-block" type="button">Volver arriba</button>
 }
-
-

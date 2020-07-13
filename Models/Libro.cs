@@ -62,5 +62,14 @@ namespace Bookflix.Models {
                 return db.Trailers.Any(trailer => trailer.LibroId == this.Id);
             }
         }
+
+        //Pasar a CiscoMarico
+        public bool esFaveado(int idPerfil)
+        {
+            using (BookflixDbContext db = new BookflixDbContext())
+            {
+                return db.Perfil_Favea_Libros.Any(tabla => tabla.PerfilId == idPerfil && tabla.LibroId == this.Id);
+            }
+        }
     }
 }

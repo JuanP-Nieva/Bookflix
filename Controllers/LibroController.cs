@@ -60,11 +60,71 @@ namespace Bookflix.Controllers
             {
                 return View("Index",await bookflixDbContext.ToListAsync());
             }else{
+                ViewBag.Perfil = _context.Perfiles.FirstOrDefault(p => p.Id == PerfilActual);
                 return View("IndexSuscriptor",await bookflixDbContext.ToListAsync());
             }
             
         }
+        
+        public async Task<IActionResult> AgregarFavorito(int id)
+        {
+            Perfil_Favea_Libro libroFavorito = new Perfil_Favea_Libro(){
+                LibroId = id,
+                PerfilId = PerfilActual  
+            };
 
+            _context.Perfil_Favea_Libros.Add(libroFavorito);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> QuitarFavorito(int id)
+        {
+            Perfil_Favea_Libro elemento = _context.Perfil_Favea_Libros.FirstOrDefault(p => p.LibroId == id && p.PerfilId == PerfilActual);
+            _context.Perfil_Favea_Libros.Remove(elemento);
+            
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        //PASAR A CISCO
+
+        public IActionResult Calificar(int libroId, int value)
+        {
+            if(this.yaEstaCalificado(libroId)) //Si el libro ya estaba calificado lo actualiza por la nueva puntuacion
+            {
+                var puntuacion = _context.Perfil_Puntua_Libros.FirstOrDefault(p => p.LibroId == libroId && p.PerfilId == PerfilActual);
+                puntuacion.Puntaje = value;
+                _context.Update(puntuacion);
+
+            }else{ 
+                Perfil_Puntua_Libro puntuacion = new Perfil_Puntua_Libro(){
+                    PerfilId = PerfilActual,
+                    LibroId = libroId,
+                    Puntaje = value
+                };
+                _context.Perfil_Puntua_Libros.Add(puntuacion);
+            }
+
+            _context.SaveChanges();
+
+            return RedirectToAction(nameof(Details), new { id = libroId });
+        }
+
+        private bool yaEstaCalificado(int libroId)
+        {
+            return _context.Perfil_Puntua_Libros.Any(p => p.LibroId == libroId && p.PerfilId == PerfilActual);
+        }
+
+        //HASTA ACA
+
+        [HttpPost]
+        public IActionResult Details(int id, string comentario)
+        {
+            return View();
+        }
+
+        
 
         // GET: Libro/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -90,6 +150,23 @@ namespace Bookflix.Controllers
                         .OrderBy(c => c.NumeroCapitulo)
                         .ToList();
             }
+            
+            //Faltaria la condicion de si leyo completo el libro
+            ViewBag.PuedeVer = _context.Perfil_Lee_Libros.Any(p => p.LibroId == id && p.PerfilId == PerfilActual);
+
+            //PASAR A CISCO (va adentro de Details)
+
+            
+
+            var puntuacion = _context.Perfil_Puntua_Libros.FirstOrDefault(p => p.LibroId == id && p.PerfilId == PerfilActual);
+            if(puntuacion == null)
+            {
+                ViewBag.Puntaje = 0;
+            }else {
+                ViewBag.Puntaje = puntuacion.Puntaje;
+            }
+            //HASTA ACA
+
             return View(libro);
         }
 

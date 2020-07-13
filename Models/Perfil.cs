@@ -2,6 +2,8 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Collections.Generic;
+using Bookflix.Data;
+using System.Linq;
 
 namespace Bookflix.Models {
     public class Perfil {
@@ -16,6 +18,16 @@ namespace Bookflix.Models {
         public List<Perfil_Favea_Libro> Perfil_Favea_Libros { get; set; }
         public List<Perfil_Lee_Libro> Perfil_Lee_Libros { get; set; }
         public List<Perfil_Puntua_Libro> Perfil_Puntua_Libros { get; set; }
+
+
+        //PASAR A CISCO
+        public bool tieneFavoritos()
+        {
+            using (BookflixDbContext db = new BookflixDbContext())
+            {
+               return db.Perfil_Favea_Libros.Any(p => p.PerfilId == this.Id);
+            }
+        }
 
     }
 }
