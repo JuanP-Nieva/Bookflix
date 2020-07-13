@@ -18,6 +18,8 @@ namespace Bookflix.Models
         [PersonalData, Required]
         public int Dni { get; set; }
 
+        [Required]
+        public bool Habilitado { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         [PersonalData, Required, DataType(DataType.DateTime)]

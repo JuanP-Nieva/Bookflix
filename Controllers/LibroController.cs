@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
 using Bookflix.ViewModel;
-
+using Microsoft.AspNetCore.Identity;
 
 namespace Bookflix.Controllers
 {
@@ -21,12 +21,13 @@ namespace Bookflix.Controllers
     {
         private static int PerfilActual;
         private readonly BookflixDbContext _context;
-
+        private readonly UserManager<BookflixUser> _userManager;
         private readonly IWebHostEnvironment WebHostEnvironment;
-        public LibroController(BookflixDbContext context, IWebHostEnvironment webHostEnvironment)
+        public LibroController(BookflixDbContext context, IWebHostEnvironment webHostEnvironment, UserManager<BookflixUser> userManager)
         {
             _context = context;
             WebHostEnvironment = webHostEnvironment;
+            _userManager = userManager;
         }
 
         public IActionResult IndexInicial(int id) //Guardo el ID del perfil para saber cual es el perfil actual
@@ -74,7 +75,7 @@ namespace Bookflix.Controllers
 
         }
         [HttpPost]
-        public async Task<IActionResult> Details(string comentario, int idLibro)
+        public async Task<IActionResult> Comentar(string comentario, int idLibro)
         {
             var libro = await _context.Libros
                              .Where(l => l.Id == idLibro)
@@ -110,6 +111,7 @@ namespace Bookflix.Controllers
                 .Include(l => l.Editorial)
                 .Include(l => l.Genero)
                 .FirstOrDefaultAsync(m => m.Id == id);
+
             if (libro == null)
             {
                 return NotFound();
@@ -133,6 +135,14 @@ namespace Bookflix.Controllers
 
             ViewBag.PuedeVer = libro.Perfil_Lee_Libros.Exists(c =>
                         c.PerfilId == PerfilActual);
+
+            ViewBag.PuedeComentar = false;
+            
+            if (ViewBag.PuedeVer)
+            {
+                var user = await _userManager.FindByNameAsync(User.Identity.Name);
+                ViewBag.PuedeComentar = user.Habilitado;
+            }
 
             return View(libro);
         }
@@ -190,11 +200,17 @@ namespace Bookflix.Controllers
 
         }
 
-        public IActionResult Deletecomentario(int idLibro, int numeroComentario){
+        public async Task<IActionResult> Deletecomentario(int idLibro, int numeroComentario){
             
+            var comentario = await _context.Perfil_Comenta_Libros
+                .FirstOrDefaultAsync(c => c.LibroId == idLibro && c.NumeroComentario == numeroComentario);
             
+            //Considerar la opcion de "no borrar fisicamente" sino "borrar logicamente"
+          
+            _context.Perfil_Comenta_Libros.Remove(comentario);
+            await _context.SaveChangesAsync();
             
-            return NotFound();
+            return RedirectToAction("Details", new {id = idLibro});
         }
 
         public IActionResult VerHistorial()
@@ -568,17 +584,6 @@ namespace Bookflix.Controllers
             return RedirectToAction("Index", "Libro");
         }
 
-        // POST: Libro/Delete/5
-        // [HttpPost, ActionName("Delete")]
-        // [ValidateAntiForgeryToken]
-        // [Authorize(Roles = "Administrador")]
-        // public async Task<IActionResult> DeleteConfirmed(int id)
-        // {
-        //     var libro = await _context.Libros.FindAsync(id);
-        //     _context.Libros.Remove(libro);
-        //     await _context.SaveChangesAsync();
-        //     return RedirectToAction(nameof(Index));
-        // }
 
         private bool LibroExists(int id)
         {
@@ -592,76 +597,3 @@ namespace Bookflix.Controllers
 
     }
 }
-
-
-
-//Este es el EDITAR CON CAPITULO anterior (no permite editar el ISBN)
-
-// [HttpPost]
-// [ValidateAntiForgeryToken]
-// [Authorize(Roles = "Administrador")]
-// public async Task<IActionResult> EditConCapitulos(int id, [Bind("Id,ISBN,Portada,Titulo,Descripcion,AutorId,GeneroId,EditorialId")] EdicionLibroViewModel l)
-// {
-//     if (id != l.Id)
-//     {
-//         return NotFound();
-//     }
-
-//     if (isbnEditable(l.ISBN, l.Id) && (l.Portada == null))
-//     {
-//         var libro = _context.Libros.FirstOrDefault(v => v.Id == id);
-
-//         libro.ISBN = l.ISBN;
-//         libro.Id = l.Id;
-//         libro.Portada = checkearPorNull(l.Portada, libro.Portada, "Images");
-//         libro.Titulo = l.Titulo;
-//         libro.Contenido = null;
-//         libro.Descripcion = l.Descripcion;
-//         libro.AutorId = l.AutorId;
-//         libro.EditorialId = l.EditorialId;
-//         libro.GeneroId = l.GeneroId;
-
-
-//         await _context.SaveChangesAsync();
-
-//         return RedirectToAction(nameof(Index));
-//     }
-
-
-
-
-//     if (ModelState.IsValid && isbnEditable(l.ISBN, l.Id))
-//     {
-//         try
-//         {
-//             string stringFileNamePortada = this.UploadFile(l.Portada, "Images");
-//             var libro = new Libro
-//             {
-//                 Id = l.Id,
-//                 ISBN = l.ISBN,
-//                 Portada = stringFileNamePortada,
-//                 Titulo = l.Titulo,
-//                 Contenido = null,
-//                 Descripcion = l.Descripcion
-//             };
-//             _context.Update(libro);
-//             await _context.SaveChangesAsync();
-//         }
-//         catch (DbUpdateConcurrencyException)
-//         {
-//             if (!LibroExists(l.Id))
-//             {
-//                 return NotFound();
-//             }
-//             else
-//             {
-//                 throw;
-//             }
-//         }
-//         return RedirectToAction(nameof(Index));
-//     }
-//     ViewData["AutorId"] = new SelectList(_context.Autores, "Id", "Apellido", l.AutorId);
-//     ViewData["EditorialId"] = new SelectList(_context.Editoriales, "Id", "Nombre", l.EditorialId);
-//     ViewData["GeneroId"] = new SelectList(_context.Generos, "Id", "Nombre", l.GeneroId);
-//     return View(l);
-// }

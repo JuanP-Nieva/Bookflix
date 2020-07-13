@@ -17,7 +17,7 @@ namespace Bookflix.Data
         public DbSet<Novedad> Novedades { get; set; }
         public DbSet<Pago> Pagos { get; set; }
         public DbSet<Tarjeta> Tarjetas { get; set; }        
-
+        public DbSet<Reportes> Reportes { get; set;}
         public DbSet<Perfil_Favea_Libro> Perfil_Favea_Libros { get; set; }   
         public DbSet<Perfil_Comenta_Libro> Perfil_Comenta_Libros { get; set; }
         public DbSet<Perfil_Lee_Libro> Perfil_Lee_Libros { get; set; }

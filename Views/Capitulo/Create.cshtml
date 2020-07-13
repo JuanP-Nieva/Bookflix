@@ -13,8 +13,6 @@
         <form asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger" ></div>
             <div class="form-group">
-              @*<label asp-for="LibroId" class="control-label" style="color: #F5F5F1;"></label>
-                <a asp-for="LibroId" class="form-control">@ViewData["LibroId"]</a>*@
                 <input type="hidden" asp-for="LibroId" value="@ViewData["LibroId"]"/>
             </div>
             <div class="form-group">

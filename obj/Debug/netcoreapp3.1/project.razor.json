@@ -20566,6 +20566,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\Josef\\Documents\\GitHub\\Bookflix\\Views\\Reportes\\Details.cshtml",
+      "TargetPath": "Views\\Reportes\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\Josef\\Documents\\GitHub\\Bookflix\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "FileKind": "mvc"
@@ -20761,6 +20766,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\Josef\\Documents\\GitHub\\Bookflix\\Views\\Reportes\\Index.cshtml",
+      "TargetPath": "Views\\Reportes\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\Josef\\Documents\\GitHub\\Bookflix\\Areas\\Identity\\Pages\\Account\\Manage\\ChangePassword.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\Account\\Manage\\ChangePassword.cshtml",
       "FileKind": "mvc"
@@ -20783,6 +20793,11 @@
     {
       "FilePath": "c:\\Users\\Josef\\Documents\\GitHub\\Bookflix\\Views\\Home\\Privacy.cshtml",
       "TargetPath": "Views\\Home\\Privacy.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Josef\\Documents\\GitHub\\Bookflix\\Views\\Reportes\\Create.cshtml",
+      "TargetPath": "Views\\Reportes\\Create.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -20833,6 +20848,11 @@
     {
       "FilePath": "c:\\Users\\Josef\\Documents\\GitHub\\Bookflix\\Views\\Novedad\\Details.cshtml",
       "TargetPath": "Views\\Novedad\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Josef\\Documents\\GitHub\\Bookflix\\Views\\Reportes\\Delete.cshtml",
+      "TargetPath": "Views\\Reportes\\Delete.cshtml",
       "FileKind": "mvc"
     },
     {

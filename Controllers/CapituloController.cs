@@ -33,24 +33,6 @@ namespace Bookflix.Controllers
             return View(await _context.Capitulos.ToListAsync());
         }
 
-        // GET: Capitulo/Details/5
-        // public async Task<IActionResult> Details(int? id)
-        // {
-        //     if (id == null)
-        //     {
-        //         return NotFound();
-        //     }
-
-        //     var capitulo = await _context.Capitulos
-        //         .FirstOrDefaultAsync(m => m.Id == id);
-        //     if (capitulo == null)
-        //     {
-        //         return NotFound();
-        //     }
-
-        //     return View(capitulo);
-        // }
-
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
