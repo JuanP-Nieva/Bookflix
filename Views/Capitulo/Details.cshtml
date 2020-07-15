@@ -8,8 +8,8 @@
     ViewData["Title"] = "Detalles";
 }
 
-<h1 style="color: red;">Detalles</h1>
-
+<h1 style="color: red;">Capitulos del Libro @ViewBag.Titulo</h1>
+@* 
 <div>
     <hr />
     <dl class="row">
@@ -50,13 +50,13 @@
             <p style="color: white;">@Html.DisplayFor(model => model.Editorial.Nombre)</p>
         </dd>
     </dl>
-    @* MOSTRAR TRAILER *@
+    MOSTRAR TRAILER 
     @if(Model.TieneTrailer())
     {
         <div>
             <a class="btn btn-secondary btn-sm" role="button" asp-controller="Trailer" asp-action="Details" asp-route-id="@Model.Id">Ver trailer</a>
         </div>
-    }
+    }*@
     <hr>
     <div class="btn-group-vertical">
     @foreach (var item in Model.Capitulos)

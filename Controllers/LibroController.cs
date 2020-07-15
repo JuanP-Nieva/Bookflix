@@ -42,25 +42,6 @@ namespace Bookflix.Controllers
 
             if (!String.IsNullOrEmpty(searchString))
             {
-<<<<<<< HEAD
-                if (options == "BuscarTitulo")
-                {
-                    bookflixDbContext = _context.Libros.Where(l => l.Titulo.Contains(searchString)).Include(l => l.Autor).Include(l => l.Editorial).Include(l => l.Genero);
-                }
-                else
-                    if (options == "BuscarAutor")
-                {
-                    bookflixDbContext = _context.Libros.Where(l => l.Autor.Nombre.Contains(searchString) || l.Autor.Apellido.Contains(searchString)).Include(l => l.Autor).Include(l => l.Editorial).Include(l => l.Genero);
-                }
-                else
-                        if (options == "BuscarGenero")
-                {
-                    bookflixDbContext = _context.Libros.Where(l => l.Genero.Nombre.Contains(searchString)).Include(l => l.Autor).Include(l => l.Editorial).Include(l => l.Genero);
-                }
-                else
-                    bookflixDbContext = _context.Libros.Where(l => l.Editorial.Nombre.Contains(searchString)).Include(l => l.Autor).Include(l => l.Editorial).Include(l => l.Genero);
-
-=======
                 switch (options)
                 {
                     case "BuscarEditorial":
@@ -76,23 +57,11 @@ namespace Bookflix.Controllers
                         bookflixDbContext = _context.Libros.Where(l => l.Titulo.Contains(searchString)).Include(l => l.Autor).Include(l => l.Editorial).Include(l => l.Genero);
                         break;
                 }
->>>>>>> master
             }
             else
             {
                 bookflixDbContext = _context.Libros.Include(l => l.Autor).Include(l => l.Editorial).Include(l => l.Genero);
             }
-<<<<<<< HEAD
-            if (User.IsInRole("Administrador"))
-            {
-                return View("Index", await bookflixDbContext.ToListAsync());
-            }
-            else
-            {
-                return View("IndexSuscriptor", await bookflixDbContext.ToListAsync());
-            }
-
-=======
 
             List<Libro> libros = bookflixDbContext.ToList();
 
@@ -136,16 +105,19 @@ namespace Bookflix.Controllers
                     break;
             }
 
-            if(User.IsInRole("Administrador"))
+            if (User.IsInRole("Administrador"))
             {
                 return View("Index", libros);
             }
             else
             {
-                return View("IndexSuscriptor",libros);
-            }            
->>>>>>> master
+                ViewBag.Perfil = _context
+                                .Perfiles
+                                .FirstOrDefault( p => p.Id == PerfilActual);
+                return View("IndexSuscriptor", libros);
+            }
         }
+
         [HttpPost]
         public async Task<IActionResult> Comentar(string comentario, int idLibro)
         {
@@ -165,8 +137,7 @@ namespace Bookflix.Controllers
             _context.Libros.Update(libro);
             _context.Perfil_Comenta_Libros.Add(coment);
             await _context.SaveChangesAsync();
-
-            return RedirectToAction("Details", idLibro); //Aca lo mandas a donde quieras
+            return RedirectToAction("Details",new { id = idLibro }); //Aca lo mandas a donde quieras
         }
 
         // GET: Libro/Details/5
@@ -209,11 +180,24 @@ namespace Bookflix.Controllers
                         c.PerfilId == PerfilActual);
 
             ViewBag.PuedeComentar = false;
-            
+
             if (ViewBag.PuedeVer)
             {
                 var user = await _userManager.FindByNameAsync(User.Identity.Name);
                 ViewBag.PuedeComentar = user.Habilitado;
+            }
+
+            var puntuacion = _context
+                            .Perfil_Puntua_Libros
+                            .FirstOrDefault(p => p.LibroId == id && p.PerfilId == PerfilActual);
+
+            if (puntuacion == null)
+            {
+                ViewBag.Puntaje = 0;
+            }
+            else
+            {
+                ViewBag.Puntaje = puntuacion.Puntaje;
             }
 
             return View(libro);
@@ -231,25 +215,32 @@ namespace Bookflix.Controllers
                 .Include(l => l.Editorial)
                 .Include(l => l.Genero)
                 .FirstOrDefaultAsync(m => m.Id == id);
+
             if (libro == null)
             {
                 return NotFound();
             }
 
-            if (libro.Contenido == null)
+            LibroViewModel L = new LibroViewModel{
+                Id = libro.Id,
+                perfilID = PerfilActual
+            };
+
+            /*if (libro.Contenido == null)
             {
                 libro.Capitulos = _context.Capitulos
                        .Where(c => c.LibroId == libro.Id)
                        .OrderBy(c => c.NumeroCapitulo)
                        .ToList();
+            }*/
+
+            if (libro.Contenido == null)
+            {
+                return RedirectToAction("Prueba", "Capitulo", L);
             }
 
             this.AgregarLecturaDePerfil((int)id);
 
-            if (libro.Contenido == null)
-            {
-                return RedirectToAction("Details", "Capitulo", libro);
-            }
             return View(libro);
         }
 
@@ -260,7 +251,9 @@ namespace Bookflix.Controllers
             {
                 PerfilId = PerfilActual,
                 LibroId = id,
+                Finalizado = true
             };
+
             using (var db = new BookflixDbContext())
             {
                 if (!db.Perfil_Lee_Libros.Any(pll => pll.LibroId == id && pll.PerfilId == PerfilActual))
@@ -269,20 +262,20 @@ namespace Bookflix.Controllers
                     db.SaveChanges();
                 }
             }
-
         }
 
-        public async Task<IActionResult> Deletecomentario(int idLibro, int numeroComentario){
-            
+        public async Task<IActionResult> Deletecomentario(int idLibro, int numeroComentario)
+        {
+
             var comentario = await _context.Perfil_Comenta_Libros
                 .FirstOrDefaultAsync(c => c.LibroId == idLibro && c.NumeroComentario == numeroComentario);
-            
+
             //Considerar la opcion de "no borrar fisicamente" sino "borrar logicamente"
-          
+
             _context.Perfil_Comenta_Libros.Remove(comentario);
             await _context.SaveChangesAsync();
-            
-            return RedirectToAction("Details", new {id = idLibro});
+
+            return RedirectToAction("Details", new { id = idLibro });
         }
 
         public IActionResult VerHistorial()
@@ -339,9 +332,12 @@ namespace Bookflix.Controllers
                     EstadoCompleto = false,
                     CantidadComentarios = 0
                 };
+
+                
                 _context.Add(libro);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Create", "Capitulo", new { id = libro.Id });
+
+                return RedirectToAction("Create", "Capitulo", new { id = l.Id});
                 // return RedirectToAction(nameof(Index));
             }
             ViewData["AutorId"] = new SelectList(_context.Autores, "Id", "Nombre", l.AutorId);
@@ -358,6 +354,10 @@ namespace Bookflix.Controllers
         [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Create([Bind("ISBN,Portada,Titulo,Contenido,Descripcion,AutorId,GeneroId,EditorialId")] LibroViewModel l)
         {
+            if (l.Portada == null)
+            {
+                ModelState.AddModelError("Contenido", "Debe seleccionar un libro para subir");
+            }
             if (ModelState.IsValid && !isbnUnico(l.ISBN))
             {
                 string stringFileNamePortada = this.UploadFile(l.Portada, "Images");
@@ -376,6 +376,7 @@ namespace Bookflix.Controllers
                     EstadoCompleto = true,
                     CantidadComentarios = 0
                 };
+
                 _context.Add(libro);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -667,5 +668,56 @@ namespace Bookflix.Controllers
             return View();
         }
 
+        public async Task<IActionResult> AgregarFavorito(int id)
+        {
+            Perfil_Favea_Libro libroFavorito = new Perfil_Favea_Libro()
+            {
+                LibroId = id,
+                PerfilId = PerfilActual
+            };
+
+            _context.Perfil_Favea_Libros.Add(libroFavorito);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> QuitarFavorito(int id)
+        {
+            Perfil_Favea_Libro elemento = _context.Perfil_Favea_Libros.FirstOrDefault(p => p.LibroId == id && p.PerfilId == PerfilActual);
+            _context.Perfil_Favea_Libros.Remove(elemento);
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult Calificar(int libroId, int value)
+        {
+            if (this.yaEstaCalificado(libroId)) //Si el libro ya estaba calificado lo actualiza por la nueva puntuacion
+            {
+                var puntuacion = _context.Perfil_Puntua_Libros.FirstOrDefault(p => p.LibroId == libroId && p.PerfilId == PerfilActual);
+                puntuacion.Puntaje = value;
+                _context.Update(puntuacion);
+
+            }
+            else
+            {
+                Perfil_Puntua_Libro puntuacion = new Perfil_Puntua_Libro()
+                {
+                    PerfilId = PerfilActual,
+                    LibroId = libroId,
+                    Puntaje = value
+                };
+                _context.Perfil_Puntua_Libros.Add(puntuacion);
+            }
+
+            _context.SaveChanges();
+
+            return RedirectToAction(nameof(Details), new { id = libroId });
+        }
+
+        private bool yaEstaCalificado(int libroId)
+        {
+            return _context.Perfil_Puntua_Libros.Any(p => p.LibroId == libroId && p.PerfilId == PerfilActual);
+        }
     }
 }

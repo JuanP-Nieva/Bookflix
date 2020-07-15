@@ -10,7 +10,7 @@ namespace Bookflix.Models {
         public int LibroId { get; set; }
         [Required]
         public int NumeroComentario { get; set; }
-        [Required]
+        [Required(ErrorMessage = "El Motivo obligatorio")]
         public string Motivo { get; set; }
 
     }

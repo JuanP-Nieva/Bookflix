@@ -1,24 +1,15 @@
 @model IEnumerable<Bookflix.Models.Reportes>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Reportes";
 }
 
-<h1>Index</h1>
+<h1 style="color: white;">Tabla de Comentarios Reportados</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.LibroId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NumeroComentario)
-            </th>
-            <th>
+            <th style="color: white;">
                 @Html.DisplayNameFor(model => model.Motivo)
             </th>
             <th></th>
@@ -27,19 +18,12 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.LibroId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumeroComentario)
-            </td>
-            <td>
+            <td style="color: white;">
                 @Html.DisplayFor(modelItem => item.Motivo)
-            </td>
+            </td >
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Details" asp-route-id="@item.Id">Ver más |</a>
+                <a asp-action="Delete" asp-route-id="@item.Id">Borrar</a>
             </td>
         </tr>
 }

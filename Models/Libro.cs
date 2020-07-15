@@ -7,24 +7,26 @@ using Bookflix.Models.Validaciones;
 using Bookflix.Data;
 using System.Linq;
 
-namespace Bookflix.Models {
-    public class Libro {
+namespace Bookflix.Models
+{
+    public class Libro
+    {
         [Key]
         public int Id { get; set; }
 
-        [Required(ErrorMessage="El ISBN es un campo obligatorio")]
+        [Required(ErrorMessage = "El ISBN es un campo obligatorio")]
         [DisplayFormat(DataFormatString = "{0:F0}", ApplyFormatInEditMode = true)]
         public decimal ISBN { get; set; }
-        
+
         public string Portada { get; set; }
-       
-        [Required(ErrorMessage="El Titulo es un campo obligatorio")]
+
+        [Required(ErrorMessage = "El Titulo es un campo obligatorio")]
         public string Titulo { get; set; }
 
         public string Contenido { get; set; }
 
 
-        [Required(ErrorMessage="La Descripcion es un campo obligatorio")]
+        [Required(ErrorMessage = "La Descripcion es un campo obligatorio")]
         public string Descripcion { get; set; }
 
         [Required(ErrorMessage = "El libro debe tener un autor")]
@@ -37,10 +39,10 @@ namespace Bookflix.Models {
         public int EditorialId { get; set; }
         public Editorial Editorial { get; set; }
 
-        #nullable enable
+#nullable enable
         public Trailer? Trailer { get; set; }
 
-        #nullable disable
+#nullable disable
         public bool EstadoCompleto { get; set; }
         public int? CantidadComentarios { get; set; }
 
@@ -60,6 +62,14 @@ namespace Bookflix.Models {
             using (BookflixDbContext db = new BookflixDbContext())
             {
                 return db.Trailers.Any(trailer => trailer.LibroId == this.Id);
+            }
+        }
+
+        public bool esFaveado(int idPerfil)
+        {
+            using (BookflixDbContext db = new BookflixDbContext())
+            {
+                return db.Perfil_Favea_Libros.Any(tabla => tabla.PerfilId == idPerfil && tabla.LibroId == this.Id);
             }
         }
     }

@@ -1,36 +1,22 @@
-@model Bookflix.Models.Reportes
-
+@model Bookflix.Models.Perfil_Comenta_Libro
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Reporte";
 }
 
-<h1>Details</h1>
+<h1 style="color: white;">Detalles del Comentario</h1>
 
 <div>
-    <h4>Reportes</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.LibroId)
+        <dt class = "col-sm-2" style="color: white;">
+            @Html.DisplayNameFor(model => model.Comentario)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.LibroId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.NumeroComentario)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.NumeroComentario)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Motivo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Motivo)
+        <dd class = "col-sm-10" style="color: white;">
+            @Html.DisplayFor(model => model.Comentario)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    @Html.ActionLink("Borrar comentario", "Delete", new { /* id=item.PrimaryKey */ })
+    <a asp-action="Index"> |  Regresar</a>
 </div>

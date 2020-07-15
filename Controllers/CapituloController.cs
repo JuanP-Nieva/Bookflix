@@ -21,10 +21,13 @@ namespace Bookflix.Controllers
     {
         private readonly BookflixDbContext _context;
         private readonly IWebHostEnvironment _webHostEnvironment;
-        public CapituloController(BookflixDbContext context, IWebHostEnvironment webHostEnvironment)
+        private readonly UserManager<BookflixUser> _userManager;
+        private static int PerfilActual;
+        public CapituloController(BookflixDbContext context, IWebHostEnvironment webHostEnvironment,UserManager<BookflixUser> userManager )
         {
             _context = context;
             _webHostEnvironment = webHostEnvironment;
+            _userManager = userManager;
         }
 
         // GET: Capitulo
@@ -45,17 +48,19 @@ namespace Bookflix.Controllers
                 .Include(l => l.Editorial)
                 .Include(l => l.Genero)
                 .FirstOrDefaultAsync(m => m.Id == id);
+
             if (libro == null)
             {
                 return NotFound();
             }
-            if (libro.Contenido == null)
-            {
-                libro.Capitulos = _context.Capitulos
-                        .Where(c => c.LibroId == libro.Id)
-                        .OrderBy(c => c.NumeroCapitulo)
-                        .ToList();
-            }
+
+            libro.Capitulos = _context.Capitulos
+                    .Where(c => c.LibroId == libro.Id)
+                    .OrderBy(c => c.NumeroCapitulo)
+                    .ToList();
+            
+            ViewBag.Titulo = libro.Titulo;
+
             return View(libro);
         }
         
@@ -77,15 +82,58 @@ namespace Bookflix.Controllers
             return View(capitulo);
         }
 
-
-        public IActionResult cerrarCapitulo (int? id){
-            if (id == null){
-                return NotFound();
+        [HttpGet]
+        public IActionResult CerrarCapitulo (int id, int nroCapitulo){
+            
+            Capitulo c = _context.Capitulos
+                        .Where(p => p.LibroId == id)
+                        .ToList()
+                        .OrderByDescending(c => c.NumeroCapitulo)
+                        .FirstOrDefault();
+            bool fin = false;           
+            if (c.NumeroCapitulo == nroCapitulo)
+            {
+                fin = true;
             }
+
+            this.AgregarLecturaDePerfil(id,fin);
 
             return RedirectToAction("Details", "Capitulo", new { Id = id});
         }
 
+        public void AgregarLecturaDePerfil(int id, bool fin)
+        {
+            var perfilLeeLibro = new Perfil_Lee_Libro
+            {
+                PerfilId = PerfilActual,
+                LibroId = id,
+                Finalizado = fin
+            };
+
+            var user = _userManager.FindByNameAsync(User.Identity.Name);
+
+            using (var db = new BookflixDbContext())
+            {
+                if (!db.Perfil_Lee_Libros.Any(pll => pll.LibroId == id && pll.PerfilId == PerfilActual))
+                {
+                    db.Perfil_Lee_Libros.Add(perfilLeeLibro);
+                    db.SaveChanges();
+                }
+                if (fin)
+                {
+                    db.Perfil_Lee_Libros.Update(perfilLeeLibro);
+                    db.SaveChanges();
+                }
+                
+            }
+        }
+
+
+        public IActionResult Prueba(LibroViewModel L)
+        {
+            PerfilActual = L.perfilID;
+            return RedirectToAction("Details", new { id = L.Id });
+        }
         // GET: Capitulo/Create
         public IActionResult Create(int? id)
         {
@@ -104,7 +152,7 @@ namespace Bookflix.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Administrador")]
-        public async Task<IActionResult> Create([Bind("Id,LibroId,Titulo,NumeroCapitulo,FechaDeVencimiento,pdf")] Capitulo capitulo)
+        public async Task<IActionResult> Create([Bind("LibroId,Titulo,NumeroCapitulo,FechaDeVencimiento,pdf")] Capitulo capitulo)
         {
             if (capituloUnico(capitulo.LibroId, capitulo.NumeroCapitulo) || capitulo.pdf == null)
             {

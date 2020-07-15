@@ -20526,6 +20526,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\Josef\\Documents\\GitHub\\Bookflix\\Views\\Perfil_Lee_Libro\\Delete.cshtml",
+      "TargetPath": "Views\\Perfil_Lee_Libro\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\Josef\\Documents\\GitHub\\Bookflix\\Views\\Capitulo\\Delete.cshtml",
       "TargetPath": "Views\\Capitulo\\Delete.cshtml",
       "FileKind": "mvc"
@@ -20608,6 +20613,11 @@
     {
       "FilePath": "c:\\Users\\Josef\\Documents\\GitHub\\Bookflix\\Areas\\Identity\\Pages\\_ViewStart.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Josef\\Documents\\GitHub\\Bookflix\\Views\\Perfil_Lee_Libro\\Index.cshtml",
+      "TargetPath": "Views\\Perfil_Lee_Libro\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -20761,6 +20771,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\Josef\\Documents\\GitHub\\Bookflix\\Views\\Perfil_Lee_Libro\\Create.cshtml",
+      "TargetPath": "Views\\Perfil_Lee_Libro\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\Josef\\Documents\\GitHub\\Bookflix\\Areas\\Identity\\Pages\\Account\\Logout.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\Account\\Logout.cshtml",
       "FileKind": "mvc"
@@ -20856,6 +20871,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\Josef\\Documents\\GitHub\\Bookflix\\Views\\Perfil_Lee_Libro\\Edit.cshtml",
+      "TargetPath": "Views\\Perfil_Lee_Libro\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\Josef\\Documents\\GitHub\\Bookflix\\Views\\Autor\\Edit.cshtml",
       "TargetPath": "Views\\Autor\\Edit.cshtml",
       "FileKind": "mvc"
@@ -20931,6 +20951,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\Josef\\Documents\\GitHub\\Bookflix\\Views\\Perfil_Lee_Libro\\Details.cshtml",
+      "TargetPath": "Views\\Perfil_Lee_Libro\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\Josef\\Documents\\GitHub\\Bookflix\\Views\\Libro\\EditConCapitulos.cshtml",
       "TargetPath": "Views\\Libro\\EditConCapitulos.cshtml",
       "FileKind": "mvc"
@@ -20958,11 +20983,6 @@
     {
       "FilePath": "c:\\Users\\Josef\\Documents\\GitHub\\Bookflix\\Areas\\Identity\\Pages\\Account\\_ViewImports.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\Account\\_ViewImports.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\Josef\\Documents\\GitHub\\Bookflix\\Areas\\Identity\\Pages\\Account\\Manage\\CreditCard.cshtml",
-      "TargetPath": "Areas\\Identity\\Pages\\Account\\Manage\\CreditCard.cshtml",
       "FileKind": "mvc"
     },
     {

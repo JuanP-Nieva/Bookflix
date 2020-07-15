@@ -17,7 +17,13 @@
         <div style="width: 100%; background: #000; height: 45px;position: absolute;">
         </div>
         <embed src="~/Libros/@path" type="application/pdf" width="100%" height="600px" asp-append-version="true"/>
+
+        <div>
+    <form asp-controller="Capitulo" asp-action="CerrarCapitulo" method="get">
+                            <input type="hidden" name="id" id="id" value="@Model.LibroId"/>
+                            <input type="hidden" name="nroCapitulo" id="nroCapitulo" value="@Model.NumeroCapitulo"/>
+                            <button type="submit" class="btn btn-danger">Cerrar Capitulo</button>
+    </form>
+                        @*<a class="btn btn-danger" asp-action="CerrarCapitulo" asp-route-id="@Model.LibroId">Cerrar Capitulo</a>*@
+    </div> 
     </div>
-<div>
-    <a class="btn btn-danger" asp-action="CerrarCapitulo" asp-route-id="@Model.LibroId">Cerrar Capitulo</a>
-</div> 

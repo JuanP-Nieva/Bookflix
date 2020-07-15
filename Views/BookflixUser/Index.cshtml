@@ -43,6 +43,8 @@
             <th style="color: white;">
                 @Html.DisplayNameFor(model => model.Dni)
             </th>
+            <th style="color: white;">
+                Opciones</th>
             <th></th>
         </tr>
     </thead>
@@ -64,11 +66,7 @@
                 @Html.DisplayFor(modelItem => item.Dni)
             </td>
             <td>
-                <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
-            </td>
-
-            <td>
-                @if (item.Habilitado)
+                @if (!item.Habilitado)
                 {
                     <a class="btn btn-secondary btn-sm" asp-action="ToggleHabilitar" asp-route-id="@item.Id">Habilitar</a>
                 }
@@ -76,6 +74,9 @@
                 {
                     <a class="btn btn-secondary btn-sm" asp-action="ToggleHabilitar" asp-route-id="@item.Id">Inhabilitar</a>
                 }
+            </td>
+            <td>
+                <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
             </td>
         </tr>
     }

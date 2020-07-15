@@ -121,13 +121,8 @@ namespace Bookflix.Areas.Identity.Pages.Account
                     Nombre = this.Nombre,
                     Apellido = this.Apellido,
                     Dni = this.Dni,
-<<<<<<< HEAD
-                    FechaDeNacimiento = this.FechaDeNacimiento,
-                    Habilitado = true
-=======
                     Habilitado = true,
                     FechaDeNacimiento = this.FechaDeNacimiento
->>>>>>> master
                 };
                 //user.CrearPago(Categoria, this.crearTarjeta());
                 return user;

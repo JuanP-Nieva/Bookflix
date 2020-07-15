@@ -35,12 +35,21 @@ namespace Bookflix.Controllers
 
             var reportes = await _context.Reportes
                 .FirstOrDefaultAsync(m => m.Id == id);
+            
             if (reportes == null)
             {
                 return NotFound();
             }
 
-            return View(reportes);
+            Perfil_Comenta_Libro p = _context.Perfil_Comenta_Libros
+                                    .FirstOrDefault(c => c.LibroId == reportes.LibroId && c.NumeroComentario == reportes.NumeroComentario);
+
+            if (p == null)
+            {
+                return NotFound();
+            }
+            
+            return View(p);
         }
 
         // GET: Reportes/Create
@@ -66,7 +75,7 @@ namespace Bookflix.Controllers
             {
                 _context.Add(reportes);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Details", new {id = reportes.LibroId});
+                return RedirectToAction("Details","Libro", new {id = reportes.LibroId});
             }
 
             ViewBag.IdLibro = reportes.LibroId;
