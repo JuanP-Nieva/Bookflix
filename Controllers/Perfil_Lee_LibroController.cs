@@ -38,6 +38,7 @@ namespace Bookflix.Controllers
                 .Include(p => p.Libro)
                 .Include(p => p.Perfil)
                 .FirstOrDefaultAsync(m => m.PerfilId == id);
+                
             if (perfil_Lee_Libro == null)
             {
                 return NotFound();

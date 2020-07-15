@@ -22,8 +22,7 @@
                 @Html.DisplayFor(modelItem => item.Motivo)
             </td >
             <td>
-                <a asp-action="Details" asp-route-id="@item.Id">Ver más |</a>
-                <a asp-action="Delete" asp-route-id="@item.Id">Borrar</a>
+                <a class="btn btn-danger" role="button" asp-action="Index" asp-route-id="@item.Id">Ver más</a>
             </td>
         </tr>
 }

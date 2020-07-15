@@ -49,6 +49,7 @@ namespace Bookflix.Controllers
                 return NotFound();
             }
             
+            ViewBag.Motivo = reportes.Motivo;
             return View(p);
         }
 
@@ -155,10 +156,15 @@ namespace Bookflix.Controllers
         // POST: Reportes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int id, int nro)
         {
-            var reportes = await _context.Reportes.FindAsync(id);
-            _context.Reportes.Remove(reportes);
+            Perfil_Comenta_Libro p = await _context.Perfil_Comenta_Libros
+                                    .FirstOrDefaultAsync(c => c.LibroId == id && c.NumeroComentario == nro);
+            List<Reportes> reportes = _context.Reportes
+                                    .Where( r => r.LibroId == id && r.NumeroComentario == nro)
+                                    .ToList();
+            _context.Reportes.RemoveRange(reportes);
+            _context.Perfil_Comenta_Libros.Remove(p);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
