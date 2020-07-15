@@ -9,10 +9,8 @@ using Bookflix.Models.Validaciones;
 
 namespace Bookflix.Models
 {
-    [NotMapped]
     public class Statistics
     {
-        [Key]
         public int Id { get; set; }
 
 

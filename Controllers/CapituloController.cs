@@ -90,6 +90,7 @@ namespace Bookflix.Controllers
                         .ToList()
                         .OrderByDescending(c => c.NumeroCapitulo)
                         .FirstOrDefault();
+                        
             bool fin = false;           
             if (c.NumeroCapitulo == nroCapitulo)
             {
@@ -171,7 +172,7 @@ namespace Bookflix.Controllers
                     Contenido = stringFileNamePortada
                 };
 
-                _context.Add(Chapter);
+                _context.Capitulos.Add(Chapter);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Create", new { LibroId = Chapter.LibroId });
                 //return RedirectToAction(nameof(Index));

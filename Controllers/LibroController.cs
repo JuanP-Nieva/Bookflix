@@ -337,7 +337,7 @@ namespace Bookflix.Controllers
                 _context.Add(libro);
                 await _context.SaveChangesAsync();
 
-                return RedirectToAction("Create", "Capitulo", new { id = l.Id});
+                return RedirectToAction("Create", "Capitulo", new { id = libro.Id});
                 // return RedirectToAction(nameof(Index));
             }
             ViewData["AutorId"] = new SelectList(_context.Autores, "Id", "Nombre", l.AutorId);
