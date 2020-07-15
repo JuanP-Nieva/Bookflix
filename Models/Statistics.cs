@@ -11,7 +11,7 @@ namespace Bookflix.Models
 {
     public class Statistics
     {
-        public int Id { get; set; }
+       public int MyProperty { get; set; }
 
 
     }
