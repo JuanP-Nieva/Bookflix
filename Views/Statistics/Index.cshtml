@@ -1,0 +1,57 @@
+@model Bookflix.Models.Statistics
+
+@{
+    ViewData["Title"] = "Estadisticas";
+}
+
+<h1>Estadisticas</h1>
+
+<form asp-controller="Statistics" asp-action="Index" >
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-secondary active">
+                <input type="radio" name="options" value="MostrarLibroMasLeido" asp-action="Statistics" asp-action="Index" checked> Lbros más leído
+            </label>
+            <label class="btn btn-secondary">
+                <input type="radio" name="options" value="UsuariosNormales" asp-action="Statistics" asp-action="Index"> Usuarios Normales
+            </label>
+            <label class="btn btn-secondary">
+                <input type="radio" name="options" value="UsuariosPremium" asp-action="Statistics" asp-action="Index"> Usuarios Premium
+            </label>
+        </div>
+        <hr>
+        <input class="btn btn-primary btn-sm" type="submit" value="Buscar" />
+    </form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Libro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Perfil)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Finalizado)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Libro.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Perfil.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Finalizado)
+            </td>
+            <td>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

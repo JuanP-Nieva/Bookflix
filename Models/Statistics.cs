@@ -11,9 +11,9 @@ namespace Bookflix.Models
 {
     public class Statistics
     {
-       public int MyProperty { get; set; }
-
-
+        public int NormalUsers { get; set; }
+        public int PremiumUsers { get; set; }
+        public List<Libro> Libros { get; set; }
     }
 }
 

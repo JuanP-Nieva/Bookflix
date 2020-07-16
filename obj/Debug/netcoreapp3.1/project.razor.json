@@ -20956,6 +20956,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\Josef\\Documents\\GitHub\\Bookflix\\Views\\Statistics\\Index.cshtml",
+      "TargetPath": "Views\\Statistics\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\Josef\\Documents\\GitHub\\Bookflix\\Views\\Libro\\EditConCapitulos.cshtml",
       "TargetPath": "Views\\Libro\\EditConCapitulos.cshtml",
       "FileKind": "mvc"
