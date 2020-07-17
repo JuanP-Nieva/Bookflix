@@ -6,8 +6,20 @@
 
 <h1 style="color: #E50914;">LIBROS</h1>
 
+@*Esto se agrego 17/7 de prueba, faltaria agregarlo en el Index*@
+<hr>
+<p style="color: white;">Criterio de ordenación</p>
+<div class="btn-group" role="group" aria-label="Basic example">
+  <a type="button" class="btn btn-secondary" name="options" asp-route-options="OrdenarTitulo" asp-controller="Libro" asp-action="OrdenarLista">Por Titulo</a>
+  <a type="button" class="btn btn-secondary" name="options" asp-route-options="OrdenarAutor" asp-controller="Libro" asp-action="OrdenarLista">Por Autor</a>
+  <a type="button" class="btn btn-secondary" name="options" asp-route-options="OrdenarGenero" asp-controller="Libro" asp-action="OrdenarLista">Por Género</a>
+  <a type="button" class="btn btn-secondary" name="options" asp-route-options="OrdenarEditorial" asp-controller="Libro" asp-action="OrdenarLista">Por Editorial</a>
+</div>
+<hr>
+@*Hasta aca*@
 <div>
-    <form asp-controller="Libro" asp-action="Index" >
+    <p style="color: white;">Criterio de búsqueda</p>
+    <form class="form-inline" asp-controller="Libro" asp-action="Index" >
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
             <label class="btn btn-secondary active">
                 <input type="radio" name="options" value="BuscarTitulo" asp-action="Libro" asp-action="Index" checked> Buscar Titulo

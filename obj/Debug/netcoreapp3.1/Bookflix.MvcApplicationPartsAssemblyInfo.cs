@@ -14,5 +14,5 @@ using System.Reflection;
 [assembly: Microsoft.AspNetCore.Mvc.ApplicationParts.ApplicationPartAttribute("Microsoft.AspNetCore.Identity.UI.Views.V3")]
 [assembly: Microsoft.AspNetCore.Mvc.ApplicationParts.ApplicationPartAttribute("Microsoft.AspNetCore.Identity.UI.Views.V4")]
 
-// Généré par la classe MSBuild WriteCodeFragment.
+// Generado por la clase WriteCodeFragment de MSBuild.
 

@@ -24,6 +24,8 @@ namespace Bookflix.Controllers
         private readonly UserManager<BookflixUser> _userManager;
         private readonly IWebHostEnvironment WebHostEnvironment;
 
+        private static List<Libro> librosActuales; //Esto se agrego 17/7 de prueba
+
         private static bool BienComentado;
 
         public LibroController(BookflixDbContext context, IWebHostEnvironment webHostEnvironment, UserManager<BookflixUser> userManager)
@@ -39,6 +41,7 @@ namespace Bookflix.Controllers
             return RedirectToAction(nameof(Index));
         }
         // GET: Libro
+        /*LO COMENTO PARA PROBAR
         public IActionResult Index(string options, string searchString)
         {
             IQueryable<Libro> bookflixDbContext;
@@ -120,6 +123,109 @@ namespace Bookflix.Controllers
                 return View("IndexSuscriptor", libros);
             }
         }
+
+        */
+
+        //ESTO SE AGREGO EL 17/7 DE PRUEBA
+        public IActionResult Index(string options, string searchString)
+        {
+            IQueryable<Libro> bookflixDbContext;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                switch (options)
+                {
+                    case "BuscarEditorial":
+                        bookflixDbContext = _context.Libros.Where(l => l.Editorial.Nombre.Contains(searchString)).Include(l => l.Autor).Include(l => l.Editorial).Include(l => l.Genero);
+                        break;
+                    case "BuscarAutor":
+                        bookflixDbContext = _context.Libros.Where(l => l.Autor.Nombre.Contains(searchString) || l.Autor.Apellido.Contains(searchString)).Include(l => l.Autor).Include(l => l.Editorial).Include(l => l.Genero);
+                        break;
+                    case "BuscarGenero":
+                        bookflixDbContext = _context.Libros.Where(l => l.Genero.Nombre.Contains(searchString)).Include(l => l.Autor).Include(l => l.Editorial).Include(l => l.Genero);
+                        break;
+                    default:
+                        bookflixDbContext = _context.Libros.Where(l => l.Titulo.Contains(searchString)).Include(l => l.Autor).Include(l => l.Editorial).Include(l => l.Genero);
+                        break;
+                }
+            }
+            else
+            {
+                bookflixDbContext = _context.Libros.Include(l => l.Autor).Include(l => l.Editorial).Include(l => l.Genero);
+            }
+
+            librosActuales = bookflixDbContext.ToList(); 
+
+            if (User.IsInRole("Administrador"))
+            {
+                return View("Index", librosActuales);
+            }
+            else
+            {
+                ViewBag.Perfil = _context
+                                .Perfiles
+                                .FirstOrDefault( p => p.Id == PerfilActual);
+                return View("IndexSuscriptor", librosActuales);
+            }
+        }
+
+
+        public IActionResult OrdenarLista(string options)
+        {
+            switch (options)
+            {
+                case "OrdenarEditorial":
+                    librosActuales.Sort(delegate (Libro x, Libro y)
+                    {
+                        if (x.Editorial.Nombre == null && y.Editorial.Nombre == null) return 0;
+                        else if (x.Editorial.Nombre == null) return -1;
+                        else if (y.Editorial.Nombre == null) return 1;
+                        else return x.Editorial.Nombre.CompareTo(y.Editorial.Nombre);
+                    });
+                    break;
+                case "OrdenarAutor":
+                    librosActuales.Sort(delegate (Libro x, Libro y)
+                    {
+                        if (x.Autor.Nombre == null && y.Autor.Nombre == null) return 0;
+                        else if (x.Autor.Nombre == null) return -1;
+                        else if (y.Autor.Nombre == null) return 1;
+                        else return x.Autor.Nombre.CompareTo(y.Autor.Nombre);
+                    });
+                    break;
+                case "OrdenarGenero":
+                    librosActuales.Sort(delegate (Libro x, Libro y)
+                    {
+                        if (x.Genero.Nombre == null && y.Genero.Nombre == null) return 0;
+                        else if (x.Genero.Nombre == null) return -1;
+                        else if (y.Genero.Nombre == null) return 1;
+                        else return x.Genero.Nombre.CompareTo(y.Genero.Nombre);
+                    });
+                    break;
+                default:
+                    librosActuales.Sort(delegate (Libro x, Libro y)
+                    {
+                        if (x.Titulo == null && y.Titulo == null) return 0;
+                        else if (x.Titulo == null) return -1;
+                        else if (y.Titulo == null) return 1;
+                        else return x.Titulo.CompareTo(y.Titulo);
+                    });
+                    break;
+            }
+
+            if (User.IsInRole("Administrador"))
+            {
+                return View("Index", librosActuales);
+            }
+            else
+            {
+                ViewBag.Perfil = _context
+                                .Perfiles
+                                .FirstOrDefault( p => p.Id == PerfilActual);
+                return View("IndexSuscriptor", librosActuales);
+            }
+        }
+
+        //HASTA ACA
 
         [HttpPost]
         public async Task<IActionResult> Comentar(string comentario, int idLibro)
