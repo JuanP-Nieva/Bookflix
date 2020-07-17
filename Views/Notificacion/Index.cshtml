@@ -1,0 +1,27 @@
+@model IEnumerable<Bookflix.Models.Notificacion>
+
+@{
+    ViewData["Title"] = "Notificaciones";
+}
+
+<h2 style="color: #E50914;">Últimas notificaciones</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th style="color: white;">
+                @Html.DisplayNameFor(model => model.Contenido)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td style="color: white;">
+                @Html.DisplayFor(modelItem => item.Contenido)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

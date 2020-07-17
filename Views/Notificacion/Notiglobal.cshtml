@@ -1,0 +1,28 @@
+@model Bookflix.Models.Notificacion
+
+@{
+    ViewData["Title"] = "Notificacion Global";
+}
+
+<h4 style="color: #E50914;">Notificacion</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Creaglobal">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Contenido" class="control-label" style="color: white;"></label>
+                <input asp-for="Contenido" class="form-control" />
+                <span asp-validation-for="Contenido" class="text-danger"></span>
+            </div>            
+            <div class="form-group">
+                <input type="submit" value="Crear" class="btn btn-primary" />
+                <a class="btn btn-danger btn-sm" asp-controller="BookflixUser" asp-action="Index" >Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -16,16 +16,16 @@ namespace Bookflix.Data
         public DbSet<Libro> Libros { get; set; }
         public DbSet<Novedad> Novedades { get; set; }
         public DbSet<Pago> Pagos { get; set; }
-        public DbSet<Tarjeta> Tarjetas { get; set; }        
-        public DbSet<Reportes> Reportes { get; set;}
-        public DbSet<Perfil_Favea_Libro> Perfil_Favea_Libros { get; set; }   
+        public DbSet<Tarjeta> Tarjetas { get; set; }
+        public DbSet<Reportes> Reportes { get; set; }
+        public DbSet<Perfil_Favea_Libro> Perfil_Favea_Libros { get; set; }
         public DbSet<Perfil_Comenta_Libro> Perfil_Comenta_Libros { get; set; }
         public DbSet<Perfil_Lee_Libro> Perfil_Lee_Libros { get; set; }
         public DbSet<Perfil_Puntua_Libro> Perfil_Puntua_Libros { get; set; }
-
+        public DbSet<Notificacion> Notificaciones { get; set; }
         public DbSet<Capitulo> Capitulos { get; set; }
-
         public DbSet<Trailer> Trailers { get; set; }
+        public DbSet<Usuario_Recibe_Notificacion> Usuario_Recibe_Notificaciones { get; set; }
 
         public BookflixDbContext(DbContextOptions<BookflixDbContext> options)
             : base(options)
@@ -35,7 +35,7 @@ namespace Bookflix.Data
         public BookflixDbContext()
             : base()
         {
-        } 
+        }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -45,10 +45,23 @@ namespace Bookflix.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Perfil_Comenta_Libro> ().HasKey (pl => new { pl.LibroId , pl.NumeroComentario});
-            modelBuilder.Entity<Perfil_Favea_Libro> ().HasKey (pl => new { pl.PerfilId, pl.LibroId });
-            modelBuilder.Entity<Perfil_Lee_Libro> ().HasKey (pl => new { pl.PerfilId, pl.LibroId });
-            modelBuilder.Entity<Perfil_Puntua_Libro> ().HasKey (pl => new { pl.PerfilId, pl.LibroId });
+            modelBuilder.Entity<Perfil_Comenta_Libro>().HasKey(pl => new { pl.LibroId, pl.NumeroComentario });
+            modelBuilder.Entity<Perfil_Favea_Libro>().HasKey(pl => new { pl.PerfilId, pl.LibroId });
+            modelBuilder.Entity<Perfil_Lee_Libro>().HasKey(pl => new { pl.PerfilId, pl.LibroId });
+            modelBuilder.Entity<Perfil_Puntua_Libro>().HasKey(pl => new { pl.PerfilId, pl.LibroId });
+
+            modelBuilder.Entity<Usuario_Recibe_Notificacion>().HasKey(urn => new { urn.BookflixUserId, urn.NotificacionId });
+
+            modelBuilder.Entity<Usuario_Recibe_Notificacion>()
+                .HasOne<BookflixUser>(urn => urn.BookflixUser)
+                .WithMany(user => user.Usuario_Recibe_Notificaciones)
+                .HasForeignKey(urn => urn.BookflixUserId);
+
+
+            modelBuilder.Entity<Usuario_Recibe_Notificacion>()
+                .HasOne<Notificacion>(urn => urn.Notificacion)
+                .WithMany(not => not.Usuario_Recibe_Notificaciones)
+                .HasForeignKey(urn => urn.NotificacionId);
         }
     }
 }

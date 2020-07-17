@@ -703,3 +703,10 @@ C:\Users\Josef\Documents\GitHub\Bookflix\obj\Debug\netcoreapp3.1\Razor\Views\Per
 C:\Users\Josef\Documents\GitHub\Bookflix\obj\Debug\netcoreapp3.1\Razor\Views\Perfil_Lee_Libro\Details.cshtml.g.cs
 C:\Users\Josef\Documents\GitHub\Bookflix\obj\Debug\netcoreapp3.1\Razor\Views\Perfil_Lee_Libro\Edit.cshtml.g.cs
 C:\Users\Josef\Documents\GitHub\Bookflix\obj\Debug\netcoreapp3.1\Razor\Views\Perfil_Lee_Libro\Index.cshtml.g.cs
+C:\Users\Josef\Documents\GitHub\Bookflix\obj\Debug\netcoreapp3.1\Razor\Views\Notificacion\Create.cshtml.g.cs
+C:\Users\Josef\Documents\GitHub\Bookflix\obj\Debug\netcoreapp3.1\Razor\Views\Notificacion\Delete.cshtml.g.cs
+C:\Users\Josef\Documents\GitHub\Bookflix\obj\Debug\netcoreapp3.1\Razor\Views\Notificacion\Details.cshtml.g.cs
+C:\Users\Josef\Documents\GitHub\Bookflix\obj\Debug\netcoreapp3.1\Razor\Views\Notificacion\Edit.cshtml.g.cs
+C:\Users\Josef\Documents\GitHub\Bookflix\obj\Debug\netcoreapp3.1\Razor\Views\Notificacion\Index.cshtml.g.cs
+C:\Users\Josef\Documents\GitHub\Bookflix\obj\Debug\netcoreapp3.1\Razor\Views\Notificacion\Notiglobal.cshtml.g.cs
+C:\Users\Josef\Documents\GitHub\Bookflix\obj\Debug\netcoreapp3.1\Razor\Views\Statistics\Index.cshtml.g.cs

@@ -58,14 +58,9 @@ namespace Bookflix.Areas.Identity.Pages.Account
                     values: new { area = "Identity", code },
                     protocol: Request.Scheme);
 
-                // await _emailSender.SendEmailAsync(
-                //     Input.Email,
-                //     "Reset Password",
-                //     $"Please reset your password by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
-
-                EmailSender emailSender = new EmailSender();
-                await emailSender.Execute("Grupo 48", "pedrincreabookflix@gmail.com", user.Nombre, user.Email, "Recupera tu contraseña", "Presione aquí para recuperar su contraseña de Bookflix", $"Presione <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>aquí</a> para recuperar su contraseña de Bookflix");
-                return RedirectToPage("./ForgotPasswordConfirmation");
+                //EmailSender emailSender = new EmailSender();
+               // await emailSender.Execute("Grupo 48", "pedrincreabookflix@gmail.com", user.Nombre, user.Email, "Recupera tu contraseña", "Presione aquí para recuperar su contraseña de Bookflix", $"Presione <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>aquí</a> para recuperar su contraseña de Bookflix");
+                return Redirect(HtmlEncoder.Default.Encode(callbackUrl));
             }
 
             return Page();

@@ -22,15 +22,15 @@ namespace Bookflix.Controllers
         private readonly BookflixDbContext _context;
         private readonly UserManager<BookflixUser> _userManager;
 
-        private readonly RoleManager<BookflixUser> _roleManager;
 
-        public StatisticsController(BookflixDbContext context, UserManager<BookflixUser> userManager, RoleManager<BookflixUser> roleManager)
+        public StatisticsController(BookflixDbContext context, UserManager<BookflixUser> userManager)
         {
             _context = context;
             _userManager = userManager;
-            _roleManager = roleManager;
+
         }
 
+       
         public async Task<IActionResult> Index(string options)
         {
             
@@ -44,13 +44,8 @@ namespace Bookflix.Controllers
             {
                 
                 case "MostrarLibroMasLeido":
-                    var pl = _context.Perfil_Lee_Libros
-                                 .Include(c => c.LibroId)
-                                 .GroupBy(c => c.LibroId);
+                    var pl = _context.Perfil_Lee_Libros.AsEnumerable().GroupBy(pl => pl.LibroId).OrderByDescending(l => l.Count());
 
-                    pl.OrderByDescending(c => c.Count());
-
-                    
                     ViewBag.Option = 1;
                     List<int> lista = new List<int>();
 
@@ -69,33 +64,39 @@ namespace Bookflix.Controllers
                         c = 10;
                     }
 
+                    stats.Libros = new List<Libro>();
+
                     for (int i = 0; i < c; i++)
                     {
                         var libro = await _context.Libros
+                                    .Include(c => c.Autor)
+                                    .Include(c => c.Genero)
+                                    .Include(c => c.Editorial)
                                     .FirstOrDefaultAsync(l => l.Id == lista.ElementAt(i));
                         stats.Libros.Add(libro);
                     }
                     break;
                 case "UsuariosNormales":
-                   ViewBag.Option = 2;
-                    break;
-                case "UsuariosPremium":
-                    ViewBag.Option = 3;
+                    ViewBag.Option = 2;
                     break;
             }
 
 
 
-            var id = _context.Roles
-                             .Where(n => n.Name == "Normal");
+            var role = _context.Roles
+                             .FirstOrDefault(n => n.Name == "Normal");
 
             stats.NormalUsers = _context.UserRoles
-                                        .Where(d => d.RoleId.Equals(id))
+                                        .Where(d => d.RoleId.Equals(role.Id))
                                         .Count();
 
             stats.PremiumUsers = _context.Users
                                          .Count() - stats.NormalUsers - 1;
 
+            ViewBag.PorcentajeNormal = stats.calcularPorcentajeNormal();
+            ViewBag.PorcentajePremium = stats.calcularPorcentajePremium();
+
+            ViewBag.TotalUsuarios = stats.NormalUsers + stats.PremiumUsers;
 
             return View(stats);
         }

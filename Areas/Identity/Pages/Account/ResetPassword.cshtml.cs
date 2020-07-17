@@ -40,7 +40,7 @@ namespace Bookflix.Areas.Identity.Pages.Account
 
             [DataType(DataType.Password)]
             [Display(Name = "Confirme la nueva contraseña")]
-            [Compare("NewPassword", ErrorMessage = "Las contraseñas no son iguales.")]
+            [Compare("Password", ErrorMessage = "Las contraseñas no son iguales.")]
             public string ConfirmPassword { get; set; }
 
             public string Code { get; set; }

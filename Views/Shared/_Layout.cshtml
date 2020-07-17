@@ -63,6 +63,9 @@
                                 <li class="nav-item">
                                     <a class="nav-link text-light" asp-area="" asp-controller="Novedad" asp-action="Index" style="color: #F5F5F1;">Novedades</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-light" asp-area="" asp-controller="Notificacion" asp-action="Index" asp-route-email="@User.Identity.Name" style="color: #F5F5F1;">Notificaciones</a>
+                                </li>
                             </ul>
                         }
                     }

@@ -7,7 +7,7 @@
 <h1 style="color: #E50914;">USUARIOS</h1>
 
 <div>
-    <form asp-controller="BookflixUser" asp-action="Index" > 
+    <form asp-controller="BookflixUser" asp-action="Index">
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
             <label class="btn btn-secondary active">
                 <input type="radio" name="options" value="BuscarEmail" asp-action="BookflixUser" asp-action="Index" checked> Buscar Email
@@ -26,6 +26,10 @@
         <input type="text" name="SearchString" placeholder="Buscar">
         <input class="btn btn-primary btn-sm" type="submit" value="Buscar" />
     </form>
+</div>
+<br>
+<div>
+    <a class="btn btn-dark btn-sm" asp-controller="Notificacion" asp-action="Notiglobal">Notificar a todos</a>
 </div>
 <br>
 <table class="table">
@@ -52,7 +56,7 @@
 @foreach (var item in Model) {
     @if (item.Email != User.Identity.Name)
     {
-        <tr>
+        <tr>        
             <td style="color: white;">
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
@@ -66,6 +70,7 @@
                 @Html.DisplayFor(modelItem => item.Dni)
             </td>
             <td>
+           
                 @if (!item.Habilitado)
                 {
                     <a class="btn btn-secondary btn-sm" asp-action="ToggleHabilitar" asp-route-id="@item.Id">Habilitar</a>
@@ -75,9 +80,10 @@
                     <a class="btn btn-secondary btn-sm" asp-action="ToggleHabilitar" asp-route-id="@item.Id">Inhabilitar</a>
                 }
                 <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                <a class="btn btn-dark btn-sm" asp-action="CrearUnico" asp-controller="Notificacion" asp-route-id="@item.Id">Notificar</a>
             </td>
         </tr>
-    }
+    } 
 }
     </tbody>
 </table>

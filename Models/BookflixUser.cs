@@ -26,6 +26,7 @@ namespace Bookflix.Models
         public DateTime FechaDeNacimiento { get; set; }
 
         //Propiedades para las relaciones de la DB
+        public List<Usuario_Recibe_Notificacion> Usuario_Recibe_Notificaciones { get; set; }
         public List<Perfil> Perfiles { get; set; }
         public List<Pago> Pagos { get; set; }
 

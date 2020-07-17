@@ -14,6 +14,17 @@ namespace Bookflix.Models
         public int NormalUsers { get; set; }
         public int PremiumUsers { get; set; }
         public List<Libro> Libros { get; set; }
+    
+        //Metodos
+        public double calcularPorcentajeNormal()
+        {
+            return this.NormalUsers * 100 / (this.NormalUsers + this.PremiumUsers);
+        }
+
+        public double calcularPorcentajePremium()
+        {
+            return this.PremiumUsers * 100 / (this.NormalUsers + this.PremiumUsers);
+        }
     }
 }
 

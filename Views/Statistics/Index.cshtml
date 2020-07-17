@@ -2,56 +2,70 @@
 
 @{
     ViewData["Title"] = "Estadisticas";
+    int i = 1;
 }
 
-<h1>Estadisticas</h1>
+<h1 style="color: red;">Estadisticas</h1>
 
-<form asp-controller="Statistics" asp-action="Index" >
-        <div class="btn-group btn-group-toggle" data-toggle="buttons">
-            <label class="btn btn-secondary active">
-                <input type="radio" name="options" value="MostrarLibroMasLeido" asp-action="Statistics" asp-action="Index" checked> Lbros más leído
-            </label>
-            <label class="btn btn-secondary">
-                <input type="radio" name="options" value="UsuariosNormales" asp-action="Statistics" asp-action="Index"> Usuarios Normales
-            </label>
-            <label class="btn btn-secondary">
-                <input type="radio" name="options" value="UsuariosPremium" asp-action="Statistics" asp-action="Index"> Usuarios Premium
-            </label>
+<div class="btn-group" role="group" aria-label="Basic example">
+  <a type="button" class="btn btn-secondary" name="options" asp-route-options="MostrarLibroMasLeido" asp-controller="Statistics" asp-action="Index">Libros más leídos</a>
+  <a type="button" class="btn btn-secondary" name="options" asp-route-options="UsuariosNormales" asp-controller="Statistics" asp-action="Index">Cantidad de Usuarios</a>
+</div>
+<hr>
+@if(ViewBag.Option == 1)
+{ 
+    <div>
+        <p style="color: red;">Libros más leídos</p>
+        @if(Model.Libros == null){
+            <div class="alert alert-warning" role="alert">
+                ¡No hay libros leídos!
+            </div>
+        }else{
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                    <th scope="row">#</th>
+                    <th scope="col">Titulo</th>
+                    <th scope="col">Descripción</th>
+                    <th scope="col">Autor</th>
+                    <th scope="col">Genero</th>
+                    <th scope="col">Editorial</th>
+                    </tr>
+                </thead>
+                <tbody style="background-color: azure;">
+                
+                @foreach (var item in Model.Libros)
+                {
+                    <tr>
+                    <td >@(@i++)</td>
+                    <td>@item.Titulo</td>
+                    <td>@item.Descripcion</td>
+                    <td>@item.Autor.Nombre</td>
+                    <td>@item.Genero.Nombre</td>
+                    <td>@item.Editorial.Nombre</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        }
+    </div>
+}else{
+    <div class="text-center">
+        <span class="d-block p-2 bg-danger text-white">USUARIOS TOTALES = @ViewBag.TotalUsuarios</span>
+    </div>
+    <hr>
+    <div class="text-center">
+        <span class="d-block p-2 bg-dark text-white">USUARIOS NORMALES = @Model.NormalUsers</span>
+        <div class="progress" style="height: 30px;">
+            <div class="progress-bar bg-primary" role="progressbar" style="width: @ViewBag.PorcentajeNormal%;" aria-valuenow="@ViewBag.PorcentajeNormal" aria-valuemin="0" aria-valuemax="100">@ViewBag.PorcentajeNormal%</div>
         </div>
-        <hr>
-        <input class="btn btn-primary btn-sm" type="submit" value="Buscar" />
-    </form>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Libro)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Perfil)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Finalizado)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Libro.Descripcion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Perfil.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Finalizado)
-            </td>
-            <td>
-            </td>
-        </tr>
+    </div>
+    <hr>
+    <div class="text-center">
+        <span class="d-block p-2 bg-dark text-white">USUARIOS PREMIUM = @Model.PremiumUsers</span>
+        <div class="progress" style="height: 30px;">
+            <div class="progress-bar bg-primary" role="progressbar" style="width: @ViewBag.PorcentajePremium%;" aria-valuenow="@ViewBag.PorcentajePremium" aria-valuemin="0" aria-valuemax="100">@ViewBag.PorcentajePremium%</div>
+        </div>
+    </div>
+    <hr>
 }
-    </tbody>
-</table>
