@@ -127,10 +127,15 @@
                          <div class="col-md-6 col-md-offset-3">
                              <div class="panel panel-info">
                                <div class="panel-body">
+                                @if (ViewBag.ComentarioVacio)
+                                {
+                                    <h6 style="color: red;">El comentario no puede estar vacío.</h6>
+                                }
                                  <form asp-controller="Libro" asp-action="Comentar" method="post">
                                  <div class="form-group">
                                         <input type="hidden" name="idLibro" id="idLibro" value="@Model.Id"/>
                                         <textarea type="text" class="form-control" name="comentario" id="comentario" rows="3" placeholder="Escriba un comentario..."></textarea>
+                                      
                                  </div>
                                  <button type="submit" class="btn btn-primary mb-2">Comentar</button>
                                 </form>

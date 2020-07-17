@@ -23,6 +23,9 @@ namespace Bookflix.Controllers
         private readonly BookflixDbContext _context;
         private readonly UserManager<BookflixUser> _userManager;
         private readonly IWebHostEnvironment WebHostEnvironment;
+
+        private static bool BienComentado;
+
         public LibroController(BookflixDbContext context, IWebHostEnvironment webHostEnvironment, UserManager<BookflixUser> userManager)
         {
             _context = context;
@@ -121,6 +124,13 @@ namespace Bookflix.Controllers
         [HttpPost]
         public async Task<IActionResult> Comentar(string comentario, int idLibro)
         {
+            if (comentario == null)
+            {
+                BienComentado = true;
+                return RedirectToAction("Details", new {id = idLibro});
+            }
+            BienComentado = false;
+
             var libro = await _context.Libros
                              .Where(l => l.Id == idLibro)
                              .FirstOrDefaultAsync();
@@ -199,6 +209,8 @@ namespace Bookflix.Controllers
             {
                 ViewBag.Puntaje = puntuacion.Puntaje;
             }
+
+            ViewBag.ComentarioVacio = BienComentado;
 
             return View(libro);
         }
