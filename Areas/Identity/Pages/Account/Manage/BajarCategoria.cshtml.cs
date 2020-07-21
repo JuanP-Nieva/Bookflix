@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using Bookflix.Models;
+using Bookflix.Data;
+
 
 namespace Bookflix.Areas.Identity.Pages.Account
 {
@@ -39,6 +41,15 @@ namespace Bookflix.Areas.Identity.Pages.Account
 
             await user.ChangeRole(_userManager, "Normal", "Premium");
             await _signInManager.RefreshSignInAsync(user);
+
+            using (var db = new BookflixDbContext())
+            {
+                if(db.Perfiles.Where(p => p.Usuario.Id == user.Id).Count() > 2)
+                {
+                    return RedirectToAction("AdministrarPerfil", "Perfil");
+                }
+            }
+
             return RedirectToAction("Index", "Perfil");
         }
     }

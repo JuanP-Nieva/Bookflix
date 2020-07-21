@@ -16,6 +16,8 @@ namespace Bookflix.Controllers
     {
         private readonly BookflixDbContext _context;
 
+        private static List<BookflixUser> usuariosActuales;
+
         public BookflixUserController(BookflixDbContext context)
         {
             _context = context;
@@ -49,18 +51,23 @@ namespace Bookflix.Controllers
                 bookflixDbContext = _context.Users;
             }
 
-            List<BookflixUser> usuarios = bookflixDbContext.ToList();
+            usuariosActuales = bookflixDbContext.ToList();
 
+            return View("Index", usuariosActuales);
+        }
+
+        public IActionResult OrdenarLista(string options)
+        {
             switch (options)
             {
-                case "BuscarDni":
-                    usuarios.Sort(delegate (BookflixUser x, BookflixUser y)
+                case "OrdenarDni":
+                    usuariosActuales.Sort(delegate (BookflixUser x, BookflixUser y)
                     {
                         return x.Dni.CompareTo(y.Dni);
                     });
                     break;
-                case "BuscarApellido":
-                    usuarios.Sort(delegate (BookflixUser x, BookflixUser y)
+                case "OrdenarApellido":
+                    usuariosActuales.Sort(delegate (BookflixUser x, BookflixUser y)
                     {
                         if (x.Apellido == null && y.Apellido == null) return 0;
                         else if (x.Apellido == null) return -1;
@@ -68,8 +75,8 @@ namespace Bookflix.Controllers
                         else return x.Apellido.CompareTo(y.Apellido);
                     });
                     break;
-                case "BuscarNombre":
-                    usuarios.Sort(delegate (BookflixUser x, BookflixUser y)
+                case "OrdenarNombre":
+                    usuariosActuales.Sort(delegate (BookflixUser x, BookflixUser y)
                     {
                         if (x.Nombre == null && y.Nombre == null) return 0;
                         else if (x.Nombre == null) return -1;
@@ -78,7 +85,7 @@ namespace Bookflix.Controllers
                     });
                     break;
                 default:
-                    usuarios.Sort(delegate (BookflixUser x, BookflixUser y)
+                    usuariosActuales.Sort(delegate (BookflixUser x, BookflixUser y)
                     {
                         if (x.Email == null && y.Email == null) return 0;
                         else if (x.Email == null) return -1;
@@ -87,7 +94,7 @@ namespace Bookflix.Controllers
                     });
                     break;
             }
-            return View("Index", usuarios);
+            return View("Index", usuariosActuales);
         }
 
         // GET: BookflixUser/Details/5

@@ -14,6 +14,18 @@
         </tr> 
     </thead>
     <tbody>
+    @if(User.IsInRole("Normal"))
+    {
+        @if (Model.Count() == 3)
+        {
+            <h6 style="color: #E50914;">Elimine un perfil para continuar</h6>
+        }
+        else if(Model.Count() == 4)
+        {
+            <h6 style="color: #E50914;">Elimine dos perfiles para continuar</h6>
+        }
+    }
+    
 @foreach (var item in Model) {
         <tr>
             <td>

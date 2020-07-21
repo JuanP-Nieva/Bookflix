@@ -48,7 +48,11 @@ namespace Bookflix.Controllers
             {
                 return NotFound();
             }
-            
+            ViewBag.Libro = _context.Libros
+                                .Include(l => l.Autor)
+                                .Include(l => l.Editorial)
+                                .Include(l => l.Genero)
+                                .FirstOrDefault(c => c.Id == reportes.LibroId); //Agrego el libro para mostrar info del mismo en el details de reporte
             ViewBag.Motivo = reportes.Motivo;
             return View(p);
         }

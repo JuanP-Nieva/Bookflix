@@ -3,30 +3,90 @@
     ViewData["Title"] = "Reporte";
 }
 
-<h1 style="color: white;">Detalles del Comentario</h1>
+<h1 style="color: #E50914;">Detalles del Comentario</h1>
 
 <div>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2" style="color: white;">
+        <dt class = "col-sm-2" style="color: #E50914;">
             @Html.DisplayNameFor(model => model.Comentario)
         </dt>
         <dd class = "col-sm-10" style="color: white;">
             @Html.DisplayFor(model => model.Comentario)
         </dd>
-        <dt class = "col-sm-2" style="color: white;">
-            Motivo
+        <dt class = "col-sm-2" style="color: #E50914;">
+            Realizado por
+        </dt>
+        <dd class = "col-sm-10" style="color: white;">
+            @Model.obtenerUsuario().UserName
+        </dd>
+        <dt class = "col-sm-2" style="color: #E50914;">
+            Motivo de reporte
         </dt>
         <dd class = "col-sm-10" style="color: white;">
             @ViewBag.Motivo
         </dd>
+        <dt class = "col-sm-2" style="color: #E50914;">
+            Titulo del libro
+        </dt>
+        <dd class = "col-sm-10" style="color: white;">
+            @ViewBag.Libro.Titulo
+        </dd>
+        <dt class = "col-sm-2" style="color: #E50914;">
+            Descripción 
+        </dt>
+        <dd class = "col-sm-10" style="color: white;">
+            @ViewBag.Libro.Descripcion
+        </dd>
+        <dt class = "col-sm-2" style="color: #E50914;">
+            Autor
+        </dt>
+        <dd class = "col-sm-10" style="color: white;">
+            @ViewBag.Libro.Autor.Nombre
+        </dd>
+        <dt class = "col-sm-2" style="color: #E50914;">
+            Editorial
+        </dt>
+        <dd class = "col-sm-10" style="color: white;">
+            @ViewBag.Libro.Editorial.Nombre
+        </dd>
+        <dt class = "col-sm-2" style="color: #E50914;">
+            Género
+        </dt>
+        <dd class = "col-sm-10" style="color: white;">
+            @ViewBag.Libro.Genero.Nombre
+        </dd>
     </dl>
 </div>
 <div>
-    <form asp-controller="Reportes" asp-action="Delete" method="post">
-                            <input type="hidden" name="id" id="id" value="@Model.LibroId"/>
-                            <input type="hidden" name="nro" id="nro" value="@Model.NumeroComentario"/>
-                            <button type="submit" class="btn btn-primary mb-2">Borrar Comentario</button>
-    </form>
+    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
+        Borrar Comentario
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Eliminar comentario</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>¿Estas seguro que quieres eliminar el comentario "@Html.DisplayFor(model => model.Comentario)"?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary mb-2" data-dismiss="modal">Cancelar</button>
+                <form asp-controller="Reportes" asp-action="Delete" method="post">
+                    <input type="hidden" name="id" id="id" value="@Model.LibroId"/>
+                    <input type="hidden" name="nro" id="nro" value="@Model.NumeroComentario"/>
+                    <button type="submit" class="btn btn-danger mb-2">Confirmar</button>
+                </form>
+            </div>
+            </div>
+        </div>
+    </div>
+
     <a class="btn btn-danger" role="button" asp-controller="Reportes" asp-action="Index">Volver</a>
 </div>

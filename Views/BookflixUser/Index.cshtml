@@ -6,7 +6,18 @@
 
 <h1 style="color: #E50914;">USUARIOS</h1>
 
+<hr>
+<p style="color: white;">Criterio de ordenación</p>
+<div class="btn-group" role="group" aria-label="Basic example">
+  <a type="button" class="btn btn-secondary" name="options" asp-route-options="OrdenarDni" asp-controller="BookflixUser" asp-action="OrdenarLista">Por DNI</a>
+  <a type="button" class="btn btn-secondary" name="options" asp-route-options="OrdenarApellido" asp-controller="BookflixUser" asp-action="OrdenarLista">Por Apellido</a>
+  <a type="button" class="btn btn-secondary" name="options" asp-route-options="OrdenarNombre" asp-controller="BookflixUser" asp-action="OrdenarLista">Por Nombre</a>
+  <a type="button" class="btn btn-secondary" name="options" asp-route-options="OrdenarEmail" asp-controller="BookflixUser" asp-action="OrdenarLista">Por Email</a>
+</div>
+<hr>
+
 <div>
+    <p style="color: white;">Criterio de búsqueda</p>
     <form asp-controller="BookflixUser" asp-action="Index">
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
             <label class="btn btn-secondary active">
@@ -48,8 +59,8 @@
                 @Html.DisplayNameFor(model => model.Dni)
             </th>
             <th style="color: white;">
-                Opciones</th>
-            <th></th>
+                Opciones
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -80,33 +91,32 @@
                     <a class="btn btn-secondary btn-sm" asp-action="ToggleHabilitar" asp-route-id="@item.Id">Inhabilitar</a>
                 }
                 
-                <td><button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#exampleModal">
-                    Eliminar
-                    </button>
-                </td>
+                <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#exampleModal">
+                Eliminar
+                </button>
 
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Eliminar a "@item.UserName"</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <p>¿Estas seguro que quieres eliminar al usuario?</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <a type="button" class="btn btn-danger" asp-action="Delete" asp-controller="BookflixUser" asp-route-id="@item.Id">Confirmar</a>
-                    </div>
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Eliminar a "@item.UserName"</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>¿Estas seguro que quieres eliminar al usuario?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                <a type="button" class="btn btn-danger" asp-action="Delete" asp-controller="BookflixUser" asp-route-id="@item.Id">Confirmar</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                </div>
-                <a class="btn btn-dark btn-sm" asp-action="CrearUnico" asp-controller="Notificacion" asp-route-id="@item.Id">Notificar</a>
-            </td>
+                <a class="btn btn-dark btn-sm" asp-action="CrearUnico" asp-controller="Notificacion" asp-route-id="@item.Id">Notificar</a>    
+            </td>        
         </tr>
     } 
 }

@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using Bookflix.Data;
+using System.Linq;
 
 namespace Bookflix.Models
 {
@@ -36,6 +38,14 @@ namespace Bookflix.Models
         {
             await userManager.RemoveFromRoleAsync(this, previousRole);
             await userManager.AddToRoleAsync(this, newRole);
-        }        
+        }   
+
+        public bool tienePerfil(int id)
+        {
+            using (var db = new BookflixDbContext())
+            {
+                return db.Perfiles.Any(p => p.Usuario.Id == this.Id && p.Id == id);
+            }
+        }
     }
 }
