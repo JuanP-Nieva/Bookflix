@@ -40,93 +40,7 @@ namespace Bookflix.Controllers
             PerfilActual = id;
             return RedirectToAction(nameof(Index));
         }
-        // GET: Libro
-        /*LO COMENTO PARA PROBAR
-        public IActionResult Index(string options, string searchString)
-        {
-            IQueryable<Libro> bookflixDbContext;
 
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                switch (options)
-                {
-                    case "BuscarEditorial":
-                        bookflixDbContext = _context.Libros.Where(l => l.Editorial.Nombre.Contains(searchString)).Include(l => l.Autor).Include(l => l.Editorial).Include(l => l.Genero);
-                        break;
-                    case "BuscarAutor":
-                        bookflixDbContext = _context.Libros.Where(l => l.Autor.Nombre.Contains(searchString) || l.Autor.Apellido.Contains(searchString)).Include(l => l.Autor).Include(l => l.Editorial).Include(l => l.Genero);
-                        break;
-                    case "BuscarGenero":
-                        bookflixDbContext = _context.Libros.Where(l => l.Genero.Nombre.Contains(searchString)).Include(l => l.Autor).Include(l => l.Editorial).Include(l => l.Genero);
-                        break;
-                    default:
-                        bookflixDbContext = _context.Libros.Where(l => l.Titulo.Contains(searchString)).Include(l => l.Autor).Include(l => l.Editorial).Include(l => l.Genero);
-                        break;
-                }
-            }
-            else
-            {
-                bookflixDbContext = _context.Libros.Include(l => l.Autor).Include(l => l.Editorial).Include(l => l.Genero);
-            }
-
-            List<Libro> libros = bookflixDbContext.ToList();
-
-            switch (options)
-            {
-                case "BuscarEditorial":
-                    libros.Sort(delegate (Libro x, Libro y)
-                    {
-                        if (x.Editorial.Nombre == null && y.Editorial.Nombre == null) return 0;
-                        else if (x.Editorial.Nombre == null) return -1;
-                        else if (y.Editorial.Nombre == null) return 1;
-                        else return x.Editorial.Nombre.CompareTo(y.Editorial.Nombre);
-                    });
-                    break;
-                case "BuscarAutor":
-                    libros.Sort(delegate (Libro x, Libro y)
-                    {
-                        if (x.Autor.Nombre == null && y.Autor.Nombre == null) return 0;
-                        else if (x.Autor.Nombre == null) return -1;
-                        else if (y.Autor.Nombre == null) return 1;
-                        else return x.Autor.Nombre.CompareTo(y.Autor.Nombre);
-                    });
-                    break;
-                case "BuscarGenero":
-                    libros.Sort(delegate (Libro x, Libro y)
-                    {
-                        if (x.Genero.Nombre == null && y.Genero.Nombre == null) return 0;
-                        else if (x.Genero.Nombre == null) return -1;
-                        else if (y.Genero.Nombre == null) return 1;
-                        else return x.Genero.Nombre.CompareTo(y.Genero.Nombre);
-                    });
-                    break;
-                default:
-                    libros.Sort(delegate (Libro x, Libro y)
-                    {
-                        if (x.Titulo == null && y.Titulo == null) return 0;
-                        else if (x.Titulo == null) return -1;
-                        else if (y.Titulo == null) return 1;
-                        else return x.Titulo.CompareTo(y.Titulo);
-                    });
-                    break;
-            }
-
-            if (User.IsInRole("Administrador"))
-            {
-                return View("Index", libros);
-            }
-            else
-            {
-                ViewBag.Perfil = _context
-                                .Perfiles
-                                .FirstOrDefault( p => p.Id == PerfilActual);
-                return View("IndexSuscriptor", libros);
-            }
-        }
-
-        */
-
-        //ESTO SE AGREGO EL 17/7 DE PRUEBA
         public IActionResult Index(string options, string searchString)
         {
             IQueryable<Libro> bookflixDbContext;
@@ -382,19 +296,6 @@ namespace Bookflix.Controllers
             }
         }
 
-        public async Task<IActionResult> Deletecomentario(int idLibro, int numeroComentario)
-        {
-
-            var comentario = await _context.Perfil_Comenta_Libros
-                .FirstOrDefaultAsync(c => c.LibroId == idLibro && c.NumeroComentario == numeroComentario);
-
-            //Considerar la opcion de "no borrar fisicamente" sino "borrar logicamente"
-
-            _context.Perfil_Comenta_Libros.Remove(comentario);
-            await _context.SaveChangesAsync();
-
-            return RedirectToAction("Details", new { id = idLibro });
-        }
 
         public IActionResult VerHistorial()
         {
@@ -752,6 +653,37 @@ namespace Bookflix.Controllers
             return _context.Libros.Any(libro => libro.ISBN == isbn && libro.Id == id);
         }
 
+        public async Task<IActionResult> VerComentarios(int? id)
+        {
+             if (id == null)
+            {
+                return NotFound();
+            }
+
+            var libro = await _context.Libros
+                .Include(l => l.Autor)
+                .Include(l => l.Editorial)
+                .Include(l => l.Genero)
+                .FirstOrDefaultAsync(m => m.Id == id);
+
+            if (libro == null)
+            {
+                return NotFound();
+            }
+            if (libro.Contenido == null)
+            {
+                libro.Capitulos = _context.Capitulos
+                        .Where(c => c.LibroId == libro.Id)
+                        .OrderBy(c => c.NumeroCapitulo)
+                        .ToList();
+            }
+
+            libro.Perfil_Comenta_Libros = _context.Perfil_Comenta_Libros
+                                        .Where(c => c.LibroId == libro.Id)
+                                        .ToList();
+            return View(libro);
+        }
+
         // GET: Libro/Delete/5
         [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Delete(int? id)
@@ -773,6 +705,46 @@ namespace Bookflix.Controllers
             _context.Libros.Remove(libro);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index", "Libro");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteComentario(int libroId, int nro)
+        {
+            Perfil_Comenta_Libro p = await _context.Perfil_Comenta_Libros
+                                    .FirstOrDefaultAsync(c => c.LibroId == libroId && c.NumeroComentario == nro);
+
+            //Borro tambien los reportes porque sino quedan y no puedo acceder mas
+            List<Reportes> reportes = _context.Reportes
+                                    .Where( r => r.LibroId == libroId && r.NumeroComentario == nro)
+                                    .ToList();
+            _context.Reportes.RemoveRange(reportes);
+           
+            _context.Perfil_Comenta_Libros.Remove(p);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("VerComentarios", new { id = libroId});
+        }
+
+        public async Task<IActionResult> MarcarSpoiler(int nro, int libroId)
+        {   
+            Perfil_Comenta_Libro p = await _context.Perfil_Comenta_Libros
+                                    .FirstOrDefaultAsync(c => c.LibroId == libroId && c.NumeroComentario == nro);
+
+            p.MarcaSpoiler = "Spoiler";
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction("VerComentarios", new { id = libroId});
+        }
+
+        public async Task<IActionResult> DesmarcarSpoiler(int nro, int libroId)
+        {   
+            Perfil_Comenta_Libro p = await _context.Perfil_Comenta_Libros
+                                    .FirstOrDefaultAsync(c => c.LibroId == libroId && c.NumeroComentario == nro);
+
+            p.MarcaSpoiler = "NoSpoiler";
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction("VerComentarios", new { id = libroId});
         }
 
 

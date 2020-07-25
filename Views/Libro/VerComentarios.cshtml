@@ -1,0 +1,77 @@
+@model Bookflix.Models.Libro
+
+@{
+    ViewData["Title"] = "Comentarios";
+}
+
+<h1 style="color: red;">Comentarios del libro "@Model.Titulo"</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th style="color: white;">
+                Comentario
+            </th>
+            <th style="color: white;">Marcar Como</th>
+            <th style="color: white;">Eliminar</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Perfil_Comenta_Libros) {
+        <tr>
+            <td style="color: white;">
+                @Html.DisplayFor(modelItem => item.Comentario)
+            </td >
+            @if(item.esSpoiler())
+            {
+                <td>
+                    <a class="btn btn-danger" role="button" asp-action="DesmarcarSpoiler" asp-route-nro="@item.NumeroComentario" asp-route-libroId="@Model.Id">No Spoiler</a>
+                </td>
+            }else{
+                <td>
+                    <a class="btn btn-danger" role="button" asp-action="MarcarSpoiler" asp-route-nro="@item.NumeroComentario" asp-route-libroId="@Model.Id">Spoiler</a>
+                </td>
+            }
+            <td>
+                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#Modal-@item.NumeroComentario-@item.LibroId">
+                    Eliminar
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="Modal-@item.NumeroComentario-@item.LibroId" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Eliminar comentario</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>¿Estas seguro que quieres eliminar el comentario "@item.Comentario"?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary mb-2" data-dismiss="modal">Cancelar</button>
+                            <form asp-controller="Libro" asp-action="DeleteComentario" method="post">
+                                <input type="hidden" name="libroId" id="libroId" value="@item.LibroId"/>
+                                <input type="hidden" name="nro" id="nro" value="@item.NumeroComentario"/>
+                                <button type="submit" class="btn btn-danger mb-2">Confirmar</button>
+                            </form>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            
+        </tr>
+}
+    </tbody>
+</table>
+
+@if(Model.Perfil_Comenta_Libros.Count() == 0){
+    <div class="alert alert-danger" role="alert">
+        ¡No se han realizado comentarios para este libro! 
+    </div>
+}else if(Model.Perfil_Comenta_Libros.Count() > 3){
+    <button class="ir-arriba btn btn-dark btn-sm btn-block" type="button">Volver arriba</button>
+}

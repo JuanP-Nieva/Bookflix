@@ -963,3 +963,4 @@ C:\Users\Pasquet3\Documents\Project-Bookflix\Bookflix\obj\Debug\netcoreapp3.1\st
 C:\Users\Pasquet3\Documents\Project-Bookflix\Bookflix\obj\Debug\netcoreapp3.1\Bookflix.dll
 C:\Users\Pasquet3\Documents\Project-Bookflix\Bookflix\obj\Debug\netcoreapp3.1\Bookflix.pdb
 C:\Users\Pasquet3\Documents\Project-Bookflix\Bookflix\obj\Debug\netcoreapp3.1\Bookflix.genruntimeconfig.cache
+C:\Users\Pasquet3\Documents\Project-Bookflix\Bookflix\obj\Debug\netcoreapp3.1\Razor\Views\Libro\VerComentarios.cshtml.g.cs

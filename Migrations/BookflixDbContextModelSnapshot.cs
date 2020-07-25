@@ -339,6 +339,9 @@ namespace Bookflix.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("MarcaSpoiler")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("PerfilId")
                         .HasColumnType("int");
 

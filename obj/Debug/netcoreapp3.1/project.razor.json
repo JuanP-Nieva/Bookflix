@@ -20566,6 +20566,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\Pasquet3\\Documents\\Project-Bookflix\\Bookflix\\Views\\Libro\\VerComentarios.cshtml",
+      "TargetPath": "Views\\Libro\\VerComentarios.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\Pasquet3\\Documents\\Project-Bookflix\\Bookflix\\Views\\Shared\\Error.cshtml",
       "TargetPath": "Views\\Shared\\Error.cshtml",
       "FileKind": "mvc"

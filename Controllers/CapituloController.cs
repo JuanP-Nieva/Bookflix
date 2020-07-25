@@ -71,8 +71,33 @@ namespace Bookflix.Controllers
                 return NotFound();
             }
 
-            var capitulo = await _context.Capitulos
+            var cap = await _context.Capitulos
                     .FirstOrDefaultAsync(m => m.Id == id);
+
+            Capitulo capitulo = _context.Capitulos
+                        .Where(p => p.LibroId == cap.LibroId)
+                        .ToList()
+                        .OrderByDescending(c => c.NumeroCapitulo)
+                        .FirstOrDefault();
+                        
+            
+            var fin = (capitulo.NumeroCapitulo == cap.NumeroCapitulo) && !(_context.Perfil_Puntua_Libros.Any(p => p.LibroId == cap.LibroId && p.PerfilId == PerfilActual));
+            ViewBag.Fin = fin;  
+
+            var puntuacion = _context
+                            .Perfil_Puntua_Libros
+                            .FirstOrDefault(p => p.LibroId == id && p.PerfilId == PerfilActual);  
+
+            if (puntuacion == null)
+            {
+                ViewBag.Puntaje = 0;
+            }
+            else
+            {
+                ViewBag.Puntaje = puntuacion.Puntaje;
+            }       
+
+            this.AgregarLecturaDePerfil((int)id,fin);
 
             if (capitulo == null)
             {
@@ -84,22 +109,9 @@ namespace Bookflix.Controllers
 
         [HttpGet]
         public IActionResult CerrarCapitulo (int id, int nroCapitulo){
-            
-            Capitulo c = _context.Capitulos
-                        .Where(p => p.LibroId == id)
-                        .ToList()
-                        .OrderByDescending(c => c.NumeroCapitulo)
-                        .FirstOrDefault();
-                        
-            bool fin = false;           
-            if (c.NumeroCapitulo == nroCapitulo)
-            {
-                fin = true;
-            }
-
-            this.AgregarLecturaDePerfil(id,fin);
 
             return RedirectToAction("Details", "Capitulo", new { Id = id});
+            
         }
 
         public void AgregarLecturaDePerfil(int id, bool fin)

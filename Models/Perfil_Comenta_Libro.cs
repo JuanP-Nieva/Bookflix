@@ -12,6 +12,8 @@ namespace Bookflix.Models
         [Required]
         public string Comentario { get; set; }
 
+        public string MarcaSpoiler { get; set; }
+
         //Propiedades para las relaciones de la DB
         public int LibroId { get; set; }
         public Libro Libro { get; set; }
@@ -36,6 +38,11 @@ namespace Bookflix.Models
             }
 
             return null;
+        }
+
+        public bool esSpoiler()
+        {
+            return MarcaSpoiler != "NoSpoiler";
         }
     }
 }

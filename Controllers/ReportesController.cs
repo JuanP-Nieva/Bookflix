@@ -53,6 +53,7 @@ namespace Bookflix.Controllers
                                 .Include(l => l.Editorial)
                                 .Include(l => l.Genero)
                                 .FirstOrDefault(c => c.Id == reportes.LibroId); //Agrego el libro para mostrar info del mismo en el details de reporte
+            ViewBag.IdReporte = id;
             ViewBag.Motivo = reportes.Motivo;
             return View(p);
         }
@@ -154,7 +155,9 @@ namespace Bookflix.Controllers
                 return NotFound();
             }
 
-            return View(reportes);
+            _context.Reportes.Remove(reportes);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
 
         // POST: Reportes/Delete/5
@@ -177,5 +180,6 @@ namespace Bookflix.Controllers
         {
             return _context.Reportes.Any(e => e.Id == id);
         }
+
     }
 }

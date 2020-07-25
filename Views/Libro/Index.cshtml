@@ -19,7 +19,7 @@
 @*Hasta aca*@
 <div>
     <p style="color: white;">Criterio de búsqueda</p>
-    <form class="form-inline" asp-controller="Libro" asp-action="Index" >
+    <form asp-controller="Libro" asp-action="Index" >
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
             <label class="btn btn-secondary active">
                 <input type="radio" name="options" value="BuscarTitulo" asp-action="Libro" asp-action="Index" checked> Buscar Titulo
@@ -68,6 +68,8 @@
             <th>
                 <a style="color: white;">@Html.DisplayNameFor(model => model.Editorial)</a>
             </th>
+            <th></th>
+            <th></th>
             <th></th>
             <th></th>
             <th></th>
@@ -127,6 +129,9 @@
                 }
                 </td>
 
+                <td>
+                    <a class="btn btn-secondary btn-sm" asp-action="VerComentarios" asp-controller="Libro" asp-route-id="@item.Id">Comentarios</a>
+                </td>
                 //fletar el libro
                 <td><button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#modal-@item.Id">
                     Eliminar
