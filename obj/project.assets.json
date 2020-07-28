@@ -8633,34 +8633,27 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Pasquet3\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\Josef\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Pasquet3\\Documents\\Project-Bookflix\\Bookflix\\Bookflix.csproj",
+      "projectUniqueName": "C:\\Users\\Josef\\Documents\\GitHub\\Bookflix\\Bookflix.csproj",
       "projectName": "Bookflix",
-      "projectPath": "C:\\Users\\Pasquet3\\Documents\\Project-Bookflix\\Bookflix\\Bookflix.csproj",
-      "packagesPath": "C:\\Users\\Pasquet3\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Pasquet3\\Documents\\Project-Bookflix\\Bookflix\\obj\\",
+      "projectPath": "C:\\Users\\Josef\\Documents\\GitHub\\Bookflix\\Bookflix.csproj",
+      "packagesPath": "C:\\Users\\Josef\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Josef\\Documents\\GitHub\\Bookflix\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\",
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Pasquet3\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\Josef\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "http://packagesource": {}
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.1": {
@@ -8727,7 +8720,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

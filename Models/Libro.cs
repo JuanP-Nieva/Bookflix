@@ -51,6 +51,7 @@ namespace Bookflix.Models
         public List<Perfil_Favea_Libro> Perfil_Favea_Libros { get; set; }
         public List<Perfil_Lee_Libro> Perfil_Lee_Libros { get; set; }
         public List<Perfil_Puntua_Libro> Perfil_Puntua_Libros { get; set; }
+        public List<Perfil_Valora_Libro> Perfil_Valora_Libros { get; set; }
 
 
         public List<Capitulo> Capitulos { get; set; }

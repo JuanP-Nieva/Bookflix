@@ -85,18 +85,11 @@ namespace Bookflix.Controllers
             ViewBag.Fin = fin;  
 
             var puntuacion = _context
-                            .Perfil_Puntua_Libros
+                            .Perfil_Valora_Libros
                             .FirstOrDefault(p => p.LibroId == id && p.PerfilId == PerfilActual);  
 
-            if (puntuacion == null)
-            {
-                ViewBag.Puntaje = 0;
-            }
-            else
-            {
-                ViewBag.Puntaje = puntuacion.Puntaje;
-            }       
-
+            ViewBag.VoyAPuntuar = puntuacion == null;    
+            
             this.AgregarLecturaDePerfil((int)id,fin);
 
             if (capitulo == null)

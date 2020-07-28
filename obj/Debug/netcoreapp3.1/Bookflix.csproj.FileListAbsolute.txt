@@ -964,3 +964,9 @@ C:\Users\Pasquet3\Documents\Project-Bookflix\Bookflix\obj\Debug\netcoreapp3.1\Bo
 C:\Users\Pasquet3\Documents\Project-Bookflix\Bookflix\obj\Debug\netcoreapp3.1\Bookflix.pdb
 C:\Users\Pasquet3\Documents\Project-Bookflix\Bookflix\obj\Debug\netcoreapp3.1\Bookflix.genruntimeconfig.cache
 C:\Users\Pasquet3\Documents\Project-Bookflix\Bookflix\obj\Debug\netcoreapp3.1\Razor\Views\Libro\VerComentarios.cshtml.g.cs
+C:\Users\Josef\Documents\GitHub\Bookflix\obj\Debug\netcoreapp3.1\Razor\Views\Libro\VerComentarios.cshtml.g.cs
+C:\Users\Josef\Documents\GitHub\Bookflix\obj\Debug\netcoreapp3.1\Razor\Views\Perfil_Valora_Libro\Create.cshtml.g.cs
+C:\Users\Josef\Documents\GitHub\Bookflix\obj\Debug\netcoreapp3.1\Razor\Views\Perfil_Valora_Libro\Delete.cshtml.g.cs
+C:\Users\Josef\Documents\GitHub\Bookflix\obj\Debug\netcoreapp3.1\Razor\Views\Perfil_Valora_Libro\Details.cshtml.g.cs
+C:\Users\Josef\Documents\GitHub\Bookflix\obj\Debug\netcoreapp3.1\Razor\Views\Perfil_Valora_Libro\Edit.cshtml.g.cs
+C:\Users\Josef\Documents\GitHub\Bookflix\obj\Debug\netcoreapp3.1\Razor\Views\Perfil_Valora_Libro\Index.cshtml.g.cs

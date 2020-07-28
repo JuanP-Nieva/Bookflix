@@ -20,7 +20,7 @@
 
         <div>
 
-    @if(ViewBag.Fin)
+    @if(ViewBag.Fin && ViewBag.VoyAPuntuar)
     {
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#staticBackdrop">
@@ -38,12 +38,7 @@
                     <div class="ec-stars-wrapper">
                         @for (int i = 1; i <= 5; i++)
                         {
-                            @if(i <= ViewBag.Puntaje)
-                            {
-                                <a style="color: yellow;" asp-controller="Libro" asp-action="Calificar" asp-route-libroId="@Model.LibroId" asp-route-value="@i" title="Votar con @i estrellas">&#9733;</a>
-                            }else{
                                 <a asp-controller="Libro" asp-action="Calificar" asp-route-libroId="@Model.LibroId" asp-route-value="@i" title="Votar con @i estrellas">&#9733;</a>
-                            }   
                         }
                     </div>
                     <noscript>Necesitas tener habilitado javascript para poder votar</noscript>
@@ -51,8 +46,6 @@
             </div>
         </div>
         </div>
-
-
     }else {
         <a class="btn btn-danger" asp-action="Details" asp-controller="Libro" asp-route-id="@Model.LibroId">Cerrar Capitulo</a>
     }

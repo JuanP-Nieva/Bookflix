@@ -41,8 +41,7 @@ namespace Bookflix.Controllers
                 return NotFound();
             }
 
-            Perfil_Comenta_Libro p = _context.Perfil_Comenta_Libros
-                                    .FirstOrDefault(c => c.LibroId == reportes.LibroId && c.NumeroComentario == reportes.NumeroComentario);
+            Perfil_Comenta_Libro p = _context.Perfil_Comenta_Libros.FirstOrDefault(c => c.LibroId == reportes.LibroId);
 
             if (p == null)
             {
@@ -59,14 +58,14 @@ namespace Bookflix.Controllers
         }
 
         // GET: Reportes/Create
-        public IActionResult Create(int idLibro, int nroComentario)
+        public IActionResult Create(int idLibro, int perfilId)
         {
-            if (idLibro == 0 || nroComentario == 0)
+            if (idLibro == 0 || perfilId == 0)
             {
                 return NotFound();
             }
             ViewBag.IdLibro = idLibro;
-            ViewBag.NroComentario = nroComentario;
+            ViewBag.PerfilId = perfilId;
             return View();
         }
 
@@ -75,7 +74,7 @@ namespace Bookflix.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,LibroId,NumeroComentario,Motivo")] Reportes reportes)
+        public async Task<IActionResult> Create([Bind("Id,LibroId,PerfilId,Motivo")] Reportes reportes)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +84,7 @@ namespace Bookflix.Controllers
             }
 
             ViewBag.IdLibro = reportes.LibroId;
-            ViewBag.NroComentario = reportes.NumeroComentario;
+            ViewBag.PerfilId = reportes.PerfilId;
             return View(reportes);
         }
 
@@ -163,15 +162,23 @@ namespace Bookflix.Controllers
         // POST: Reportes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id, int nro)
+        public async Task<IActionResult> DeleteConfirmed(int id, int perfilId)
         {
-            Perfil_Comenta_Libro p = await _context.Perfil_Comenta_Libros
-                                    .FirstOrDefaultAsync(c => c.LibroId == id && c.NumeroComentario == nro);
-            List<Reportes> reportes = _context.Reportes
-                                    .Where( r => r.LibroId == id && r.NumeroComentario == nro)
-                                    .ToList();
+            Perfil_Valora_Libro p = await _context.Perfil_Valora_Libros
+                                    .FirstOrDefaultAsync(c => c.LibroId == id && c.PerfilId == perfilId);
+            List<Reportes> reportes = _context.Reportes.Where( r => r.LibroId == id && r.PerfilId == perfilId).ToList();
             _context.Reportes.RemoveRange(reportes);
-            _context.Perfil_Comenta_Libros.Remove(p);
+            p.Comentario = null;
+            _context.Perfil_Valora_Libros.Update(p);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+        
+        public async Task<IActionResult> RechazarReporte(int id)
+        {
+            Reportes reportes = await _context.Reportes
+                                .FirstOrDefaultAsync(c => c.Id == id);
+            _context.Reportes.Remove(reportes);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

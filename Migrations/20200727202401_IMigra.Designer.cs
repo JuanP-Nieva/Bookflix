@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bookflix.Migrations
 {
     [DbContext(typeof(BookflixDbContext))]
-    [Migration("20200723215002_Initial")]
-    partial class Initial
+    [Migration("20200727202401_IMigra")]
+    partial class IMigra
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -405,6 +405,33 @@ namespace Bookflix.Migrations
                     b.ToTable("Perfil_Puntua_Libros");
                 });
 
+            modelBuilder.Entity("Bookflix.Models.Perfil_Valora_Libro", b =>
+                {
+                    b.Property<int>("PerfilId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("LibroId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Comentario")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Puntaje")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Spoiler")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Visible")
+                        .HasColumnType("bit");
+
+                    b.HasKey("PerfilId", "LibroId");
+
+                    b.HasIndex("LibroId");
+
+                    b.ToTable("Perfil_Valora_Libros");
+                });
+
             modelBuilder.Entity("Bookflix.Models.Reportes", b =>
                 {
                     b.Property<int>("Id")
@@ -728,6 +755,21 @@ namespace Bookflix.Migrations
 
                     b.HasOne("Bookflix.Models.Perfil", "Perfil")
                         .WithMany("Perfil_Puntua_Libros")
+                        .HasForeignKey("PerfilId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Bookflix.Models.Perfil_Valora_Libro", b =>
+                {
+                    b.HasOne("Bookflix.Models.Libro", "Libro")
+                        .WithMany()
+                        .HasForeignKey("LibroId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Bookflix.Models.Perfil", "Perfil")
+                        .WithMany()
                         .HasForeignKey("PerfilId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

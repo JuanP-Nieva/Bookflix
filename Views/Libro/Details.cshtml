@@ -45,26 +45,44 @@
         <dd class = "col-sm-10">
             <p style="color: white;">@Html.DisplayFor(model => model.Editorial.Nombre)</p>
         </dd>
-        @if(ViewBag.PuedeVer)
-        {
+        <dt class="col-sm-2">
+                <p style="color: red;">Calificacion Promedio</p>
+        </dt>
+        <dd class = "col-sm-10">
+            <div class="ec-stars-wrapper">
+                @for (int i = 1; i <= 5; i++){
+                    @if(i <= ViewBag.Promedio)
+                    {
+                        <a style="color: yellow;" >&#9733;</a>
+                    }else{
+                        <a style="color: #888;">&#9733;</a>
+                    }
+                }
+            </div>
+            <p style="color: white;"> @ViewBag.Promedio / 5 </p>
+        </dd>
+         @if (ViewBag.PuedeVer){
             <dt class="col-sm-2">
-                <p style="color: red;">Calificacion</p>
+                <p style="color: red;"> Mi Calificacion</p>
             </dt>
             <dd>
+               
                 <div class="ec-stars-wrapper">
-                    @for (int i = 1; i <= 10; i++)
-                    {
-                        @if(i <= ViewBag.Puntaje)
+                    
+                        @for (int i = 1; i <= 5; i++)
                         {
-                            <a style="color: yellow;" asp-action="Calificar" asp-route-libroId="@Model.Id" asp-route-value="@i" title="Votar con @i estrellas">&#9733;</a>
-                        }else{
-                            <a asp-action="Calificar" asp-route-libroId="@Model.Id" asp-route-value="@i" title="Votar con @i estrellas">&#9733;</a>
-                        }   
-                    }
+                            @if(i <= ViewBag.Puntaje)
+                            {
+                                <a style="color: yellow;" asp-action="Calificar" asp-route-libroId="@Model.Id" asp-route-value="@i" title="Votar con @i estrellas">&#9733;</a>
+                            }else{
+                                <a asp-action="Calificar" asp-route-libroId="@Model.Id" asp-route-value="@i" title="Votar con @i estrellas">&#9733;</a>
+                            }   
+                        }
+                    
                 </div>
                 <noscript>Necesitas tener habilitado javascript para poder votar</noscript>
-            </dd>
-        }
+               </dd>
+         }
 
     </dl>
 </div>
@@ -89,64 +107,50 @@
     <a class="btn btn-danger" role="button" asp-controller="Libro" asp-action="Index">Cerrar Libro</a>
 </div>
 <hr>
-@if(ViewBag.PuedeVer)
-    {
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>
-                        <a style="color: white;">Comentarios</a>
-                    </th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    <a style="color: white;">Comentarios</a>
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
 
-        @foreach (var item in Model.Perfil_Comenta_Libros) 
-            {
-                <tr>
-                    <td>
-                         <a style="color: white;">@Html.DisplayFor(modelItem => item.Comentario)</a>
-                    </td>
-                    <td>
-                        <form asp-controller="Reportes" asp-action="Create" method="get">
-                            <input type="hidden" name="idLibro" id="idLibro" value="@item.LibroId"/>
-                            <input type="hidden" name="nroComentario" id="nroComentario" value="@item.NumeroComentario"/>
-                            <button type="submit" class="btn btn-primary mb-2">Reportar</button>
-                        </form>
-                    </td>
-                </tr>
-            }
-            </tbody>
-        </table>
-        @if (ViewBag.PuedeComentar)
-            {
-                @* MOSTRAR COMENTARIOS *@
-                <div class="container pb-cmnt-container">
-                    <div class="row">
-                         <div class="col-md-6 col-md-offset-3">
-                             <div class="panel panel-info">
-                               <div class="panel-body">
-                                @if (ViewBag.ComentarioVacio)
-                                {
-                                    <h6 style="color: red;">El comentario no puede estar vacío.</h6>
-                                }
-                                 <form asp-controller="Libro" asp-action="Comentar" method="post">
-                                 <div class="form-group">
-                                        <input type="hidden" name="idLibro" id="idLibro" value="@Model.Id"/>
-                                        <textarea type="text" class="form-control" name="comentario" id="comentario" rows="3" placeholder="Escriba un comentario..."></textarea>
-                                      
-                                 </div>
-                                 <button type="submit" class="btn btn-primary mb-2">Comentar</button>
-                                </form>
-                               </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    @foreach (var item in Model.Perfil_Valora_Libros) 
+        {
+            <tr>
+                    @if(!item.Spoiler){
+                        <td>
+                            <a style="color: white;">@Html.DisplayFor(modelItem => item.Comentario)</a>
+                        </td>
+                    } else {
+                        <td>
+                        <p style="color: red;">Esta reseña tiene Spoiler. Haz 
+                            <a asp-controller="Libro" asp-action="MostrarComentarioSpoiler" asp-route-lid="@item.LibroId" asp-route-pid="@item.PerfilId">click aquí</a> si desea verla igualmente.</p>
+                        </td>
+                    }
+                <td>
+                    <form asp-controller="Reportes" asp-action="Create" method="get">
+                        <input type="hidden" name="idLibro" id="idLibro" value="@item.LibroId"/>
+                        <input type="hidden" name="perfilId" id="perfilId" value="@item.PerfilId"/>
+                        <button type="submit" class="btn btn-primary mb-2">Reportar</button>
+                    </form>
+                </td>
+            </tr>
         }
-
+        </tbody>
+    </table>
+   @if(Model.Perfil_Valora_Libros.Count() == 0){
+        <div class="alert alert-danger" role="alert">
+            ¡No se han realizado comentarios para este libro! 
+        </div>
+    }else if(Model.Perfil_Valora_Libros.Count() > 20){
+        <button class="ir-arriba btn btn-dark btn-sm btn-block" type="button">Volver arriba</button>
 }
+        
+
 
 <style>
     .pb-cmnt-container {

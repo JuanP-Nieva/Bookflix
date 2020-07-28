@@ -1,0 +1,63 @@
+@model Bookflix.Models.Perfil_Valora_Libro
+
+@{
+    ViewData["Title"] = "Valorando";
+    int librito = Model.LibroId;
+}
+
+<h4>Comentario del libro</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="LibroId" />
+            <input type="hidden" asp-for="PerfilId" />
+            <input type="hidden" asp-for="Puntaje" />
+            <div class="form-group">
+                <label asp-for="Comentario" class="control-label"></label>
+                <input asp-for="Comentario" class="form-control" />
+                <span asp-validation-for="Comentario" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Spoiler" /> @Html.DisplayNameFor(model => model.Spoiler)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                    <input type="hidden" asp-for="Visible" value="@true" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Comentar" class="btn btn-primary" />
+            </div>
+            
+        </form>
+            <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#modal-@librito">Omitir</button>
+
+
+            <!-- Modal -->
+            <div class="modal fade" id="modal-@librito" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Atención</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>¿Estás seguro de no querer comentar?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <input type="button" class="btn btn-danger" asp-action="Details" asp-controller="Libro" asp-route-id="@librito">Confirmar</a>
+                </div>
+                </div>
+            </div>
+            </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

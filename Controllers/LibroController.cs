@@ -197,14 +197,19 @@ namespace Bookflix.Controllers
                         .ToList();
             }
 
-            libro.Perfil_Comenta_Libros = _context.Perfil_Comenta_Libros
+            libro.Perfil_Valora_Libros = _context.Perfil_Valora_Libros
                                         .Where(c => c.LibroId == libro.Id)
                                         .ToList();
 
             libro.Perfil_Lee_Libros = _context.Perfil_Lee_Libros
                                     .Where(l => l.LibroId == libro.Id && l.Finalizado)
                                     .ToList();
-
+            
+            if(libro.Perfil_Valora_Libros.Count() > 0)
+            {
+                ViewBag.Promedio = (float)libro.Perfil_Valora_Libros.Sum(l => l.Puntaje) / libro.Perfil_Valora_Libros.Count();
+                libro.Perfil_Valora_Libros = libro.Perfil_Valora_Libros.FindAll(c => c.Comentario != null);
+            }
 
             ViewBag.PuedeVer = libro.Perfil_Lee_Libros.Exists(c =>
                         c.PerfilId == PerfilActual);
@@ -218,7 +223,7 @@ namespace Bookflix.Controllers
             }
 
             var puntuacion = _context
-                            .Perfil_Puntua_Libros
+                            .Perfil_Valora_Libros
                             .FirstOrDefault(p => p.LibroId == id && p.PerfilId == PerfilActual);
 
             if (puntuacion == null)
@@ -270,6 +275,9 @@ namespace Bookflix.Controllers
             {
                 return RedirectToAction("Prueba", "Capitulo", L);
             }
+
+            ViewBag.Fin = true;
+            ViewBag.Puntaje = 0;
 
             this.AgregarLecturaDePerfil((int)id);
 
@@ -678,7 +686,7 @@ namespace Bookflix.Controllers
                         .ToList();
             }
 
-            libro.Perfil_Comenta_Libros = _context.Perfil_Comenta_Libros
+            libro.Perfil_Valora_Libros = _context.Perfil_Valora_Libros
                                         .Where(c => c.LibroId == libro.Id)
                                         .ToList();
             return View(libro);
@@ -709,39 +717,40 @@ namespace Bookflix.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteComentario(int libroId, int nro)
+        public async Task<IActionResult> DeleteComentario(int libroId, int perfilId)
         {
-            Perfil_Comenta_Libro p = await _context.Perfil_Comenta_Libros
-                                    .FirstOrDefaultAsync(c => c.LibroId == libroId && c.NumeroComentario == nro);
+            Perfil_Valora_Libro p = await _context.Perfil_Valora_Libros
+                                    .FirstOrDefaultAsync(c => c.LibroId == libroId && c.PerfilId == perfilId);
 
             //Borro tambien los reportes porque sino quedan y no puedo acceder mas
             List<Reportes> reportes = _context.Reportes
-                                    .Where( r => r.LibroId == libroId && r.NumeroComentario == nro)
-                                    .ToList();
+                                                .Where( r => r.LibroId == libroId && r.PerfilId == perfilId)
+                                                .ToList();
             _context.Reportes.RemoveRange(reportes);
            
-            _context.Perfil_Comenta_Libros.Remove(p);
+            p.Comentario = null;
+            _context.Perfil_Valora_Libros.Update(p);
             await _context.SaveChangesAsync();
             return RedirectToAction("VerComentarios", new { id = libroId});
         }
 
-        public async Task<IActionResult> MarcarSpoiler(int nro, int libroId)
+        public async Task<IActionResult> MarcarSpoiler(int pid, int libroId)
         {   
-            Perfil_Comenta_Libro p = await _context.Perfil_Comenta_Libros
-                                    .FirstOrDefaultAsync(c => c.LibroId == libroId && c.NumeroComentario == nro);
+            Perfil_Valora_Libro p = await _context.Perfil_Valora_Libros
+                                    .FirstOrDefaultAsync(c => c.LibroId == libroId && c.PerfilId == pid);
 
-            p.MarcaSpoiler = "Spoiler";
+            p.Spoiler = true;
 
             await _context.SaveChangesAsync();
             return RedirectToAction("VerComentarios", new { id = libroId});
         }
 
-        public async Task<IActionResult> DesmarcarSpoiler(int nro, int libroId)
+        public async Task<IActionResult> DesmarcarSpoiler(int pid, int libroId)
         {   
-            Perfil_Comenta_Libro p = await _context.Perfil_Comenta_Libros
-                                    .FirstOrDefaultAsync(c => c.LibroId == libroId && c.NumeroComentario == nro);
+            Perfil_Valora_Libro p = await _context.Perfil_Valora_Libros
+                                    .FirstOrDefaultAsync(c => c.LibroId == libroId && c.PerfilId == pid);
 
-            p.MarcaSpoiler = "NoSpoiler";
+            p.Spoiler = false;
 
             await _context.SaveChangesAsync();
             return RedirectToAction("VerComentarios", new { id = libroId});
@@ -780,34 +789,39 @@ namespace Bookflix.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult Calificar(int libroId, int value)
+        public async Task<IActionResult> Calificar(int libroId, int value)
         {
-            if (this.yaEstaCalificado(libroId)) //Si el libro ya estaba calificado lo actualiza por la nueva puntuacion
-            {
-                var puntuacion = _context.Perfil_Puntua_Libros.FirstOrDefault(p => p.LibroId == libroId && p.PerfilId == PerfilActual);
-                puntuacion.Puntaje = value;
-                _context.Update(puntuacion);
-
-            }
-            else
-            {
-                Perfil_Puntua_Libro puntuacion = new Perfil_Puntua_Libro()
-                {
+            Perfil_Puntua_Libro ppl = new Perfil_Puntua_Libro(){
                     PerfilId = PerfilActual,
                     LibroId = libroId,
                     Puntaje = value
-                };
-                _context.Perfil_Puntua_Libros.Add(puntuacion);
+            };
+            if (this.yaEstaCalificado(libroId)) //Si el libro ya estaba calificado lo actualiza por la nueva puntuacion
+            {
+                var puntuacion = _context.Perfil_Valora_Libros.FirstOrDefault(p => p.LibroId == libroId && p.PerfilId == PerfilActual);
+                puntuacion.Puntaje = value;
+               _context.Perfil_Valora_Libros.Update(puntuacion);
             }
-
-            _context.SaveChanges();
-
-            return RedirectToAction(nameof(Details), new { id = libroId });
+            else
+            {
+                Perfil_Valora_Libro puntuacion = new Perfil_Valora_Libro
+                {
+                    PerfilId = PerfilActual,
+                    LibroId = libroId,
+                    Puntaje = value,
+                    Spoiler = false,
+                    Visible = true
+                };
+               _context.Perfil_Valora_Libros.Add(puntuacion);
+            }
+            await _context.SaveChangesAsync();
+             return RedirectToAction("Edit","Perfil_Valora_Libro", ppl);
+            
         }
 
         private bool yaEstaCalificado(int libroId)
         {
-            return _context.Perfil_Puntua_Libros.Any(p => p.LibroId == libroId && p.PerfilId == PerfilActual);
+            return _context.Perfil_Valora_Libros.Any(p => p.LibroId == libroId && p.PerfilId == PerfilActual);
         }
     }
 }

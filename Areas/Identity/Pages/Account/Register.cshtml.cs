@@ -131,6 +131,7 @@ namespace Bookflix.Areas.Identity.Pages.Account
 
         public async Task OnGetAsync(string returnUrl = null)
         {
+            
             //await crearLosRoles();
             await _signInManager.SignOutAsync();
             ReturnUrl = returnUrl;

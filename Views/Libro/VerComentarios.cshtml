@@ -17,28 +17,28 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Perfil_Comenta_Libros) {
+@foreach (var item in Model.Perfil_Valora_Libros) {
         <tr>
             <td style="color: white;">
                 @Html.DisplayFor(modelItem => item.Comentario)
             </td >
-            @if(item.esSpoiler())
+            @if(item.Spoiler)
             {
                 <td>
-                    <a class="btn btn-danger" role="button" asp-action="DesmarcarSpoiler" asp-route-nro="@item.NumeroComentario" asp-route-libroId="@Model.Id">No Spoiler</a>
+                    <a class="btn btn-danger" role="button" asp-action="DesmarcarSpoiler" asp-route-pid="@item.PerfilId" asp-route-libroId="@Model.Id">No Spoiler</a>
                 </td>
             }else{
                 <td>
-                    <a class="btn btn-danger" role="button" asp-action="MarcarSpoiler" asp-route-nro="@item.NumeroComentario" asp-route-libroId="@Model.Id">Spoiler</a>
+                    <a class="btn btn-danger" role="button" asp-action="MarcarSpoiler" asp-route-pid="@item.PerfilId" asp-route-libroId="@Model.Id">Spoiler</a>
                 </td>
             }
             <td>
-                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#Modal-@item.NumeroComentario-@item.LibroId">
+                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#Modal-@item.PerfilId-@item.LibroId">
                     Eliminar
                 </button>
 
                 <!-- Modal -->
-                <div class="modal fade" id="Modal-@item.NumeroComentario-@item.LibroId" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="Modal-@item.PerfilId-@item.LibroId" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                         <div class="modal-header">
@@ -54,7 +54,7 @@
                             <button type="button" class="btn btn-secondary mb-2" data-dismiss="modal">Cancelar</button>
                             <form asp-controller="Libro" asp-action="DeleteComentario" method="post">
                                 <input type="hidden" name="libroId" id="libroId" value="@item.LibroId"/>
-                                <input type="hidden" name="nro" id="nro" value="@item.NumeroComentario"/>
+                                <input type="hidden" name="PerfilId" id="PerfilId" value="@item.PerfilId"/>
                                 <button type="submit" class="btn btn-danger mb-2">Confirmar</button>
                             </form>
                         </div>
@@ -68,10 +68,10 @@
     </tbody>
 </table>
 
-@if(Model.Perfil_Comenta_Libros.Count() == 0){
+@if(Model.Perfil_Valora_Libros.Count() == 0){
     <div class="alert alert-danger" role="alert">
         ¡No se han realizado comentarios para este libro! 
     </div>
-}else if(Model.Perfil_Comenta_Libros.Count() > 3){
+}else if(Model.Perfil_Valora_Libros.Count() > 3){
     <button class="ir-arriba btn btn-dark btn-sm btn-block" type="button">Volver arriba</button>
 }

@@ -1,0 +1,49 @@
+@model Bookflix.Models.Perfil_Valora_Libro
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h4></h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input type="hidden" asp-for="LibroId" value="@ViewBag.LibroId" />
+            </div>
+            <div class="form-group">
+                <input type="hidden" asp-for="PerfilId" value="@ViewBag.PerfilId" />
+            </div>
+            <div class="form-group">
+                <input type="hidden" asp-for="Puntaje" value="@ViewBag.Puntaje" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Comentario" class="control-label"></label>
+                <input asp-for="Comentario" class="form-control" />
+                <span asp-validation-for="Comentario" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Spoiler" /> @Html.DisplayNameFor(model => model.Spoiler)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                    <input type="hidden" asp-for="Visible" value="@true"/>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Comentar" class="btn btn-primary" />
+            </div>
+            
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
