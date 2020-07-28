@@ -209,6 +209,8 @@ namespace Bookflix.Controllers
             {
                 ViewBag.Promedio = (float)libro.Perfil_Valora_Libros.Sum(l => l.Puntaje) / libro.Perfil_Valora_Libros.Count();
                 libro.Perfil_Valora_Libros = libro.Perfil_Valora_Libros.FindAll(c => c.Comentario != null);
+            } else {
+                ViewBag.Promedio = 0;
             }
 
             ViewBag.PuedeVer = libro.Perfil_Lee_Libros.Exists(c =>
@@ -236,6 +238,7 @@ namespace Bookflix.Controllers
             }
 
             ViewBag.ComentarioVacio = BienComentado;
+            ViewBag.Perfil = PerfilActual;
 
             return View(libro);
         }
@@ -263,21 +266,17 @@ namespace Bookflix.Controllers
                 perfilID = PerfilActual
             };
 
-            /*if (libro.Contenido == null)
-            {
-                libro.Capitulos = _context.Capitulos
-                       .Where(c => c.LibroId == libro.Id)
-                       .OrderBy(c => c.NumeroCapitulo)
-                       .ToList();
-            }*/
 
             if (libro.Contenido == null)
             {
                 return RedirectToAction("Prueba", "Capitulo", L);
             }
 
-            ViewBag.Fin = true;
-            ViewBag.Puntaje = 0;
+            var puntuacion = _context
+                            .Perfil_Valora_Libros
+                            .FirstOrDefault(p => p.LibroId == id && p.PerfilId == PerfilActual);  
+
+            ViewBag.VoyAPuntuar = puntuacion == null;   
 
             this.AgregarLecturaDePerfil((int)id);
 
@@ -315,6 +314,39 @@ namespace Bookflix.Controllers
 
 
             return View(perfil);
+        }
+
+
+        public async Task<IActionResult> BorrarComentarioPorUsuario(int lid, int pid){
+            var pvl = _context.Perfil_Valora_Libros
+                                .FirstOrDefault(c => c.LibroId == lid && c.PerfilId == pid);
+            pvl.Comentario=null;
+            _context.Perfil_Valora_Libros.Update(pvl);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Details", new {id = lid});
+        }
+
+        public async Task<IActionResult> DecisionTuya (int id){
+            List<Perfil_Valora_Libro> pvl = _context.Perfil_Valora_Libros
+                                            .Where(l => l.LibroId == id).ToList();
+
+            foreach (var item in pvl)
+            {
+                item.Visible = !item.Spoiler;
+            }
+
+            _context.Perfil_Valora_Libros.UpdateRange(pvl);  
+            await _context.SaveChangesAsync();                         
+            return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> MostrarComentarioSpoiler(int lid, int pid){
+            var comentario = await _context.Perfil_Valora_Libros
+                                .FirstOrDefaultAsync(c => c.LibroId == lid && c.PerfilId == pid);
+            comentario.Visible = true;
+            _context.Perfil_Valora_Libros.Update(comentario);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Details", new {id = lid});  
         }
 
         [Authorize(Roles = "Administrador")]

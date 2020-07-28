@@ -5,7 +5,7 @@
     int librito = Model.LibroId;
 }
 
-<h4>Comentario del libro</h4>
+<h4 style="color: red;">Comentario del libro</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -50,7 +50,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <input type="button" class="btn btn-danger" asp-action="Details" asp-controller="Libro" asp-route-id="@librito">Confirmar</a>
+                    <a type="button" class="btn btn-danger" asp-action="Details" asp-controller="Libro" asp-route-id="@librito">Confirmar</a>
                 </div>
                 </div>
             </div>
@@ -61,3 +61,10 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
+<style>
+    .form-group {
+        color: white;
+    }
+
+</style>

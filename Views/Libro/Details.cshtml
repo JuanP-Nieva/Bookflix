@@ -59,30 +59,35 @@
                     }
                 }
             </div>
-            <p style="color: white;"> @ViewBag.Promedio / 5 </p>
+            @if(ViewBag.Promedio != 0) {
+                <p style="color: white;"> @ViewBag.Promedio / 5 </p>
+            } else {
+                <p style="color: white;"> Este libro aún no ha sido calificado. </p>
+            }
+            
         </dd>
-         @if (ViewBag.PuedeVer){
-            <dt class="col-sm-2">
-                <p style="color: red;"> Mi Calificacion</p>
-            </dt>
-            <dd>
-               
-                <div class="ec-stars-wrapper">
-                    
-                        @for (int i = 1; i <= 5; i++)
+        @if (ViewBag.PuedeVer){
+        <dt class="col-sm-2">
+            <p style="color: red;"> Mi Calificacion</p>
+        </dt>
+        <dd>
+            
+            <div class="ec-stars-wrapper">
+                
+                    @for (int i = 1; i <= 5; i++)
+                    {
+                        @if(i <= ViewBag.Puntaje)
                         {
-                            @if(i <= ViewBag.Puntaje)
-                            {
-                                <a style="color: yellow;" asp-action="Calificar" asp-route-libroId="@Model.Id" asp-route-value="@i" title="Votar con @i estrellas">&#9733;</a>
-                            }else{
-                                <a asp-action="Calificar" asp-route-libroId="@Model.Id" asp-route-value="@i" title="Votar con @i estrellas">&#9733;</a>
-                            }   
-                        }
-                    
-                </div>
-                <noscript>Necesitas tener habilitado javascript para poder votar</noscript>
-               </dd>
-         }
+                            <a style="color: yellow;" asp-action="Calificar" asp-route-libroId="@Model.Id" asp-route-value="@i" title="Votar con @i estrellas">&#9733;</a>
+                        }else{
+                            <a asp-action="Calificar" asp-route-libroId="@Model.Id" asp-route-value="@i" title="Votar con @i estrellas">&#9733;</a>
+                        }   
+                    }
+                
+            </div>
+            <noscript>Necesitas tener habilitado javascript para poder votar</noscript>
+        </dd>
+        }
 
     </dl>
 </div>
@@ -104,7 +109,7 @@
              <a class="btn btn-primary" role="button" asp-controller="Capitulo" asp-action="Create">Agregar Capitulo</a>
         }
     }
-    <a class="btn btn-danger" role="button" asp-controller="Libro" asp-action="Index">Cerrar Libro</a>
+    <a class="btn btn-danger" role="button" asp-controller="Libro" asp-action="DecisionTuya" asp-route-id="@Model.Id" >Cerrar Libro</a>
 </div>
 <hr>
     <table class="table">
@@ -114,6 +119,7 @@
                     <a style="color: white;">Comentarios</a>
                 </th>
                 <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -121,7 +127,7 @@
     @foreach (var item in Model.Perfil_Valora_Libros) 
         {
             <tr>
-                    @if(!item.Spoiler){
+                    @if(item.Visible){
                         <td>
                             <a style="color: white;">@Html.DisplayFor(modelItem => item.Comentario)</a>
                         </td>
@@ -138,6 +144,12 @@
                         <button type="submit" class="btn btn-primary mb-2">Reportar</button>
                     </form>
                 </td>
+                 @if (item.PerfilId == ViewBag.Perfil)
+                {
+                    <td>
+                        <a class="btn btn-warning" asp-controller="Libro" asp-action="BorrarComentarioPorUsuario" asp-route-lid="@item.LibroId" asp-route-pid="@item.PerfilId">Borrar comentario</a>
+                    </td>
+                }
             </tr>
         }
         </tbody>

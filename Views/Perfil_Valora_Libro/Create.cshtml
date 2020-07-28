@@ -33,7 +33,7 @@
                     <input type="hidden" asp-for="Visible" value="@true"/>
             </div>
             <div class="form-group">
-                <input type="submit" value="Comentar" class="btn btn-primary" />
+                <input type="submit" value="Comentar" class="btn btn-warning" />
             </div>
             
         </form>
@@ -47,3 +47,10 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
+<style>
+    .form-group {
+        color: white;
+    }
+
+</style>

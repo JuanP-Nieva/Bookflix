@@ -95,8 +95,14 @@ namespace Bookflix.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit([Bind("LibroId,PerfilId,Puntaje,Comentario,Spoiler,Visible")] Perfil_Valora_Libro perfil_Valora_Libro)
         {
+            if (perfil_Valora_Libro.Comentario == null)
+            {
+                ModelState.AddModelError("Comentario","El comentario no puede estar vacío. Si no deseas comentar presiona el botón omitir.");
+            }
+
             if (ModelState.IsValid)
             {
+                
                 try
                 {
                     perfil_Valora_Libro.Visible = !perfil_Valora_Libro.Spoiler;
@@ -132,6 +138,7 @@ namespace Bookflix.Controllers
                 .Include(p => p.Libro)
                 .Include(p => p.Perfil)
                 .FirstOrDefaultAsync(m => m.PerfilId == id);
+                
             if (perfil_Valora_Libro == null)
             {
                 return NotFound();

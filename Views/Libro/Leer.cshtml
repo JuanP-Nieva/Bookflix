@@ -17,7 +17,34 @@
     <embed src="~/Libros/@path" type="application/pdf" width="100%" height="600px" asp-append-version="true"/>
 </div>
 
+@if(ViewBag.VoyAPuntuar)
+    {
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#staticBackdrop">
+        Cerrar Capitulo
+        </button>
 
-<div>
-    <a class="btn btn-danger" asp-action="Index">Cerrar Libro</a>
-</div> 
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">¿Que te parecio el libro?</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="ec-stars-wrapper">
+                        @for (int i = 1; i <= 5; i++)
+                        {
+                                <a asp-action="Calificar" asp-route-libroId="@Model.Id" asp-route-value="@i" title="Votar con @i estrellas">&#9733;</a>
+                        }
+                    </div>
+                    <noscript>Necesitas tener habilitado javascript para poder votar</noscript>
+                </div>
+            </div>
+        </div>
+        </div>
+    }else {
+        <a class="btn btn-danger" asp-action="Details" asp-route-id="@Model.Id">Cerrar Libro</a>
+    }
+    </div> 
+    </div>
