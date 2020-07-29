@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bookflix.Migrations
 {
     [DbContext(typeof(BookflixDbContext))]
-    [Migration("20200728234331_Migra")]
+    [Migration("20200729210149_Migra")]
     partial class Migra
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -314,6 +314,9 @@ namespace Bookflix.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("Activo")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Nombre")
                         .IsRequired()
@@ -672,7 +675,7 @@ namespace Bookflix.Migrations
                     b.HasOne("Bookflix.Models.Libro", null)
                         .WithMany("Capitulos")
                         .HasForeignKey("LibroId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
@@ -681,19 +684,19 @@ namespace Bookflix.Migrations
                     b.HasOne("Bookflix.Models.Autor", "Autor")
                         .WithMany("Libros")
                         .HasForeignKey("AutorId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Bookflix.Models.Editorial", "Editorial")
                         .WithMany("Libros")
                         .HasForeignKey("EditorialId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Bookflix.Models.Genero", "Genero")
                         .WithMany("Libros")
                         .HasForeignKey("GeneroId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
@@ -720,13 +723,13 @@ namespace Bookflix.Migrations
                     b.HasOne("Bookflix.Models.Libro", "Libro")
                         .WithMany("Perfil_Comenta_Libros")
                         .HasForeignKey("LibroId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Bookflix.Models.Perfil", "Perfil")
                         .WithMany("Perfil_Comenta_Libros")
                         .HasForeignKey("PerfilId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
@@ -735,13 +738,13 @@ namespace Bookflix.Migrations
                     b.HasOne("Bookflix.Models.Libro", "Libro")
                         .WithMany("Perfil_Favea_Libros")
                         .HasForeignKey("LibroId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Bookflix.Models.Perfil", "Perfil")
                         .WithMany("Perfil_Favea_Libros")
                         .HasForeignKey("PerfilId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
@@ -750,13 +753,13 @@ namespace Bookflix.Migrations
                     b.HasOne("Bookflix.Models.Capitulo", "Capítulo")
                         .WithMany("Perfil_Lee_Capitulos")
                         .HasForeignKey("CapituloId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Bookflix.Models.Perfil", "Perfil")
                         .WithMany("Perfil_Lee_Capitulos")
                         .HasForeignKey("PerfilId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
@@ -765,13 +768,13 @@ namespace Bookflix.Migrations
                     b.HasOne("Bookflix.Models.Libro", "Libro")
                         .WithMany("Perfil_Lee_Libros")
                         .HasForeignKey("LibroId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Bookflix.Models.Perfil", "Perfil")
                         .WithMany("Perfil_Lee_Libros")
                         .HasForeignKey("PerfilId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
@@ -780,13 +783,13 @@ namespace Bookflix.Migrations
                     b.HasOne("Bookflix.Models.Libro", "Libro")
                         .WithMany("Perfil_Puntua_Libros")
                         .HasForeignKey("LibroId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Bookflix.Models.Perfil", "Perfil")
                         .WithMany("Perfil_Puntua_Libros")
                         .HasForeignKey("PerfilId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
@@ -795,13 +798,13 @@ namespace Bookflix.Migrations
                     b.HasOne("Bookflix.Models.Libro", "Libro")
                         .WithMany("Perfil_Valora_Libros")
                         .HasForeignKey("LibroId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Bookflix.Models.Perfil", "Perfil")
                         .WithMany()
                         .HasForeignKey("PerfilId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
@@ -810,7 +813,7 @@ namespace Bookflix.Migrations
                     b.HasOne("Bookflix.Models.Libro", "Libro")
                         .WithOne("Trailer")
                         .HasForeignKey("Bookflix.Models.Trailer", "LibroId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
@@ -819,13 +822,13 @@ namespace Bookflix.Migrations
                     b.HasOne("Bookflix.Models.BookflixUser", "BookflixUser")
                         .WithMany("Usuario_Recibe_Notificaciones")
                         .HasForeignKey("BookflixUserId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Bookflix.Models.Notificacion", "Notificacion")
                         .WithMany("Usuario_Recibe_Notificaciones")
                         .HasForeignKey("NotificacionId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
@@ -834,7 +837,7 @@ namespace Bookflix.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
@@ -843,7 +846,7 @@ namespace Bookflix.Migrations
                     b.HasOne("Bookflix.Models.BookflixUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
@@ -852,7 +855,7 @@ namespace Bookflix.Migrations
                     b.HasOne("Bookflix.Models.BookflixUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
@@ -861,13 +864,13 @@ namespace Bookflix.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Bookflix.Models.BookflixUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
@@ -876,7 +879,7 @@ namespace Bookflix.Migrations
                     b.HasOne("Bookflix.Models.BookflixUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 #pragma warning restore 612, 618

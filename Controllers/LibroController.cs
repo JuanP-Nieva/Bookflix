@@ -198,6 +198,7 @@ namespace Bookflix.Controllers
             }
 
             libro.Perfil_Valora_Libros = _context.Perfil_Valora_Libros
+                                        .Include(p => p.Perfil)
                                         .Where(c => c.LibroId == libro.Id)
                                         .ToList();
 
@@ -207,7 +208,10 @@ namespace Bookflix.Controllers
             
             if(libro.Perfil_Valora_Libros.Count() > 0)
             {
-                ViewBag.Promedio = (float)libro.Perfil_Valora_Libros.Sum(l => l.Puntaje) / libro.Perfil_Valora_Libros.Count();
+                
+                ViewBag.Promedio = (float)libro.Perfil_Valora_Libros
+                                    .Where(l => l.Perfil.Activo)
+                                    .Sum(l => l.Puntaje) / libro.Perfil_Valora_Libros.Where(l => l.Perfil.Activo).Count();
                 libro.Perfil_Valora_Libros = libro.Perfil_Valora_Libros.FindAll(c => c.Comentario != null);
             } else {
                 ViewBag.Promedio = 0;
@@ -719,7 +723,7 @@ namespace Bookflix.Controllers
             }
 
             libro.Perfil_Valora_Libros = _context.Perfil_Valora_Libros
-                                        .Where(c => c.LibroId == libro.Id)
+                                        .Where(c => c.LibroId == libro.Id && c.Comentario != null)
                                         .ToList();
             return View(libro);
         }

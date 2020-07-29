@@ -41,7 +41,8 @@ namespace Bookflix.Controllers
                 return NotFound();
             }
 
-            Perfil_Comenta_Libro p = _context.Perfil_Comenta_Libros.FirstOrDefault(c => c.LibroId == reportes.LibroId);
+            Perfil_Valora_Libro p = _context.Perfil_Valora_Libros
+                                    .FirstOrDefault(c => c.LibroId == reportes.LibroId && c.PerfilId == reportes.PerfilId);
 
             if (p == null)
             {

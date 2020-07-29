@@ -13,7 +13,7 @@ namespace Bookflix.Models
         public int Id { get; set; }
         [Required(ErrorMessage = "Debe ingresar el nombre del perfil")]
         public string Nombre { get; set; }
-
+        public bool Activo { get; set; }
         //Propiedades para las relaciones de la DB
         public BookflixUser Usuario { get; set; }
         public List<Perfil_Comenta_Libro> Perfil_Comenta_Libros { get; set; }

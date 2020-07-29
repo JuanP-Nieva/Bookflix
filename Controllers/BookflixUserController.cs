@@ -204,7 +204,6 @@ namespace Bookflix.Controllers
                 return NotFound();
             }
 
-            //this.borrarPerfiles(bookflixUser);
             _context.Users.Remove(bookflixUser);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));

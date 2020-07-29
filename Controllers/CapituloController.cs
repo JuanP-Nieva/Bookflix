@@ -98,12 +98,12 @@ namespace Bookflix.Controllers
             var capsDeLibro = _context.Capitulos
                             .Where(c => c.LibroId == cap.LibroId).ToList();       
             
-            var x = capsDeLibro.Count() == capLeidos.Count();
+            var x = capsDeLibro.Count() == capLeidos.Count() && capsDeLibro.Count() == cap.NumeroCapitulo;
             ViewBag.Fin = x;  
 
-            var puntuacion = _context
+            var puntuacion = await _context
                             .Perfil_Valora_Libros
-                            .FirstOrDefault(p => p.LibroId == id && p.PerfilId == PerfilActual);  
+                            .FirstOrDefaultAsync(p => p.LibroId == cap.LibroId && p.PerfilId == PerfilActual);  
 
             ViewBag.VoyAPuntuar = puntuacion == null;    
             

@@ -84,6 +84,7 @@ namespace Bookflix.Controllers
             Perfil_Valora_Libro pvl = await _context.Perfil_Valora_Libros
                                         .FirstOrDefaultAsync(c => c.LibroId == ppl.LibroId && c.PerfilId == ppl.PerfilId);
             //pvl.Puntaje = ppl.Puntaje;
+            pvl.Comentario = null;
 
             return View(pvl);
         }
@@ -124,6 +125,17 @@ namespace Bookflix.Controllers
             }
 
             return View(perfil_Valora_Libro);
+        }
+
+        public IActionResult Omitir(int lid, int pid){
+            Perfil_Valora_Libro pvl =  _context.Perfil_Valora_Libros
+                                        .FirstOrDefault(c => c.LibroId == lid && c.PerfilId == pid);
+            pvl.Comentario = null;
+            _context.Perfil_Valora_Libros.Update(pvl);
+            _context.SaveChanges();
+
+            return RedirectToAction("Details","Libro", new {id = lid});
+
         }
 
         // GET: Perfil_Valora_Libro/Delete/5

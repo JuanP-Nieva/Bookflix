@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Bookflix.Models;
+using Bookflix.Data;
 
 namespace Bookflix.Controllers
 {
@@ -25,6 +26,22 @@ namespace Bookflix.Controllers
 
         public IActionResult Privacy()
         {
+
+           /* this.CrearGenero("Terror");
+            this.CrearGenero("Suspenso");
+            this.CrearGenero("Comedia");
+            this.CrearGenero("Fantasia");
+
+            this.crearEditorial("Santilla", "Argentina");
+            this.crearEditorial("Larousse", "Francia");
+            this.crearEditorial("Onebox", "USA");
+            this.crearEditorial("Minotauro", "España");
+
+            this.crearAutor("Edgar Allan", "Poe");
+            this.crearAutor("J. K", "Rowling");
+            this.crearAutor("John", "Katzenbach");
+            this.crearAutor("Alfred", "Hitchcock");*/
+
             return View();
         }
 
@@ -32,6 +49,47 @@ namespace Bookflix.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public void CrearGenero(string item)
+        {
+            using (var _context = new BookflixDbContext())
+            {
+                var genero = new Genero()
+                {
+                    Nombre = item
+                };
+                _context.Generos.Add(genero);
+                _context.SaveChanges();
+            }
+        }
+
+        public void crearEditorial(string item, string itemDos)
+        {
+            using (var _context = new BookflixDbContext())
+            {
+                var editorial = new Editorial()
+                {
+                    Nombre = item,
+                    Pais = itemDos
+                };
+                _context.Editoriales.Add(editorial);
+                _context.SaveChanges();
+            }
+        }
+
+        public void crearAutor(string item, string itemDos)
+        {
+            using (var _context = new BookflixDbContext())
+            {
+                var autor = new Autor()
+                {
+                    Nombre = item,
+                    Apellido = itemDos
+                };
+                _context.Autores.Add(autor);
+                _context.SaveChanges();
+            }
         }
     }
 }

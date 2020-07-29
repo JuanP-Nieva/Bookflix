@@ -168,7 +168,7 @@ namespace Bookflix.Migrations
                         column: x => x.RoleId,
                         principalTable: "AspNetRoles",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -189,7 +189,7 @@ namespace Bookflix.Migrations
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -209,7 +209,7 @@ namespace Bookflix.Migrations
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -227,13 +227,13 @@ namespace Bookflix.Migrations
                         column: x => x.RoleId,
                         principalTable: "AspNetRoles",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_AspNetUserRoles_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -253,7 +253,7 @@ namespace Bookflix.Migrations
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -263,6 +263,7 @@ namespace Bookflix.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nombre = table.Column<string>(nullable: false),
+                    Activo = table.Column<bool>(nullable: false),
                     UsuarioId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -301,19 +302,19 @@ namespace Bookflix.Migrations
                         column: x => x.AutorId,
                         principalTable: "Autores",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Libros_Editoriales_EditorialId",
                         column: x => x.EditorialId,
                         principalTable: "Editoriales",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Libros_Generos_GeneroId",
                         column: x => x.GeneroId,
                         principalTable: "Generos",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -331,13 +332,13 @@ namespace Bookflix.Migrations
                         column: x => x.BookflixUserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Usuario_Recibe_Notificaciones_Notificaciones_NotificacionId",
                         column: x => x.NotificacionId,
                         principalTable: "Notificaciones",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -388,7 +389,7 @@ namespace Bookflix.Migrations
                         column: x => x.LibroId,
                         principalTable: "Libros",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -409,13 +410,13 @@ namespace Bookflix.Migrations
                         column: x => x.LibroId,
                         principalTable: "Libros",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Perfil_Comenta_Libros_Perfiles_PerfilId",
                         column: x => x.PerfilId,
                         principalTable: "Perfiles",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -433,13 +434,13 @@ namespace Bookflix.Migrations
                         column: x => x.LibroId,
                         principalTable: "Libros",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Perfil_Favea_Libros_Perfiles_PerfilId",
                         column: x => x.PerfilId,
                         principalTable: "Perfiles",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -458,13 +459,13 @@ namespace Bookflix.Migrations
                         column: x => x.LibroId,
                         principalTable: "Libros",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Perfil_Lee_Libros_Perfiles_PerfilId",
                         column: x => x.PerfilId,
                         principalTable: "Perfiles",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -483,13 +484,13 @@ namespace Bookflix.Migrations
                         column: x => x.LibroId,
                         principalTable: "Libros",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Perfil_Puntua_Libros_Perfiles_PerfilId",
                         column: x => x.PerfilId,
                         principalTable: "Perfiles",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -511,13 +512,13 @@ namespace Bookflix.Migrations
                         column: x => x.LibroId,
                         principalTable: "Libros",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Perfil_Valora_Libros_Perfiles_PerfilId",
                         column: x => x.PerfilId,
                         principalTable: "Perfiles",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -538,7 +539,7 @@ namespace Bookflix.Migrations
                         column: x => x.LibroId,
                         principalTable: "Libros",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -556,13 +557,13 @@ namespace Bookflix.Migrations
                         column: x => x.CapituloId,
                         principalTable: "Capitulos",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Perfil_Lee_Capitulos_Perfiles_PerfilId",
                         column: x => x.PerfilId,
                         principalTable: "Perfiles",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

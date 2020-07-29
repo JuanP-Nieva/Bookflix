@@ -30,13 +30,13 @@ namespace Bookflix.Controllers
             {
                 return RedirectToAction("Index","Libro");
             }
-            var perfiles = _context.Perfiles.Where(p => p.Usuario.Id == _userManager.GetUserId(User));
+            var perfiles = _context.Perfiles.Where(p => p.Usuario.Id == _userManager.GetUserId(User) && p.Activo);
             return View(perfiles);
         }
 
           public IActionResult AdministrarPerfil()
         {
-            var perfiles = _context.Perfiles.Where(p => p.Usuario.Id == _userManager.GetUserId(User));
+            var perfiles = _context.Perfiles.Where(p => p.Usuario.Id == _userManager.GetUserId(User) && p.Activo);
             
             if(User.IsInRole("Normal")){
                 ViewBag.Valido = (perfiles.Count() < 2);
@@ -92,9 +92,13 @@ namespace Bookflix.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nombre")] Perfil perfil)
+        public async Task<IActionResult> Create([Bind("Id,Nombre,Activo")] Perfil perfil)
         {
-            if (ModelState.IsValid && !perfilUnico(perfil))
+             if (perfilUnico(perfil))
+            {
+                ModelState.AddModelError("Nombre", "Este nombre ya está utilizado por otro perfil");
+            }
+            if (ModelState.IsValid)
             {
                 perfil.Usuario = await _userManager.GetUserAsync(HttpContext.User);
                 _context.Add(perfil);
@@ -125,7 +129,7 @@ namespace Bookflix.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre")] Perfil perfil)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Activo")] Perfil perfil)
         {
             if (id != perfil.Id)
             {
@@ -173,8 +177,8 @@ namespace Bookflix.Controllers
             {
                 return NotFound();
             }
-
-            _context.Perfiles.Remove(perfil);
+            perfil.Activo = false;
+            _context.Perfiles.Update(perfil);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
@@ -187,7 +191,7 @@ namespace Bookflix.Controllers
         //Verifica que el nombre de perfil sea unico
         private bool perfilUnico(Perfil perfil)
         {
-            var perfilesUsuario = _context.Perfiles.Where(p => p.Usuario.Id == _userManager.GetUserId(User));   
+            var perfilesUsuario = _context.Perfiles.Where(p => p.Usuario.Id == _userManager.GetUserId(User) && p.Activo);   
             return perfilesUsuario.Any(pa => pa.Nombre.Equals(perfil.Nombre));
         }
     }
