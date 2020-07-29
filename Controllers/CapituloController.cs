@@ -74,15 +74,32 @@ namespace Bookflix.Controllers
             var cap = await _context.Capitulos
                     .FirstOrDefaultAsync(m => m.Id == id);
 
-            Capitulo capitulo = _context.Capitulos
-                        .Where(p => p.LibroId == cap.LibroId)
-                        .ToList()
-                        .OrderByDescending(c => c.NumeroCapitulo)
-                        .FirstOrDefault();
-                        
+            if (cap == null)
+            {
+                return NotFound();
+            }
+
+            var capLeidos = _context.Perfil_Lee_Capitulos
+                                .Include(l => l.Capítulo)
+                                .Where(c => c.Capítulo.LibroId == cap.LibroId && c.PerfilId == PerfilActual)
+                                .ToList();
             
-            var fin = (capitulo.NumeroCapitulo == cap.NumeroCapitulo) && !(_context.Perfil_Puntua_Libros.Any(p => p.LibroId == cap.LibroId && p.PerfilId == PerfilActual));
-            ViewBag.Fin = fin;  
+            if (capLeidos == null || !capLeidos.Exists(c => c.CapituloId == id))
+            {
+                    Perfil_Lee_Capitulo plc = new Perfil_Lee_Capitulo(){
+                        PerfilId = PerfilActual,
+                        CapituloId = (int)id
+                    };
+                    _context.Perfil_Lee_Capitulos.Add(plc);
+                    await _context.SaveChangesAsync();
+                    capLeidos.Add(plc);
+            } 
+            
+            var capsDeLibro = _context.Capitulos
+                            .Where(c => c.LibroId == cap.LibroId).ToList();       
+            
+            var x = capsDeLibro.Count() == capLeidos.Count();
+            ViewBag.Fin = x;  
 
             var puntuacion = _context
                             .Perfil_Valora_Libros
@@ -90,14 +107,9 @@ namespace Bookflix.Controllers
 
             ViewBag.VoyAPuntuar = puntuacion == null;    
             
-            this.AgregarLecturaDePerfil((int)id,fin);
+            this.AgregarLecturaDePerfil((int)id,x);
 
-            if (capitulo == null)
-            {
-                return NotFound();
-            }
-
-            return View(capitulo);
+            return View(cap);
         }
 
         [HttpGet]

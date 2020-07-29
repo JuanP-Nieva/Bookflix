@@ -21,6 +21,8 @@ namespace Bookflix.Data
         public DbSet<Perfil_Favea_Libro> Perfil_Favea_Libros { get; set; }
         public DbSet<Perfil_Valora_Libro> Perfil_Valora_Libros { get; set; }
         public DbSet<Perfil_Comenta_Libro> Perfil_Comenta_Libros { get; set; }
+
+        public DbSet<Perfil_Lee_Capitulo> Perfil_Lee_Capitulos { get; set; }
         public DbSet<Perfil_Lee_Libro> Perfil_Lee_Libros { get; set; }
         public DbSet<Perfil_Puntua_Libro> Perfil_Puntua_Libros { get; set; }
         public DbSet<Notificacion> Notificaciones { get; set; }
@@ -46,6 +48,7 @@ namespace Bookflix.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Perfil_Lee_Capitulo>().HasKey( pl => new {pl.PerfilId,pl.CapituloId});
             modelBuilder.Entity<Perfil_Valora_Libro>().HasKey( pl => new {pl.PerfilId,pl.LibroId});
             modelBuilder.Entity<Perfil_Comenta_Libro>().HasKey(pl => new { pl.LibroId, pl.NumeroComentario });
             modelBuilder.Entity<Perfil_Favea_Libro>().HasKey(pl => new { pl.PerfilId, pl.LibroId });

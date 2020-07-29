@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bookflix.Migrations
 {
     [DbContext(typeof(BookflixDbContext))]
-    [Migration("20200727202401_IMigra")]
-    partial class IMigra
+    [Migration("20200728234331_Migra")]
+    partial class Migra
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -369,6 +369,21 @@ namespace Bookflix.Migrations
                     b.ToTable("Perfil_Favea_Libros");
                 });
 
+            modelBuilder.Entity("Bookflix.Models.Perfil_Lee_Capitulo", b =>
+                {
+                    b.Property<int>("PerfilId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CapituloId")
+                        .HasColumnType("int");
+
+                    b.HasKey("PerfilId", "CapituloId");
+
+                    b.HasIndex("CapituloId");
+
+                    b.ToTable("Perfil_Lee_Capitulos");
+                });
+
             modelBuilder.Entity("Bookflix.Models.Perfil_Lee_Libro", b =>
                 {
                     b.Property<int>("PerfilId")
@@ -446,7 +461,7 @@ namespace Bookflix.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("NumeroComentario")
+                    b.Property<int>("PerfilId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -657,7 +672,7 @@ namespace Bookflix.Migrations
                     b.HasOne("Bookflix.Models.Libro", null)
                         .WithMany("Capitulos")
                         .HasForeignKey("LibroId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -666,19 +681,19 @@ namespace Bookflix.Migrations
                     b.HasOne("Bookflix.Models.Autor", "Autor")
                         .WithMany("Libros")
                         .HasForeignKey("AutorId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Bookflix.Models.Editorial", "Editorial")
                         .WithMany("Libros")
                         .HasForeignKey("EditorialId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Bookflix.Models.Genero", "Genero")
                         .WithMany("Libros")
                         .HasForeignKey("GeneroId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -705,13 +720,13 @@ namespace Bookflix.Migrations
                     b.HasOne("Bookflix.Models.Libro", "Libro")
                         .WithMany("Perfil_Comenta_Libros")
                         .HasForeignKey("LibroId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Bookflix.Models.Perfil", "Perfil")
                         .WithMany("Perfil_Comenta_Libros")
                         .HasForeignKey("PerfilId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -720,13 +735,28 @@ namespace Bookflix.Migrations
                     b.HasOne("Bookflix.Models.Libro", "Libro")
                         .WithMany("Perfil_Favea_Libros")
                         .HasForeignKey("LibroId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Bookflix.Models.Perfil", "Perfil")
                         .WithMany("Perfil_Favea_Libros")
                         .HasForeignKey("PerfilId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Bookflix.Models.Perfil_Lee_Capitulo", b =>
+                {
+                    b.HasOne("Bookflix.Models.Capitulo", "Capítulo")
+                        .WithMany("Perfil_Lee_Capitulos")
+                        .HasForeignKey("CapituloId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Bookflix.Models.Perfil", "Perfil")
+                        .WithMany("Perfil_Lee_Capitulos")
+                        .HasForeignKey("PerfilId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -735,13 +765,13 @@ namespace Bookflix.Migrations
                     b.HasOne("Bookflix.Models.Libro", "Libro")
                         .WithMany("Perfil_Lee_Libros")
                         .HasForeignKey("LibroId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Bookflix.Models.Perfil", "Perfil")
                         .WithMany("Perfil_Lee_Libros")
                         .HasForeignKey("PerfilId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -750,28 +780,28 @@ namespace Bookflix.Migrations
                     b.HasOne("Bookflix.Models.Libro", "Libro")
                         .WithMany("Perfil_Puntua_Libros")
                         .HasForeignKey("LibroId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Bookflix.Models.Perfil", "Perfil")
                         .WithMany("Perfil_Puntua_Libros")
                         .HasForeignKey("PerfilId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
             modelBuilder.Entity("Bookflix.Models.Perfil_Valora_Libro", b =>
                 {
                     b.HasOne("Bookflix.Models.Libro", "Libro")
-                        .WithMany()
+                        .WithMany("Perfil_Valora_Libros")
                         .HasForeignKey("LibroId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Bookflix.Models.Perfil", "Perfil")
                         .WithMany()
                         .HasForeignKey("PerfilId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -780,7 +810,7 @@ namespace Bookflix.Migrations
                     b.HasOne("Bookflix.Models.Libro", "Libro")
                         .WithOne("Trailer")
                         .HasForeignKey("Bookflix.Models.Trailer", "LibroId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -789,13 +819,13 @@ namespace Bookflix.Migrations
                     b.HasOne("Bookflix.Models.BookflixUser", "BookflixUser")
                         .WithMany("Usuario_Recibe_Notificaciones")
                         .HasForeignKey("BookflixUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Bookflix.Models.Notificacion", "Notificacion")
                         .WithMany("Usuario_Recibe_Notificaciones")
                         .HasForeignKey("NotificacionId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -804,7 +834,7 @@ namespace Bookflix.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -813,7 +843,7 @@ namespace Bookflix.Migrations
                     b.HasOne("Bookflix.Models.BookflixUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -822,7 +852,7 @@ namespace Bookflix.Migrations
                     b.HasOne("Bookflix.Models.BookflixUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -831,13 +861,13 @@ namespace Bookflix.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Bookflix.Models.BookflixUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -846,7 +876,7 @@ namespace Bookflix.Migrations
                     b.HasOne("Bookflix.Models.BookflixUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 #pragma warning restore 612, 618

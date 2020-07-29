@@ -367,6 +367,21 @@ namespace Bookflix.Migrations
                     b.ToTable("Perfil_Favea_Libros");
                 });
 
+            modelBuilder.Entity("Bookflix.Models.Perfil_Lee_Capitulo", b =>
+                {
+                    b.Property<int>("PerfilId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CapituloId")
+                        .HasColumnType("int");
+
+                    b.HasKey("PerfilId", "CapituloId");
+
+                    b.HasIndex("CapituloId");
+
+                    b.ToTable("Perfil_Lee_Capitulos");
+                });
+
             modelBuilder.Entity("Bookflix.Models.Perfil_Lee_Libro", b =>
                 {
                     b.Property<int>("PerfilId")
@@ -723,6 +738,21 @@ namespace Bookflix.Migrations
 
                     b.HasOne("Bookflix.Models.Perfil", "Perfil")
                         .WithMany("Perfil_Favea_Libros")
+                        .HasForeignKey("PerfilId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Bookflix.Models.Perfil_Lee_Capitulo", b =>
+                {
+                    b.HasOne("Bookflix.Models.Capitulo", "Capítulo")
+                        .WithMany("Perfil_Lee_Capitulos")
+                        .HasForeignKey("CapituloId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Bookflix.Models.Perfil", "Perfil")
+                        .WithMany("Perfil_Lee_Capitulos")
                         .HasForeignKey("PerfilId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

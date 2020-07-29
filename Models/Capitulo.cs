@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Http;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 using Bookflix.Models.Validaciones;
+using Bookflix.Data;
+using System.Linq;
 
 namespace Bookflix.Models
 {
@@ -29,5 +31,7 @@ namespace Bookflix.Models
         [DisplayName("Subir Capitulo")]
         [Required(ErrorMessage="Debe cargar un capitulo")]
         public IFormFile pdf { get; set; }
+
+        public List<Perfil_Lee_Capitulo> Perfil_Lee_Capitulos {get; set;}
     }    
 }
