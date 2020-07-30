@@ -31,7 +31,7 @@
             <p style="color: red;">@Html.DisplayNameFor(model => model.Autor)</p>
         </dt>
         <dd class = "col-sm-10">
-            <p style="color: white;">@Html.DisplayFor(model => model.Autor.Apellido)</p>
+            <p style="color: white;">@Html.DisplayFor(model => model.Autor.Nombre) @Html.DisplayFor(model => model.Autor.Apellido)</p>
         </dd>
         <dt class = "col-sm-2">
             <p style="color: red;">@Html.DisplayNameFor(model => model.Genero)</p>
@@ -127,29 +127,23 @@
     @foreach (var item in Model.Perfil_Valora_Libros) 
         {
             <tr>
-                    @if(item.Visible){
-                        <td>
-                            <a style="color: white;">@Html.DisplayFor(modelItem => item.Comentario)</a>
-                        </td>
-                    } else {
-                        <td>
-                        <p style="color: red;">Esta reseña tiene Spoiler. Haz 
-                            <a asp-controller="Libro" asp-action="MostrarComentarioSpoiler" asp-route-lid="@item.LibroId" asp-route-pid="@item.PerfilId">click aquí</a> si desea verla igualmente.</p>
-                        </td>
-                    }
-                <td>
-                    <form asp-controller="Reportes" asp-action="Create" method="get">
-                        <input type="hidden" name="idLibro" id="idLibro" value="@item.LibroId"/>
-                        <input type="hidden" name="perfilId" id="perfilId" value="@item.PerfilId"/>
-                        <button type="submit" class="btn btn-primary mb-2">Reportar</button>
-                    </form>
-                </td>
-                 @if (item.PerfilId == ViewBag.Perfil)
-                {
+                @if(item.Visible){
                     <td>
-                        <a class="btn btn-warning" asp-controller="Libro" asp-action="BorrarComentarioPorUsuario" asp-route-lid="@item.LibroId" asp-route-pid="@item.PerfilId">Borrar comentario</a>
+                        <a style="color: white;">@Html.DisplayFor(modelItem => item.Comentario)</a>
+                    </td>
+                } else {
+                    <td>
+                    <p style="color: red;">Esta reseña tiene Spoiler. Haz 
+                        <a asp-controller="Libro" asp-action="MostrarComentarioSpoiler" asp-route-lid="@item.LibroId" asp-route-pid="@item.PerfilId">click aquí</a> si desea verla igualmente.</p>
                     </td>
                 }
+                <td>  
+                <a class="btn btn-primary" asp-controller="Reportes" asp-action="Create" asp-route-idLibro="@item.LibroId" asp-route-perfilId="@item.PerfilId">Reportar</a>
+                 @if (item.PerfilId == ViewBag.Perfil)
+                {
+                    <a class="btn btn-warning" asp-controller="Libro" asp-action="BorrarComentarioPorUsuario" asp-route-lid="@item.LibroId" asp-route-pid="@item.PerfilId">Borrar comentario</a>
+                }
+                </td>
             </tr>
         }
         </tbody>

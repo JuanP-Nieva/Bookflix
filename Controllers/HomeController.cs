@@ -27,7 +27,7 @@ namespace Bookflix.Controllers
         public IActionResult Privacy()
         {
 
-           /* this.CrearGenero("Terror");
+            /*this.CrearGenero("Terror");
             this.CrearGenero("Suspenso");
             this.CrearGenero("Comedia");
             this.CrearGenero("Fantasia");

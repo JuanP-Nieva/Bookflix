@@ -1,6 +1,7 @@
 @model Bookflix.Models.Perfil_Valora_Libro
 @{
     ViewData["Title"] = "Reporte";
+    string autor = String.Format("{0} {1}", ViewBag.Libro.Autor.Nombre , ViewBag.Libro.Autor.Apellido);
 }
 
 <h1 style="color: #E50914;">Detalles del Comentario</h1>
@@ -18,7 +19,7 @@
             Realizado por
         </dt>
         <dd class = "col-sm-10" style="color: white;">
-            @Model.obtenerUsuario().UserName
+            @ViewBag.NombreUsuario
         </dd>
         <dt class = "col-sm-2" style="color: #E50914;">
             Motivo de reporte
@@ -42,7 +43,7 @@
             Autor
         </dt>
         <dd class = "col-sm-10" style="color: white;">
-            @ViewBag.Libro.Autor.Nombre
+            @autor
         </dd>
         <dt class = "col-sm-2" style="color: #E50914;">
             Editorial
@@ -88,6 +89,13 @@
         </div>
     </div>
     <a class="btn btn-warning btn-sm" role="button" asp-controller="Reportes" asp-action="Delete" asp-route-id="@ViewBag.IdReporte">Rechazar</a>
+    @if(Model.Spoiler)
+    {    
+            <a class="btn btn-danger btn-sm" role="button" asp-action="DesmarcarSpoiler" asp-route-pid="@Model.PerfilId" asp-route-libroId="@Model.LibroId" asp-route-rid="@ViewBag.IdReporte">No es Spoiler</a>
+    }else{
+            <a class="btn btn-danger btn-sm" role="button" asp-action="MarcarSpoiler" asp-route-pid="@Model.PerfilId" asp-route-libroId="@Model.LibroId" asp-route-rid="@ViewBag.IdReporte"> Marcar como Spoiler</a>
+    }
 </div>
+
 <hr>
-<a class="btn btn-danger btn-sm" role="button" asp-controller="Reportes" asp-action="Index">Volver</a>
+<a class="btn btn-danger btn-sm" role="button" asp-controller="Reportes" asp-action="Index">Evaluar más tarde</a>

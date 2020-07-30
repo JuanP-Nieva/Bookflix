@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bookflix.Migrations
 {
     [DbContext(typeof(BookflixDbContext))]
-    [Migration("20200729210149_Migra")]
+    [Migration("20200729225826_Migra")]
     partial class Migra
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

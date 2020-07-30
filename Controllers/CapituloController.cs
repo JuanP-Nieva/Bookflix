@@ -107,7 +107,7 @@ namespace Bookflix.Controllers
 
             ViewBag.VoyAPuntuar = puntuacion == null;    
             
-            this.AgregarLecturaDePerfil((int)id,x);
+            this.AgregarLecturaDePerfil(cap.LibroId,x);
 
             return View(cap);
         }

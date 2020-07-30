@@ -80,10 +80,8 @@ namespace Bookflix.Controllers
             {
                 return NotFound();
             }
-
             Perfil_Valora_Libro pvl = await _context.Perfil_Valora_Libros
                                         .FirstOrDefaultAsync(c => c.LibroId == ppl.LibroId && c.PerfilId == ppl.PerfilId);
-            //pvl.Puntaje = ppl.Puntaje;
             pvl.Comentario = null;
 
             return View(pvl);

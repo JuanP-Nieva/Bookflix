@@ -35,7 +35,7 @@ namespace Bookflix.Controllers
 
             var reportes = await _context.Reportes
                 .FirstOrDefaultAsync(m => m.Id == id);
-            
+
             if (reportes == null)
             {
                 return NotFound();
@@ -53,6 +53,12 @@ namespace Bookflix.Controllers
                                 .Include(l => l.Editorial)
                                 .Include(l => l.Genero)
                                 .FirstOrDefault(c => c.Id == reportes.LibroId); //Agrego el libro para mostrar info del mismo en el details de reporte
+            
+            var perfil = _context.Perfiles
+                                    .Include(u => u.Usuario)
+                                    .FirstOrDefault(l => l.Id == p.PerfilId);
+
+            ViewBag.NombreUsuario = perfil.Usuario.UserName;
             ViewBag.IdReporte = id;
             ViewBag.Motivo = reportes.Motivo;
             return View(p);
@@ -81,7 +87,7 @@ namespace Bookflix.Controllers
             {
                 _context.Add(reportes);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Details","Libro", new {id = reportes.LibroId});
+                return RedirectToAction("Details", "Libro", new { id = reportes.LibroId });
             }
 
             ViewBag.IdLibro = reportes.LibroId;
@@ -167,14 +173,38 @@ namespace Bookflix.Controllers
         {
             Perfil_Valora_Libro p = await _context.Perfil_Valora_Libros
                                     .FirstOrDefaultAsync(c => c.LibroId == id && c.PerfilId == perfilId);
-            List<Reportes> reportes = _context.Reportes.Where( r => r.LibroId == id && r.PerfilId == perfilId).ToList();
+            List<Reportes> reportes = _context.Reportes.Where(r => r.LibroId == id && r.PerfilId == perfilId).ToList();
             _context.Reportes.RemoveRange(reportes);
             p.Comentario = null;
             _context.Perfil_Valora_Libros.Update(p);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-        
+
+        public async Task<IActionResult> MarcarSpoiler(int pid, int libroId, int rid)
+        {
+            Perfil_Valora_Libro p = await _context.Perfil_Valora_Libros
+                                    .FirstOrDefaultAsync(c => c.LibroId == libroId && c.PerfilId == pid);
+
+            p.Spoiler = true;
+            p.Visible = !p.Spoiler;
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction("RechazarReporte", new { id = rid });
+        }
+
+        public async Task<IActionResult> DesmarcarSpoiler(int pid, int libroId, int rid)
+        {
+            Perfil_Valora_Libro p = await _context.Perfil_Valora_Libros
+                                    .FirstOrDefaultAsync(c => c.LibroId == libroId && c.PerfilId == pid);
+
+            p.Spoiler = false;
+            p.Visible = !p.Spoiler;
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction("RechazarReporte", new { id = rid });
+        }
+
         public async Task<IActionResult> RechazarReporte(int id)
         {
             Reportes reportes = await _context.Reportes

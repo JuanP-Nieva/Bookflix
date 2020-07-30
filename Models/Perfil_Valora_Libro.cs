@@ -31,7 +31,7 @@ namespace Bookflix.Models
 
                 foreach (var user in usuarios)
                 {
-                    if (user.Perfiles.Contains(perfil))
+                    if (user.Perfiles.Exists(p => p.Id == perfil.Id))
                     {
                         return user;
                     }

@@ -13,7 +13,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="LibroId" />
             <input type="hidden" asp-for="PerfilId" />
-            <input type="hidden" asp-for="Puntaje" />
+            <input type="hidden" asp-for="Puntaje" value="@Model.Puntaje"/>
             <div class="form-group">
                 <label asp-for="Comentario" class="control-label"></label>
                 <input asp-for="Comentario" class="form-control" />
