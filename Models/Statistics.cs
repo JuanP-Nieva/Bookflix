@@ -14,6 +14,9 @@ namespace Bookflix.Models
         public int NormalUsers { get; set; }
         public int PremiumUsers { get; set; }
         public List<Libro> Libros { get; set; }
+        public Queue<int> CantidadDeLecturas {get; set;}
+
+
     
         //Metodos
         public double calcularPorcentajeNormal()

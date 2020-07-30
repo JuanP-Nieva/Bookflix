@@ -48,11 +48,14 @@ namespace Bookflix.Controllers
 
                     ViewBag.Option = 1;
                     List<int> lista = new List<int>();
+                    stats.CantidadDeLecturas = new Queue<int>();
 
                     foreach (var item in pl)
                     {
                         lista.Add(item.Key);
+                        stats.CantidadDeLecturas.Enqueue(item.Count());
                     }
+                    
 
                     int c;
                     if (lista.Count < 10)
@@ -76,6 +79,7 @@ namespace Bookflix.Controllers
                         stats.Libros.Add(libro);
                     }
                     break;
+
                 case "UsuariosNormales":
                     ViewBag.Option = 2;
                     break;

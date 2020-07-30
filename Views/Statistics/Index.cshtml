@@ -30,19 +30,21 @@
                     <th scope="col">Autor</th>
                     <th scope="col">Genero</th>
                     <th scope="col">Editorial</th>
+                    <th scope="col">Cantidad de Lecturas</th>
                     </tr>
                 </thead>
                 <tbody style="background-color: azure;">
                 
                 @foreach (var item in Model.Libros)
-                {
+                {   
                     <tr>
                     <td >@(@i++)</td>
                     <td>@item.Titulo</td>
                     <td>@item.Descripcion</td>
-                    <td>@item.Autor.Nombre</td>
+                    <td>@item.Autor.Nombre @item.Autor.Apellido</td>
                     <td>@item.Genero.Nombre</td>
                     <td>@item.Editorial.Nombre</td>
+                    <td>@Model.CantidadDeLecturas.Dequeue()</td>
                     </tr>
                 }
                 </tbody>
