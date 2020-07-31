@@ -28,14 +28,14 @@ namespace Bookflix.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required]
-            [EmailAddress]
+            [Required(ErrorMessage = "Debe ingresar un correo correcto.")]
+            [EmailAddress(ErrorMessage = "Debe ingesar un correo válido.")]
             public string Email { get; set; }
 
             [Required(ErrorMessage = "Debe ingesar una contraseña.")]
             [StringLength(100, ErrorMessage = "La {0} debe tener al menos {2} caracteres y {1} como máximo.", MinimumLength = 8)]
-            [DataType(DataType.Password)]
-            [Display(Name = "Nueva contraseña")]            
+            [DataType(DataType.Password, ErrorMessage = "La contraseña debe contener al menos un caracter en mayúscula")]
+            [Display(Name = "Nueva contraseña")]
             public string Password { get; set; }
 
             [DataType(DataType.Password)]
@@ -84,7 +84,14 @@ namespace Bookflix.Areas.Identity.Pages.Account
 
             foreach (var error in result.Errors)
             {
-                ModelState.AddModelError(string.Empty, error.Description);
+                if (error.Code.Equals("InvalidToken"))
+                {
+                    ModelState.AddModelError("Correo", "El email es inválido.");
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, error.Description);
+                }
             }
             return Page();
         }

@@ -21,12 +21,20 @@ namespace Bookflix.Models
         //Metodos
         public double calcularPorcentajeNormal()
         {
-            return this.NormalUsers * 100 / (this.NormalUsers + this.PremiumUsers);
+            if ((this.NormalUsers + this.PremiumUsers) != 0)
+            {
+                return this.NormalUsers * 100 / (this.NormalUsers + this.PremiumUsers);
+            }
+            return 0;
         }
 
         public double calcularPorcentajePremium()
         {
-            return this.PremiumUsers * 100 / (this.NormalUsers + this.PremiumUsers);
+            if ((this.NormalUsers + this.PremiumUsers) != 0)
+            {
+                return this.PremiumUsers * 100 / (this.NormalUsers + this.PremiumUsers);
+            }
+            return 0;
         }
     }
 }

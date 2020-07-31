@@ -14,7 +14,7 @@
             <div class="form-group">
                 <label style="color: #F5F5F1;" asp-for="Email"></label>
                 <div class="input-group">
-                    <input asp-for="Email" class="form-control" disabled />
+                    <input value="@User.Identity.Name" class="form-control" disabled />
                     <div class="input-group-append">
                         <span class="input-group-text text-success font-weight-bold">✓</span>
                     </div>

@@ -90,14 +90,14 @@ namespace Bookflix.Areas.Identity.Pages.Account
             [Required(ErrorMessage = "Debe ingresar el código de seguridad de su tarjeta."), Display(Name = "Código de seguridad"), RegularExpression(@"^[0-9]{3}$", ErrorMessage = "El {0} debe contener 3 dígitos.")]
             public int Clave { get; set; }
 
-            [Required(ErrorMessage = "Debe ingresar el nombre del titular de su tarjeta.")]
+            [Required(ErrorMessage = "Debe ingresar el nombre del titular de su tarjeta."), RegularExpression(@"^[A-Za-z]*\s?()[A-Za-z]*$", ErrorMessage = "El {0} no puede empezar con espacios ni contener números.")]
             [StringLength(100, ErrorMessage = "El nombre del {0} debe tener al menos {2} caracteres y {1} como máximo.", MinimumLength = 1)]
             public string Titular { get; set; }
 
             [Required(ErrorMessage = "Debe seleccionar un tipo de tarjeta.")]
             public string Tipo { get; set; }
 
-            [DataType(DataType.Date), Display(Name = "Fecha de expiración"), DesdeFechaActual(ErrorMessage = "La fecha de expiración debe ser posterior al día de hoy.")]
+            [DataType(DataType.Date), Display(Name = "Fecha de expiración"), DesdeFechaActual(ErrorMessage = "La fecha de expiración de la tarjeta debe ser posterior al día de hoy.")]
             [Required(ErrorMessage = "Debe ingresar la fecha de expiración de la tarjeta.")]
             public DateTime FechaDeVencimiento { get; set; }
 

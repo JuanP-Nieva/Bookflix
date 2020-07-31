@@ -78,8 +78,13 @@
 
     
 }
-<p style="color: white; font-weight: bold;">Libros</p>
-    <hr color="white" size="3"> 
+
+@if ((Model.Where(l => l.esFaveado(ViewBag.Perfil.Id)).Count() != Model.Count()) || (Model.Count() == 0))
+{
+    <p style="color: white; font-weight: bold;">Libros</p>
+        <hr color="white" size="3"> 
+}
+
 @* En caso de que no este faveado lo muestro en la lista de los libros  *@
 @foreach (var item in Model) {
     @if(!item.esFaveado(@ViewBag.Perfil.Id)){

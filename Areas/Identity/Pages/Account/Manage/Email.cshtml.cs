@@ -26,7 +26,7 @@ namespace Bookflix.Areas.Identity.Pages.Account.Manage
             _userManager = userManager;
             _signInManager = signInManager;
         }
-
+        
         public string Username { get; set; }
 
         public string Email { get; set; }
@@ -39,7 +39,7 @@ namespace Bookflix.Areas.Identity.Pages.Account.Manage
 
         public class InputModel
         {
-            [Required]
+            [Required(ErrorMessage="Debes ingresar un email.")]
             [EmailAddress]
             [Display(Name = "Nuevo email")]
             public string NewEmail { get; set; }
@@ -88,7 +88,7 @@ namespace Bookflix.Areas.Identity.Pages.Account.Manage
                 var result = await _userManager.ChangeEmailAsync(user, Input.NewEmail, await _userManager.GenerateChangeEmailTokenAsync(user, Input.NewEmail));
                 if (!result.Succeeded)
                 {
-                    StatusMessage = "Error modificando el email.";
+                    StatusMessage = "El email que ingresaste no es válido";
                     return Page();
                 }
 

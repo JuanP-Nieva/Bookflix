@@ -33,7 +33,7 @@
                 @ViewBag.Libro.Titulo
             </td >
             <td style="color: white;">
-                @ViewBag.Libro.Autor.Nombre
+                @ViewBag.Libro.Autor.Nombre @ViewBag.Libro.Autor.Apellido
             </td >
             <td>
                 <a class="btn btn-danger" role="button" asp-action="Details" asp-route-id="@item.Id">Ver más</a>
@@ -45,6 +45,6 @@
 @if(Model.Count() == 0)
 {
     <div class="alert alert-danger" role="alert">
-        ¡No se han realizado reportes hasta el momento!
+        ¡No se existen reportes para evaluar hasta el momento!
     </div>
 }

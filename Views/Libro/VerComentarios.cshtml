@@ -25,11 +25,11 @@
             @if(item.Spoiler)
             {
                 <td>
-                    <a class="btn btn-danger" role="button" asp-action="DesmarcarSpoiler" asp-route-pid="@item.PerfilId" asp-route-libroId="@Model.Id">No Spoiler</a>
+                    <a class="btn btn-danger btn-sm" role="button" asp-action="DesmarcarSpoiler" asp-route-pid="@item.PerfilId" asp-route-libroId="@Model.Id">No Spoiler</a>
                 </td>
             }else{
                 <td>
-                    <a class="btn btn-danger" role="button" asp-action="MarcarSpoiler" asp-route-pid="@item.PerfilId" asp-route-libroId="@Model.Id">Spoiler</a>
+                    <a class="btn btn-danger btn-sm" role="button" asp-action="MarcarSpoiler" asp-route-pid="@item.PerfilId" asp-route-libroId="@Model.Id">Spoiler</a>
                 </td>
             }
             <td>

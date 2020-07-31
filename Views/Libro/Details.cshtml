@@ -141,7 +141,7 @@
                 <a class="btn btn-primary" asp-controller="Reportes" asp-action="Create" asp-route-idLibro="@item.LibroId" asp-route-perfilId="@item.PerfilId">Reportar</a>
                  @if (item.PerfilId == ViewBag.Perfil)
                 {
-                    <a class="btn btn-warning" asp-controller="Libro" asp-action="BorrarComentarioPorUsuario" asp-route-lid="@item.LibroId" asp-route-pid="@item.PerfilId">Borrar comentario</a>
+                    <a class="btn btn-warning" asp-controller="Libro" asp-action="BorrarComentarioPorUsuario" asp-route-lid="@item.LibroId" asp-route-pid="@item.PerfilId">Borrar</a>
                 }
                 </td>
             </tr>

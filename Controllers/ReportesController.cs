@@ -57,8 +57,13 @@ namespace Bookflix.Controllers
             var perfil = _context.Perfiles
                                     .Include(u => u.Usuario)
                                     .FirstOrDefault(l => l.Id == p.PerfilId);
-
-            ViewBag.NombreUsuario = perfil.Usuario.UserName;
+            if (perfil.Usuario == null)
+            {
+                ViewBag.NombreUsuario = "El usuario ya no existe.";
+            } else {
+                ViewBag.NombreUsuario = perfil.Usuario.UserName;
+            }
+            
             ViewBag.IdReporte = id;
             ViewBag.Motivo = reportes.Motivo;
             return View(p);

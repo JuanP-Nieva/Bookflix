@@ -326,6 +326,9 @@ namespace Bookflix.Controllers
 
         public async Task<IActionResult> BorrarComentarioPorUsuario(int lid, int pid)
         {
+            var reportes = _context.Reportes.Where(l => l.LibroId == lid && l.PerfilId == pid).ToList();
+            _context.Reportes.RemoveRange(reportes);
+
             var pvl = _context.Perfil_Valora_Libros
                                 .FirstOrDefault(c => c.LibroId == lid && c.PerfilId == pid);
             pvl.Comentario = null;
